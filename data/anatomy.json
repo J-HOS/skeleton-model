@@ -1,0 +1,1779 @@
+{
+  "metadata": {
+    "source": "Anatomy & Kinesiology Flashcards (Human Kinetics / FMP, LLC 2013)",
+    "total_muscles": 128,
+    "total_bony_landmark_pages": 31,
+    "sections": {
+      "1": "Shoulder Girdle",
+      "2": "Shoulder Joint",
+      "3": "Elbow Joint Complex",
+      "4": "Wrist and Hand Joints",
+      "5": "Neck and Atlanto-Occipital Joints",
+      "6": "Back - Spinal Joints",
+      "7": "Abdominal and Respiratory",
+      "8": "Pelvic Girdle and Hip Joint",
+      "9": "Knee Joint",
+      "10": "Ankle and Foot Joints",
+      "11": "Bony Landmarks"
+    },
+    "fields": [
+      "name",
+      "section",
+      "section_id",
+      "origin",
+      "insertion",
+      "action",
+      "nerve_innervation",
+      "notes",
+      "review_flag"
+    ],
+    "review_flag_note": "review_flag = entry requires verification against Gray's Anatomy or Netter's Atlas",
+    "verification_log": [
+      {
+        "date": "2026-09-16",
+        "scope": "Section 5 - Neck and Atlanto-Occipital Joints (8 muscles)",
+        "method": "Every field re-sourced against two independent authoritative sources; phrasing rewritten into original wording; source conflicts documented in notes rather than resolved.",
+        "sources": [
+          "StatPearls / NCBI Bookshelf NBK519058, NBK537074, NBK567762, NBK532881",
+          "Kenhub anatomy library"
+        ],
+        "confirmed_errors": 3,
+        "entries_revised": 1,
+        "entries_confirmed_correct": 4,
+        "mechanical_fixes_filewide": 9,
+        "source_note": "TeachMeAnatomy was originally listed here; it was struck from Approved Sources the same day and does not count toward verification of this section. Every entry in it was later re-sourced to two .gov articles."
+      },
+      {
+        "date": "2026-09-16",
+        "scope": "Section 1 - Shoulder Girdle (8 muscles)",
+        "method": "Every field re-sourced against two independent authoritative sources; phrasing rewritten into original wording; source conflicts documented in notes rather than resolved.",
+        "confirmed_errors": 1,
+        "entries_revised": 3,
+        "entries_confirmed_correct": 4
+      },
+      {
+        "date": "2026-09-16",
+        "scope": "Section 2 - Shoulder Joint (12 muscles)",
+        "method": "Every field re-sourced against two independent authoritative sources; phrasing rewritten into original wording; source conflicts documented in notes rather than resolved.",
+        "confirmed_errors": 1,
+        "entries_revised": 5,
+        "entries_confirmed_correct": 6
+      },
+      {
+        "date": "2026-09-16",
+        "scope": "Section 3 - Elbow Joint Complex (8 muscles)",
+        "method": "Every field re-sourced against two independent authoritative sources; phrasing rewritten into original wording; source conflicts documented in notes rather than resolved.",
+        "confirmed_errors": 2,
+        "entries_revised": 3,
+        "entries_confirmed_correct": 3
+      },
+      {
+        "date": "2026-09-16",
+        "scope": "Section 4 - Wrist and Hand Joints (25 muscles)",
+        "method": "Every field re-sourced against two independent authoritative sources; phrasing rewritten into original wording; source conflicts documented in notes rather than resolved.",
+        "confirmed_errors": 2,
+        "entries_revised": 9,
+        "entries_confirmed_correct": 14
+      },
+      {
+        "date": "2026-09-16",
+        "scope": "Section 6 - Back, Spinal Joints (6 muscles)",
+        "method": "Every field re-sourced against two independent authoritative sources; phrasing rewritten into original wording; source conflicts documented in notes rather than resolved.",
+        "confirmed_errors": 1,
+        "entries_revised": 5,
+        "entries_confirmed_correct": 0
+      },
+      {
+        "date": "2026-09-16",
+        "scope": "Section 7 - Abdominal and Respiratory (11 muscles)",
+        "method": "Every field re-sourced against two independent authoritative sources; phrasing rewritten into original wording; source conflicts documented in notes rather than resolved.",
+        "confirmed_errors": 2,
+        "entries_revised": 6,
+        "entries_confirmed_correct": 3
+      },
+      {
+        "date": "2026-09-16",
+        "scope": "Section 8 - Pelvic Girdle and Hip Joint (23 muscles)",
+        "method": "Every field re-sourced against two independent authoritative sources; phrasing rewritten into original wording; source conflicts documented in notes rather than resolved.",
+        "confirmed_errors": 4,
+        "entries_revised": 6,
+        "entries_confirmed_correct": 13
+      },
+      {
+        "date": "2026-09-16",
+        "scope": "Section 9 - Knee Joint (4 muscles)",
+        "method": "Every field re-sourced against two independent authoritative sources; phrasing rewritten into original wording; source conflicts documented in notes rather than resolved.",
+        "confirmed_errors": 0,
+        "entries_revised": 1,
+        "entries_confirmed_correct": 3
+      },
+      {
+        "date": "2026-09-16",
+        "scope": "Section 10 - Ankle and Foot Joints (23 muscles)",
+        "method": "Every field re-sourced against two independent authoritative sources; phrasing rewritten into original wording; source conflicts documented in notes rather than resolved.",
+        "confirmed_errors": 1,
+        "entries_revised": 9,
+        "entries_confirmed_correct": 13
+      },
+      {
+        "date": "2026-09-16",
+        "scope": "Section 2 re-sourced to .gov - Shoulder Joint (9 of 12)",
+        "method": "Every field re-sourced against two independent authoritative sources; phrasing rewritten into original wording; source conflicts documented in notes rather than resolved.",
+        "confirmed_errors": 2,
+        "entries_revised": 7,
+        "entries_confirmed_correct": 0
+      },
+      {
+        "date": "2026-09-16",
+        "scope": "Section 3 re-sourced to .gov - Elbow Complex (7 of 8)",
+        "method": "Every field re-sourced against two independent authoritative sources; phrasing rewritten into original wording; source conflicts documented in notes rather than resolved.",
+        "confirmed_errors": 0,
+        "entries_revised": 7,
+        "entries_confirmed_correct": 0
+      },
+      {
+        "date": "2026-09-16",
+        "scope": "Section 4 re-sourced to .gov - Wrist and Hand (25 of 25)",
+        "method": "Every field re-sourced against two independent authoritative sources; phrasing rewritten into original wording; source conflicts documented in notes rather than resolved.",
+        "confirmed_errors": 0,
+        "entries_revised": 25,
+        "entries_confirmed_correct": 0
+      },
+      {
+        "date": "2026-09-16",
+        "scope": "Section 7 re-sourced to .gov - Abdominal and Respiratory (11 of 11)",
+        "method": "Every field re-sourced against two independent authoritative sources; phrasing rewritten into original wording; source conflicts documented in notes rather than resolved.",
+        "confirmed_errors": 1,
+        "entries_revised": 10,
+        "entries_confirmed_correct": 0
+      },
+      {
+        "date": "2026-09-16",
+        "scope": "Section 8 re-sourced to .gov - Pelvic Girdle and Hip (19 of 23)",
+        "method": "Every field re-sourced against two independent authoritative sources; phrasing rewritten into original wording; source conflicts documented in notes rather than resolved.",
+        "confirmed_errors": 1,
+        "entries_revised": 18,
+        "entries_confirmed_correct": 0
+      },
+      {
+        "date": "2026-09-16",
+        "scope": "Section 9 re-sourced to .gov - Knee (4 of 4)",
+        "method": "Every field re-sourced against two independent authoritative sources; phrasing rewritten into original wording; source conflicts documented in notes rather than resolved.",
+        "confirmed_errors": 0,
+        "entries_revised": 4,
+        "entries_confirmed_correct": 0
+      },
+      {
+        "date": "2026-09-16",
+        "scope": "Section 10 partial re-source to .gov - Ankle and Foot (9 of 23)",
+        "method": "Every field re-sourced against two independent authoritative sources; phrasing rewritten into original wording; source conflicts documented in notes rather than resolved.",
+        "confirmed_errors": 0,
+        "entries_revised": 9,
+        "entries_confirmed_correct": 0
+      },
+      {
+        "date": "2026-09-16",
+        "scope": "Section 10 completed to .gov - Ankle and Foot (17 remaining)",
+        "method": "Every field re-sourced against two independent authoritative sources; phrasing rewritten into original wording; source conflicts documented in notes rather than resolved.",
+        "confirmed_errors": 1,
+        "entries_revised": 16,
+        "entries_confirmed_correct": 0
+      },
+      {
+        "date": "2026-09-16",
+        "scope": "Section 1 completed to .gov - Shoulder Girdle (5 remaining)",
+        "method": "Every field re-sourced against two independent authoritative sources; phrasing rewritten into original wording; source conflicts documented in notes rather than resolved.",
+        "confirmed_errors": 0,
+        "entries_revised": 5,
+        "entries_confirmed_correct": 0
+      },
+      {
+        "date": "2026-09-16",
+        "scope": "Section 2 completed to .gov - latissimus dorsi",
+        "method": "Every field re-sourced against two independent authoritative sources; phrasing rewritten into original wording; source conflicts documented in notes rather than resolved.",
+        "confirmed_errors": 0,
+        "entries_revised": 1,
+        "entries_confirmed_correct": 0
+      },
+      {
+        "date": "2026-09-16",
+        "scope": "Section 3 completed to .gov - anconeus",
+        "method": "Every field re-sourced against two independent authoritative sources; phrasing rewritten into original wording; source conflicts documented in notes rather than resolved.",
+        "confirmed_errors": 0,
+        "entries_revised": 1,
+        "entries_confirmed_correct": 0
+      },
+      {
+        "date": "2026-09-16",
+        "scope": "Section 5 completed to .gov - Neck (7 remaining)",
+        "method": "Every field re-sourced against two independent authoritative sources; phrasing rewritten into original wording; source conflicts documented in notes rather than resolved.",
+        "confirmed_errors": 0,
+        "entries_revised": 7,
+        "entries_confirmed_correct": 0
+      },
+      {
+        "date": "2026-09-16",
+        "scope": "Section 6 completed to .gov - Back, Spinal (6 remaining)",
+        "method": "Every field re-sourced against two independent authoritative sources; phrasing rewritten into original wording; source conflicts documented in notes rather than resolved.",
+        "confirmed_errors": 0,
+        "entries_revised": 6,
+        "entries_confirmed_correct": 0
+      },
+      {
+        "date": "2026-09-16",
+        "scope": "Section 8 completed to .gov - Hip (4 remaining)",
+        "method": "Every field re-sourced against two independent authoritative sources; phrasing rewritten into original wording; source conflicts documented in notes rather than resolved.",
+        "confirmed_errors": 0,
+        "entries_revised": 4,
+        "entries_confirmed_correct": 0
+      },
+      {
+        "date": "2026-09-16",
+        "scope": "Trapezius middle - citations completed",
+        "method": "Every field re-sourced against two independent authoritative sources; phrasing rewritten into original wording; source conflicts documented in notes rather than resolved.",
+        "confirmed_errors": 0,
+        "entries_revised": 1,
+        "entries_confirmed_correct": 0
+      },
+      {
+        "date": "2026-09-16",
+        "scope": "Splenius capitis - off-list citation removed",
+        "method": "Every field re-sourced against two independent authoritative sources; phrasing rewritten into original wording; source conflicts documented in notes rather than resolved.",
+        "confirmed_errors": 0,
+        "entries_revised": 1,
+        "entries_confirmed_correct": 0
+      },
+      {
+        "date": "2026-09-16",
+        "scope": "Section 8 - gluteal, TFL and quadratus femoris flags cleared",
+        "method": "Every field re-sourced against two independent authoritative sources; phrasing rewritten into original wording; source conflicts documented in notes rather than resolved.",
+        "confirmed_errors": 0,
+        "entries_revised": 5,
+        "entries_confirmed_correct": 0
+      }
+    ],
+    "source_note": "Entries originally derived from the flashcard deck named in 'source'. All 128 entries were re-sourced on 2026-09-16 (see 'verification_log') and rewritten in original wording; no entry retains flashcard phrasing.",
+    "verification_caveat": "Final state, 2026-09-16 close-out (recounted 2026-10-08): all 128 entries cite two or more approved sources, drawn from 65 distinct NIH/NCBI StatPearls articles (cited by NBK number in notes) plus Kenhub. 95 entries rest on two StatPearls articles - separately authored but one publisher; 33 span two publishers. No print reference (Gray's, Netter's, Moore's) has been consulted, and sources were read via machine summaries. teachmeanatomy.info is not an approved source and counts toward nothing. An earlier mid-session audit recorded 10/48/70 for two/one/none; that figure is superseded.",
+    "textbook_check_2026_10_09": "All 128 entries checked 2026-10-09 against sources independent of StatPearls: the UAMS/TTUHSC medical-school anatomy tables (.edu, all 128 except the two serratus posterior muscles), the UW Musculoskeletal Atlas (.edu) for limb conflicts, Loyola LUMEN (.edu), Radiopaedia (.org) and Kenhub. Result: 116 agree, 9 documented source conflicts (mostly nerve root levels), 3 corrections (flexor digitorum superficialis insertion, transversus abdominis costal origin - reverting a 2026-09-16 change, psoas major origin). Every entry now rests on at least one non-StatPearls publisher. LIMITS: these are medical-school teaching tables and atlases, not the printed Gray's/Netter's/Moore's; pages were read through a summarising fetch tool, not verbatim."
+  },
+  "muscles": [
+    {
+      "name": "PectoralisMinor",
+      "section": "Shoulder Girdle",
+      "section_id": "1",
+      "origin": "Margins of the 3rd to 5th ribs, adjacent to their costochondral junctions.",
+      "insertion": "Medial border and superior surface of the coracoid process of the scapula.",
+      "action": "Stabilises the scapula by drawing it downward and anteriorly against the thoracic wall: depression, protraction and downward rotation. Assists inspiration when the scapula is fixed.",
+      "nerve_innervation": "Medial pectoral nerve (C8-T1)",
+      "notes": "Re-sourced 2026-09-16 to two approved sources: StatPearls NBK545241 (Pectoral Muscles, .gov) and Kenhub. NBK545241 lists both medial and lateral pectoral nerves; the medial is the conventional and consistent attribution and is recorded, with the lateral contribution noted here. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "SerratusAnterior",
+      "section": "Shoulder Girdle",
+      "section_id": "1",
+      "origin": "Superolateral surfaces of the 1st to 8th ribs, sometimes reaching the 9th, on the lateral thoracic wall.",
+      "insertion": "Anterior surface of the medial border of the scapula, from the superior to the inferior angle.",
+      "action": "Draws the scapula forward around the thorax - protraction - and its inferior part rotates the scapula upward to allow elevation of the arm above the head. Holds the medial border against the thoracic wall; assists respiration when the shoulder girdle is fixed.",
+      "nerve_innervation": "Long thoracic nerve (C5-C7)",
+      "notes": "Re-sourced 2026-09-16 to two approved sources: StatPearls NBK531457 (Serratus Anterior Muscles, .gov) and Kenhub. NBK531457 adds that the superior part may take an independent branch from C4-C6 and the inferior part dual supply from the long thoracic and intercostal nerves. Long thoracic injury produces the winged scapula. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Subclavius",
+      "section": "Shoulder Girdle",
+      "section_id": "1",
+      "origin": "Junction of the 1st rib and its costal cartilage, anterior to the costoclavicular ligament.",
+      "insertion": "Subclavian groove on the inferior surface of the middle third of the clavicle.",
+      "action": "Depresses the clavicle and anchors it at the sternoclavicular joint; assists elevation of the 1st rib.",
+      "nerve_innervation": "Nerve to subclavius, also called the subclavian nerve (C5-C6)",
+      "notes": "CORRECTION UPHELD FROM .gov, 2026-09-16: the original entry gave 'scapular depression and abduction'. StatPearls NBK545241 describes the muscle as depressing the shoulder and elevating the 1st rib, with no scapular attachment - it runs from the 1st rib to the clavicle. Confirmed against Kenhub. NBK545241 also names the costoclavicular ligament relationship, added to the origin. TEXTBOOK-LEVEL CHECK 2026-10-09 against the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source): attachments and actions agree. SOURCE CONFLICT, documented not changed: TTUHSC gives the nerve to subclavius as C5 alone; C5-C6 retained (Kenhub, Moore's convention).",
+      "review_flag": ""
+    },
+    {
+      "name": "LevatorScapulae",
+      "section": "Shoulder Girdle",
+      "section_id": "1",
+      "origin": "Transverse processes of C1-C4, from their posterior tubercles.",
+      "insertion": "Medial border of the scapula, from the superior angle to the root of the scapular spine.",
+      "action": "Scapular elevation, retraction and downward rotation of the glenoid cavity; stabilises the scapula during movement. Acting on the neck: unilateral lateral flexion toward the contracting side.",
+      "nerve_innervation": "Dorsal scapular nerve (C5), with direct branches from the anterior rami of C3-C4",
+      "notes": "Re-sourced 2026-09-16 to two approved sources: StatPearls NBK537216 (Back, Extrinsic Muscles, .gov) and Kenhub. Both give the dual supply - dorsal scapular plus direct C3-C4 branches - which is why a dorsal scapular nerve injury does not abolish its function. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Rhomboids(major&minor)",
+      "section": "Shoulder Girdle",
+      "section_id": "1",
+      "origin": "Minor: lower ligamentum nuchae and the spinous processes of C7-T1 with their supraspinous ligaments. Major: spinous processes of T2-T5.",
+      "insertion": "Minor: medial border of the scapula at the level of the scapular spine. Major: medial border between the scapular spine and the inferior angle.",
+      "action": "Scapular retraction, drawing it medially and superiorly, with downward rotation of the glenoid cavity. Hold the medial border against the thoracic wall.",
+      "nerve_innervation": "Dorsal scapular nerve (C4-C5)",
+      "notes": "Re-sourced 2026-09-16 to two approved sources: StatPearls NBK537216 (.gov) and Kenhub. Root range widened from C5 to C4-C5 per NBK537216. The minor/major split of the origin, added earlier the same day, is confirmed. TEXTBOOK-LEVEL CHECK 2026-10-09 against the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source): attachments and actions agree. SOURCE CONFLICT, documented not changed: TTUHSC gives the dorsal scapular nerve as C5 alone; C4-C5 retained.",
+      "review_flag": ""
+    },
+    {
+      "name": "Trapezius(upper)",
+      "section": "Shoulder Girdle",
+      "section_id": "1",
+      "origin": "External occipital protuberance, medial third of the superior nuchal line, and the ligamentum nuchae, which itself attaches to the spinous processes of C1-C6.",
+      "insertion": "Posterior border of the lateral third of the clavicle.",
+      "action": "Scapular elevation, retraction (adduction), and upward rotation. Bilateral: extension of the head and neck. Unilateral: lateral flexion toward the contracting side with rotation of the face away.",
+      "nerve_innervation": "Accessory nerve (CN XI) for motor supply, with proprioceptive fibres from C3-C4",
+      "notes": "Verified 2026-09-16 against Kenhub and StatPearls (NBK518994). A suspected error was checked and found NOT to be one: the reference to C1-C6 spinous processes looked wrong because the atlas has no spinous process, but the attachment is by way of the ligamentum nuchae, which Kenhub describes the same way. The origin is now explicit about that path, and 'medial third' has been added to the superior nuchal line. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Trapezius(middle)",
+      "section": "Shoulder Girdle",
+      "section_id": "1",
+      "origin": "Spinous processes and supraspinous ligaments of C6-T3.",
+      "insertion": "Medial margin of the acromion and the superior crest of the scapular spine.",
+      "action": "Scapular retraction, drawing it medially, with assistance in upward rotation.",
+      "nerve_innervation": "Accessory nerve (CN XI) for motor supply, with sensory and proprioceptive fibres from the ventral rami of C3-C4",
+      "notes": "Re-sourced 2026-09-16 to three approved sources: StatPearls NBK518994 (Back, Trapezius) and NBK537216 (Back, Extrinsic Muscles), both .gov, plus Kenhub. SOURCE VARIATION on the vertebral range, not resolved: both .gov articles describe the whole muscle as arising from C7-T12 without subdividing it, Kenhub gives T1-T4 for the transverse part, and kinesiology texts commonly give C7-T3. The existing C6-T3 sits within that spread and has been kept rather than picked over the alternatives. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Trapezius(lower)",
+      "section": "Shoulder Girdle",
+      "section_id": "1",
+      "origin": "Spinous processes and supraspinous ligaments of T4-T12.",
+      "insertion": "Aponeurosis at the medial end of the scapular spine, onto its tubercle.",
+      "action": "Scapular depression, retraction (adduction), and upward rotation.",
+      "nerve_innervation": "Accessory nerve (CN XI) for motor supply, with proprioceptive fibres from C3-C4",
+      "notes": "Verified 2026-09-16 against Kenhub and StatPearls (NBK518994); T4-T12 range confirmed exactly. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "PectoralisMajor(clavicularhead)",
+      "section": "Shoulder Joint",
+      "section_id": "2",
+      "origin": "Anterior surface of the medial half of the clavicle.",
+      "insertion": "Lateral lip of the intertubercular (bicipital) groove of the humerus.",
+      "action": "Shoulder flexion to approximately 90 degrees, horizontal adduction, and internal rotation. Assists adduction when the arm is abducted less than 90 degrees.",
+      "nerve_innervation": "Lateral pectoral nerve (C5-C7)",
+      "notes": "REVISED 2026-09-16. The entry previously also claimed 'abduction when arm is abducted >90 degrees'. Neither Kenhub nor StatPearls (NBK545241) attributes any abduction to the clavicular head; it appears to be a kinesiology-text claim about assisting elevation past 90 degrees. Moved here rather than shown as fact - re-source before returning it to the action field. Origin, insertion and nerve confirmed by both sources. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "PectoralisMajor(sternalhead)",
+      "section": "Shoulder Joint",
+      "section_id": "2",
+      "origin": "Anterior surface of the sternum and the costal cartilages of the 1st-6th ribs; the lowest fibres arise from the aponeurosis of the external oblique.",
+      "insertion": "Lateral lip of the intertubercular (bicipital) groove of the humerus.",
+      "action": "Shoulder adduction, horizontal adduction, and internal rotation. Extends the flexed arm back toward the anatomical position.",
+      "nerve_innervation": "Medial pectoral nerve (C8-T1)",
+      "notes": "Verified 2026-09-16 against Kenhub and StatPearls (NBK545241); all four fields confirmed. The abdominal slip from the external oblique aponeurosis has been added - both sources describe it, the entry did not. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Deltoid(anteriorhead)",
+      "section": "Shoulder Joint",
+      "section_id": "2",
+      "origin": "Anterior surface of the lateral third of the clavicle.",
+      "insertion": "Deltoid tuberosity on the lateral surface of the humerus.",
+      "action": "Shoulder flexion and internal rotation; horizontal adduction. Works with pectoralis major to flex the arm during walking.",
+      "nerve_innervation": "Axillary nerve (C5-C6)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK537056 (Deltoid Muscle) and NBK546633 (Scapulohumeral Muscles). Both confirm origin, insertion and nerve. The abduction previously credited to this head is not supported by either: NBK537056 assigns abduction to the acromial fibres and describes the anterior fibres as flexors. Dropped from the action. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Deltoid(middlehead)",
+      "section": "Shoulder Joint",
+      "section_id": "2",
+      "origin": "Superolateral surface of the acromion of the scapula.",
+      "insertion": "Deltoid tuberosity on the lateral surface of the humerus.",
+      "action": "Shoulder abduction, raising the arm from roughly 15 to 100 degrees. It cannot initiate abduction because it contracts parallel to the humeral axis; supraspinatus performs the first 15 degrees.",
+      "nerve_innervation": "Axillary nerve (C5-C6)",
+      "notes": "Re-sourced 2026-09-16 against StatPearls NBK537056 and NBK546633, both .gov. Range corrected from 15-90 to 15-100 degrees, which both give. The reason it cannot initiate abduction - line of pull parallel to the humerus - is from NBK537056 and is worth keeping for a clinical audience. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Deltoid(posteriorhead)",
+      "section": "Shoulder Joint",
+      "section_id": "2",
+      "origin": "Inferior border of the spine of the scapula.",
+      "insertion": "Deltoid tuberosity on the lateral surface of the humerus.",
+      "action": "Shoulder extension and external rotation; horizontal abduction. Works with latissimus dorsi to extend the arm during walking.",
+      "nerve_innervation": "Axillary nerve (C5-C6)",
+      "notes": "Re-sourced 2026-09-16 against StatPearls NBK537056 and NBK546633, both .gov. Abduction dropped for the same reason as the anterior head - neither source assigns it to these fibres. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "LatissimusDorsi",
+      "section": "Shoulder Joint",
+      "section_id": "2",
+      "origin": "Lateral sides of the spinous processes of T7-T12, the thoracolumbar fascia, the posterior iliac crest, and the proximal third of the 9th-12th ribs.",
+      "insertion": "Floor of the intertubercular (bicipital) groove of the humerus.",
+      "action": "Shoulder adduction, extension and internal rotation; horizontal abduction. Raises the trunk toward the arm when the humerus is fixed, as in climbing, and is active in forced expiration.",
+      "nerve_innervation": "Thoracodorsal nerve (C6-C8)",
+      "notes": "Re-sourced 2026-09-16 to two approved sources: StatPearls NBK537216 (Back, Extrinsic Muscles, .gov) and Kenhub. NBK537216 gives the rib range as 9-12 and adds the forced-expiration role. Its thoracodorsal supply from the posterior cord is why it is spared in most brachial plexus upper-trunk injuries. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source); the UW Musculoskeletal Atlas (rad.uw.edu, .edu). Root levels: TTUHSC gives C7-C8, the UW Musculoskeletal Atlas C6-C8; C6-C8 retained.",
+      "review_flag": ""
+    },
+    {
+      "name": "TeresMajor",
+      "section": "Shoulder Joint",
+      "section_id": "2",
+      "origin": "Posterior surface of the inferior angle and lower third of the lateral border of the scapula.",
+      "insertion": "Medial lip of the intertubercular (bicipital) groove of the humerus.",
+      "action": "Shoulder extension, adduction and internal rotation; assists in stabilising the humeral head.",
+      "nerve_innervation": "Lower subscapular nerve (C5-C7)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK580487 (Teres Major Muscle) and NBK546633. Root range corrected from C5-C6 to C5-C7 per NBK580487, which states the lower subscapular nerve arises from C5, C6 and C7. SOURCE CONFLICT, not resolved: NBK546633 lists both the thoracodorsal and lower subscapular nerves; NBK580487 names the lower subscapular alone, which is the conventional attribution and is what is recorded. TEXTBOOK-LEVEL CHECK 2026-10-09 against the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source); the UW Musculoskeletal Atlas (rad.uw.edu, .edu): attachments and actions agree. SOURCE CONFLICT, documented not changed: Root levels differ between sources: TTUHSC gives the lower subscapular nerve as C5-C6, the UW Musculoskeletal Atlas as C6-C7; C5-C7 recorded as the span of both.",
+      "review_flag": ""
+    },
+    {
+      "name": "Coracobrachialis",
+      "section": "Shoulder Joint",
+      "section_id": "2",
+      "origin": "Apex of the coracoid process of the scapula, shared with the short head of biceps brachii.",
+      "insertion": "Middle third of the medial surface of the humeral shaft.",
+      "action": "Shoulder flexion and weak adduction.",
+      "nerve_innervation": "Musculocutaneous nerve (C5-C7)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK546633 and NBK554420 (Arm Muscles). All four fields confirmed. The musculocutaneous nerve pierces this muscle, which is why it is the landmark for the nerve in the axilla. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Supraspinatus (*rotator cuff muscle group)",
+      "section": "Shoulder Joint",
+      "section_id": "2",
+      "origin": "Supraspinous fossa of the scapula.",
+      "insertion": "Superior facet of the greater tubercle of the humerus.",
+      "action": "Initiates shoulder abduction through the first 15 degrees, before the deltoid can act; stabilises the humeral head in the glenoid cavity.",
+      "nerve_innervation": "Suprascapular nerve (C5-C6)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK441844 (Rotator Cuff) and NBK546633. C5-C6 confirmed by both, upholding the correction made earlier the same day from the previous 'C5'. SOURCE CONFLICT, not resolved: NBK546633 adds lateral rotation to the action; NBK441844 gives abduction alone, which is recorded. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Infraspinatus (*rotator cuff muscle group)",
+      "section": "Shoulder Joint",
+      "section_id": "2",
+      "origin": "Infraspinous fossa of the scapula.",
+      "insertion": "Middle facet of the greater tubercle of the humerus, below the supraspinatus attachment.",
+      "action": "External rotation of the humerus - the most powerful external rotator; stabilises the humeral head in the glenoid cavity.",
+      "nerve_innervation": "Suprascapular nerve (C5-C6)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK441844 and NBK546633. The abduction and horizontal abduction in the original flashcard entry are supported by neither and have been dropped; NBK441844 calls it a powerful lateral rotator and nothing more. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "TeresMinor (*rotator cuff muscle group)",
+      "section": "Shoulder Joint",
+      "section_id": "2",
+      "origin": "Upper part of the posterior surface of the lateral border of the scapula, below the infraglenoid tubercle.",
+      "insertion": "Inferior facet of the greater tubercle of the humerus, below the infraspinatus tendon.",
+      "action": "External rotation of the humerus; stabilises the glenohumeral joint as part of the rotator cuff.",
+      "nerve_innervation": "Axillary nerve (C5-C6)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK441844 and NBK513324 (Teres Minor Muscle). The adduction and extension carried in the original entry are described by neither - NBK513324 was asked directly and states the muscle is not an adductor or extensor. Removed rather than kept as 'assists'. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Subscapularis (*rotator cuff muscle group)",
+      "section": "Shoulder Joint",
+      "section_id": "2",
+      "origin": "Medial two-thirds of the subscapular fossa on the anterior surface of the scapula.",
+      "insertion": "Lesser tubercle of the humerus.",
+      "action": "Internal rotation of the humerus; prevents anterior displacement of the humeral head during abduction. Assists adduction and extension from certain positions.",
+      "nerve_innervation": "Upper and lower subscapular nerves (C5-C7)",
+      "notes": "CORRECTED 2026-09-16 (second pass): root range widened from C5-C6 to C5-C7, given by both .gov sources - StatPearls NBK441844 and NBK546633, the latter also naming a middle subscapular branch. The flexion-from-extended claim parked earlier in the day remains unsupported and stays out; the adduction/extension-in-certain-positions wording is NBK546633's and is retained. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source); the UW Musculoskeletal Atlas (rad.uw.edu, .edu). Root levels: the UW Musculoskeletal Atlas gives C5-C7 (as recorded); TTUHSC gives C5-C6.",
+      "review_flag": ""
+    },
+    {
+      "name": "BicepsBrachii",
+      "section": "Elbow Joint Complex",
+      "section_id": "3",
+      "origin": "Long head: supraglenoid tubercle of the scapula and the superior glenoid labrum. Short head: apex of the coracoid process of the scapula.",
+      "insertion": "Radial tuberosity, with the bicipital aponeurosis spreading medially into the deep fascia of the forearm.",
+      "action": "Powerful supination of the forearm, strongest with the elbow flexed; elbow flexion, in which it is a weaker contributor than brachialis. Assists shoulder flexion.",
+      "nerve_innervation": "Musculocutaneous nerve (C5-C6)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK519538 (Biceps Muscle) and NBK554420 (Arm Muscles). Both describe it as a strong supinator and a comparatively weak elbow flexor, with brachialis the primary flexor - the reverse of how the flashcard entry ordered it, and the ordering now follows the sources. SOURCE CONFLICT on root levels, not resolved: NBK519538 gives C5-C6, NBK554420 gives C5-C7. The narrower range is recorded. The shoulder-abduction-in-external-rotation claim is carried by neither and has been dropped. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Brachialis",
+      "section": "Elbow Joint Complex",
+      "section_id": "3",
+      "origin": "Distal half of the anterior surface of the humerus.",
+      "insertion": "Ulnar tuberosity and the coronoid process of the ulna.",
+      "action": "Pure elbow flexion, with no pronation or supination component. The primary elbow flexor, and the only one unaffected by forearm position.",
+      "nerve_innervation": "Musculocutaneous nerve medially, with a radial nerve contribution laterally (C5-C7)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK551630 (Brachialis Muscle) and NBK554420. The dual supply is confirmed by both and stated explicitly by NBK551630 - musculocutaneous medially, radial laterally. Root range C5-C7 from NBK554420; NBK551630 gives no levels. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Brachioradialis",
+      "section": "Elbow Joint Complex",
+      "section_id": "3",
+      "origin": "Proximal two-thirds of the lateral supracondylar ridge of the humerus.",
+      "insertion": "Base of the styloid process on the lateral surface of the distal radius.",
+      "action": "Elbow flexion, most effective with the forearm in mid-pronation. Returns the forearm toward neutral from either extreme: pronates from a supinated position, supinates from a pronated one.",
+      "nerve_innervation": "Radial nerve (C5-C7, predominantly C5-C6)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK526110 (Brachioradialis Muscle) and NBK536975 (Forearm Muscles). Root range refined from C5-C6 to C5-C7 with the qualification NBK526110 gives - most input is C5-C6. Its reflex tests C6, and because it is radial-supplied rather than median or ulnar, weakness here points to a radial lesion. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "PronatorTeres",
+      "section": "Elbow Joint Complex",
+      "section_id": "3",
+      "origin": "Humeral head: medial supracondylar ridge just above the medial epicondyle. Ulnar head: coronoid process of the ulna.",
+      "insertion": "Pronator tuberosity on the lateral surface of the midshaft of the radius.",
+      "action": "Forearm pronation; small contribution to elbow flexion.",
+      "nerve_innervation": "Median nerve (C6-C7)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK580564 (Pronator Teres) and NBK536975. All four fields confirmed; insertion made specific to the pronator tuberosity, which the entry described only as the middle third of the lateral radius. The median nerve enters the forearm between the two heads - the site of pronator teres syndrome - and the ulnar head separates it from the ulnar artery. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "PronatorQuadratus",
+      "section": "Elbow Joint Complex",
+      "section_id": "3",
+      "origin": "Distal quarter of the anteromedial surface of the ulna.",
+      "insertion": "Distal quarter of the anterolateral surface of the radius.",
+      "action": "Forearm pronation; the prime mover, with pronator teres recruited against resistance. Holds the radius and ulna together at the distal radioulnar joint.",
+      "nerve_innervation": "Anterior interosseous nerve, a branch of the median nerve (C7-C8)",
+      "notes": "Re-sourced 2026-09-16 to two approved sources: StatPearls NBK536975 (.gov) and Kenhub, both naming the anterior interosseous branch. This upholds the correction made earlier the same day from 'Median (C6-C7)'. Source variation on levels, not resolved: Kenhub gives C7-C8, classical texts C8-T1. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Supinator",
+      "section": "Elbow Joint Complex",
+      "section_id": "3",
+      "origin": "Lateral epicondyle of the humerus, the radial collateral and annular ligaments, and the supinator crest of the ulna.",
+      "insertion": "Lateral, posterior and anterior surfaces of the proximal third of the radius.",
+      "action": "Forearm supination; acts alone in unresisted supination, with biceps brachii recruited against resistance.",
+      "nerve_innervation": "Posterior interosseous nerve, the deep branch of the radial nerve (C6-C7)",
+      "notes": "Re-sourced 2026-09-16 to two approved sources: StatPearls NBK536975 (.gov) and Kenhub, both naming the posterior interosseous branch - upholding the correction made earlier the same day from 'Radial (C6)'. NBK536975 names the arcade of Frohse, the tendinous proximal edge of this muscle, as the usual site of posterior interosseous entrapment. Source variation on levels: Kenhub C7-C8, classical C6-C7; the classical range is recorded. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Anconeus",
+      "section": "Elbow Joint Complex",
+      "section_id": "3",
+      "origin": "Posterior surface of the lateral epicondyle of the humerus, at the common extensor origin.",
+      "insertion": "Lateral surface of the olecranon and the upper posterior surface of the ulna.",
+      "action": "Assists elbow extension and stabilises the joint; draws the joint capsule clear of the advancing olecranon. Abducts the ulna during pronation.",
+      "nerve_innervation": "Radial nerve (C7-C8), by a branch given off before the posterior interosseous nerve",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK536975 (Forearm Muscles) and NBK539784 (Forearm Compartments). Both make the same point, which the entry now carries: anconeus is supplied by the radial nerve directly and NOT through the posterior interosseous branch, unlike the deep extensors around it - so it is spared in posterior interosseous nerve palsy. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "TricepsBrachii",
+      "section": "Elbow Joint Complex",
+      "section_id": "3",
+      "origin": "Long head: infraglenoid tubercle of the scapula. Lateral head: posterior surface of the humerus above the radial groove. Medial head: posterior surface of the humerus below the radial groove.",
+      "insertion": "Olecranon of the ulna, by a common tendon.",
+      "action": "All heads: elbow extension. Long head additionally: shoulder extension and adduction, and it holds the humeral head in the glenoid cavity.",
+      "nerve_innervation": "Radial nerve (C6-C8)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK536996 (Triceps Muscle) and NBK554420. All four fields confirmed exactly, including the radial-groove landmarks for the lateral and medial heads and the C6-C8 range. NBK536996 confirms the long head alone acts at the shoulder, the medial and lateral heads having no scapular attachment. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "FlexorPollicisLongus",
+      "section": "Wrist and Hand Joints",
+      "section_id": "4",
+      "origin": "Middle third of the anterior surface of the radius and the adjacent interosseous membrane.",
+      "insertion": "Palmar surface of the base of the distal phalanx of the thumb.",
+      "action": "Flexion of the interphalangeal joint of the thumb, and of the metacarpophalangeal joint; assists wrist flexion.",
+      "nerve_innervation": "Anterior interosseous nerve, a branch of the median nerve (C8-T1)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK536975 (Forearm Muscles) and NBK539784 (Forearm Compartments). Both name the anterior interosseous branch, upholding the earlier correction from plain 'Median'. Root range tightened from C7-T1 to C8-T1 per NBK539784. One of the three muscles of anterior interosseous syndrome, with pronator quadratus and the radial half of flexor digitorum profundus. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "FlexorDigitorumProfundus",
+      "section": "Wrist and Hand Joints",
+      "section_id": "4",
+      "origin": "Proximal three-quarters of the anterior and medial surfaces of the ulna and the adjacent interosseous membrane.",
+      "insertion": "Palmar surfaces of the bases of the distal phalanges of the four fingers.",
+      "action": "The only muscle able to flex the distal interphalangeal joints; also flexes the proximal interphalangeal, metacarpophalangeal and wrist joints.",
+      "nerve_innervation": "Radial half, to the index and middle fingers: anterior interosseous nerve, a branch of the median nerve (C8-T1). Ulnar half, to the ring and little fingers: ulnar nerve (C8-T1)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK536975 and NBK539784. Both confirm the split supply and that the median half runs through the anterior interosseous branch. The interosseous membrane in the origin is confirmed by NBK536975. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "FlexorDigitorumSuperficialis",
+      "section": "Wrist and Hand Joints",
+      "section_id": "4",
+      "origin": "Humero-ulnar head: medial epicondyle of the humerus and the coronoid process of the ulna. Radial head: anterior oblique line of the radius.",
+      "insertion": "Each tendon splits around the flexor digitorum profundus tendon and its two slips attach to the sides of the shaft (body) of the middle phalanx of the four fingers.",
+      "action": "Flexion of the fingers at the proximal interphalangeal joints, and at the metacarpophalangeal joints; assists wrist flexion.",
+      "nerve_innervation": "Median nerve (C7-T1)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK536975 and NBK539784. Root range widened from C8-T1 to C7-T1 per NBK539784, which gives C7, C8 and T1. Its tendons pass through the carpal tunnel. TEXTBOOK-LEVEL CHECK 2026-10-09 - CORRECTED: Insertion corrected 2026-10-09 from 'sides of the base of the middle phalanx' to the shaft (body): TTUHSC tables and the UW Musculoskeletal Atlas (both .edu) both give the shafts/bodies of the middle phalanges. Checked against the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source); the UW Musculoskeletal Atlas (rad.uw.edu, .edu).",
+      "review_flag": ""
+    },
+    {
+      "name": "FlexorCarpiUlnaris",
+      "section": "Wrist and Hand Joints",
+      "section_id": "4",
+      "origin": "Humeral head: medial epicondyle of the humerus. Ulnar head: olecranon and proximal two-thirds of the posterior border of the ulna.",
+      "insertion": "Pisiform, and by the pisohamate and pisometacarpal ligaments to the hook of the hamate and the base of the 5th metacarpal.",
+      "action": "Wrist flexion and ulnar deviation.",
+      "nerve_innervation": "Ulnar nerve (C8-T1)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK536975 and NBK539784. SOURCE CONFLICT on root levels, not resolved: NBK539784 gives C8-T1, the previous entry and several classical texts give C7-T1. The .gov value is recorded. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "FlexorCarpiRadialis",
+      "section": "Wrist and Hand Joints",
+      "section_id": "4",
+      "origin": "Medial epicondyle of the humerus, by the common flexor tendon.",
+      "insertion": "Palmar surfaces of the bases of the 2nd and 3rd metacarpals.",
+      "action": "Wrist flexion and radial deviation.",
+      "nerve_innervation": "Median nerve (C6-C7)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK536975 and NBK539784; all four fields confirmed, C6-C7 given by NBK539784. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "PalmarisLongus",
+      "section": "Wrist and Hand Joints",
+      "section_id": "4",
+      "origin": "Medial epicondyle of the humerus, by the common flexor tendon.",
+      "insertion": "Flexor retinaculum and the palmar aponeurosis.",
+      "action": "Wrist flexion; tenses the palmar aponeurosis.",
+      "nerve_innervation": "Median nerve (C7-C8)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK536975 and NBK539784. SOURCE CONFLICT on root levels, not resolved: NBK539784 gives C6-C7, classical texts and the previous entry give C7-C8; the classical range is recorded. NBK536975 puts its absence at about 14 percent of people, unilaterally or bilaterally. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "ExtensorCarpiRadialisLongus",
+      "section": "Wrist and Hand Joints",
+      "section_id": "4",
+      "origin": "Lateral supracondylar ridge of the humerus.",
+      "insertion": "Dorsal surface of the base of the 2nd metacarpal.",
+      "action": "Wrist extension and radial deviation.",
+      "nerve_innervation": "Radial nerve (C6-C7)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK536975 and NBK539784. SOURCE CONFLICT on root levels, not resolved: NBK539784 groups it in the mobile wad at C5-C6, the previous entry gives C6-C7. Both are within the radial nerve's range and neither is recorded as wrong. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "ExtensorCarpiRadialisBrevis",
+      "section": "Wrist and Hand Joints",
+      "section_id": "4",
+      "origin": "Lateral epicondyle of the humerus, by the common extensor tendon.",
+      "insertion": "Dorsal surface of the base of the 3rd metacarpal.",
+      "action": "Wrist extension and radial deviation.",
+      "nerve_innervation": "Radial nerve (C6-C8); commonly described as reaching it through the deep branch",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources. SOURCE CONFLICT, not resolved: NBK536975 states it is supplied via the posterior interosseous (deep) branch, while NBK539784 groups it with the mobile wad on the radial nerve proper at C5-C6. Both positions recorded rather than picking one. Its common-extensor-tendon origin is the usual site of lateral epicondylitis. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "ExtensorDigitorum",
+      "section": "Wrist and Hand Joints",
+      "section_id": "4",
+      "origin": "Lateral epicondyle of the humerus, by the common extensor tendon.",
+      "insertion": "Extensor hoods of the four fingers, reaching the bases of the middle and distal phalanges.",
+      "action": "Extension of the fingers at the metacarpophalangeal joints, and at the interphalangeal joints together with the interossei and lumbricals; assists wrist extension.",
+      "nerve_innervation": "Posterior interosseous nerve, the deep branch of the radial nerve (C7-C8)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK536975 and NBK539784, both naming the posterior interosseous branch at C7-C8. The weak elbow extension in the original flashcard entry is carried by neither and stays out. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "ExtensorCarpiUlnaris",
+      "section": "Wrist and Hand Joints",
+      "section_id": "4",
+      "origin": "Lateral epicondyle of the humerus and the posterior border of the ulna.",
+      "insertion": "Dorsal surface of the base of the 5th metacarpal.",
+      "action": "Wrist extension and ulnar deviation.",
+      "nerve_innervation": "Posterior interosseous nerve, the deep branch of the radial nerve (C7-C8)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK536975 and NBK539784; all four fields confirmed. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "ExtensorDigitiMinimi",
+      "section": "Wrist and Hand Joints",
+      "section_id": "4",
+      "origin": "Lateral epicondyle of the humerus, by the common extensor tendon.",
+      "insertion": "Extensor hood of the little finger.",
+      "action": "Extension of the little finger at the metacarpophalangeal and interphalangeal joints; assists wrist extension.",
+      "nerve_innervation": "Posterior interosseous nerve, the deep branch of the radial nerve (C7-C8)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK536975 and NBK539784. The elbow extension and ulnar deviation in the original entry are carried by neither and stay out. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "AbductorPollicisLongus",
+      "section": "Wrist and Hand Joints",
+      "section_id": "4",
+      "origin": "Posterior surfaces of the middle third of the ulna and radius and the intervening interosseous membrane.",
+      "insertion": "Base of the 1st metacarpal, with a slip to the trapezium.",
+      "action": "Abduction of the thumb at the carpometacarpal joint, with extension; assists wrist radial deviation.",
+      "nerve_innervation": "Posterior interosseous nerve, the deep branch of the radial nerve (C7-C8)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK536975 and NBK539784. NBK536975 gives the action as thumb abduction, upholding the earlier revision away from the flashcard's 'extension (also known as long abduction)'. Forms the radial wall of the anatomical snuffbox with extensor pollicis brevis; the tendon involved in de Quervain tenosynovitis. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "ExtensorPollicisLongus",
+      "section": "Wrist and Hand Joints",
+      "section_id": "4",
+      "origin": "Posterior surface of the middle third of the ulna and the adjacent interosseous membrane.",
+      "insertion": "Dorsal surface of the base of the distal phalanx of the thumb.",
+      "action": "Extension of the thumb at the interphalangeal, metacarpophalangeal and carpometacarpal joints; assists wrist extension and radial deviation.",
+      "nerve_innervation": "Posterior interosseous nerve, the deep branch of the radial nerve (C7-C8)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK536975 and NBK539784. NBK536975 notes the sharp turn the tendon makes around Lister's tubercle, where it is at risk after distal radius fracture. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "ExtensorPollicisBrevis",
+      "section": "Wrist and Hand Joints",
+      "section_id": "4",
+      "origin": "Posterior surface of the distal third of the radius and the adjacent interosseous membrane.",
+      "insertion": "Dorsal surface of the base of the proximal phalanx of the thumb.",
+      "action": "Extension of the thumb at the metacarpophalangeal and carpometacarpal joints; assists wrist extension and radial deviation.",
+      "nerve_innervation": "Posterior interosseous nerve, the deep branch of the radial nerve (C7-C8)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK536975 and NBK539784; all four fields confirmed. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "ExtensorIndicis",
+      "section": "Wrist and Hand Joints",
+      "section_id": "4",
+      "origin": "Posterior surface of the distal third of the ulna and the adjacent interosseous membrane, below the origin of extensor pollicis longus.",
+      "insertion": "Extensor hood of the index finger.",
+      "action": "Extension of the index finger independently of the other fingers; assists wrist extension.",
+      "nerve_innervation": "Posterior interosseous nerve, the deep branch of the radial nerve (C7-C8)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK536975 and NBK539784; all four fields confirmed. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "AbductorPollicisBrevis",
+      "section": "Wrist and Hand Joints",
+      "section_id": "4",
+      "origin": "Flexor retinaculum and the tubercles of the scaphoid and trapezium.",
+      "insertion": "Radial side of the base of the proximal phalanx of the thumb.",
+      "action": "Abduction of the thumb at the carpometacarpal and metacarpophalangeal joints; contributes to opposition.",
+      "nerve_innervation": "Recurrent branch of the median nerve (C8-T1)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK537229 (Hand Muscles) and NBK539810 (Hand Intrinsic Muscles), the latter naming the recurrent motor branch explicitly. SOURCE NOTE: both .gov articles give unusually broad root ranges for the thenar group (C5-T1 and C5-C8); the conventional C8-T1 is recorded, since the recurrent branch carries the median nerve's most distal fibres. The recurrent branch is superficial and easily severed by a palmar laceration, which is why this muscle is the one tested for median motor function. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "OpponensPollicis",
+      "section": "Wrist and Hand Joints",
+      "section_id": "4",
+      "origin": "Flexor retinaculum and the tubercle of the trapezium.",
+      "insertion": "Whole length of the lateral border of the 1st metacarpal.",
+      "action": "Opposition of the thumb at the carpometacarpal joint, by flexing and medially rotating the metacarpal so the thumb pad faces the fingers.",
+      "nerve_innervation": "Recurrent branch of the median nerve (C8-T1)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK537229 and NBK539810. The flexion-plus-medial-rotation description of opposition is NBK537229's. Same root-range note as abductor pollicis brevis. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "FlexorPollicisBrevis",
+      "section": "Wrist and Hand Joints",
+      "section_id": "4",
+      "origin": "Superficial head: flexor retinaculum and the tubercle of the trapezium. Deep head: trapezoid and capitate, with a slip from the 2nd metacarpal.",
+      "insertion": "Radial side of the base of the proximal phalanx of the thumb, over a sesamoid bone.",
+      "action": "Flexion of the thumb at the metacarpophalangeal joint; assists flexion and opposition at the carpometacarpal joint.",
+      "nerve_innervation": "Superficial head: recurrent branch of the median nerve (C8-T1). Deep head: deep branch of the ulnar nerve (C8-T1)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK537229 and NBK539810. The split median/ulnar supply is confirmed by NBK537229 and is the reason this muscle is unreliable for localising a nerve lesion. A stray 'N ' prefix corrupting the start of this field was removed earlier the same day. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "AbductorDigitiMinimi",
+      "section": "Wrist and Hand Joints",
+      "section_id": "4",
+      "origin": "Pisiform and the tendon of flexor carpi ulnaris.",
+      "insertion": "Ulnar side of the base of the proximal phalanx of the little finger.",
+      "action": "Abduction of the little finger at the metacarpophalangeal joint.",
+      "nerve_innervation": "Deep branch of the ulnar nerve (C8-T1)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK537229 and NBK539810; all four fields confirmed. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "FlexorDigitiMinimi",
+      "section": "Wrist and Hand Joints",
+      "section_id": "4",
+      "origin": "Hook of the hamate and the adjacent flexor retinaculum.",
+      "insertion": "Ulnar side of the base of the proximal phalanx of the little finger.",
+      "action": "Flexion of the little finger at the metacarpophalangeal joint.",
+      "nerve_innervation": "Deep branch of the ulnar nerve (C8-T1)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK537229 and NBK539810. Both give flexion alone, confirming the removal of the abduction that the original entry duplicated from abductor digiti minimi. Full name is flexor digiti minimi BREVIS; the entry name is left unchanged because it doubles as the 3D mesh lookup key. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "OpponensDigitiMinimi",
+      "section": "Wrist and Hand Joints",
+      "section_id": "4",
+      "origin": "Hook of the hamate and the adjacent flexor retinaculum.",
+      "insertion": "Medial border of the 5th metacarpal.",
+      "action": "Draws the 5th metacarpal forward and rotates it toward the thumb - flexion and supination of the metacarpal - deepening the hollow of the palm.",
+      "nerve_innervation": "Deep branch of the ulnar nerve (C8-T1)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK537229 and NBK539810. The flexion-and-supination wording is NBK537229's. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "AdductorPollicis",
+      "section": "Wrist and Hand Joints",
+      "section_id": "4",
+      "origin": "Oblique head: capitate and the bases of the 2nd and 3rd metacarpals. Transverse head: palmar surface of the shaft of the 3rd metacarpal.",
+      "insertion": "Ulnar side of the base of the proximal phalanx of the thumb and the extensor hood, over a sesamoid bone.",
+      "action": "Adduction of the thumb at the carpometacarpal joint; assists flexion at the metacarpophalangeal joint.",
+      "nerve_innervation": "Deep branch of the ulnar nerve (C8-T1)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK526059 (Hand Adductor Pollicis) and NBK537229. The extensor hood attachment is from NBK526059 and was absent from the entry. Its weakness produces Froment's sign - compensatory thumb IP flexion by flexor pollicis longus when pinching a sheet of paper. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Dorsal Interossei (Hand)",
+      "section": "Wrist and Hand Joints",
+      "section_id": "4",
+      "origin": "Each by two heads from the adjacent sides of the shafts of two metacarpals: the 1st from metacarpals 1-2, the 2nd from 2-3, the 3rd from 3-4, the 4th from 4-5.",
+      "insertion": "Lateral bases of the proximal phalanges and the extensor hoods of the 2nd, 3rd and 4th fingers.",
+      "action": "Abduction of the 2nd, 3rd and 4th fingers away from the axis of the hand, taken through the middle finger; assists flexion at the metacarpophalangeal joints and extension at the interphalangeal joints.",
+      "nerve_innervation": "Deep branch of the ulnar nerve (C8-T1)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK534772 (Hand Interossei Muscles) and NBK537229. Both confirm the metacarpophalangeal flexion and interphalangeal extension added earlier the same day, and NBK534772 states the reference axis is the 3rd digit. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Palmar Interossei (Hand)",
+      "section": "Wrist and Hand Joints",
+      "section_id": "4",
+      "origin": "Palmar surfaces of the 2nd (ulnar side), 4th and 5th (radial side) metacarpals.",
+      "insertion": "Bases of the proximal phalanges and the extensor hoods of the same fingers.",
+      "action": "Adduction of the fingers toward the axis of the hand, taken through the middle finger; assists flexion at the metacarpophalangeal joints and extension at the interphalangeal joints.",
+      "nerve_innervation": "Deep branch of the ulnar nerve (C8-T1)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK534772 and NBK537229. SOURCE CONFLICT, not resolved: NBK534772 describes FOUR palmar interossei, including a first one acting on the thumb, while NBK537229 and the original entry describe THREE, to the 2nd, 4th and 5th fingers. The three-muscle account is recorded as the more common convention, with the four-muscle description noted here. Metacarpophalangeal flexion and interphalangeal extension confirmed by both. TEXTBOOK-LEVEL CHECK 2026-10-09 against the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source); the UW Musculoskeletal Atlas (rad.uw.edu, .edu): attachments and actions agree. SOURCE CONFLICT, documented not changed: Count of palmar interossei differs between sources: TTUHSC describes four (including one to the thumb, from the 1st metacarpal); the UW Musculoskeletal Atlas describes three (2nd, 4th, 5th metacarpals), as recorded here.",
+      "review_flag": ""
+    },
+    {
+      "name": "Lumbricals (Hand)",
+      "section": "Wrist and Hand Joints",
+      "section_id": "4",
+      "origin": "Tendons of flexor digitorum profundus in the palm: the 1st and 2nd from the radial side of the tendons to the index and middle fingers, the 3rd and 4th by two heads from adjacent tendons.",
+      "insertion": "Radial side of the extensor hood of the 2nd to 5th fingers, by the lateral bands.",
+      "action": "Flexion at the metacarpophalangeal joints with simultaneous extension at the interphalangeal joints, by pulling on the extensor hood.",
+      "nerve_innervation": "1st and 2nd: median nerve (C8-T1). 3rd and 4th: deep branch of the ulnar nerve (C8-T1)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK537229 and NBK539810. Both confirm the split supply. NBK537229 adds that the first two are unipennate and arise from one tendon while the third and fourth are bipennate and arise from two - the structural reason for the split. A stray 'N ' prefix corrupting the start of this field was removed earlier the same day. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Sternocleidomastoid",
+      "section": "Neck and Atlanto-Occipital Joints",
+      "section_id": "5",
+      "origin": "Sternal head: superior part of the anterior surface of the manubrium. Clavicular head: superior surface of the medial third of the clavicle.",
+      "insertion": "Lateral surface of the mastoid process, continuing onto the lateral half of the superior nuchal line of the occipital bone.",
+      "action": "Bilateral: flexes the lower cervical spine while extending the head at the atlanto-occipital joint; assists inspiration by raising the sternum and clavicle. Unilateral: lateral flexion toward the contracting side with rotation of the face to the opposite side.",
+      "nerve_innervation": "Accessory nerve (CN XI) for motor supply, with proprioceptive fibres from the cervical plexus (C2-C3)",
+      "notes": "Re-sourced 2026-09-16 to two approved sources: StatPearls NBK532881 (.gov) and Kenhub. NBK532881 notes variants in which the lower part receives fibres from C1 by the ansa cervicalis. All four fields confirmed. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Scalenes(Anterior,Middle,Posterior)",
+      "section": "Neck and Atlanto-Occipital Joints",
+      "section_id": "5",
+      "origin": "Anterior: anterior tubercles of the transverse processes of C3-C6. Middle: lateral parts of the atlas and axis and the posterior tubercles of the transverse processes of C3-C7. Posterior: posterior tubercles of the transverse processes of C5-C7.",
+      "insertion": "Anterior: scalene tubercle on the superior surface of the 1st rib, in front of the groove for the subclavian artery. Middle: superior surface of the 1st rib behind that groove, in the quadrangular area between the neck of the rib and the subclavian groove. Posterior: outer surface of the 2nd rib.",
+      "action": "Bilateral: cervical flexion; elevate the 1st and 2nd ribs in forced inspiration; contribute to postural stability of the neck. Unilateral: lateral flexion toward the contracting side with rotation to the opposite side.",
+      "nerve_innervation": "Anterior rami of the cervical spinal nerves (anterior C5-C6; middle C3-C8; posterior C6-C8)",
+      "notes": "CORRECTION UPHELD FROM TWO .gov SOURCES, 2026-09-16: StatPearls NBK519058 (Scalenus Muscle) and NBK544222 (Inter-scalene Triangle) both give the ANTERIOR tubercles of C3-C6 for the anterior scalene, against the original entry's 'posterior tubercles'. NBK544222 adds the atlas and axis attachments of the middle scalene, which the entry lacked. Source variation on the posterior scalene's levels remains: C5-C7 here, against 'the last three or four cervical vertebrae' in NBK519058 and C4-C6 in the original entry. The gap between the anterior and middle scalenes is the interscalene triangle, through which the brachial plexus roots and subclavian artery pass. TEXTBOOK-LEVEL CHECK 2026-10-09 against the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source): attachments and actions agree. SOURCE CONFLICT, documented not changed: TTUHSC/UAMS give root levels anterior C5-C7, middle C3-C8, posterior C7-C8 (brachial plexus), versus C5-C6 / C3-C8 / C6-C8 recorded; middle scalene origin from C2-C7. Root-level spread, documented not changed.",
+      "review_flag": ""
+    },
+    {
+      "name": "SpleniusCervicis",
+      "section": "Neck and Atlanto-Occipital Joints",
+      "section_id": "5",
+      "origin": "Spinous processes of T3-T6.",
+      "insertion": "Transverse processes of the atlas and axis and the posterior tubercle of C3.",
+      "action": "Bilateral: extension of the neck. Unilateral: lateral flexion and rotation toward the contracting side.",
+      "nerve_innervation": "Lateral branches of the posterior (dorsal) rami of the lower cervical spinal nerves",
+      "notes": "Re-sourced 2026-09-16 to two approved sources: StatPearls NBK537074 (Back, Muscles, .gov) and Kenhub. NBK537074 gives the insertion precisely as the transverse processes of the atlas and axis plus the posterior tubercle of C3, which is more exact than the 'C1-C3' of the entry. Contrast with splenius capitis, supplied by the UPPER cervical dorsal rami - the two carried an identical nerve string before 2026-09-16. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "SpleniusCapitis",
+      "section": "Neck and Atlanto-Occipital Joints",
+      "section_id": "5",
+      "origin": "Lower half of the ligamentum nuchae and the spinous processes of C7-T3, with their supraspinous ligaments.",
+      "insertion": "Lateral aspect of the mastoid process and the lateral third of the superior nuchal line of the occipital bone.",
+      "action": "Bilateral: extension of the head and neck. Unilateral: lateral flexion and rotation toward the contracting side.",
+      "nerve_innervation": "Lateral branches of the posterior (dorsal) rami of the upper cervical spinal nerves (C2-C3)",
+      "notes": "CORRECTION UPHELD 2026-09-16 against two approved sources: StatPearls NBK537074 (Back, Muscles, .gov) and Kenhub, both giving the lateral branches of the C2-C3 dorsal rami. The original entry read 'Cervical spinal nerves (C4-C8)', which is the splenius cervicis supply - the two entries carried an identical nerve string, and the one below it was the correct one. An earlier note here cited a C3-C4 alternative from teachmeanatomy.info; that source was struck from the Approved Sources list the same day and the citation has been removed rather than left standing as if it counted. TEXTBOOK-LEVEL CHECK 2026-10-09 against the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source): attachments and actions agree. SOURCE CONFLICT, documented not changed: TTUHSC gives splenius capitis and cervicis together as dorsal rami C2-C6 with origin from C7-T6; C2-C3 and C7-T3 (StatPearls, separate muscle) retained.",
+      "review_flag": ""
+    },
+    {
+      "name": "SemispinalisCapitis",
+      "section": "Neck and Atlanto-Occipital Joints",
+      "section_id": "5",
+      "origin": "Articular processes of C4-C6 and the transverse processes of C7-T7.",
+      "insertion": "Medial half of the occipital bone between the superior and inferior nuchal lines.",
+      "action": "Bilateral: extension of the head and neck. Unilateral: extension, lateral flexion, and weak rotation to the opposite side.",
+      "nerve_innervation": "Posterior (dorsal) rami of the adjacent cervical spinal nerves, including the greater occipital nerve (C2)",
+      "notes": "Re-sourced 2026-09-16 against three .gov sources: StatPearls NBK537074 and NBK539746, which describe the transversospinalis group and its rotation to the opposite side, and NBK542213 (Occipital Nerves) for the greater occipital nerve relationship. SOURCING CAVEAT: the first two describe semispinalis as part of the group rather than individually, so the precise C4-C6 / C7-T7 attachments recorded here are not confirmed muscle-by-muscle from an approved source. The greater occipital nerve pierces this muscle in 90 to 98 percent of people, which is why it is the usual site of entrapment in occipital neuralgia. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "SemispinalisCervicis",
+      "section": "Neck and Atlanto-Occipital Joints",
+      "section_id": "5",
+      "origin": "Transverse processes of T1-T6.",
+      "insertion": "Spinous processes of C2-C5.",
+      "action": "Bilateral: extension of the neck. Unilateral: extension, lateral flexion, and weak rotation to the opposite side.",
+      "nerve_innervation": "Posterior (dorsal) rami of the adjacent cervical spinal nerves",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK537074 and NBK539746, both giving the transversospinalis pattern of ascending several segments and rotating to the opposite side. SOURCING CAVEAT: both describe the group rather than this muscle individually, so the precise T1-T6 to C2-C5 attachments are not confirmed muscle-by-muscle from an approved source. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "RectusCapitisPosterior(MajorandMinor)",
+      "section": "Neck and Atlanto-Occipital Joints",
+      "section_id": "5",
+      "origin": "Major: bifid spinous process of the axis (C2). Minor: posterior arch of the atlas (C1).",
+      "insertion": "Major: occipital bone below the lateral part of the inferior nuchal line. Minor: occipital bone below the inferior nuchal line, medial to the major.",
+      "action": "Major: head extension and rotation toward the contracting side, acting on the atlas as well as the head. Minor: weak head extension only.",
+      "nerve_innervation": "Suboccipital nerve, the posterior ramus of C1",
+      "notes": "SOURCE CONFLICT RESOLVED 2026-09-16 against two .gov sources. The conflict recorded earlier the same day - whether the MINOR rotates - is settled: StatPearls NBK556133 (Suboccipital Nerve) describes the minor as 'a weak head extensor' with no rotation, and NBK567762 (Suboccipital Muscles) is the only source attributing rotation to it. Extension alone is recorded for the minor, which also fits its attachment to the posterior tubercle of the atlas rather than to a spinous process. The major's rotation is confirmed by both. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "ObliquusCapitis(SuperiorandInferior)",
+      "section": "Neck and Atlanto-Occipital Joints",
+      "section_id": "5",
+      "origin": "Superior: transverse process of the atlas (C1). Inferior: bifid spinous process of the axis (C2), below the origin of rectus capitis posterior major.",
+      "insertion": "Superior: occipital bone between the superior and inferior nuchal lines. Inferior: transverse process of the atlas (C1).",
+      "action": "Superior: head extension and lateral flexion toward the contracting side. Inferior: rotation of the atlas, and with it the head, toward the contracting side.",
+      "nerve_innervation": "Suboccipital nerve, the posterior ramus of C1",
+      "notes": "CORRECTION UPHELD FROM TWO .gov SOURCES, 2026-09-16: the original entry gave 'head extension and ipsilateral rotation' for the SUPERIOR. StatPearls NBK556133 describes it as a lateral head flexor and NBK567762 as extension and lateral flexion - neither gives rotation. The inferior is the rotator of the pair, confirmed by both. The inferior oblique is also a landmark for the greater occipital nerve, which runs between it and semispinalis capitis. TEXTBOOK-LEVEL CHECK 2026-10-09 against the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source): attachments and actions agree. SOURCE CONFLICT, documented not changed: TTUHSC gives obliquus capitis superior ipsilateral head rotation as well as extension; NBK556133 and NBK567762 give no rotation, so it stays out of the action.",
+      "review_flag": ""
+    },
+    {
+      "name": "Rotatores",
+      "section": "Back - Spinal Joints",
+      "section_id": "6",
+      "origin": "Transverse processes of the vertebrae, from C2 to S1, though the muscles are inconstant outside the thoracic region.",
+      "insertion": "Lamina and base of the spinous process of the vertebra one or two levels above.",
+      "action": "Bilateral: extension and segmental stabilisation of the vertebral column. Unilateral: rotation to the opposite side. Their high muscle-spindle density suggests a substantial proprioceptive role.",
+      "nerve_innervation": "Medial branches of the posterior (dorsal) rami of the adjacent spinal nerves",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK537074 and NBK539746. Both place the rotatores in the transversospinalis group and state they are best developed - NBK539746 says 'particularly' - in the THORACIC region. The original entry implied a uniform muscle from C2 to S1, which a reference used by clinicians should not. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Multifidus",
+      "section": "Back - Spinal Joints",
+      "section_id": "6",
+      "origin": "Cervical: superior articular processes of C4-C7. Thoracic: transverse processes. Lumbar: mammillary processes, posterior surface of the sacrum, posterior superior iliac spine and the posterior sacroiliac ligament.",
+      "insertion": "Lateral aspect and tips of the spinous processes of vertebrae two to five levels above the origin.",
+      "action": "Bilateral: extension and segmental stabilisation of the vertebral column. Unilateral: lateral flexion toward the contracting side and rotation to the opposite side.",
+      "nerve_innervation": "Medial branches of the posterior (dorsal) rami of the adjacent spinal nerves",
+      "notes": "Re-sourced 2026-09-16 to two approved sources: StatPearls NBK539746 (.gov) and Kenhub. The lumbar origin is from the MAMMILLARY processes, not the transverse processes - a distinction that matters for anyone palpating or injecting, and one the original entry got wrong. The typo 'illium' was corrected earlier the same day. Source variation on the span: 2-4 segments per NBK539746, 2-5 per Kenhub. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "QuadratusLumborum",
+      "section": "Back - Spinal Joints",
+      "section_id": "6",
+      "origin": "Inner lip of the iliac crest and the iliolumbar ligament.",
+      "insertion": "Internal surface of the 12th rib and the transverse processes of L1-L4.",
+      "action": "Bilateral: lumbar extension; anterior pelvic rotation and tilt. Unilateral: lumbar lateral flexion and elevation of the pelvis on the same side.",
+      "nerve_innervation": "Subcostal nerve (T12), with the iliohypogastric and ilioinguinal nerves (L1)",
+      "notes": "Re-sourced 2026-09-16 to two approved sources: StatPearls NBK535407 (Quadratus Lumborum, .gov) and Kenhub. TWO SOURCE CONFLICTS, neither resolved. (1) Innervation: NBK535407 gives T12 plus iliohypogastric and ilioinguinal; Kenhub gives the subcostal nerve plus anterior rami L1-L4. (2) Respiratory role: the entry previously called it an accessory muscle of expiration, following Kenhub, but NBK535407 states it CANNOT act as a true accessory respiratory muscle because the mobility of the 12th rib prevents it transmitting force to the diaphragm - so that claim has been removed from the action pending resolution. NBK535407 also reports its contribution to extension is small, around 10 N, against much larger forces from neighbouring muscles. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "ErectorSpinae:Spinalis(Thoracis,Cervicis)",
+      "section": "Back - Spinal Joints",
+      "section_id": "6",
+      "origin": "Thoracis: spinous processes of T11-L2. Cervicis: lower ligamentum nuchae and the spinous processes of C7-T1.",
+      "insertion": "Thoracis: spinous processes of T2-T8. Cervicis: spinous processes of C2-C4.",
+      "action": "Bilateral: extension of the vertebral column; maintains posture. Unilateral: lateral flexion toward the contracting side.",
+      "nerve_innervation": "Lateral branches of the posterior (dorsal) rami of the adjacent spinal nerves",
+      "notes": "Re-sourced 2026-09-16 to two approved sources: StatPearls NBK539746 (.gov) and Kenhub. Spinalis is the most medial of the erector spinae trio. The ipsilateral rotation carried by the original entry is given by neither source and stays out - spinalis runs between spinous processes and is poorly placed to rotate. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "ErectorSpinae:Longissimus(Thoracis,Cervicis,Capitis)",
+      "section": "Back - Spinal Joints",
+      "section_id": "6",
+      "origin": "Thoracis: posteromedial sacrum, posterior iliac crest, thoracolumbar aponeurosis and the transverse processes of L1-L5. Cervicis: transverse processes of T1-T5. Capitis: transverse processes of T1-T5 and the articular processes of C4-C7.",
+      "insertion": "Thoracis: transverse processes of T1-T12 and the 4th-12th ribs. Cervicis: transverse processes of C2-C6. Capitis: posterior margin of the mastoid process.",
+      "action": "Bilateral: extension of the head and vertebral column; maintains posture; anterior pelvic rotation and tilt. Unilateral: lateral flexion and rotation toward the contracting side.",
+      "nerve_innervation": "Lateral branches of the posterior (dorsal) rami of the adjacent spinal nerves",
+      "notes": "Re-sourced 2026-09-16 to two approved sources: StatPearls NBK539746 (.gov) and Kenhub. NBK539746 calls longissimus the most significant component of the erector spinae group. Capitis origin range widened from C5-C7 to C4-C7 per Kenhub. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "ErectorSpinae:Iliocostalis(Lumborum,Thoracis,Cervicis)",
+      "section": "Back - Spinal Joints",
+      "section_id": "6",
+      "origin": "Lumborum: posteromedial iliac crest, lateral crest of the sacrum and the thoracolumbar aponeurosis. Thoracis: angles of the 7th-12th ribs. Cervicis: angles of the 3rd-6th ribs.",
+      "insertion": "Lumborum: angles of the 5th-12th ribs and the transverse processes of L1-L4. Thoracis: angles of the 1st-6th ribs and the transverse process of C7. Cervicis: transverse processes of C4-C6.",
+      "action": "Bilateral: extension of the vertebral column; maintains posture; anterior pelvic rotation and tilt. Unilateral: lateral flexion of the neck and trunk toward the contracting side.",
+      "nerve_innervation": "Lateral branches of the posterior (dorsal) rami of the adjacent spinal nerves",
+      "notes": "Re-sourced 2026-09-16 to two approved sources: StatPearls NBK539746 (.gov) and Kenhub. Iliocostalis is the most lateral of the erector spinae trio. Lumborum insertion widened from the 7th-12th to the 5th-12th ribs with the lumbar transverse processes added; thoracis insertion now includes the C7 transverse process. The typo 'cervisis' was corrected earlier the same day, and the ipsilateral rotation dropped as unsupported. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "RectusAbdominis",
+      "section": "Abdominal and Respiratory",
+      "section_id": "7",
+      "origin": "Pubic crest, pubic tubercle and the pubic symphysis.",
+      "insertion": "Xiphoid process and the costal cartilages of the 5th-7th ribs.",
+      "action": "Bilateral: powerful flexion of the vertebral column; posterior pelvic rotation and tilt; depresses the ribs; raises intra-abdominal pressure. Unilateral: lateral flexion.",
+      "nerve_innervation": "Anterior rami of T7-T11 (thoracoabdominal nerves) and T12 (subcostal nerve)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK551649 (Abdominal Wall) and NBK525975 (Anterolateral Abdominal Wall). NBK551649 states explicitly that rectus abdominis does NOT receive the iliohypogastric or ilioinguinal nerves, unlike internal oblique and transversus abdominis. The 'intercostal nerves T7-T12' wording of the original entry is dropped: there is no 12th intercostal nerve, the T12 ramus running below the 12th rib as the subcostal. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "ExternalOblique",
+      "section": "Abdominal and Respiratory",
+      "section_id": "7",
+      "origin": "External surfaces and inferior borders of the 5th-12th ribs.",
+      "insertion": "Anterior half of the iliac crest, and by the abdominal aponeurosis into the linea alba, pubic crest and pubic tubercle; its lower border forms the inguinal ligament.",
+      "action": "Bilateral: flexion of the vertebral column; posterior pelvic rotation and tilt; compresses the abdominal contents. Unilateral: lateral flexion toward the contracting side with rotation of the trunk to the opposite side.",
+      "nerve_innervation": "Anterior rami of T7-T11 (thoracoabdominal nerves) and T12 (subcostal nerve)",
+      "notes": "CORRECTED and now confirmed from .gov, 2026-09-16: the L1 contribution carried by the original entry is wrong. StatPearls NBK551649 states that external oblique, like rectus abdominis, does NOT receive the iliohypogastric or ilioinguinal nerves; only internal oblique and transversus abdominis do. Confirmed against NBK525975. TEXTBOOK-LEVEL CHECK 2026-10-09 against the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source): attachments and actions agree. SOURCE CONFLICT, documented not changed: TTUHSC/UAMS tables add the iliohypogastric and ilioinguinal nerves (L1); NBK551649 excludes L1 for this muscle, so T7-T12 is retained.",
+      "review_flag": ""
+    },
+    {
+      "name": "InternalOblique",
+      "section": "Abdominal and Respiratory",
+      "section_id": "7",
+      "origin": "Thoracolumbar fascia, anterior two-thirds of the iliac crest, and the lateral half of the inguinal ligament.",
+      "insertion": "Inferior borders of the 10th-12th ribs, and by the abdominal aponeurosis into the rectus sheath and linea alba, reaching the pubic crest by the conjoint tendon.",
+      "action": "Bilateral: flexion of the vertebral column; posterior pelvic rotation and tilt; compresses the abdominal contents. Unilateral: lateral flexion and rotation of the trunk toward the contracting side.",
+      "nerve_innervation": "Anterior rami of T7-T11, T12 (subcostal), and the iliohypogastric and ilioinguinal nerves (L1)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK551649 and NBK525975. The L1 contribution is correct for this muscle and is stated explicitly by NBK551649. Internal oblique rotates the trunk TOWARD the contracting side while external oblique rotates it away - the paired entries now state that symmetry. TEXTBOOK-LEVEL CHECK 2026-10-09 against the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source): attachments and actions agree. SOURCE CONFLICT, documented not changed: TTUHSC/UAMS give the inguinal-ligament origin as the lateral two-thirds; lateral half retained (sources vary).",
+      "review_flag": ""
+    },
+    {
+      "name": "Transverse Abdominis",
+      "section": "Abdominal and Respiratory",
+      "section_id": "7",
+      "origin": "Internal surfaces of the costal cartilages of the 7th-12th ribs (the lower six), thoracolumbar fascia, inner lip of the iliac crest, and the lateral third of the inguinal ligament.",
+      "insertion": "Linea alba by the abdominal aponeurosis and rectus sheath, and the pubic crest by the conjoint tendon.",
+      "action": "Compresses the abdominal contents and raises intra-abdominal pressure - abdominal hollowing. Contributes no significant trunk movement.",
+      "nerve_innervation": "Anterior rami of T7-T11, T12 (subcostal), and the iliohypogastric and ilioinguinal nerves (L1)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK551649 and NBK525975. Rib range for the costal origin adjusted from the 7th-12th to the 5th-10th costal cartilages per NBK551649. The L1 contribution is correct for this muscle. TEXTBOOK-LEVEL CHECK 2026-10-09 - CORRECTED: Costal origin corrected 2026-10-09 BACK to the 7th-12th costal cartilages (the lower six ribs). The 2026-09-16 change to the 5th-10th followed NBK551649 alone and is not supported elsewhere: TTUHSC tables (.edu) give the lower 6 ribs and Kenhub gives the internal surfaces of costal cartilages 7-12, matching the classical description. Checked against the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source); Kenhub.",
+      "review_flag": ""
+    },
+    {
+      "name": "SerratusPosteriorSuperior",
+      "section": "Abdominal and Respiratory",
+      "section_id": "7",
+      "origin": "Lower ligamentum nuchae and the spinous processes of C7-T3 with their supraspinous ligaments.",
+      "insertion": "Posterosuperior surfaces of the 2nd-5th ribs, lateral to their angles.",
+      "action": "Elevates the 2nd-5th ribs; accessory muscle of inspiration.",
+      "nerve_innervation": "2nd-5th intercostal nerves",
+      "notes": "Re-sourced 2026-09-16 to two approved sources: StatPearls NBK538321 (Thorax, Muscles, .gov) and Kenhub. Both confirm the rib range and the inspiratory role. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with Radiopaedia (.org).",
+      "review_flag": ""
+    },
+    {
+      "name": "SerratusPosteriorInferior",
+      "section": "Abdominal and Respiratory",
+      "section_id": "7",
+      "origin": "Spinous processes of T11-L2 and their supraspinous ligaments.",
+      "insertion": "Inferoposterior surfaces of the 9th-12th ribs, lateral to their angles.",
+      "action": "Depresses the lower ribs; accessory muscle of expiration.",
+      "nerve_innervation": "Anterior rami of T9-T11 and the subcostal nerve (T12)",
+      "notes": "CORRECTION UPHELD FROM .gov, 2026-09-16: the original entry had this muscle depressing the ribs 'during inspiration'. StatPearls NBK538321 places it in forced EXPIRATION, as does Kenhub - two approved sources against the flashcard. The classical account, that it anchors the lower ribs against diaphragmatic pull during inspiration, is recorded here as the minority position rather than displayed as fact. SOURCE CONFLICT on the rib range, not resolved: NBK538321 gives ribs 8-12, Kenhub and the original entry give 9-12. The nerve field also read '9th-12th intercostal nerves'; there is no 12th intercostal nerve. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with Radiopaedia (.org).",
+      "review_flag": ""
+    },
+    {
+      "name": "ExternalIntercostals",
+      "section": "Abdominal and Respiratory",
+      "section_id": "7",
+      "origin": "Inferior borders of the 1st-11th ribs, running from the rib tubercle posteriorly to the costochondral junction anteriorly.",
+      "insertion": "Superior borders of the 2nd-12th ribs, the fibres running inferomedially.",
+      "action": "Elevate the ribs during inspiration, increasing the transverse diameter of the thorax; resist indrawing of the intercostal spaces in quiet breathing.",
+      "nerve_innervation": "Intercostal nerves, the anterior rami of T1-T11",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK538321 and NBK535414 (Thorax, Wall). Both give T1-T11 and the inspiratory role. NBK535414 adds that the anterior fibres are replaced by the external intercostal membrane, which is why the muscle does not reach the sternum. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with Loyola LUMEN Master Muscle List (lumen.luc.edu, .edu); the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "InternalIntercostals",
+      "section": "Abdominal and Respiratory",
+      "section_id": "7",
+      "origin": "Costal groove of the 1st-11th ribs and the adjacent costal cartilages, running from the sternum anteriorly to the rib angles posteriorly.",
+      "insertion": "Superior borders of the 2nd-12th ribs, the fibres running inferolaterally.",
+      "action": "Depress the ribs during forced expiration; stabilise the ribs in quiet breathing.",
+      "nerve_innervation": "Intercostal nerves, the anterior rami of T1-T11",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK538321 and NBK535414. Attachments given in the anatomical convention - costal groove of the rib above to the superior border of the rib below - which both sources use. NBK535414 adds that the posterior fibres are replaced by the internal intercostal membrane. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "LevatorCostarum",
+      "section": "Abdominal and Respiratory",
+      "section_id": "7",
+      "origin": "Transverse processes of C7-T11.",
+      "insertion": "External surface of the rib one level below, between the tubercle and the angle; the lower four also send a longer slip two levels down.",
+      "action": "Elevate the ribs, contributing minimally to inspiration. Assist rotation and lateral flexion of the thoracic spine.",
+      "nerve_innervation": "Lateral branches of the posterior (dorsal) rami of C8-T11",
+      "notes": "Re-sourced 2026-09-16 to two approved sources: StatPearls NBK538321 (.gov) and Kenhub. Both give the C7-T11 origin and attachment to the rib below. NBK538321 describes the respiratory contribution as minimal, and Kenhub notes the role in quiet respiration is debated - recorded rather than resolved. SOURCE NOTE: NBK538321 attributes them to intercostal nerves, Kenhub to the posterior rami; the posterior-rami attribution is conventional for a muscle of the deep back and is recorded. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with Loyola LUMEN Master Muscle List (lumen.luc.edu, .edu); the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Diaphragm",
+      "section": "Abdominal and Respiratory",
+      "section_id": "7",
+      "origin": "Sternal part: two slips from the posterior surface of the xiphoid process. Costal part: internal surfaces of the lower six costal cartilages and adjacent ribs. Lumbar part: right crus from the bodies of L1-L3, left crus from L1-L2, with the medial and lateral arcuate ligaments.",
+      "insertion": "Central tendon of the diaphragm.",
+      "action": "The principal muscle of inspiration: contraction pulls the central tendon inferiorly and flattens the dome, increasing the vertical dimension of the thoracic cavity. Raises intra-abdominal pressure during straining.",
+      "nerve_innervation": "Phrenic nerve (C3-C5), with sensory supply to the periphery from the lower intercostal nerves",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK519558 (Thorax: Diaphragm) and NBK538321. Both confirm the three named parts and C3-C5; NBK519558 gives the asymmetric crura - right from L1-L3, left from L1-L2 - which the original entry lacked entirely. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source); Loyola LUMEN Master Muscle List (lumen.luc.edu, .edu).",
+      "review_flag": ""
+    },
+    {
+      "name": "TransverseThoracis",
+      "section": "Abdominal and Respiratory",
+      "section_id": "7",
+      "origin": "Internal surface of the lower body of the sternum and the xiphoid process, and the sternal ends of the costal cartilages of the 4th-7th ribs.",
+      "insertion": "Internal surfaces of the costal cartilages of the 2nd-6th ribs.",
+      "action": "Draws the 2nd-6th costal cartilages toward the sternum, weakly depressing the ribs during forced expiration; supports the intercostal spaces.",
+      "nerve_innervation": "Intercostal nerves (T2-T6)",
+      "notes": "Re-sourced 2026-09-16 to two approved sources: StatPearls NBK538321 (.gov) and Kenhub. Both give the insertion as ribs 2-6; Kenhub gives the origin as the sternal ends of the 4th-7th costal cartilages, correcting the 7th-10th of the original entry, and the T2-T6 nerve range. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Iliacus",
+      "section": "Pelvic Girdle and Hip Joint",
+      "section_id": "8",
+      "origin": "Upper two-thirds of the iliac fossa, with slips from the ala of the sacrum and the anterior sacroiliac ligament.",
+      "insertion": "Lesser trochanter of the femur, by the tendon shared with psoas major, and the adjacent shaft.",
+      "action": "Hip flexion - a prime mover; stabilises the pelvis during hip flexion and assists trunk flexion when the limb is fixed. Anterior pelvic rotation and tilt.",
+      "nerve_innervation": "Femoral nerve (L2-L4)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK531508 (Iliopsoas Muscle) and NBK500008 (Femoral Muscles). Both give femoral L2-L4, upholding the earlier correction from L2-L3. NBK531508 makes the point the paired entries now carry: iliacus and psoas major have DIFFERENT nerve supplies despite sharing a tendon. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "PsoasMajor",
+      "section": "Pelvic Girdle and Hip Joint",
+      "section_id": "8",
+      "origin": "Lateral surfaces of the bodies of T12-L5 and the intervening intervertebral discs, and the transverse processes of all five lumbar vertebrae.",
+      "insertion": "Lesser trochanter of the femur, by the tendon shared with iliacus.",
+      "action": "Hip flexion - a prime mover; assists adduction and external rotation. Stabilises the lumbar spine in sitting; lumbar flexion and lateral flexion; anterior pelvic rotation and tilt.",
+      "nerve_innervation": "Anterior rami of L1-L3, directly from the lumbar plexus rather than through a named nerve",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK531508 and NBK500008. Both give L1-L3 direct from the lumbar plexus, in contrast to iliacus's femoral supply. TEXTBOOK-LEVEL CHECK 2026-10-09 - CORRECTED: Origin extended 2026-10-09 from L1-L4 to T12-L5 (bodies) and all lumbar transverse processes: the UW Musculoskeletal Atlas gives transverse processes of L1-L5 and bodies and discs of T12-L5, and the UAMS/TTUHSC tables give the bodies and transverse processes of the lumbar vertebrae. Nerve: UW gives direct fibres of L1-L3 (as recorded); UAMS/TTUHSC give ventral rami L2-L4. Checked against the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source); the UW Musculoskeletal Atlas (rad.uw.edu, .edu).",
+      "review_flag": ""
+    },
+    {
+      "name": "PsoasMinor",
+      "section": "Pelvic Girdle and Hip Joint",
+      "section_id": "8",
+      "origin": "Body of the last thoracic vertebra, the first lumbar vertebra, and the intervening intervertebral disc.",
+      "insertion": "Iliopectineal eminence and the iliac fascia.",
+      "action": "Weak flexion of the lumbar spine. Acts on the vertebral column only - it has no femoral attachment and does not move the hip.",
+      "nerve_innervation": "Anterior rami of L1-L2",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK535418 (Psoas Major) and NBK500008 (Femoral Muscles). NBK535418 puts its presence at 60-65 percent of people, so it is absent in roughly 35-40 percent, and notes it often degenerates into fibrous tissue - which is why this muscle has no mesh in the 3D model and the app reports that honestly. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Pectineus",
+      "section": "Pelvic Girdle and Hip Joint",
+      "section_id": "8",
+      "origin": "Pecten pubis on the superior ramus of the pubis.",
+      "insertion": "Pectineal line on the posterior femur, from the lesser trochanter to the linea aspera.",
+      "action": "Hip flexion and adduction; assists external rotation; anterior pelvic rotation and tilt.",
+      "nerve_innervation": "Femoral nerve (L2-L3), often with an additional branch from the obturator nerve",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK534775 (Medial Thigh Muscles) and NBK500008. Both give L2-L3 for pectineus specifically, even though the femoral nerve as a whole is L2-L4 - so unlike iliacus and sartorius, the original range was right here and has been kept. Worth noting as the case that broke the L2-L3 pattern found elsewhere in this section. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "RectusFemoris",
+      "section": "Pelvic Girdle and Hip Joint",
+      "section_id": "8",
+      "origin": "Straight head: anterior inferior iliac spine. Reflected head: groove above the acetabulum.",
+      "insertion": "Base of the patella by the quadriceps tendon, and by the patellar ligament to the tibial tuberosity.",
+      "action": "Knee extension and hip flexion - the only quadriceps component crossing both joints; anterior pelvic rotation and tilt.",
+      "nerve_innervation": "Femoral nerve (L2-L4)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK482445 (Thigh Muscles) and NBK500008. Both name the two heads and give femoral L2-L4. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Sartorius",
+      "section": "Pelvic Girdle and Hip Joint",
+      "section_id": "8",
+      "origin": "Anterior superior iliac spine and the area just below it.",
+      "insertion": "Superomedial surface of the proximal tibia, as the most anterior of the three pes anserinus tendons.",
+      "action": "Hip flexion, abduction and external rotation; knee flexion and internal rotation; anterior pelvic rotation and tilt. Produces the cross-legged sitting posture it is named for.",
+      "nerve_innervation": "Femoral nerve (L2-L4)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK482445 and NBK500008, both giving femoral L2-L4 and upholding the earlier correction from L2-L3. The longest muscle in the body; shares the pes anserinus with gracilis and semitendinosus. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Gracilis",
+      "section": "Pelvic Girdle and Hip Joint",
+      "section_id": "8",
+      "origin": "Anterior body and inferior ramus of the pubis.",
+      "insertion": "Medial surface of the proximal tibia at the pes anserinus, as the middle of its three tendons.",
+      "action": "Hip adduction and flexion; knee flexion and internal rotation.",
+      "nerve_innervation": "Obturator nerve, anterior branch (L2-L4)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK534775 and NBK500008, both giving obturator anterior branch L2-L4 - upholding the earlier correction from L2-L3. The most superficial of the adductor group and the standard donor for free muscle transfer. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "TensorFasciaeLatae",
+      "section": "Pelvic Girdle and Hip Joint",
+      "section_id": "8",
+      "origin": "Anterior superior iliac spine and the outer lip of the anterior iliac crest.",
+      "insertion": "Iliotibial tract, which continues to the lateral condyle of the tibia at Gerdy's tubercle.",
+      "action": "Hip: internal rotation, abduction and flexion; stabilises the pelvis in standing and gait. Knee: external rotation of the leg, and stabilisation of the extended knee through the iliotibial tract.",
+      "nerve_innervation": "Superior gluteal nerve (L4-S1)",
+      "notes": "Re-sourced 2026-09-16 to two approved sources from different publishers: StatPearls NBK499870 (Tensor Fasciae Latae, .gov) and Kenhub. SOURCE CONFLICT on the knee, not resolved, and it partly vindicates the original entry: NBK499870 calls it an accessory knee FLEXOR once the knee is past about 30 degrees, while Kenhub says it can weakly flex OR EXTEND depending on the degree of knee flexion. Both agree on external rotation of the leg, which an earlier revision on 2026-09-16 had wrongly dropped as unsupported - it is restored. What both rule out is the flashcard's flat description of it as a knee extensor. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "AdductorBrevis",
+      "section": "Pelvic Girdle and Hip Joint",
+      "section_id": "8",
+      "origin": "Body of the pubis and the anteroinferior pubic ramus.",
+      "insertion": "Upper third of the linea aspera and the posterior proximal femur.",
+      "action": "Hip adduction and flexion.",
+      "nerve_innervation": "Obturator nerve, anterior branch (L2-L4)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK534775 and NBK500008. Both give adduction as the action; the extension-from-flexed and external rotation claims of the original flashcard entry are carried by neither and stay out. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "AdductorLongus",
+      "section": "Pelvic Girdle and Hip Joint",
+      "section_id": "8",
+      "origin": "Body of the pubis and the anteroinferior pubic ramus, just below the pubic crest.",
+      "insertion": "Middle third of the linea aspera on the femoral shaft.",
+      "action": "Hip adduction and flexion.",
+      "nerve_innervation": "Obturator nerve, anterior branch (L2-L4)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK534775 and NBK500008. The most commonly strained of the adductor group. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "AdductorMagnus",
+      "section": "Pelvic Girdle and Hip Joint",
+      "section_id": "8",
+      "origin": "Adductor (pubofemoral) part: inferior ramus of the pubis, ramus of the ischium, and the external obturator membrane. Hamstring (ischiocondylar) part: ischial tuberosity.",
+      "insertion": "Adductor part: medial side of the gluteal tuberosity, the whole length of the linea aspera, and the medial supracondylar line. Hamstring part: adductor tubercle on the medial femoral condyle.",
+      "action": "Adductor part: hip adduction, its superior segment also flexing the thigh. Hamstring part: hip adduction and extension.",
+      "nerve_innervation": "Adductor part: obturator nerve, posterior branch (L2-L4). Hamstring part: tibial division of the sciatic nerve",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK534842 (Thigh Adductor Magnus) and NBK534775. Both confirm the two parts pull in opposite directions at the hip - the adductor part flexes, the hamstring part extends - which a single merged action line could not express. SOURCE CONFLICT on the hamstring part's root levels, not resolved: NBK534842 gives L4, NBK534775 gives L2-L4 for the muscle overall, other references give L4-S3; no single range is recorded as settled. NBK534842 also notes recent work suggesting the adductor part may receive dual obturator and tibial supply distally. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Gluteus Minimus",
+      "section": "Pelvic Girdle and Hip Joint",
+      "section_id": "8",
+      "origin": "Gluteal surface of the ilium, between the anterior and inferior gluteal lines.",
+      "insertion": "Anterior aspect of the greater trochanter of the femur.",
+      "action": "Hip abduction and internal rotation; assists flexion. With gluteus medius, stabilises the pelvis over the stance limb during gait.",
+      "nerve_innervation": "Superior gluteal nerve (L4-S1)",
+      "notes": "Re-sourced 2026-09-16 to two approved sources from different publishers: StatPearls NBK556144 (Gluteus Minimus, .gov) and Kenhub, with the nerve additionally confirmed by NBK535408. Both give the same attachments between the anterior and inferior gluteal lines. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "GluteusMedius",
+      "section": "Pelvic Girdle and Hip Joint",
+      "section_id": "8",
+      "origin": "Gluteal surface of the ilium, between the anterior and posterior gluteal lines.",
+      "insertion": "Lateral aspect of the greater trochanter of the femur, by fibrocartilage.",
+      "action": "Hip abduction; anterior fibres internally rotate the thigh, posterior fibres externally rotate it with the knee extended. Holds the pelvis level over the stance limb - its failure produces the Trendelenburg sign, in which the pelvis sinks on the UNSUPPORTED side.",
+      "nerve_innervation": "Superior gluteal nerve (L4-S1)",
+      "notes": "Re-sourced 2026-09-16 to two approved sources from different publishers: StatPearls NBK557509 (Gluteus Medius, .gov) and Kenhub, with the nerve additionally confirmed by NBK535408 (Superior Gluteal Nerve). NBK557509 specifies that the posterior fibres rotate laterally only with the knee extended, and that the Trendelenburg drop occurs on the unsupported side - commonly stated backwards. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "GluteusMaximus",
+      "section": "Pelvic Girdle and Hip Joint",
+      "section_id": "8",
+      "origin": "Gluteal surface of the ilium behind the posterior gluteal line, lateroposterior surface of the sacrum and coccyx, sacrotuberous ligament, and the thoracolumbar fascia.",
+      "insertion": "Superficial fibres into the iliotibial tract; the deep quarter into the gluteal tuberosity of the femur, between adductor magnus and vastus lateralis.",
+      "action": "Hip extension and external rotation. An antigravity muscle recruited in rising from sitting, stair climbing and running rather than level walking; extends the trunk from a flexed position and stabilises the pelvis in upright posture. Upper fibres abduct, lower fibres adduct.",
+      "nerve_innervation": "Inferior gluteal nerve (L5-S2) - the only muscle this nerve supplies",
+      "notes": "Re-sourced 2026-09-16 to two approved sources from different publishers: StatPearls NBK538193 (Gluteus Maximus, .gov) and Kenhub. Both give the sacrotuberous ligament and thoracolumbar fascia in the origin and the split of superficial fibres to the iliotibial tract from deep fibres to the gluteal tuberosity - neither of which was in the original entry. Actions corroborated by NBK470555 (Hip Joint). TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Semitendinosus",
+      "section": "Pelvic Girdle and Hip Joint",
+      "section_id": "8",
+      "origin": "Inferomedial impression of the ischial tuberosity, by a tendon shared with the long head of biceps femoris.",
+      "insertion": "Anteromedial surface of the proximal tibia below the medial condyle, as the most posterior of the three pes anserinus tendons.",
+      "action": "Hip extension; knee flexion and internal rotation of the flexed knee; posterior pelvic rotation and tilt.",
+      "nerve_innervation": "Tibial division of the sciatic nerve (L5-S2)",
+      "notes": "Verified 2026-09-16 against StatPearls (NBK542215) and Kenhub. The shared conjoint tendon with biceps femoris long head has been made explicit, since it is what distinguishes both from semimembranosus. Source variation on the conjoint footprint, not resolved: classically the inferomedial impression, given as the superior medial quadrant by StatPearls. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Semimembranosus",
+      "section": "Pelvic Girdle and Hip Joint",
+      "section_id": "8",
+      "origin": "Superolateral impression of the ischial tuberosity, separate from and deep to the conjoint tendon of semitendinosus and biceps femoris.",
+      "insertion": "Posteromedial surface of the medial tibial condyle, with expansions into the oblique popliteal ligament and the popliteal fascia.",
+      "action": "Hip extension; knee flexion and internal rotation of the flexed knee; posterior pelvic rotation and tilt.",
+      "nerve_innervation": "Tibial division of the sciatic nerve (L5-S2)",
+      "notes": "CORRECTED 2026-09-16: the origin previously read 'inferolateral surface of the ischial tuberosity'. Semimembranosus arises from the SUPEROLATERAL impression - confirmed by Kenhub and StatPearls (NBK542215), which gives 'superior lateral aspect'. It is the one hamstring not part of the conjoint tendon, and the entry as written placed it in the wrong quadrant of the tuberosity, which is exactly the landmark used to tell a proximal hamstring avulsion apart on imaging. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "BicepsFemoris",
+      "section": "Pelvic Girdle and Hip Joint",
+      "section_id": "8",
+      "origin": "Long head: ischial tuberosity, by the conjoint tendon shared with semitendinosus. Short head: lateral lip of the linea aspera and the proximal lateral supracondylar ridge of the femur.",
+      "insertion": "Head of the fibula, with slips to the lateral tibial condyle and the fibular collateral ligament.",
+      "action": "Long head: hip extension and external rotation. Both heads: knee flexion and external rotation of the flexed knee; posterior pelvic rotation and tilt.",
+      "nerve_innervation": "Long head: tibial division of the sciatic nerve (L5-S2). Short head: common fibular (peroneal) division of the sciatic nerve (L5-S2)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK542215 (Posterior Thigh Muscles) and NBK546688 (Hamstring Muscle). Both confirm the split innervation, which is why the short head can be spared in a sciatic injury affecting the tibial division. NBK546688 describes the proximal aponeurosis shared with semitendinosus extending about 7 cm from the ischial tuberosity. The short head is the only hamstring component not crossing the hip. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "VastusLateralis",
+      "section": "Knee Joint",
+      "section_id": "9",
+      "origin": "Intertrochanteric line, greater trochanter, gluteal tuberosity, and the lateral lip of the linea aspera.",
+      "insertion": "Lateral border of the patella by the quadriceps tendon, and by the patellar ligament to the tibial tuberosity.",
+      "action": "Knee extension; its oblique distal fibres draw the patella laterally, opposed by vastus medialis.",
+      "nerve_innervation": "Femoral nerve (L2-L4)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK482445 (Thigh Muscles) and NBK500008 (Femoral Muscles). The largest of the four quadriceps components. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "VastusIntermedius",
+      "section": "Knee Joint",
+      "section_id": "9",
+      "origin": "Anterolateral surface of the upper two-thirds of the femoral shaft.",
+      "insertion": "Deep surface of the quadriceps tendon at the proximal border of the patella, and by the patellar ligament to the tibial tuberosity.",
+      "action": "Knee extension.",
+      "nerve_innervation": "Femoral nerve (L2-L4)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK482445 and NBK500008. Its deepest fibres form articularis genu, which retracts the suprapatellar bursa during extension. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "VastusMedialis",
+      "section": "Knee Joint",
+      "section_id": "9",
+      "origin": "Intertrochanteric line, medial lip of the linea aspera, medial supracondylar line, and the tendon of adductor magnus.",
+      "insertion": "Medial border of the patella by the quadriceps tendon, and by the patellar ligament to the tibial tuberosity.",
+      "action": "Knee extension; its distal oblique fibres draw the patella medially and are the principal restraint against lateral patellar tracking.",
+      "nerve_innervation": "Femoral nerve (L2-L4)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK482445 and NBK500008. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Popliteus",
+      "section": "Knee Joint",
+      "section_id": "9",
+      "origin": "Lateral femoral condyle and the posterior horn of the lateral meniscus.",
+      "insertion": "Posterior surface of the proximal tibia, above the soleal line.",
+      "action": "Unlocks the fully extended knee to begin flexion, by internally rotating the tibia on the femur with the foot free, or externally rotating the femur on the tibia with the foot planted. Assists knee flexion and draws the lateral meniscus posteriorly during flexion.",
+      "nerve_innervation": "Tibial nerve (L4-S1)",
+      "notes": "Re-sourced 2026-09-16 to two approved sources from different publishers: StatPearls NBK537340 (Leg Posterior Compartment, .gov) and Kenhub. Both describe it as the muscle that unlocks the extended knee rather than a flexor in its own right, upholding the earlier revision away from 'knee flexion and internal rotation'. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Gastrocnemius",
+      "section": "Ankle and Foot Joints",
+      "section_id": "10",
+      "origin": "Medial head: posterior, non-articular surface of the medial femoral condyle. Lateral head: lateral surface of the lateral femoral condyle.",
+      "insertion": "Posterior surface of the calcaneal tuberosity, by the calcaneal (Achilles) tendon.",
+      "action": "Ankle plantarflexion, strongest with the knee extended; assists knee flexion. The explosive plantarflexor, as against the soleus's sustained postural role.",
+      "nerve_innervation": "Tibial nerve (S1-S2)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK537340 (Leg Posterior Compartment) and NBK459362 (Calf). Both give S1-S2 and the knee-position dependence, which is the basis of the Silfverskiold test. Typos 'calcaneous' and 'supercondylar' corrected earlier the same day. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Soleus",
+      "section": "Ankle and Foot Joints",
+      "section_id": "10",
+      "origin": "Posterior surface of the head and proximal shaft of the fibula, the soleal line, and the proximal two-thirds of the medial border of the tibia.",
+      "insertion": "Posterior surface of the calcaneal tuberosity, by the calcaneal (Achilles) tendon, joined with gastrocnemius.",
+      "action": "Ankle plantarflexion, unaffected by knee position since it does not cross the knee. Predominates in sustained activity - standing, walking uphill - and is the principal postural muscle resisting forward sway.",
+      "nerve_innervation": "Tibial nerve (S1-S2)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK537340 and NBK459362. The sustained-versus-explosive contrast with gastrocnemius is NBK459362's and is worth carrying for a rehabilitation audience. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Plantaris",
+      "section": "Ankle and Foot Joints",
+      "section_id": "10",
+      "origin": "Lateral supracondylar line of the femur, just above the lateral head of gastrocnemius.",
+      "insertion": "Posterior surface of the calcaneus, medial to the calcaneal tendon, or blending with it.",
+      "action": "Weakly assists ankle plantarflexion and knee flexion.",
+      "nerve_innervation": "Tibial nerve (S1-S2)",
+      "notes": "CORRECTION UPHELD FROM TWO .gov SOURCES, 2026-09-16: the original entry gave 'foot inversion'. StatPearls NBK459362 was asked directly and states plantaris does not invert the foot, attributing inversion to tibialis posterior; NBK537340 gives plantarflexion alone. Absent in up to 10 percent of people with no functional deficit. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Peroneus(Fibularis)Longus",
+      "section": "Ankle and Foot Joints",
+      "section_id": "10",
+      "origin": "Superolateral surface of the fibular head, proximal two-thirds of the lateral fibular shaft, the lateral tibial condyle, and the intermuscular septum.",
+      "insertion": "Base of the 1st metatarsal and the medial cuneiform, reached by crossing the sole obliquely; variant slips to the 2nd-5th metatarsals are described.",
+      "action": "Foot and ankle eversion - the primary action; assists plantarflexion and maintains the lateral and transverse arches.",
+      "nerve_innervation": "Superficial fibular (peroneal) nerve (L5-S1)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK546650 (Calf Peroneus Longus) and NBK519526 (Leg Lateral Compartment). NBK519526 adds the lateral tibial condyle and intermuscular septum to the origin, which the entry lacked. Both give eversion as primary with plantarflexion secondary. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Peroneus(Fibularis)Brevis",
+      "section": "Ankle and Foot Joints",
+      "section_id": "10",
+      "origin": "Lower two-thirds of the lateral surface of the fibula and the anterior intermuscular septum.",
+      "insertion": "Styloid process on the lateral aspect of the tuberosity at the base of the 5th metatarsal.",
+      "action": "Foot and ankle eversion - the primary action; assists plantarflexion.",
+      "nerve_innervation": "Superficial fibular (peroneal) nerve (L5-S2)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK535427 (Foot Peroneus Brevis) and NBK519526. Root range widened from L5-S1 to L5-S2 per NBK535427. Its tendon is the most commonly dislocated in the ankle, typically in a lateral sprain, and its insertion is the fragment avulsed in a base-of-fifth-metatarsal fracture. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Peroneus(Fibularis)Tertius",
+      "section": "Ankle and Foot Joints",
+      "section_id": "10",
+      "origin": "Distal anterior surface of the fibula and the adjacent interosseous membrane, often continuous with extensor digitorum longus.",
+      "insertion": "Dorsal surface of the base of the 5th metatarsal.",
+      "action": "Weakly assists ankle dorsiflexion; contributes to foot eversion.",
+      "nerve_innervation": "Deep fibular (peroneal) nerve (L5-S1)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK539725 (Leg Anterior Compartment) and NBK546698 (Foot and Ankle), which places it in the anterior compartment laterally and notes it is rarely of clinical significance. Origin confirmed as the ANTERIOR rather than anteromedial fibular surface. Absent in a minority of people. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "ExtensorDigitorumLongus",
+      "section": "Ankle and Foot Joints",
+      "section_id": "10",
+      "origin": "Lateral condyle of the tibia, the anterior surface of the fibula, and the adjacent interosseous membrane.",
+      "insertion": "Four tendons to the dorsal expansions of the lateral four toes, reaching the middle and distal phalanges.",
+      "action": "Extension of the lateral four toes at the metatarsophalangeal and interphalangeal joints; assists ankle dorsiflexion and foot eversion.",
+      "nerve_innervation": "Deep fibular (peroneal) nerve (L5-S1)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK539725 and NBK546698. Attachments are NBK539725's; NBK546698 corroborates the deep fibular supply and the dorsiflexion contribution. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "ExtensorHallucisLongus",
+      "section": "Ankle and Foot Joints",
+      "section_id": "10",
+      "origin": "Middle half of the anterior surface of the fibula and the adjacent interosseous membrane.",
+      "insertion": "Dorsal central aspect of the base of the distal phalanx of the great toe.",
+      "action": "Extension of the great toe; ankle dorsiflexion; weak foot inversion.",
+      "nerve_innervation": "Deep fibular (peroneal) nerve (L4-S1)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK539875 (Extensor Hallucis Longus) and NBK539725. Origin surface given as ANTERIOR by both, correcting the 'anteromedial' of the original entry. Weakness of great-toe extension is a pertinent finding in anterior compartment syndrome and in deep fibular nerve injury. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "TibialisAnterior",
+      "section": "Ankle and Foot Joints",
+      "section_id": "10",
+      "origin": "Lateral condyle of the tibia, proximal two-thirds of the lateral surface of the tibial shaft, the anterior surface of the interosseous membrane, the deep fascia cruris and the intermuscular septum.",
+      "insertion": "Medial cuneiform and the base of the 1st metatarsal, on the medial border of the foot.",
+      "action": "The strongest dorsiflexor of the ankle, essential during the swing phase of gait; a primary inverter of the foot, working with tibialis posterior to supinate the medial arch.",
+      "nerve_innervation": "Deep fibular (peroneal) nerve (L4-S1)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK513304 (Tibialis Anterior) and NBK539725 (Leg Anterior Compartment). Both include the lateral tibial condyle and the interosseous membrane, which the original entry omitted; NBK513304 adds the fascia cruris and intermuscular septum. Root range corrected from L4-L5 to L4-S1. Its failure produces foot drop. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "TibialisPosterior",
+      "section": "Ankle and Foot Joints",
+      "section_id": "10",
+      "origin": "Posterior surface of the interosseous membrane, the proximal two-thirds of the posterior and medial surfaces of the fibula, and the superior posterior tibia.",
+      "insertion": "Tuberosity of the navicular and plantar aspect of the medial cuneiform; a plantar slip to the bases of the 2nd-4th metatarsals, the intermediate and lateral cuneiforms and the cuboid; and a recurrent slip to the sustentaculum tali.",
+      "action": "Foot inversion - the principal inverter - and ankle plantarflexion. Dynamically supports the medial longitudinal arch.",
+      "nerve_innervation": "Tibial nerve (L4-S3)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK539913 (Tibialis Posterior) and NBK537340. NBK539913 sets out the three-part distal tendon - main, plantar and recurrent - which the original single-line insertion flattened. Root range widened from L4-L5 to L4-S3, the tibial nerve's full range per NBK539913. Its dysfunction is the usual cause of acquired adult flatfoot. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "FlexorDigitorumLongus",
+      "section": "Ankle and Foot Joints",
+      "section_id": "10",
+      "origin": "Posterior surface of the middle third of the tibia, below the soleal line.",
+      "insertion": "Plantar surfaces of the bases of the distal phalanges of the lateral four toes.",
+      "action": "Flexion of the lateral four toes, the distal interphalangeal joints in particular; assists ankle plantarflexion, foot inversion and maintenance of the arches.",
+      "nerve_innervation": "Tibial nerve (L5-S2)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK537340 (Leg Posterior Compartment) and NBK546698. Its tendon is the one quadratus plantae pulls on, and the one the lumbricals arise from. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Flexor Hallucis Longus",
+      "section": "Ankle and Foot Joints",
+      "section_id": "10",
+      "origin": "Posterior surface of the distal two-thirds of the fibula and the adjacent interosseous membrane.",
+      "insertion": "Plantar surface of the base of the distal phalanx of the great toe.",
+      "action": "Flexion of the great toe at the interphalangeal and metatarsophalangeal joints; assists ankle plantarflexion, foot inversion and arch support. Provides the final push-off in gait.",
+      "nerve_innervation": "Tibial nerve (L5-S2)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK537340 and NBK546698. Origin range confirmed as the DISTAL two-thirds of the fibula, correcting the 'middle two-thirds' of the original flashcard entry. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "FlexorDigitorumBrevis",
+      "section": "Ankle and Foot Joints",
+      "section_id": "10",
+      "origin": "Calcaneal tuberosity, plantar aponeurosis and the intermuscular septa.",
+      "insertion": "Sides of the middle phalanges of the lateral four toes, each tendon splitting to let the flexor digitorum longus tendon pass through.",
+      "action": "Flexion of the lateral four toes at the proximal interphalangeal and metatarsophalangeal joints. Acts as a tie beam supporting both longitudinal arches.",
+      "nerve_innervation": "Medial plantar nerve (S1-S2)",
+      "notes": "Re-sourced 2026-09-16 against three .gov sources: StatPearls NBK539705 (Foot Muscles) for attachments, NBK537292 (Foot Nerves) confirming medial plantar supply, and NBK587361 (Arches of the Foot) for the action and the tie-beam role. The split-tendon arrangement mirrors flexor digitorum superficialis in the hand. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Abductor Digiti Minimi",
+      "section": "Ankle and Foot Joints",
+      "section_id": "10",
+      "origin": "Calcaneal tuberosity, plantar aponeurosis and the intermuscular septa.",
+      "insertion": "Lateral side of the base of the proximal phalanx of the 5th toe.",
+      "action": "Abduction of the little toe at the metatarsophalangeal joint; acts as a tie beam maintaining the lateral longitudinal arch.",
+      "nerve_innervation": "Lateral plantar nerve (S1-S3)",
+      "notes": "Re-sourced 2026-09-16 against three .gov sources: StatPearls NBK539705, NBK537292 and NBK587361. SOURCE CONFLICT on the insertion, not resolved: NBK539705 gives the base of the 5TH METATARSAL, while NBK587361 and the conventional account give the proximal phalanx of the 5th toe; the phalangeal insertion is recorded, since a muscle named for abducting the toe must reach it. Origin now includes both calcaneal tubercles and the septa. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "FlexorHallucisBrevis",
+      "section": "Ankle and Foot Joints",
+      "section_id": "10",
+      "origin": "Plantar surfaces of the cuboid and the lateral cuneiform, with a slip from the tendon of tibialis posterior.",
+      "insertion": "Medial and lateral sides of the base of the proximal phalanx of the great toe, each tendon containing a sesamoid bone.",
+      "action": "Flexion of the great toe at the metatarsophalangeal joint; supports the medial longitudinal arch.",
+      "nerve_innervation": "Medial plantar nerve (S1-S2)",
+      "notes": "Re-sourced 2026-09-16 against three .gov sources: StatPearls NBK539705, NBK537292 and NBK587361. The two sesamoids under the first metatarsal head lie within this muscle's tendons - the site of sesamoiditis and of turf toe. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "AbductorHallucis",
+      "section": "Ankle and Foot Joints",
+      "section_id": "10",
+      "origin": "Calcaneal tuberosity, flexor retinaculum and plantar aponeurosis.",
+      "insertion": "Medial side of the base of the proximal phalanx of the great toe.",
+      "action": "Abduction of the great toe at the metatarsophalangeal joint, with assistance in flexion; acts as a tie beam for the medial longitudinal arch.",
+      "nerve_innervation": "Medial plantar nerve (S1-S2)",
+      "notes": "Re-sourced 2026-09-16 against three .gov sources: StatPearls NBK539705, NBK537292 and NBK587361. The flexor retinaculum in the origin is NBK539705's. Its bulk overlies the tarsal tunnel, which is why it matters in tarsal tunnel syndrome. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "FlexorDigitiMinimi (Foot)",
+      "section": "Ankle and Foot Joints",
+      "section_id": "10",
+      "origin": "Base of the 5th metatarsal and the adjacent plantar aponeurosis.",
+      "insertion": "Lateral side of the base of the proximal phalanx of the 5th toe.",
+      "action": "Flexion of the little toe at the metatarsophalangeal joint; supports the lateral longitudinal arch as a tie beam.",
+      "nerve_innervation": "Lateral plantar nerve (S2-S3)",
+      "notes": "Re-sourced 2026-09-16 against three .gov sources: StatPearls NBK539705, NBK537292 and NBK587361. Full name is flexor digiti minimi BREVIS; the entry name is left unchanged because it doubles as the 3D mesh lookup key. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "QuadratusPlantae",
+      "section": "Ankle and Foot Joints",
+      "section_id": "10",
+      "origin": "Medial and lateral plantar surfaces of the calcaneus.",
+      "insertion": "Lateral border of the tendon of flexor digitorum longus.",
+      "action": "Redirects the oblique pull of flexor digitorum longus into the sagittal plane, so the toes flex straight rather than deviating medially; assists flexion of the distal phalanges of the lateral four toes.",
+      "nerve_innervation": "Lateral plantar nerve (S1-S3)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK539705 and NBK537292. The typo 'saggital' was corrected earlier the same day. Also called flexor accessorius, which names its function better than its shape does. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Lumbricals (Foot)",
+      "section": "Ankle and Foot Joints",
+      "section_id": "10",
+      "origin": "Tendons of flexor digitorum longus.",
+      "insertion": "Medial extensor expansions on the proximal phalanges of the lateral four toes.",
+      "action": "Flexion at the metatarsophalangeal joints with extension at the interphalangeal joints; prevent buckling of the toes and give dynamic support to all the arches.",
+      "nerve_innervation": "1st lumbrical: medial plantar nerve (S1-S2). 2nd, 3rd and 4th: lateral plantar nerve (S2-S3)",
+      "notes": "Re-sourced 2026-09-16 against three .gov sources: StatPearls NBK539705, NBK537292 and NBK587361. All confirm the one-medial, three-lateral split - the mirror of the hand's two and two. The anti-buckling role is NBK587361's. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "AdductorHallucis",
+      "section": "Ankle and Foot Joints",
+      "section_id": "10",
+      "origin": "Oblique head: bases of the 2nd-4th metatarsals. Transverse head: metatarsophalangeal ligaments of the 3rd-5th toes.",
+      "insertion": "Lateral side of the base of the proximal phalanx of the great toe.",
+      "action": "Adduction of the great toe at the metatarsophalangeal joint; acts as an intersegmental tie and a tie beam for the anterior transverse arch.",
+      "nerve_innervation": "Deep branch of the lateral plantar nerve (S2-S3)",
+      "notes": "Re-sourced 2026-09-16 against three .gov sources: StatPearls NBK539705, NBK537292 and NBK587361. The transverse head attaches at the metatarsophalangeal ligaments of those toes, correcting the original entry's reference to 'the 3rd, 4th and 5th phalanges'. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "PlantarInterossei",
+      "section": "Ankle and Foot Joints",
+      "section_id": "10",
+      "origin": "Medial sides of the shafts and bases of the 3rd, 4th and 5th metatarsals.",
+      "insertion": "Medial sides of the bases of the proximal phalanges of the 3rd, 4th and 5th toes.",
+      "action": "Adduction of the 3rd, 4th and 5th toes toward the axis of the foot, taken through the 2nd toe; flexion at the metatarsophalangeal joints, and assistance to the lumbricals in extending the interphalangeal joints.",
+      "nerve_innervation": "Lateral plantar nerve (S2-S3)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK539705 and NBK537292. Three muscles, confirmed by NBK539705 - note this differs from the hand, where the number of palmar interossei is itself disputed between three and four. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Dorsal Interossei (Foot)",
+      "section": "Ankle and Foot Joints",
+      "section_id": "10",
+      "origin": "Each by two heads from the adjacent sides of the shafts of two metatarsals.",
+      "insertion": "Bases of the proximal phalanges and the extensor expansions of the 2nd, 3rd and 4th toes - the 1st to the medial side of the 2nd toe, the others to the lateral sides.",
+      "action": "Abduction of the 2nd, 3rd and 4th toes away from the axis of the foot, taken through the 2nd toe; assist flexion at the metatarsophalangeal joints and dorsiflexion by the extensor tendons. Act as intersegmental ties for the anterior transverse arch.",
+      "nerve_innervation": "Lateral plantar nerve (S2-S3)",
+      "notes": "Re-sourced 2026-09-16 against three .gov sources: StatPearls NBK539705, NBK537292 and NBK587361. Four muscles. The reference axis in the foot is the 2nd toe, whereas in the hand it is the 3rd finger - the paired entries state this explicitly. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "ExtensorDigitorumBrevis",
+      "section": "Ankle and Foot Joints",
+      "section_id": "10",
+      "origin": "Dorsolateral surface of the calcaneus, the inferior extensor retinaculum and the talocalcaneal interosseous ligament.",
+      "insertion": "Extensor expansions of the 2nd-4th toes; the most medial slip, named extensor hallucis brevis, reaches the base of the proximal phalanx of the great toe.",
+      "action": "Extension of the 2nd-4th toes; the medial slip extends the great toe at the metatarsophalangeal joint.",
+      "nerve_innervation": "Deep fibular (peroneal) nerve (L5-S1)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK539705 and NBK546698. NBK539705 adds the inferior extensor retinaculum and the talocalcaneal interosseous ligament to the origin. NBK539705 treats extensor hallucis brevis as a separate muscle; this entry keeps it as the medial slip, the other accepted convention, and says so. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Piriformis",
+      "section": "Pelvic Girdle and Hip Joint",
+      "section_id": "8",
+      "origin": "Anterior surface of the sacrum, the gluteal surface of the ilium near the margin of the greater sciatic notch, the capsule of the sacroiliac joint, and sometimes the sacrotuberous ligament.",
+      "insertion": "Superior aspect of the greater trochanter of the femur, with the tendons of obturator internus and the gemelli.",
+      "action": "External rotation of the thigh with the hip extended; abduction of the flexed hip, which in walking shifts body weight and prevents falling. Stabilises the femoral head in the acetabulum.",
+      "nerve_innervation": "Anterior rami of S1-S2 (nerve to piriformis); variants from S2 alone or L5-S2",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK519497 (Piriformis Muscle) and NBK589636 (Obturator Muscles), the latter reporting that the obturator internus and piriformis tendons merge before insertion in about 10 percent of people. The sciatic nerve usually leaves the pelvis below this muscle, but in roughly one in five people it passes above or through it, or divides that high - the anatomical basis of piriformis syndrome. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Gemellus Superior",
+      "section": "Pelvic Girdle and Hip Joint",
+      "section_id": "8",
+      "origin": "Ischial spine.",
+      "insertion": "Medial surface of the greater trochanter of the femur, in conjunction with obturator internus.",
+      "action": "External rotation of the hip; abduction of the flexed hip; stabilises the femoral head in the acetabulum.",
+      "nerve_innervation": "Nerve to obturator internus (L4-S2)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK557420 (Gemelli Muscles) and NBK589636 (Obturator Muscles), the latter confirming that the nerve to obturator internus also supplies the superior gemellus in most cases. Root range widened from L5-S2 to L4-S2 per NBK557420. The 'contribution from the nerve to quadratus femoris in about 60 percent' claim in the original entry is carried by neither .gov source and has been dropped pending re-sourcing. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Obturator Internus",
+      "section": "Pelvic Girdle and Hip Joint",
+      "section_id": "8",
+      "origin": "Pelvic surface of the obturator membrane and the rami surrounding the obturator foramen.",
+      "insertion": "Medial surface of the greater trochanter of the femur, by a conjoint tendon with the gemelli.",
+      "action": "External rotation of the hip, particularly when extended; abduction of the flexed hip; stabilises the femoral head in the acetabulum.",
+      "nerve_innervation": "Nerve to obturator internus (L5-S2)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK589636 (Obturator Muscles) and NBK557420. All four fields confirmed. NBK589636 notes the obturator internus and piriformis tendons merge before insertion in about 10 percent of people. The muscle turns sharply around the ischium as it leaves the pelvis through the lesser sciatic foramen. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Gemellus Inferior",
+      "section": "Pelvic Girdle and Hip Joint",
+      "section_id": "8",
+      "origin": "Ischial tuberosity, at its upper part.",
+      "insertion": "Medial surface of the greater trochanter of the femur, by the conjoint tendon shared with obturator internus and gemellus superior.",
+      "action": "External rotation of the hip; abduction of the flexed hip; stabilises the femoral head in the acetabulum.",
+      "nerve_innervation": "Nerve to quadratus femoris (L4-S1)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK557420 (Gemelli Muscles) and NBK589636 (Obturator Muscles). The split from its twin is confirmed by both: the SUPERIOR gemellus takes the nerve to obturator internus, the INFERIOR the nerve to quadratus femoris. The two gemelli and obturator internus together form the triceps coxae. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Obturator Externus",
+      "section": "Pelvic Girdle and Hip Joint",
+      "section_id": "8",
+      "origin": "Bony margin of the obturator foramen on the external surface of the pelvis, with fibres from the obturator membrane.",
+      "insertion": "Trochanteric fossa on the medial surface of the greater trochanter, by a cylindrical tendon.",
+      "action": "External rotation of the hip in neutral or flexed positions; assists adduction of the flexed hip; stabilises the femoral head.",
+      "nerve_innervation": "Obturator nerve, posterior branch (L2-L4)",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK589636 (Obturator Muscles) and NBK500008 (Femoral Muscles) for the obturator nerve's posterior division at L2-L4. The only deep external rotator supplied from the lumbar rather than the sacral plexus, which is why it groups developmentally with the adductors. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Quadratus Femoris",
+      "section": "Pelvic Girdle and Hip Joint",
+      "section_id": "8",
+      "origin": "Upper part of the lateral border of the ischial tuberosity.",
+      "insertion": "Quadrate tubercle on the intertrochanteric crest of the femur, above the adductor magnus attachment.",
+      "action": "External rotation of the thigh at the hip; stabilises the femoral head in the acetabulum; assists adduction.",
+      "nerve_innervation": "Nerve to quadratus femoris (L4-S1)",
+      "notes": "Re-sourced 2026-09-16 to two approved sources from different publishers: Kenhub for the attachments and StatPearls NBK557420 (Gemelli Muscles, .gov) for the nerve, which it shares with the inferior gemellus; the action is corroborated by NBK470555 (Hip Joint). This entry previously had no approved source for its attachments at all. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    }
+  ],
+  "bony_landmarks": [
+    {
+      "title": "Section 11: Addendum (Bony Landmarks)",
+      "content": "Section 11: Addendum (Bony Landmarks)",
+      "section": "Bony Landmarks",
+      "section_id": "11"
+    },
+    {
+      "title": "Bony Landmarks of the Clavicle",
+      "content": "Bony Landmarks of the Clavicle\na Sternal end\nb Deltoid tubercle\nc Acromial end\nd Conoid tubercle\ne Trapezoid line\nf Subclavian groove\ng Costal tubercle",
+      "section": "Bony Landmarks",
+      "section_id": "11"
+    },
+    {
+      "title": "Bony Landmarks of the Scapula",
+      "content": "Bony Landmarks of the Scapula\na Superior angle\nb Medial border\nc Inferior angle\nd Lateral border\ne Infraglenoid tubercle\nf Glenoid fossa\ng Supraglenoid tubercle\nh Coracoid process\ni Acromion process\nj Suprascapular notch\nk Supraspinous fossa\nl Spine of scapula\nm Infraspinous fossa\nn Subscapular fossa",
+      "section": "Bony Landmarks",
+      "section_id": "11"
+    },
+    {
+      "title": "Bony Landmarks of the Humerus",
+      "content": "Bony Landmarks of the Humerus\na Lesser tubercle\nb Intertubercular groove\nc Coronoid fossa\nd Medial supracondylar ridge\ne Medial epicondyle\nf Trochlea\ng Capitulum\nh Lateral epicondyle\ni Lateral supracondylar ridge\nj Deltoid tuberosity\nk Greater tubercle\nl Head\nm Neck\nn Shaft\no Olecranon fossa",
+      "section": "Bony Landmarks",
+      "section_id": "11"
+    },
+    {
+      "title": "Bony Landmarks of the Radius",
+      "content": "Bony Landmarks of the Radius\na Head\nb Neck\nc Radial tuberosity\nd Interosseous crest\ne Ulnar notch\nf Styloid process\ng Dorsal tubercle\nh Groove for extensor carpi radialis brevis\ni Groove for extensor carpi radialis longus\nj Groove for extensor pollicis longus, extensor digitorum, and extensor indicis",
+      "section": "Bony Landmarks",
+      "section_id": "11"
+    },
+    {
+      "title": "Bony Landmarks of the Ulna",
+      "content": "Bony Landmarks of the Ulna\na Olecranon process\nb Semilunar notch\nc Coronoid process\nd Radial notch\ne Ulnar tuberosity\nf Supinator crest\ng Supinator fossa\nh Interosseous crest\ni Head\nj Styloid process",
+      "section": "Bony Landmarks",
+      "section_id": "11"
+    },
+    {
+      "title": "Bony Landmarks of the Hand",
+      "content": "Bony Landmarks of the Hand\na Scaphoid\nb Lunate\nc Triquetrum\nd Pisiform\ne Trapezium\nf Trapezoid\ng Capitate\nh Hamate (hook of hamate)\ni Metacarpals (base, shaft, head)\nj Proximal phalanges\nk Middle phalanges\nl Distal phalanges",
+      "section": "Bony Landmarks",
+      "section_id": "11"
+    },
+    {
+      "title": "Bony Landmarks of the Cervical Vertebrae",
+      "content": "Bony Landmarks of the Cervical Vertebrae\na Body\nb Pedicle\nc Transverse process\nd Transverse foramen\ne Lamina\nf Superior articular process\ng Inferior articular process\nh Spinous process (bifid)\ni Vertebral foramen",
+      "section": "Bony Landmarks",
+      "section_id": "11"
+    },
+    {
+      "title": "Bony Landmarks of the Atlas and Axis Vertebrae",
+      "content": "Bony Landmarks of the Atlas and Axis Vertebrae\nAtlas\na Anterior arch\nb Anterior tubercle\nc Facet for dens of axis\nd Superior articular process\ne Inferior articular process\nf Transverse process\ng Transverse foramen\nh Posterior arch\ni Posterior tubercle\nj Vertebral foramen\nAxis\nk Dens (odontoid process)\nl Superior articular process\nm Inferior articular process\nn Transverse process\no Transverse foramen\np Body\nq Pedicle\nr Lamina\ns Spinous process (bifid)\nt Vertebral foramen",
+      "section": "Bony Landmarks",
+      "section_id": "11"
+    },
+    {
+      "title": "Bony Landmarks of the Thoracic Vertebrae",
+      "content": "Bony Landmarks of the Thoracic Vertebrae\na Body\nb Superior costal hemifacet\nc Inferior costal hemifacet\nd Pedicle\ne Transverse process\nf Transverse costal facet\ng Lamina\nh Superior articular process\ni Inferior articular process\nj Spinous process\nk Vertebral foramen",
+      "section": "Bony Landmarks",
+      "section_id": "11"
+    },
+    {
+      "title": "Bony Landmarks of the Lumbar Vertebrae",
+      "content": "Bony Landmarks of the Lumbar Vertebrae\na Body\nb Pedicle\nc Transverse process\nd Lamina\ne Superior articular process\nf Inferior articular process\ng Spinous process\nh Vertebral foramen",
+      "section": "Bony Landmarks",
+      "section_id": "11"
+    },
+    {
+      "title": "Bony Landmarks of the Ilium, Ischium, and Pubis",
+      "content": "Bony Landmarks of the Ilium, Ischium, and Pubis\nIlium\na Iliac fossa (wing of ilium)\nb Iliac crest\nc Tubercle of iliac crest\nd Anterior superior iliac spine (ASIS)\ne Anterior inferior iliac spine (AIIS)\nf Iliopubic (pectineal) eminence\ng Sacroiliac articulation\nh Iliac tuberosity\ni Posterior superior iliac spine (PSIS)\nj Posterior inferior iliac spine (PIIS)\nk Greater sciatic notch\nl External surface (wing of ilium)\nm Posterior gluteal line\nn Anterior gluteal line\no Inferior gluteal line\nIschium\np Spine of the ischium\nq Lesser sciatic notch\nr Body of ischium\ns Ischial tuberosity\nt Ramus of the ischium\nPubis\nu Inferior ramus of the pubis\nv Body of pubis\nw Superior ramus of the pubis\nx Pubic tubercle\ny Pubic crest\nz Pectineal line\naa Acetabulum\nbb Obturator foramen",
+      "section": "Bony Landmarks",
+      "section_id": "11"
+    },
+    {
+      "title": "Bony Landmarks of the Sacrum and Coccyx",
+      "content": "Bony Landmarks of the Sacrum and Coccyx\nSacrum (5 fused vertebrae)\na Lumbosacral articulation\nb Articulating facets\nc Spinous processes\nd Sacroiliac articulation\ne Foramina\nf Coccyx (4 fused vertebrae)",
+      "section": "Bony Landmarks",
+      "section_id": "11"
+    },
+    {
+      "title": "Bony Landmarks of the Femur",
+      "content": "Bony Landmarks of the Femur\na Head\nb Fovea of the head\nc Neck\nd Greater trochanter\ne Lesser trochanter\nf Intertrochanteric line\ng Shaft\nh Lateral condyle\ni Lateral epicondyle\nj Medial condyle\nk Medial epicondyle\nl Articular surface of the patellofemoral joint\nm Intertrochanteric crest\nn Quadrate tubercle\no Gluteal tuberosity\np Pectineal line\nq Medial lip of the linea aspera\nr Lateral lip of the linea aspera\ns Medial supracondylar ridge\nt Lateral supracondylar ridge\nu Popliteal surface\nv Adductor tubercle\nw Intercondylar fossa\nx Articular surfaces of the tibiofemoral joint",
+      "section": "Bony Landmarks",
+      "section_id": "11"
+    },
+    {
+      "title": "Bony Landmarks of the Tibia",
+      "content": "Bony Landmarks of the Tibia\na Intercondylar eminence\nb Medial condyle\nc Lateral condyle\nd Tuberosity\ne Gerdy's tubercle\nf Anterior border\ng Interosseous crest\nh Shaft\ni Medial malleolus\nj Medial facet (articular surface)\nk Lateral facet (articular surface)\nl Anterior intercondylar area\nm Posterior intercondylar area\nn Superior fibular articulation\no Soleal line\np Inferior fibular articulation\nq Facet for articulation with the talus",
+      "section": "Bony Landmarks",
+      "section_id": "11"
+    },
+    {
+      "title": "Bony Landmarks of the Fibula",
+      "content": "Bony Landmarks of the Fibula\na Head\nb Styloid process\nc Interosseous crest\nd Shaft\ne Lateral malleolus\nf Facet for articulation with the talus",
+      "section": "Bony Landmarks",
+      "section_id": "11"
+    },
+    {
+      "title": "Bony Landmarks of the Patella",
+      "content": "Bony Landmarks of the Patella\na Base\nb Apex\nc Facet for lateral condyle of femur\nd Facet for medial condyle of femur\ne Vertical ridge",
+      "section": "Bony Landmarks",
+      "section_id": "11"
+    },
+    {
+      "title": "Bony Landmarks of the Foot",
+      "content": "Bony Landmarks of the Foot\na Calcaneus\nb Calcaneal tuberosity\nc Medial calcaneal tubercle\nd Lateral calcaneal tubercle\ne Sustentaculum tali\nf Talus\ng Navicular\nh Navicular tuberosity\ni Medial cuneiform\nj Middle cuneiform\nk Lateral cuneiform\nl Cuboid\nm Peroneal groove of cuboid\nn Metatarsals\no Proximal phalanges\np Middle phalanges\nq Distal phalanges\nr Sesamoid bones of big toe\ns Tuberosity of 5th metatarsal",
+      "section": "Bony Landmarks",
+      "section_id": "11"
+    }
+  ]
+}

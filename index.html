@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Skeleton Model</title>
+
+<!--
+  Content Security Policy.
+  'self' only: no inline scripts, no inline styles, no eval, no third-party
+  origins. Every script in this app is an external ES module and every style
+  is in styles.css, specifically so this policy can stay this strict — a CSP
+  with 'unsafe-inline' is close to no CSP at all.
+  serve.py sends the same policy as a real header; this meta tag keeps it in
+  force if the files are ever served by something else.
+  frame-ancestors is deliberately NOT repeated here (2026-07-31) — the CSP
+  spec has browsers ignore that directive when it arrives via <meta> and log
+  a console warning about it every load. It is still fully enforced by the
+  real header serve.py sends for every response.
+-->
+<meta http-equiv="Content-Security-Policy" content="
+  default-src 'none';
+  script-src 'self';
+  style-src 'self';
+  img-src 'self' data:;
+  font-src 'self';
+  connect-src 'self';
+  base-uri 'none';
+  form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="dark">
+<!-- Empty data-URI icon: tells the browser "no favicon", so it stops
+     auto-requesting /favicon.ico (which this app doesn't have) and logging a
+     404 for it on every load. Allowed under the CSP's img-src 'self' data:. -->
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="canvas-host"></div>
+
+<header id="topbar">
+  <span class="title">Skeleton Model</span>
+  <span class="tag">Prototype</span>
+  <div class="spacer"></div>
+  <button id="searchBtn" class="icon-btn" type="button" aria-label="Search structures">Search</button>
+  <button id="sidesBtn" class="icon-btn subtle" type="button" aria-pressed="false"
+          aria-label="Select both sides of the body together">Both sides</button>
+  <button id="xrayBtn" class="icon-btn subtle" type="button" aria-pressed="false"
+          aria-label="Toggle x-ray view of the skeleton">X-ray</button>
+  <button id="resetViewBtn" class="icon-btn subtle" type="button"
+          aria-label="Recentre the model">Recentre</button>
+  <button id="creditsBtn" class="icon-btn subtle" type="button"
+          aria-label="Credits and licences">Credits</button>
+  <!-- "Clear data" moved into the Credits screen 2026-10-14: at 390px it was
+       the lone button on a second row of the top bar. -->
+</header>
+
+<!-- Layer toggles are rendered by ui.js from config.js -->
+<nav id="layers" aria-label="Anatomical layers"></nav>
+
+<div id="hint" hidden></div>
+
+<div id="loading" hidden></div>
+
+<!-- Search -->
+<div id="search" role="dialog" aria-label="Search structures">
+  <div class="search-bar">
+    <input id="searchInput" type="search" placeholder="Search muscles and bones"
+           autocomplete="off" autocorrect="off" spellcheck="false" maxlength="100"
+           aria-label="Search muscles and bones">
+    <button id="searchClose" class="icon-btn" type="button" aria-label="Close search">Close</button>
+  </div>
+  <div id="searchResults"></div>
+</div>
+
+<!-- Structure detail -->
+<aside id="info" aria-label="Structure detail">
+  <div class="info-head">
+    <div>
+      <h2 id="infoTitle"></h2>
+      <p id="infoSub"></p>
+    </div>
+    <button id="infoClose" class="icon-btn" type="button" aria-label="Close detail">Close</button>
+  </div>
+  <div id="infoBody"></div>
+</aside>
+
+<div id="disclaimer" class="overlay" hidden></div>
+<div id="credits" class="overlay" hidden></div>
+<div id="error" class="overlay" hidden></div>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
