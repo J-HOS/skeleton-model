@@ -40,25 +40,48 @@
 
 <div id="canvas-host"></div>
 
+<!--
+  2026-10-14: every control lives in one dropdown from the top-left (Jake:
+  "throw all of the buttons into a clean and streamlined drop down menu").
+  Button ids are unchanged, so main.js wires them exactly as before; the
+  layer toggles are still rendered into #layers by ui.js, now inside the menu.
+-->
 <header id="topbar">
-  <span class="title">Skeleton Model</span>
-  <span class="tag">Prototype</span>
-  <div class="spacer"></div>
-  <button id="searchBtn" class="icon-btn" type="button" aria-label="Search structures">Search</button>
-  <button id="sidesBtn" class="icon-btn subtle" type="button" aria-pressed="false"
-          aria-label="Select both sides of the body together">Both sides</button>
-  <button id="xrayBtn" class="icon-btn subtle" type="button" aria-pressed="false"
-          aria-label="Toggle x-ray view of the skeleton">X-ray</button>
-  <button id="resetViewBtn" class="icon-btn subtle" type="button"
-          aria-label="Recentre the model">Recentre</button>
-  <button id="creditsBtn" class="icon-btn subtle" type="button"
-          aria-label="Credits and licences">Credits</button>
-  <!-- "Clear data" moved into the Credits screen 2026-10-14: at 390px it was
-       the lone button on a second row of the top bar. -->
-</header>
+  <div class="menu-wrap">
+    <button id="menuBtn" class="menu-btn" type="button" aria-haspopup="true"
+            aria-expanded="false" aria-controls="menu" aria-label="Menu">
+      <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+      <span class="title">Skeleton Model</span>
+    </button>
+    <div id="menu" class="menu" hidden>
+      <button id="searchBtn" class="menu-item" type="button" aria-label="Search structures">
+        <span>Search</span><span class="kbd" aria-hidden="true">/</span>
+      </button>
 
-<!-- Layer toggles are rendered by ui.js from config.js -->
-<nav id="layers" aria-label="Anatomical layers"></nav>
+      <div class="menu-section" aria-hidden="true">Layers</div>
+      <!-- Layer toggles are rendered by ui.js from config.js -->
+      <div id="layers" role="group" aria-label="Anatomical layers"></div>
+
+      <div class="menu-section" aria-hidden="true">View</div>
+      <button id="sidesBtn" class="menu-item" type="button" aria-pressed="false"
+              aria-label="Select both sides of the body together">
+        <span>Both sides</span><span class="switch" aria-hidden="true"></span>
+      </button>
+      <button id="xrayBtn" class="menu-item" type="button" aria-pressed="false"
+              aria-label="Toggle x-ray view of the skeleton">
+        <span>X-ray</span><span class="switch" aria-hidden="true"></span>
+      </button>
+      <button id="resetViewBtn" class="menu-item" type="button"
+              aria-label="Recentre the model">Recentre view</button>
+
+      <div class="menu-sep" aria-hidden="true"></div>
+      <button id="creditsBtn" class="menu-item" type="button"
+              aria-label="Credits and licences">Credits &amp; licences</button>
+      <!-- "Clear data" lives on the Credits screen (moved 2026-10-14). -->
+      <p class="menu-foot">Prototype</p>
+    </div>
+  </div>
+</header>
 
 <div id="hint" hidden></div>
 

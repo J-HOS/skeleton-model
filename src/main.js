@@ -207,7 +207,32 @@ function closeInfoPanel() {
   state.viewer?.select(null);
 }
 
+/* ------------------------------------------------------------------ menu */
+// The dropdown that holds every control (2026-10-14). Toggles (layers, Both
+// sides, X-ray, Deep view) leave it open so several can be flipped in a row;
+// one-shot actions (Search, Recentre, Credits) close it.
+function isMenuOpen() { return !byId('menu').hidden; }
+function setMenu(open) {
+  const menu = byId('menu');
+  if (menu.hidden === !open) return;
+  menu.hidden = !open;
+  byId('menuBtn').setAttribute('aria-expanded', String(open));
+  if (open) menu.querySelector('button:not([disabled])')?.focus({ preventScroll: true });
+}
+
+function wireMenu() {
+  byId('menuBtn').addEventListener('click', () => setMenu(!isMenuOpen()));
+  // Any press outside the menu closes it (including on the model itself).
+  document.addEventListener('pointerdown', (event) => {
+    if (isMenuOpen() && !event.target.closest('.menu-wrap')) setMenu(false);
+  });
+  for (const id of ['searchBtn', 'resetViewBtn', 'creditsBtn']) {
+    byId(id).addEventListener('click', () => setMenu(false));
+  }
+}
+
 function wireInterface() {
+  wireMenu();
   byId('searchBtn').addEventListener('click', ui.openSearch);
   byId('searchClose').addEventListener('click', ui.closeSearch);
   byId('infoClose').addEventListener('click', closeInfoPanel);
@@ -269,6 +294,7 @@ function wireInterface() {
 
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
+      if (isMenuOpen()) { setMenu(false); byId('menuBtn').focus(); return; }
       if (ui.closeCredits()) return;
       if (ui.isSearchOpen()) ui.closeSearch();
       else closeInfoPanel();
@@ -276,6 +302,7 @@ function wireInterface() {
     // "/" is the conventional focus-search shortcut; ignore it while typing.
     if (event.key === '/' && !['INPUT', 'TEXTAREA'].includes(event.target.tagName)) {
       event.preventDefault();
+      setMenu(false);
       ui.openSearch();
     }
   });

@@ -606,7 +606,18 @@ export class Viewer {
       }
 
       const opacity = this._opacityFor(mesh, isSelected);
-      material.transparent = opacity < 1;
+      const wantTransparent = opacity < 1;
+      // Flipping `transparent` MUST force a shader rebuild (fixed 2026-10-14,
+      // "X-ray off leaves half the skeleton see-through"). three.js does not
+      // treat `transparent` as a reason to recompile, and while a
+      // double-sided material is transparent it draws it in two passes,
+      // leaving the shader compiled for FrontSide only. Back to opaque, that
+      // stale shader kept rendering the body's left-side bones - whose
+      // triangles face the other way - dark and see-through.
+      if (material.transparent !== wantTransparent) {
+        material.transparent = wantTransparent;
+        material.needsUpdate = true;
+      }
       material.opacity = opacity;
       // Disabling depth-write on transparent meshes lets structures behind
       // them draw normally instead of being occluded by a mostly-invisible

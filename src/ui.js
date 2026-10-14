@@ -82,7 +82,9 @@ export function renderLayers(state, onToggle, peel = null) {
           // report; pre-existing, not introduced this session.
           el('span', { className: `dot dot-${layer.id}` }),
           el('span', { text: layer.label }),
-          available ? null : el('span', { className: 'lock', text: 'soon' }),
+          available
+            ? el('span', { className: 'switch', attrs: { 'aria-hidden': 'true' } })
+            : el('span', { className: 'lock', text: 'soon' }),
         ]
       );
     });
@@ -106,7 +108,9 @@ export function renderLayers(state, onToggle, peel = null) {
       },
       [
         el('span', { className: 'dot dot-depth' }),
-        el('span', { text: on ? `Deep: layer ${peel.depth}` : 'Deep view' }),
+        el('span', { text: 'Deep view' }),
+        // A cycle, not an on/off: the value shows where it is in the cycle.
+        el('span', { className: 'value', text: on ? `layer ${peel.depth} of ${peel.deepest}` : 'off' }),
       ]
     ));
   }

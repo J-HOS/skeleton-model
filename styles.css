@@ -39,18 +39,9 @@ canvas { display: block; touch-action: none; }
 
 /* ------------------------------------------------------------------ chrome */
 
-#topbar {
-  position: absolute; top: 0; left: 0; right: 0;
-  display: flex; align-items: center; gap: 10px;
-  padding: 10px 14px; z-index: 5;
-  background: linear-gradient(180deg, rgba(14,17,22,.94), rgba(14,17,22,0));
-}
-#topbar .title { font-weight: 650; letter-spacing: .2px; }
-#topbar .tag {
-  font-size: 11px; color: var(--muted);
-  border: 1px solid var(--line); padding: 2px 7px; border-radius: 20px;
-}
-#topbar .spacer { flex: 1; }
+/* 2026-10-14: the top bar is now just the menu button, top-left. It no
+   longer spans the width, so the model is not covered by a gradient strip. */
+#topbar { position: absolute; top: 12px; left: 12px; z-index: 9; }
 
 .icon-btn {
   min-height: var(--touch); padding: 0 14px;
@@ -63,19 +54,85 @@ canvas { display: block; touch-action: none; }
 .icon-btn.subtle { color: var(--muted); }
 .icon-btn.active { border-color: var(--accent); color: var(--accent); }
 
-/* ------------------------------------------------------------------ layers */
+/* -------------------------------------------------------------------- menu */
+/* Every control, in one dropdown from the top-left (2026-10-14). */
 
-#layers {
-  position: absolute; left: 12px; top: 68px; z-index: 6;
-  display: flex; flex-direction: column; gap: 7px;
-}
-.layer-btn {
-  display: flex; align-items: center; gap: 9px;
-  min-width: 140px; min-height: var(--touch); padding: 8px 12px;
-  background: var(--panel); color: var(--text);
+.menu-wrap { position: relative; }
+.menu-btn {
+  display: flex; align-items: center; gap: 11px;
+  min-height: var(--touch); padding: 0 16px 0 14px;
+  background: rgba(23,28,36,.92); color: var(--text);
   border: 1px solid var(--line); border-radius: var(--radius);
-  font: inherit; font-size: 13px; cursor: pointer; transition: .15s;
+  font: inherit; cursor: pointer;
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
 }
+.menu-btn:hover, .menu-btn[aria-expanded="true"] { border-color: var(--accent); }
+.menu-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.menu-btn .title { font-weight: 650; font-size: 14.5px; letter-spacing: .2px; }
+
+/* Three bars that fold into an X while the menu is open. */
+.menu-icon { display: grid; gap: 4px; width: 16px; }
+.menu-icon span {
+  display: block; height: 2px; border-radius: 2px; background: currentColor;
+  transition: transform .18s ease, opacity .18s ease;
+}
+.menu-btn[aria-expanded="true"] .menu-icon span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.menu-btn[aria-expanded="true"] .menu-icon span:nth-child(2) { opacity: 0; }
+.menu-btn[aria-expanded="true"] .menu-icon span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+.menu {
+  position: absolute; top: calc(100% + 8px); left: 0;
+  width: 270px; max-width: calc(100vw - 24px);
+  max-height: calc(100vh - 84px); overflow-y: auto; overscroll-behavior: contain;
+  padding: 6px;
+  background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+  box-shadow: 0 18px 44px rgba(0,0,0,.5);
+  transform-origin: top left; animation: menu-in .14s ease-out;
+}
+@keyframes menu-in { from { opacity: 0; transform: translateY(-4px) scale(.98); } }
+
+.menu-section {
+  padding: 12px 10px 4px;
+  font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--muted);
+}
+.menu-sep { height: 1px; margin: 6px 4px; background: var(--line); }
+.menu-foot { margin: 0; padding: 6px 10px 4px; font-size: 11px; color: var(--muted); }
+
+/* Rows: the fixed items in index.html and the layer rows ui.js renders. */
+#layers { display: flex; flex-direction: column; }
+.menu-item, .layer-btn {
+  display: flex; align-items: center; gap: 10px;
+  width: 100%; min-height: var(--touch); padding: 0 10px;
+  background: transparent; color: var(--text);
+  border: 0; border-radius: 9px;
+  font: inherit; font-size: 14px; text-align: left; cursor: pointer;
+}
+.menu-item:hover, .layer-btn:hover { background: var(--panel-2); }
+.menu-item:focus-visible, .layer-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.menu-item .kbd {
+  margin-left: auto; padding: 0 7px; font-size: 11px; color: var(--muted);
+  border: 1px solid var(--line); border-radius: 6px;
+}
+/* The "/" shortcut means nothing on a touch screen. */
+@media (hover: none) { .menu-item .kbd { display: none; } }
+.layer-btn .value { margin-left: auto; font-size: 12.5px; color: var(--muted); }
+.layer-btn[aria-pressed="true"] .value { color: var(--accent); }
+
+/* On/off switch, driven by the row's aria-pressed - one source of truth. */
+.switch {
+  position: relative; flex: none; margin-left: auto;
+  width: 34px; height: 20px; border-radius: 20px; background: var(--line);
+  transition: background .15s;
+}
+.switch::after {
+  content: ""; position: absolute; top: 3px; left: 3px;
+  width: 14px; height: 14px; border-radius: 50%; background: var(--muted);
+  transition: transform .15s, background .15s;
+}
+[aria-pressed="true"] > .switch { background: rgba(34,211,238,.32); }
+[aria-pressed="true"] > .switch::after { transform: translateX(14px); background: var(--accent); }
+
 .layer-btn .dot {
   width: 11px; height: 11px; border-radius: 50%; flex: none;
   border: 1.5px solid rgba(255,255,255,.25);
@@ -89,13 +146,12 @@ canvas { display: block; touch-action: none; }
 .dot-ligaments { background: #d9b25a; }
 .dot-nerves    { background: #e8d44d; }
 .dot-vessels   { background: #4d7fe8; }
-.layer-btn.off { opacity: .45; }
 /* Depth view control (2026-10-14): half-filled dot = "one side peeled". */
 .dot-depth { background: linear-gradient(90deg, #c0392b 50%, #6b2a22 50%); }
 .layer-btn.off .dot { background: transparent !important; }
-.layer-btn.unavailable { cursor: not-allowed; opacity: .3; }
-.layer-btn .lock { margin-left: auto; font-size: 10px; color: var(--muted); }
-.layer-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.layer-btn.unavailable { cursor: not-allowed; opacity: .4; }
+.layer-btn.unavailable:hover { background: transparent; }
+.layer-btn .lock { margin-left: auto; font-size: 11px; color: var(--muted); }
 
 /* ------------------------------------------------------------------- hint */
 
@@ -221,17 +277,9 @@ canvas { display: block; touch-action: none; }
   #info { width: 100%; top: auto; height: 62vh; border-left: 0; border-top: 1px solid var(--line);
           border-radius: 18px 18px 0 0; transform: translateY(101%); }
   #info.open { transform: none; }
-  #layers { top: auto; bottom: 16px; flex-direction: row; flex-wrap: wrap; right: 12px; }
-  .layer-btn { min-width: 0; }
-  /* 2026-10-08: the Credits button made five, which overflowed a 390px bar
-     and stacked buttons on top of each other. Layers have already moved to
-     the bottom on phones, so the bar can wrap: title row, then buttons. */
-  #topbar { flex-wrap: wrap; row-gap: 6px; gap: 6px; padding: 8px 10px; }
-  #topbar .title { flex-basis: 100%; }
-  #topbar .tag, #topbar .spacer { display: none; }
-  #topbar .icon-btn { padding: 0 8px; white-space: nowrap; }
-  /* 2026-10-14: "Clear data" moved into Credits, so five buttons now fit on
-     one row under the title at 390px instead of wrapping to a third row. */
+  /* 2026-10-14: every control is in the menu, so the phone top-bar wrapping
+     rules (2026-10-08) and the bottom layer row are gone. */
+  #topbar { top: 10px; left: 10px; }
   .overlay { padding: 12px; }
   .credits-card { max-height: calc(100vh - 24px); }
 }
@@ -246,7 +294,7 @@ canvas { display: block; touch-action: none; }
   rather than injected, because the app's CSP is style-src 'self' with no
   unsafe-inline — an inline style attribute is silently dropped and logs a
   violation, which is how the layer-dot bug got in on 2026-07-31.
-  Bottom-left: #layers owns top-left, #info owns the right edge.
+  Bottom-left: the menu owns top-left, #info owns the right edge.
 */
 .dev-panel {
   position: absolute; left: 12px; bottom: 12px; z-index: 8;
