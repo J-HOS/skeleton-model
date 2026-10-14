@@ -90,6 +90,8 @@ canvas { display: block; touch-action: none; }
 .dot-nerves    { background: #e8d44d; }
 .dot-vessels   { background: #4d7fe8; }
 .layer-btn.off { opacity: .45; }
+/* Depth view control (2026-10-14): half-filled dot = "one side peeled". */
+.dot-depth { background: linear-gradient(90deg, #c0392b 50%, #6b2a22 50%); }
 .layer-btn.off .dot { background: transparent !important; }
 .layer-btn.unavailable { cursor: not-allowed; opacity: .3; }
 .layer-btn .lock { margin-left: auto; font-size: 10px; color: var(--muted); }

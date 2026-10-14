@@ -11,8 +11,8 @@
 
 import { LAYERS, PATHS } from './config.js';
 import { loadDataset, buildSearchIndex } from './dataset.js';
-import { classifyBone, findMuscleRecord } from './anatomy.js';
-import { sanitizeQuery } from './security.js';
+import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap } from './anatomy.js';
+import { fetchLocal, sanitizeQuery } from './security.js';
 import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral } from './storage.js';
 import { Viewer } from './viewer.js';
 import { mountDevPanel } from './devpanel.js';
@@ -26,6 +26,7 @@ const state = {
   layerVisibility: Object.fromEntries(LAYERS.map((l) => [l.id, l.id === 'skeleton'])),
   xray: false,
   bilateral: getBilateral(),
+  peelDepth: 0,
 };
 
 /* ------------------------------------------------------------- selection -- */
@@ -105,8 +106,41 @@ function refreshLayers() {
       state.layerVisibility[layerId] = !state.layerVisibility[layerId];
       state.viewer.setLayerVisible(layerId, state.layerVisibility[layerId]);
       refreshLayers();
-    }
+    },
+    state.viewer?.layerMap && state.viewer.hasLayer('muscle')
+      ? { depth: state.peelDepth, deepest: deepestLayer(state.viewer.layerMap), onCycle: cyclePeel }
+      : null
   );
+}
+
+/**
+ * Depth view (2026-10-14): each press removes one more layer of muscle from
+ * the body's right side; the left side stays whole. Turning it on also turns
+ * the muscle layer on, since there is nothing to peel otherwise.
+ */
+function cyclePeel() {
+  const deepest = deepestLayer(state.viewer.layerMap);
+  state.peelDepth = nextPeelDepth(state.peelDepth, deepest);
+  if (state.peelDepth && !state.layerVisibility.muscle) {
+    state.layerVisibility.muscle = true;
+    state.viewer.setLayerVisible('muscle', true);
+  }
+  state.viewer.setPeelDepth(state.peelDepth);
+  refreshLayers();
+  ui.flashHint(state.peelDepth
+    ? `Body's right side: muscles above layer ${state.peelDepth} removed (deepest is ${deepest}). Left side unchanged.`
+    : 'Deep view off.');
+}
+
+/** Load the measured muscle layers. Optional: a failure just hides the control. */
+async function loadLayerMap() {
+  try {
+    const map = parseLayerMap(await fetchLocal(PATHS.layers));
+    if (!map) throw new Error('muscle_layers.json failed validation');
+    state.viewer.setLayerMap(map);
+  } catch (error) {
+    console.info('Deep view unavailable:', error.message);
+  }
 }
 
 /* ------------------------------------------------------------------ boot -- */
@@ -136,6 +170,7 @@ async function boot() {
       state.viewer.setLayerVisible(id, visible);
     }
     indexBones();
+    await loadLayerMap();
     ui.flashHint(`${added.length} structures loaded · ${state.data.muscles.length} muscle records`);
   } catch (error) {
     // A 404 here almost always means the server is an older process that

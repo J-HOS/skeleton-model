@@ -716,3 +716,50 @@ export function parseLandmarkCard(content) {
       return m ? { kind: 'item', key: m[1], text: m[2] } : { kind: 'heading', text: line };
     });
 }
+
+/* ------------------------------------------------------------ depth view -- */
+
+/**
+ * Validate the measured-layers file and return Map<structureId, layer>.
+ * Layers are small positive integers; ids are bounded strings. Anything else
+ * is rejected (returns null) rather than half-applied, so a damaged file
+ * turns the depth view off instead of hiding the wrong muscles.
+ */
+export function parseLayerMap(raw, maxLayer = 20) {
+  if (!raw || typeof raw !== 'object' || !raw.layers || typeof raw.layers !== 'object') return null;
+  const map = new Map();
+  for (const [id, n] of Object.entries(raw.layers)) {
+    if (typeof id !== 'string' || id.length === 0 || id.length > 128) return null;
+    if (!Number.isInteger(n) || n < 1 || n > maxLayer) return null;
+    map.set(id, n);
+  }
+  return map.size ? map : null;
+}
+
+/** Deepest layer in the map (0 for an empty or missing map). */
+export function deepestLayer(map) {
+  let max = 0;
+  if (map) for (const n of map.values()) if (n > max) max = n;
+  return max;
+}
+
+/**
+ * Is this muscle hidden by the depth view? Only on the peeled side, only
+ * when a depth is chosen, and only for muscles shallower than that depth.
+ * Midline structures (no _left/_right) are never hidden - there is no "other
+ * side" to see them on. A muscle missing from the map counts as surface
+ * (layer 1), so a structure added after the last measurement is peeled away
+ * on the deep side rather than left covering everything beneath it.
+ */
+export function isPeeled(structureId, map, depth, side = 'right') {
+  if (!depth || depth < 2 || !map) return false;
+  if (!String(structureId).endsWith(`_${side}`)) return false;
+  return (map.get(structureId) ?? 1) < depth;
+}
+
+/** Next depth for the cycling control: off -> 2 -> 3 ... -> deepest -> off. */
+export function nextPeelDepth(current, deepest) {
+  if (deepest < 2) return 0;
+  if (!current) return 2;
+  return current >= deepest ? 0 : current + 1;
+}

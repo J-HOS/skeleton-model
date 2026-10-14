@@ -9,9 +9,9 @@
 import * as THREE from '../vendor/three.module.js';
 import { GLTFLoader } from '../vendor/GLTFLoader.js';
 import { OrbitControls } from './controls.js';
-import { BONE_SURFACE_COLORS, COLORS, LAYERS, LIMITS, MODEL_FIT_UNITS, MUSCLE_SECTION_COLORS, PATHS, RENDER } from './config.js';
+import { BONE_SURFACE_COLORS, COLORS, LAYERS, LIMITS, MODEL_FIT_UNITS, MUSCLE_SECTION_COLORS, PATHS, PEEL, RENDER } from './config.js';
 import { assertLooksLikeGLB, fetchLocal } from './security.js';
-import { attachmentWeight, axialParameter, axialTaper, boneSurfaceKey, classifyLayer, findMuscleRecord, recordAliases, resolvesToContent, scaleChannels, selectionGroup, varyLightness } from './anatomy.js';
+import { attachmentWeight, axialParameter, axialTaper, boneSurfaceKey, classifyLayer, findMuscleRecord, isPeeled, recordAliases, resolvesToContent, scaleChannels, selectionGroup, varyLightness } from './anatomy.js';
 
 const TAP_MOVE_TOLERANCE_PX = 8; // beyond this, the gesture was a drag, not a tap
 
@@ -30,6 +30,10 @@ export class Viewer {
     this._mainTransform = null;
     this._loader = new GLTFLoader();
     this._xray = false;
+    // Depth view (2026-10-14): measured layer per muscle, and the chosen depth
+    // (0 = off). See isPeeled() in anatomy.js.
+    this.layerMap = null;
+    this.peelDepth = 0;
 
     /**
      * Live-tunable appearance. Every default here mirrors config.js exactly,
@@ -515,8 +519,23 @@ export class Viewer {
 
   _applyVisibility() {
     for (const mesh of this.selectable) {
-      mesh.visible = this.layerVisibility[mesh.userData.layer] !== false;
+      const layerOn = this.layerVisibility[mesh.userData.layer] !== false;
+      const peeled = mesh.userData.layer === 'muscle'
+        && isPeeled(mesh.userData.structureId, this.layerMap, this.peelDepth, PEEL.side);
+      mesh.visible = layerOn && !peeled;
     }
+  }
+
+  /** Install the measured layers (Map from parseLayerMap). */
+  setLayerMap(map) {
+    this.layerMap = map || null;
+    this._applyVisibility();
+  }
+
+  /** 0 = off; n >= 2 = on the peeled side, hide muscles shallower than n. */
+  setPeelDepth(depth) {
+    this.peelDepth = Number.isInteger(depth) && depth >= 2 ? depth : 0;
+    this._applyVisibility();
   }
 
   setLayerVisible(layerId, visible) {

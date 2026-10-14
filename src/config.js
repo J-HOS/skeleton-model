@@ -16,6 +16,21 @@ export const PATHS = Object.freeze({
   dataset: 'data/anatomy.json',
   integrity: 'data/integrity.json',
   model: 'models/skeleton_v2.glb',
+  // Measured muscle layers (2026-10-14), written by
+  // "03 Testing & Review/(C) layer_peel/(C) measure_layers.mjs". Optional:
+  // without it the depth control is simply not offered.
+  layers: 'data/muscle_layers.json',
+});
+
+/**
+ * Depth view (2026-10-14, Jake's request): one side of the body keeps every
+ * muscle; on the other, muscles shallower than the chosen depth are removed
+ * so the deeper ones can be tapped without searching. The body's RIGHT is the
+ * peeled side - from the default front view that is the viewer's left.
+ */
+export const PEEL = Object.freeze({
+  side: 'right',
+  maxLayer: 20,
 });
 
 /**

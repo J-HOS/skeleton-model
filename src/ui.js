@@ -58,10 +58,8 @@ export function flashHint(message, ms = 2600) {
 
 /* ---------------------------------------------------------------- layers -- */
 
-export function renderLayers(state, onToggle) {
-  replace(
-    byId('layers'),
-    LAYERS.map((layer) => {
+export function renderLayers(state, onToggle, peel = null) {
+  const buttons = LAYERS.map((layer) => {
       const available = state.available.has(layer.id);
       const on = available && state.visible[layer.id];
       return el(
@@ -87,8 +85,32 @@ export function renderLayers(state, onToggle) {
           available ? null : el('span', { className: 'lock', text: 'soon' }),
         ]
       );
-    })
-  );
+    });
+  // Depth view control (2026-10-14). Offered only when the measured layers
+  // loaded; each press peels the right side one layer deeper, then off.
+  if (peel && peel.deepest >= 2) {
+    const on = peel.depth >= 2;
+    buttons.splice(2, 0, el(
+      'button',
+      {
+        className: `layer-btn depth-btn${on ? '' : ' off'}`,
+        attrs: {
+          id: 'depthBtn',
+          type: 'button',
+          'aria-pressed': String(on),
+          'aria-label': on
+            ? `Deep view on the body's right side, layer ${peel.depth} of ${peel.deepest}. Press for the next layer.`
+            : "Deep view off. Press to remove the surface muscles on the body's right side.",
+        },
+        on: { click: () => peel.onCycle() },
+      },
+      [
+        el('span', { className: 'dot dot-depth' }),
+        el('span', { text: on ? `Deep: layer ${peel.depth}` : 'Deep view' }),
+      ]
+    ));
+  }
+  replace(byId('layers'), buttons);
 }
 
 /* ------------------------------------------------------------ info panel -- */
