@@ -1,7 +1,7 @@
 {
   "metadata": {
     "source": "Anatomy & Kinesiology Flashcards (Human Kinetics / FMP, LLC 2013)",
-    "total_muscles": 128,
+    "total_muscles": 171,
     "total_bony_landmark_pages": 31,
     "sections": {
       "1": "Shoulder Girdle",
@@ -14,7 +14,12 @@
       "8": "Pelvic Girdle and Hip Joint",
       "9": "Knee Joint",
       "10": "Ankle and Foot Joints",
-      "11": "Bony Landmarks"
+      "11": "Bony Landmarks",
+      "12": "Face and Scalp",
+      "13": "Muscles of Mastication",
+      "14": "Eye (Extraocular)",
+      "15": "Tongue",
+      "16": "Suprahyoid and Infrahyoid"
     },
     "fields": [
       "name",
@@ -254,7 +259,8 @@
     ],
     "source_note": "Entries originally derived from the flashcard deck named in 'source'. All 128 entries were re-sourced on 2026-09-16 (see 'verification_log') and rewritten in original wording; no entry retains flashcard phrasing.",
     "verification_caveat": "Final state, 2026-09-16 close-out (recounted 2026-10-08): all 128 entries cite two or more approved sources, drawn from 65 distinct NIH/NCBI StatPearls articles (cited by NBK number in notes) plus Kenhub. 95 entries rest on two StatPearls articles - separately authored but one publisher; 33 span two publishers. No print reference (Gray's, Netter's, Moore's) has been consulted, and sources were read via machine summaries. teachmeanatomy.info is not an approved source and counts toward nothing. An earlier mid-session audit recorded 10/48/70 for two/one/none; that figure is superseded.",
-    "textbook_check_2026_10_09": "All 128 entries checked 2026-10-09 against sources independent of StatPearls: the UAMS/TTUHSC medical-school anatomy tables (.edu, all 128 except the two serratus posterior muscles), the UW Musculoskeletal Atlas (.edu) for limb conflicts, Loyola LUMEN (.edu), Radiopaedia (.org) and Kenhub. Result: 116 agree, 9 documented source conflicts (mostly nerve root levels), 3 corrections (flexor digitorum superficialis insertion, transversus abdominis costal origin - reverting a 2026-09-16 change, psoas major origin). Every entry now rests on at least one non-StatPearls publisher. LIMITS: these are medical-school teaching tables and atlases, not the printed Gray's/Netter's/Moore's; pages were read through a summarising fetch tool, not verbatim."
+    "textbook_check_2026_10_09": "All 128 entries checked 2026-10-09 against sources independent of StatPearls: the UAMS/TTUHSC medical-school anatomy tables (.edu, all 128 except the two serratus posterior muscles), the UW Musculoskeletal Atlas (.edu) for limb conflicts, Loyola LUMEN (.edu), Radiopaedia (.org) and Kenhub. Result: 116 agree, 9 documented source conflicts (mostly nerve root levels), 3 corrections (flexor digitorum superficialis insertion, transversus abdominis costal origin - reverting a 2026-09-16 change, psoas major origin). Every entry now rests on at least one non-StatPearls publisher. LIMITS: these are medical-school teaching tables and atlases, not the printed Gray's/Netter's/Moore's; pages were read through a summarising fetch tool, not verbatim.",
+    "head_muscles_2026_10_14": "43 head and anterior-neck muscles added 2026-10-14 (sections 12-16) at Jake's request ('everything in the head'). Each rests on the UAMS head-and-neck table (.edu) plus StatPearls (.gov), with Kenhub where StatPearls gave no attachments; sources cited per entry. Temporoparietalis omitted: no approved source for its attachments or nerve. Buccinator, levator labii superioris alaeque nasi, styloglossus and palatoglossus have no Z-Anatomy mesh. Conflicts left open in notes: procerus branch, occipitalis direction (StatPearls), depressor labii inferioris branch. Read via summarising fetch; no print reference."
   },
   "muscles": [
     {
@@ -1663,6 +1669,479 @@
       "action": "External rotation of the thigh at the hip; stabilises the femoral head in the acetabulum; assists adduction.",
       "nerve_innervation": "Nerve to quadratus femoris (L4-S1)",
       "notes": "Re-sourced 2026-09-16 to two approved sources from different publishers: Kenhub for the attachments and StatPearls NBK557420 (Gemelli Muscles, .gov) for the nerve, which it shares with the inferior gemellus; the action is corroborated by NBK470555 (Hip Joint). This entry previously had no approved source for its attachments at all. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "review_flag": ""
+    },
+    {
+      "name": "Frontalis",
+      "section": "Face and Scalp",
+      "section_id": "12",
+      "origin": "Epicranial aponeurosis (galea aponeurotica); it has no bony attachment.",
+      "insertion": "Skin and superficial fascia of the eyebrow and lower forehead, interlacing with procerus, corrugator supercilii and orbicularis oculi.",
+      "action": "Raises the eyebrows and wrinkles the forehead transversely; acting with occipitalis it moves the scalp.",
+      "nerve_innervation": "Temporal (frontal) branches of the facial nerve (CN VII)",
+      "notes": "Frontal belly of occipitofrontalis. Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK557752 (Frontalis Muscle); Kenhub (facial muscles). Kenhub names the eyebrow skin as origin and the aponeurosis as insertion - the same attachments with the convention reversed; UAMS and StatPearls are followed. The supraorbital and supratrochlear nerves supply the overlying skin, not the muscle (NBK557752). Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "Occipitalis",
+      "section": "Face and Scalp",
+      "section_id": "12",
+      "origin": "Lateral two-thirds of the superior nuchal line of the occipital bone.",
+      "insertion": "Epicranial aponeurosis (galea aponeurotica).",
+      "action": "Draws the scalp backward; working with frontalis it helps raise the eyebrows and wrinkle the forehead.",
+      "nerve_innervation": "Posterior auricular branch of the facial nerve (CN VII)",
+      "notes": "Occipital belly of occipitofrontalis. Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); Kenhub (facial muscles). CONFLICT noted: StatPearls NBK557752 (as summarised) says the occipital part moves the scalp forwards; UAMS and Kenhub both give backward (posterior) traction, which is recorded. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "OrbicularisOculi",
+      "section": "Face and Scalp",
+      "section_id": "12",
+      "origin": "Orbital part: nasal part of the frontal bone, frontal process of the maxilla and the medial palpebral ligament. Palpebral part: medial palpebral ligament. Lacrimal (deep) part: posterior lacrimal crest, behind the lacrimal sac.",
+      "insertion": "Orbital part: encircles the orbit and blends with the skin and soft tissue around it. Palpebral part: lateral palpebral raphe. Lacrimal part: the tarsal plates and lateral palpebral raphe.",
+      "action": "Closes the eyelids: the palpebral part gently (blinking, sleep), the orbital part forcefully (squeezing the eyes shut). The lacrimal part draws the lids medially and helps pump tears into the lacrimal sac.",
+      "nerve_innervation": "Temporal and zygomatic branches of the facial nerve (CN VII)",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK441907 (Orbicularis Oculi Muscle); Kenhub (facial muscles). NBK441907 divides the palpebral part into preseptal and pretarsal sections with superficial and deep heads, and states the temporal branch supplies the upper half and the zygomatic branch the lower half. Mesh: Z-Anatomy orbital and palpebral parts joined. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "CorrugatorSupercilii",
+      "section": "Face and Scalp",
+      "section_id": "12",
+      "origin": "Medial end of the superciliary arch of the frontal bone.",
+      "insertion": "Skin of the middle and medial part of the eyebrow.",
+      "action": "Draws the eyebrows medially and downward, producing vertical frown lines between them.",
+      "nerve_innervation": "Temporal branch of the facial nerve (CN VII); contributions from the zygomatic and buccal branches are described",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK542280 (Eye Corrugator Muscle); Kenhub (facial muscles). All three name the temporal branch; NBK542280 adds zygomatic supply to the oblique head and a buccal (angular nerve) contribution, with individual variation. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "Procerus",
+      "section": "Face and Scalp",
+      "section_id": "12",
+      "origin": "Fascia over the lower nasal bone and the upper part of the lateral nasal cartilage.",
+      "insertion": "Skin between the eyebrows (glabella), blending with frontalis.",
+      "action": "Pulls the medial ends of the eyebrows downward, producing horizontal wrinkles across the root of the nose.",
+      "nerve_innervation": "Facial nerve (CN VII): temporal branch per UAMS and Kenhub; buccal and zygomatic contributions are described",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK534763 (Procerus Muscle); Kenhub (facial muscles). CONFLICT on branch: UAMS gives the temporal branch; NBK534763 reports studies naming buccal, temporal and zygomatic branches, or the angular nerve from buccal and zygomatic branches; Kenhub lists temporal, lower zygomatic or buccal. Left open for Jake. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "Nasalis",
+      "section": "Face and Scalp",
+      "section_id": "12",
+      "origin": "Maxilla over the incisor and canine teeth: the alar part just above the lateral incisor, the transverse part lateral to it.",
+      "insertion": "Transverse part: an aponeurosis across the bridge of the nose, joining its partner of the other side. Alar part: skin of the nasal ala.",
+      "action": "Transverse part compresses the nasal aperture; alar part draws the ala outward and flares the nostril.",
+      "nerve_innervation": "Buccal branch of the facial nerve (CN VII)",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); Kenhub (facial muscles; nasalis). StatPearls NBK551530 (Face) agrees on action (compression of the nasal bridge, elevation of the nostrils) and gives facial-nerve supply without a branch. Kenhub used because StatPearls gives no attachments. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "DepressorSeptiNasi",
+      "section": "Face and Scalp",
+      "section_id": "12",
+      "origin": "Incisive fossa of the maxilla, just above the central incisor teeth.",
+      "insertion": "Mobile part of the nasal septum.",
+      "action": "Draws the nasal septum and tip downward, helping to widen the nostrils.",
+      "nerve_innervation": "Buccal branch of the facial nerve (CN VII)",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK551530 (Face) - which labels it 'depressor alae nasi' in places but gives the same incisive-fossa origin and septal insertion, with facial-nerve supply (no branch). The branch is from UAMS only. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "OrbicularisOris",
+      "section": "Face and Scalp",
+      "section_id": "12",
+      "origin": "No bony or tendinous origin: fibers arise from the modiolus at each corner of the mouth and from the skin, fascia and muscles converging on the lips.",
+      "insertion": "Skin and mucous membrane of the lips; upper (nasal) bundles also attach near the anterior nasal spine and the nasal septum.",
+      "action": "Closes and purses the lips and presses them against the teeth; shapes the lips for speech, sucking, whistling and keeping food in the mouth.",
+      "nerve_innervation": "Buccal and marginal mandibular branches of the facial nerve (CN VII)",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK545169 (Orbicularis Oris Muscle); Kenhub (orbicularis oris). UAMS names the buccal branch only; NBK545169 gives buccal and mandibular branches - the fuller description is recorded. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "LevatorLabiiSuperioris",
+      "section": "Face and Scalp",
+      "section_id": "12",
+      "origin": "Infraorbital margin of the maxilla, above the infraorbital foramen, extending onto the zygomatic bone.",
+      "insertion": "Skin and muscle of the upper lip.",
+      "action": "Elevates and everts the upper lip and deepens the nasolabial fold.",
+      "nerve_innervation": "Zygomatic and buccal branches of the facial nerve (CN VII)",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK541031 (Levator Labii Superioris Muscle); Kenhub (facial muscles). UAMS names the buccal branch; NBK541031 and Kenhub give zygomatic with buccal - recorded as both. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "LevatorLabiiSuperiorisAlaequeNasi",
+      "section": "Face and Scalp",
+      "section_id": "12",
+      "origin": "Upper part of the frontal process of the maxilla.",
+      "insertion": "Two slips: one to the skin and cartilage of the nasal ala, one to the skin and muscle of the upper lip.",
+      "action": "Elevates and everts the upper lip and dilates the nostril.",
+      "nerve_innervation": "Zygomatic and buccal branches of the facial nerve (CN VII)",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); Kenhub (facial muscles). StatPearls NBK541031 confirms its alar and lip anchorage and facial-nerve supply but gives no detail. UAMS names the buccal branch; Kenhub zygomatic and buccal. No 3D mesh: Z-Anatomy, the model's source, has no separate mesh for this muscle, so it appears in search but cannot be tapped on the model. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "ZygomaticusMajor",
+      "section": "Face and Scalp",
+      "section_id": "12",
+      "origin": "Lateral surface of the zygomatic bone, in front of the zygomaticotemporal suture.",
+      "insertion": "Modiolus at the angle of the mouth, interlacing with the other muscles there.",
+      "action": "Draws the angle of the mouth upward and laterally, as in smiling.",
+      "nerve_innervation": "Zygomatic and buccal branches of the facial nerve (CN VII)",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); Kenhub (zygomaticus major); StatPearls NBK493209 (Facial Muscles: modiolus insertion, upward-outward action, zygomatic and buccal supply) and NBK551530 (Face). Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "ZygomaticusMinor",
+      "section": "Face and Scalp",
+      "section_id": "12",
+      "origin": "Lateral surface of the zygomatic bone, just behind the zygomaticomaxillary suture and medial to zygomaticus major.",
+      "insertion": "Skin and muscle of the lateral upper lip, medial to the insertion of zygomaticus major.",
+      "action": "Elevates the upper lip, showing the upper teeth, and deepens the nasolabial fold.",
+      "nerve_innervation": "Zygomatic and buccal branches of the facial nerve (CN VII)",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); Kenhub (zygomaticus minor); StatPearls NBK551530 (Face: zygomatic origin, upper-lip insertion, elevates the upper lip). NBK493209 gives a modiolus insertion for both zygomatici; UAMS, Kenhub and NBK551530 put minor's insertion in the upper lip, which is recorded. UAMS names the buccal branch. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "LevatorAnguliOris",
+      "section": "Face and Scalp",
+      "section_id": "12",
+      "origin": "Canine fossa of the maxilla, below the infraorbital foramen.",
+      "insertion": "Modiolus at the angle of the mouth.",
+      "action": "Raises the angle of the mouth, helping to show the upper teeth in smiling.",
+      "nerve_innervation": "Buccal branch of the facial nerve (CN VII), entering on its superficial surface",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK547688 (Levator Anguli Oris Muscle); Kenhub (facial muscles - adds the zygomatic branch). Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "Risorius",
+      "section": "Face and Scalp",
+      "section_id": "12",
+      "origin": "Fascia of the lateral cheek over the parotid gland and masseter, variably from the platysma fascia.",
+      "insertion": "Skin at the angle of the mouth (modiolus).",
+      "action": "Draws the angle of the mouth laterally.",
+      "nerve_innervation": "Buccal branch of the facial nerve (CN VII); a marginal mandibular contribution is described",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK540999 (Risorius Muscle); Kenhub (facial muscles). NBK540999 notes debate between buccal and marginal mandibular supply, possibly both. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "Buccinator",
+      "section": "Face and Scalp",
+      "section_id": "12",
+      "origin": "Alveolar processes of the maxilla and mandible opposite the molar teeth, and the pterygomandibular raphe.",
+      "insertion": "Modiolus at the angle of the mouth, blending with orbicularis oris into both lips.",
+      "action": "Presses the cheek against the teeth, keeping food between the molars; draws the angle of the mouth laterally; used in blowing and sucking.",
+      "nerve_innervation": "Buccal branches of the facial nerve (CN VII)",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK546678 (Buccinator Muscle); Kenhub (facial muscles). NBK546678 describes motor supply via the temporofacial and cervicofacial divisions of CN VII; UAMS and Kenhub name the buccal branches, recorded. The buccal nerve of the trigeminal is sensory to the cheek and does not supply the muscle. No 3D mesh: Z-Anatomy, the model's source, has no separate mesh for this muscle, so it appears in search but cannot be tapped on the model. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "DepressorAnguliOris",
+      "section": "Face and Scalp",
+      "section_id": "12",
+      "origin": "Oblique line of the mandible and the mental tubercle.",
+      "insertion": "Modiolus at the angle of the mouth.",
+      "action": "Draws the angle of the mouth downward and laterally.",
+      "nerve_innervation": "Marginal mandibular and buccal branches of the facial nerve (CN VII)",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); Kenhub (depressor anguli oris); StatPearls NBK493209 (Facial Muscles: marginal mandibular supply). Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "DepressorLabiiInferioris",
+      "section": "Face and Scalp",
+      "section_id": "12",
+      "origin": "Oblique line of the mandible, between the symphysis and the mental foramen.",
+      "insertion": "Skin and mucosa of the lower lip, blending with its partner and orbicularis oris.",
+      "action": "Draws the lower lip downward and laterally and everts it.",
+      "nerve_innervation": "Marginal mandibular branch of the facial nerve (CN VII)",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK493209 (Facial Muscles); Kenhub (depressor labii inferioris, innervation section). CONFLICT noted: StatPearls NBK507900 (Lips) and Kenhub's key-facts table describe supply from a cervical branch. Marginal mandibular is recorded (UAMS, NBK493209, Kenhub text); left for Jake's review. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "Mentalis",
+      "section": "Face and Scalp",
+      "section_id": "12",
+      "origin": "Incisive fossa of the mandible, below the lower incisor teeth.",
+      "insertion": "Skin of the chin.",
+      "action": "Raises and wrinkles the skin of the chin, elevating and protruding the lower lip.",
+      "nerve_innervation": "Marginal mandibular branch of the facial nerve (CN VII)",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); Kenhub (mentalis); StatPearls NBK493209 (Facial Muscles: marginal mandibular supply, lower-lip protrusion) and NBK551530 (Face). Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "Platysma",
+      "section": "Face and Scalp",
+      "section_id": "12",
+      "origin": "Superficial fascia over the upper pectoralis major and deltoid (upper chest and shoulder).",
+      "insertion": "Inferior border of the mandible, the skin of the lower face and the angle of the mouth, blending with depressor anguli oris and orbicularis oris.",
+      "action": "Tenses the skin of the neck; draws the corners of the mouth and the lower lip downward; assists depression of the mandible.",
+      "nerve_innervation": "Cervical branch of the facial nerve (CN VII)",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK545294 (Platysma); Kenhub (facial muscles). NBK545294 notes occasional additional supply from the marginal mandibular branch. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "Masseter",
+      "section": "Muscles of Mastication",
+      "section_id": "13",
+      "origin": "Zygomatic arch - chiefly the lower border of its anterior two-thirds - and the zygomatic bone.",
+      "insertion": "Lateral surface of the ramus and angle of the mandible, extending up toward the coronoid process.",
+      "action": "Elevates the mandible to close the jaw and clench the teeth; superficial fibers assist protrusion, deeper fibers assist retraction.",
+      "nerve_innervation": "Masseteric nerve, from the mandibular division of the trigeminal nerve (CN V3)",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK541027 (Mastication Muscles). NBK541027 describes superficial, intermediate and deep layers without separate attachments. Mesh: Z-Anatomy superficial and deep parts joined. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "Temporalis",
+      "section": "Muscles of Mastication",
+      "section_id": "13",
+      "origin": "Floor of the temporal fossa up to the inferior temporal line, and the deep surface of the temporal fascia.",
+      "insertion": "Coronoid process and anterior border of the ramus of the mandible, by a tendon passing deep to the zygomatic arch.",
+      "action": "Elevates the mandible; its posterior fibers retract it.",
+      "nerve_innervation": "Deep temporal nerves, from the mandibular division of the trigeminal nerve (CN V3)",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK541027 (Mastication Muscles) and NBK507912 (Temporoparietal Fascia). Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "MedialPterygoid",
+      "section": "Muscles of Mastication",
+      "section_id": "13",
+      "origin": "Deep head: medial surface of the lateral pterygoid plate of the sphenoid and the pyramidal process of the palatine bone. Superficial head: tuberosity of the maxilla.",
+      "insertion": "Medial surface of the ramus and angle of the mandible.",
+      "action": "Elevates and protrudes the mandible; with the lateral pterygoid, moves the jaw from side to side in grinding.",
+      "nerve_innervation": "Nerve to medial pterygoid, from the mandibular division of the trigeminal nerve (CN V3)",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK541027 (Mastication Muscles). Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "LateralPterygoid",
+      "section": "Muscles of Mastication",
+      "section_id": "13",
+      "origin": "Superior head: infratemporal surface of the greater wing of the sphenoid. Inferior head: lateral surface of the lateral pterygoid plate.",
+      "insertion": "Pterygoid fovea on the neck of the mandibular condyle; the superior head also reaches the articular disc and capsule of the temporomandibular joint.",
+      "action": "Protrudes the mandible and draws the condyle forward as the mouth opens; produces side-to-side grinding movements.",
+      "nerve_innervation": "Nerve to lateral pterygoid, from the mandibular division of the trigeminal nerve (CN V3)",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK541027 (Mastication Muscles), which notes that opening the mouth is largely gravity-assisted. Mesh: Z-Anatomy superior and inferior heads joined. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "LevatorPalpebraeSuperioris",
+      "section": "Eye (Extraocular)",
+      "section_id": "14",
+      "origin": "Lesser wing of the sphenoid, above and in front of the optic canal.",
+      "insertion": "Through its aponeurosis into the skin of the upper eyelid and the anterior surface of the superior tarsal plate; a smooth-muscle slip (superior tarsal muscle) attaches to the upper margin of the tarsal plate.",
+      "action": "Raises and holds up the upper eyelid.",
+      "nerve_innervation": "Superior division of the oculomotor nerve (CN III); the superior tarsal smooth-muscle slip is supplied by sympathetic fibers",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK536921 (Levator Palpebrae Superioris Muscle) and NBK519565 (Eye Extraocular Muscles). NBK536921 contains a sentence saying the muscle 'primarily closes the eyelid', contradicting its own description of elevation; not used. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "SuperiorRectus",
+      "section": "Eye (Extraocular)",
+      "section_id": "14",
+      "origin": "Common tendinous ring (annulus of Zinn) at the apex of the orbit.",
+      "insertion": "Sclera on the upper surface of the eyeball, about 7.7 mm behind the limbus.",
+      "action": "Elevates the eye (chiefly when it is abducted); also adducts and intorts it.",
+      "nerve_innervation": "Superior division of the oculomotor nerve (CN III)",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK470534 (Eye Muscles: primary elevation, secondary adduction, tertiary intorsion) and NBK519565 (insertion distance). The 'chiefly when abducted' qualifier is standard teaching but is not stated in these sources. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "InferiorRectus",
+      "section": "Eye (Extraocular)",
+      "section_id": "14",
+      "origin": "Common tendinous ring (annulus of Zinn) at the apex of the orbit.",
+      "insertion": "Sclera on the lower surface of the eyeball, about 6.5 mm behind the limbus.",
+      "action": "Depresses the eye; also extorts and adducts it.",
+      "nerve_innervation": "Inferior division of the oculomotor nerve (CN III)",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK470534 (Eye Muscles) and NBK519565 (insertion distance). Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "MedialRectus",
+      "section": "Eye (Extraocular)",
+      "section_id": "14",
+      "origin": "Common tendinous ring (annulus of Zinn) at the apex of the orbit.",
+      "insertion": "Sclera on the medial surface of the eyeball, about 5.5 mm behind the limbus.",
+      "action": "Adducts the eye.",
+      "nerve_innervation": "Inferior division of the oculomotor nerve (CN III)",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK470534 (Eye Muscles) and NBK519565 (insertion distance). Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "LateralRectus",
+      "section": "Eye (Extraocular)",
+      "section_id": "14",
+      "origin": "Common tendinous ring (annulus of Zinn) at the apex of the orbit.",
+      "insertion": "Sclera on the lateral surface of the eyeball, about 6.9 mm behind the limbus.",
+      "action": "Abducts the eye.",
+      "nerve_innervation": "Abducens nerve (CN VI)",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK470534 (Eye Muscles) and NBK519565 (insertion distance). Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "SuperiorOblique",
+      "section": "Eye (Extraocular)",
+      "section_id": "14",
+      "origin": "Body of the sphenoid, superomedial to the optic canal and above the common tendinous ring.",
+      "insertion": "Its tendon passes through the trochlea at the superomedial orbital margin, turns backward and laterally, and inserts on the sclera of the posterior superolateral quadrant of the eyeball, beneath the superior rectus.",
+      "action": "Intorts, depresses and abducts the eye; its depressing action is greatest when the eye is adducted.",
+      "nerve_innervation": "Trochlear nerve (CN IV)",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK537152 (Eye Superior Oblique Muscle), NBK470534 and NBK519565. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "InferiorOblique",
+      "section": "Eye (Extraocular)",
+      "section_id": "14",
+      "origin": "Orbital surface of the maxilla in the floor of the orbit, near the orbital rim and lateral to the nasolacrimal groove.",
+      "insertion": "Sclera of the posterior inferolateral quadrant of the eyeball, near the macula.",
+      "action": "Extorts, elevates and abducts the eye.",
+      "nerve_innervation": "Inferior division of the oculomotor nerve (CN III)",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK470534 (Eye Muscles) and NBK519565. UAMS gives the insertion simply as the inferior surface of the eyeball; NBK470534 (inferotemporal globe) and NBK519565 (near the macula) are more specific and recorded. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "Genioglossus",
+      "section": "Tongue",
+      "section_id": "15",
+      "origin": "Superior mental spine (genial tubercle) on the inner surface of the mandibular symphysis.",
+      "insertion": "Fans into the tongue from tip to root along its dorsum, through the lingual aponeurosis; the lowest fibers reach the body of the hyoid bone.",
+      "action": "Protrudes the tongue and depresses its central part; acting on one side, deviates the tongue to the opposite side.",
+      "nerve_innervation": "Hypoglossal nerve (CN XII)",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK507782 (Tongue); Kenhub (tongue). Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "Hyoglossus",
+      "section": "Tongue",
+      "section_id": "15",
+      "origin": "Body and greater horn of the hyoid bone.",
+      "insertion": "Side of the posterior half of the tongue, between styloglossus laterally and the inferior longitudinal muscle medially.",
+      "action": "Depresses and retracts the tongue.",
+      "nerve_innervation": "Hypoglossal nerve (CN XII)",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK574565 (Hyoglossus Muscle) and NBK507782 (Tongue); Kenhub (tongue). Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "Styloglossus",
+      "section": "Tongue",
+      "section_id": "15",
+      "origin": "Anterior surface of the styloid process near its tip, and the stylomandibular ligament.",
+      "insertion": "Side of the tongue: longitudinal fibers blend with the inferior longitudinal muscle, oblique fibers interlace with hyoglossus.",
+      "action": "Retracts the tongue and elevates its sides.",
+      "nerve_innervation": "Hypoglossal nerve (CN XII)",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK507782 (Tongue: origin, action, nerve); Kenhub (tongue: insertion detail - StatPearls gives none). No 3D mesh: Z-Anatomy, the model's source, has no separate mesh for this muscle, so it appears in search but cannot be tapped on the model. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "Palatoglossus",
+      "section": "Tongue",
+      "section_id": "15",
+      "origin": "Oral (inferior) surface of the palatine aponeurosis of the soft palate.",
+      "insertion": "Posterolateral part of the tongue, some fibers blending with the transverse intrinsic muscle.",
+      "action": "Elevates the back of the tongue and draws the soft palate down, narrowing the oropharyngeal isthmus.",
+      "nerve_innervation": "Pharyngeal branch of the vagus nerve (CN X), via the pharyngeal plexus",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK549823 (Palatoglossus Muscle) and NBK507782; Kenhub (tongue). The only tongue muscle not supplied by the hypoglossal nerve. No 3D mesh: Z-Anatomy, the model's source, has no separate mesh for this muscle, so it appears in search but cannot be tapped on the model. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "IntrinsicTongueMuscles",
+      "section": "Tongue",
+      "section_id": "15",
+      "origin": "Entirely within the tongue, with no bony attachment: superior and inferior longitudinal bundles beneath the dorsal and ventral surfaces, transverse fibers from the median septum, vertical fibers from the dorsal submucosa.",
+      "insertion": "Within the tongue: longitudinal fibers toward the tip, transverse fibers to the lateral margins, vertical fibers to the underside.",
+      "action": "Change the shape of the tongue: the longitudinal muscles shorten it and curl the tip up (superior) or down (inferior); the transverse muscle narrows and lengthens it; the vertical muscle flattens and broadens it.",
+      "nerve_innervation": "Hypoglossal nerve (CN XII)",
+      "notes": "Superior and inferior longitudinal, transverse and vertical muscles. Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK507782 (Tongue). Mesh: the Z-Anatomy model has the tongue as one midline mesh, which stands for these muscles; tapping it shows this entry. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "Digastric",
+      "section": "Suprahyoid and Infrahyoid",
+      "section_id": "16",
+      "origin": "Anterior belly: digastric fossa on the inner lower border of the mandible near the symphysis. Posterior belly: mastoid notch of the temporal bone.",
+      "insertion": "Intermediate tendon, held to the hyoid bone at the junction of its body and greater horn by a fibrous sling.",
+      "action": "Depresses the mandible to open the mouth when the hyoid is fixed; elevates the hyoid during swallowing.",
+      "nerve_innervation": "Anterior belly: nerve to mylohyoid, from the inferior alveolar nerve (CN V3). Posterior belly: facial nerve (CN VII)",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK546710 (Suprahyoid Muscle). Mesh: Z-Anatomy anterior belly, intermediate tendon and posterior belly joined. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "Mylohyoid",
+      "section": "Suprahyoid and Infrahyoid",
+      "section_id": "16",
+      "origin": "Mylohyoid line of the mandible, from the symphysis back to the last molar.",
+      "insertion": "Median fibrous raphe running from the symphysis to the hyoid, and the body of the hyoid bone.",
+      "action": "Raises the floor of the mouth, the tongue and the hyoid in swallowing and speech; depresses the mandible when the hyoid is fixed.",
+      "nerve_innervation": "Nerve to mylohyoid, a branch of the inferior alveolar nerve (CN V3)",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK546710 (Suprahyoid Muscle). Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "Stylohyoid",
+      "section": "Suprahyoid and Infrahyoid",
+      "section_id": "16",
+      "origin": "Styloid process of the temporal bone.",
+      "insertion": "Body of the hyoid at its junction with the greater horn, splitting around the intermediate tendon of the digastric.",
+      "action": "Elevates and retracts the hyoid, lengthening the floor of the mouth during swallowing.",
+      "nerve_innervation": "Facial nerve (CN VII)",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK546710 (Suprahyoid Muscle). UAMS gives the posterior side of the styloid process, NBK546710 its middle - recorded without the qualifier. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "Geniohyoid",
+      "section": "Suprahyoid and Infrahyoid",
+      "section_id": "16",
+      "origin": "Inferior mental spine (genial tubercle) of the mandible.",
+      "insertion": "Anterior surface of the body of the hyoid bone.",
+      "action": "Draws the hyoid upward and forward, widening the pharynx; depresses the mandible when the hyoid is fixed.",
+      "nerve_innervation": "Fibers of the C1 ventral ramus carried by the hypoglossal nerve",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK546710 (Suprahyoid Muscle). Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "Sternohyoid",
+      "section": "Suprahyoid and Infrahyoid",
+      "section_id": "16",
+      "origin": "Posterior surface of the manubrium and the sternal end of the clavicle.",
+      "insertion": "Lower border of the body of the hyoid, medial to the omohyoid.",
+      "action": "Depresses the hyoid after swallowing and in speech.",
+      "nerve_innervation": "Ansa cervicalis (C1-C3)",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK557475 (Anterior Cervical Region). Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "Omohyoid",
+      "section": "Suprahyoid and Infrahyoid",
+      "section_id": "16",
+      "origin": "Inferior belly: upper border of the scapula, near the suprascapular notch.",
+      "insertion": "Superior belly: lower border of the body of the hyoid, lateral to the sternohyoid. The two bellies are joined by an intermediate tendon.",
+      "action": "Depresses and steadies the hyoid bone.",
+      "nerve_innervation": "Ansa cervicalis (C1-C3)",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK557475 (Anterior Cervical Region). Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "Sternothyroid",
+      "section": "Suprahyoid and Infrahyoid",
+      "section_id": "16",
+      "origin": "Posterior surface of the manubrium, below the origin of the sternohyoid.",
+      "insertion": "Oblique line of the thyroid cartilage.",
+      "action": "Depresses the larynx (thyroid cartilage).",
+      "nerve_innervation": "Ansa cervicalis (C1-C3)",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK557475 (Anterior Cervical Region) and NBK541063 (Thyroid Muscles). UAMS lists its action as depressing or steadying the hyoid, but the muscle has no hyoid attachment; NBK541063 gives depression of the larynx, which is recorded. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "review_flag": ""
+    },
+    {
+      "name": "Thyrohyoid",
+      "section": "Suprahyoid and Infrahyoid",
+      "section_id": "16",
+      "origin": "Oblique line of the thyroid cartilage.",
+      "insertion": "Lower border of the body and greater horn of the hyoid bone.",
+      "action": "Depresses the hyoid; when the hyoid is fixed, raises the larynx.",
+      "nerve_innervation": "Fibers of the C1 ventral ramus carried by the hypoglossal nerve (not through the ansa cervicalis)",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK557475 and NBK541063; Kenhub (thyrohyoid: attachments - StatPearls gives none). Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     }
   ],

@@ -103,6 +103,13 @@ export const MUSCLE_SECTION_COLORS = Object.freeze({
   'Pelvic Girdle and Hip Joint': 0xc83b2d,
   'Knee Joint': 0xb35128,
   'Ankle and Foot Joints': 0xcd672e,
+  // Head and anterior neck, added 2026-10-14. Same red family; each must stay
+  // darker than COLORS.attachment in every channel (a test checks this).
+  'Face and Scalp': 0xc4453a,
+  'Muscles of Mastication': 0xa8322c,
+  'Eye (Extraocular)': 0xb5473f,
+  'Tongue': 0xc25a4a,
+  'Suprahyoid and Infrahyoid': 0xb93a34,
 });
 
 /**
