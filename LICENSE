@@ -1,0 +1,27 @@
+Skeleton Model
+Copyright (c) 2026 Jacob Hosking. All rights reserved.
+
+This applies to everything in this repository and on the published site
+EXCEPT the two items listed under "Third-party components" below. In
+particular it covers:
+
+  * the application code: index.html, styles.css and everything in src/;
+  * the anatomical reference text in data/anatomy.json (muscle origins,
+    insertions, actions, innervations, notes and bony-landmark text) -
+    written in original wording for this project.
+
+You may use the app through its published website. You may not copy,
+modify, republish, redistribute or create derivative works from the
+material above, in whole or in part, without written permission from the
+copyright holder. Being able to view these files publicly does not grant
+any licence to reuse them.
+
+Third-party components (NOT covered by the notice above):
+
+  * models/skeleton_v2.glb - the 3D model is licensed CC BY-SA 4.0. It
+    combines BodyParts3D (c) The Database Center for Life Science (CC BY-SA
+    2.1 JP) and Z-Anatomy (CC BY-SA 4.0), with ear ossicles original to this
+    project. You may reuse the model under those terms. Full attribution
+    and details: LICENSES.md and the Credits screen in the app.
+  * vendor/ - three.js 0.160.1, Copyright 2010-2023 Three.js Authors, MIT
+    License.
