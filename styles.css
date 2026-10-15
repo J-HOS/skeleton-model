@@ -23,10 +23,21 @@
 */
 [hidden] { display: none !important; }
 
+/*
+  2026-10-15: the page itself must never scroll. Jake left the app open in
+  iPhone Safari overnight and came back to it scrolled ~500px down: the menu
+  off the top, the empty (closed) detail panel showing with a dead Close, only
+  the model still working. The closed panel waits below the screen via a
+  transform, which gave the document hidden scroll room; iOS scrolls into that
+  despite overflow:hidden, and restores the position on reload. Fix: every
+  screen layer is position:fixed (so nothing adds scroll room) and the body is
+  pinned. main.js also snaps the scroll back to 0 (see keepPageAtTop).
+*/
 html, body {
   margin: 0;
   height: 100%;
   overflow: hidden;
+  overscroll-behavior: none;
   background: var(--bg);
   color: var(--text);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -34,6 +45,7 @@ html, body {
   line-height: 1.5;
 }
 
+body { position: fixed; inset: 0; }
 #canvas-host { position: fixed; inset: 0; }
 canvas { display: block; touch-action: none; }
 
@@ -41,7 +53,7 @@ canvas { display: block; touch-action: none; }
 
 /* 2026-10-14: the top bar is now just the menu button, top-left. It no
    longer spans the width, so the model is not covered by a gradient strip. */
-#topbar { position: absolute; top: 12px; left: 12px; z-index: 9; }
+#topbar { position: fixed; top: 12px; left: 12px; z-index: 9; }
 
 .icon-btn {
   min-height: var(--touch); padding: 0 14px;
@@ -155,14 +167,14 @@ canvas { display: block; touch-action: none; }
 /* ------------------------------------------------------------------- hint */
 
 #hint {
-  position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%);
+  position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%);
   z-index: 7; padding: 8px 14px; border-radius: 20px;
   background: rgba(23,28,36,.94); border: 1px solid var(--line);
   color: var(--muted); font-size: 12.5px; pointer-events: none;
 }
 
 #loading {
-  position: absolute; inset: 0; z-index: 20;
+  position: fixed; inset: 0; z-index: 20;
   display: flex; align-items: center; justify-content: center; gap: 12px;
   background: var(--bg); color: var(--muted);
 }
@@ -176,7 +188,7 @@ canvas { display: block; touch-action: none; }
 /* --------------------------------------------------------------- overlays */
 
 .overlay {
-  position: absolute; inset: 0; z-index: 30;
+  position: fixed; inset: 0; z-index: 30;
   display: flex; align-items: center; justify-content: center; padding: 24px;
   background: rgba(14,17,22,.88);
 }
@@ -207,11 +219,12 @@ canvas { display: block; touch-action: none; }
 /* ----------------------------------------------------------------- search */
 
 #search {
-  position: absolute; inset: 0; z-index: 15;
+  position: fixed; inset: 0; z-index: 15;
   background: rgba(14,17,22,.97);
-  display: none; flex-direction: column;
+  display: flex; flex-direction: column;
 }
-#search.open { display: flex; }
+/* Open/closed is the `hidden` attribute (2026-10-15), so it works even when
+   this stylesheet does not load. Do not reintroduce a CSS-only toggle. */
 .search-bar { display: flex; gap: 8px; padding: 12px 14px; border-bottom: 1px solid var(--line); }
 #searchInput {
   flex: 1; min-height: var(--touch); padding: 0 14px;
@@ -236,7 +249,7 @@ canvas { display: block; touch-action: none; }
 /* ------------------------------------------------------------- info panel */
 
 #info {
-  position: absolute; right: 0; top: 0; bottom: 0; z-index: 10;
+  position: fixed; right: 0; top: 0; bottom: 0; z-index: 10;
   width: min(380px, 92vw); padding: 16px 18px 28px;
   background: var(--panel); border-left: 1px solid var(--line);
   overflow-y: auto; transform: translateX(101%); transition: transform .2s ease;
@@ -296,7 +309,7 @@ canvas { display: block; touch-action: none; }
   Bottom-left: the menu owns top-left, #info owns the right edge.
 */
 .dev-panel {
-  position: absolute; left: 12px; bottom: 12px; z-index: 8;
+  position: fixed; left: 12px; bottom: 12px; z-index: 8;
   width: 320px; max-width: calc(100vw - 24px);
   max-height: calc(100vh - 200px); overflow-y: auto;
   background: var(--panel); border: 1px solid var(--line);

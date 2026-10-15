@@ -87,7 +87,9 @@
 <div id="loading" hidden></div>
 
 <!-- Search -->
-<div id="search" role="dialog" aria-label="Search structures">
+<!-- hidden by attribute, not only by CSS (2026-10-15): if styles.css fails
+     to load, a CSS-only rule leaves this bar on screen with a dead Close. -->
+<div id="search" role="dialog" aria-label="Search structures" hidden>
   <div class="search-bar">
     <input id="searchInput" type="search" placeholder="Search muscles and bones"
            autocomplete="off" autocorrect="off" spellcheck="false" maxlength="100"

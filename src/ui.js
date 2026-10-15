@@ -236,17 +236,19 @@ export function renderSearchResults(results, query, onPick) {
   );
 }
 
+// Open/closed is the `hidden` attribute, not a CSS class (2026-10-15): the
+// browser's own stylesheet honours it even when styles.css fails to load.
 export function openSearch() {
-  byId('search').classList.add('open');
+  byId('search').hidden = false;
   byId('searchInput').focus();
 }
 
 export function closeSearch() {
-  byId('search').classList.remove('open');
+  byId('search').hidden = true;
 }
 
 export function isSearchOpen() {
-  return byId('search').classList.contains('open');
+  return !byId('search').hidden;
 }
 
 /* ------------------------------------------------------------ disclaimer -- */

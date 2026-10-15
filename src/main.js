@@ -145,7 +145,78 @@ async function loadLayerMap() {
 
 /* ------------------------------------------------------------------ boot -- */
 
+/**
+ * Make sure styles.css actually applied (2026-10-15). Jake left the app open
+ * on his iPhone overnight; on refresh Safari ran the scripts but the
+ * stylesheet never arrived, so the page rendered unstyled: the canvas in
+ * normal flow, the search bar below it with a Close button that did nothing,
+ * the menu scrolled off the top. Only the model could be moved.
+ *
+ * Sentinel: styles.css makes #canvas-host position:fixed; the browser default
+ * is static. If it is missing, fetch the stylesheet again with a cache-busting
+ * query; if that fails too, reload once (guarded so it cannot loop).
+ */
+const STYLE_RELOAD_KEY = 'skeletonModel.styleReload';
+
+function stylesApplied() {
+  return getComputedStyle(byId('canvas-host')).position === 'fixed';
+}
+
+async function ensureStyles() {
+  if (stylesApplied()) {
+    try { sessionStorage.removeItem(STYLE_RELOAD_KEY); } catch { /* storage may be blocked */ }
+    return true;
+  }
+  console.warn('styles.css did not apply - fetching it again');
+  const link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = `styles.css?retry=${Date.now()}`;
+  await new Promise((resolve) => {
+    const timer = setTimeout(resolve, 8000);
+    link.addEventListener('load', () => { clearTimeout(timer); resolve(); });
+    link.addEventListener('error', () => { clearTimeout(timer); resolve(); });
+    document.head.append(link);
+  });
+  if (stylesApplied()) return true;
+
+  let tried = false;
+  try { tried = sessionStorage.getItem(STYLE_RELOAD_KEY) === '1'; } catch { /* treat as not tried */ }
+  if (!tried) {
+    try { sessionStorage.setItem(STYLE_RELOAD_KEY, '1'); } catch { /* reload anyway */ }
+    location.reload();
+    return false;
+  }
+  ui.showError('The page did not finish loading. Check your connection and reload.');
+  return false;
+}
+
+/**
+ * The page must never be scrolled (2026-10-15 - see the html/body rule in
+ * styles.css for the overnight iPhone bug). CSS removes the scroll room; this
+ * is the backstop: stop the browser restoring an old position on reload, and
+ * put the page back at the top whenever anything (iOS focus scrolling, a tab
+ * waking up, a rotation) moves it.
+ */
+function keepPageAtTop() {
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  const reset = () => {
+    const root = document.scrollingElement || document.documentElement;
+    if (root.scrollTop || root.scrollLeft || window.scrollY || window.scrollX) window.scrollTo(0, 0);
+    if (document.body.scrollTop) document.body.scrollTop = 0;
+  };
+  reset();
+  window.addEventListener('scroll', reset, { passive: true });
+  window.addEventListener('pageshow', reset);
+  window.addEventListener('resize', reset);
+  window.addEventListener('focusout', () => setTimeout(reset, 50));
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') reset();
+  });
+}
+
 async function boot() {
+  keepPageAtTop();
+  if (!(await ensureStyles())) return;
   ui.setLoading('Verifying anatomical data…');
   try {
     state.data = await loadDataset();
