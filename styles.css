@@ -59,8 +59,8 @@ canvas { display: block; touch-action: none; }
 
 .menu-wrap { position: relative; }
 .menu-btn {
-  display: flex; align-items: center; gap: 11px;
-  min-height: var(--touch); padding: 0 16px 0 14px;
+  display: flex; align-items: center; justify-content: center;
+  min-height: var(--touch); min-width: var(--touch); padding: 0 14px;
   background: rgba(23,28,36,.92); color: var(--text);
   border: 1px solid var(--line); border-radius: var(--radius);
   font: inherit; cursor: pointer;
@@ -68,7 +68,6 @@ canvas { display: block; touch-action: none; }
 }
 .menu-btn:hover, .menu-btn[aria-expanded="true"] { border-color: var(--accent); }
 .menu-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-.menu-btn .title { font-weight: 650; font-size: 14.5px; letter-spacing: .2px; }
 
 /* Three bars that fold into an X while the menu is open. */
 .menu-icon { display: grid; gap: 4px; width: 16px; }

@@ -116,22 +116,29 @@ export class Viewer {
     // to deepen the grooves between adjacent muscle bellies. Ambient light is
     // what fills a crevice back in, so lowering it is the most direct control
     // available for contact definition short of real ambient occlusion.
-    this.scene.add(new THREE.HemisphereLight(0xffffff, 0x3a4048, 0.22));
-    const key = new THREE.DirectionalLight(0xffffff, 1.08);
-    key.position.set(4, 8, 6);
-    this.scene.add(key);
-    // Cross light: lower angle, different azimuth from the key, so surface
-    // relief the key light leaves flat (grooves roughly parallel to its
-    // rays) still catches a shadow from this direction instead.
-    const cross = new THREE.DirectionalLight(0xffffff, 0.35);
-    cross.position.set(-5, 3, 7);
-    this.scene.add(cross);
-    const fill = new THREE.DirectionalLight(0xfff4e8, 0.14);
-    fill.position.set(-3, 2, -8);
+    // Fourth pass, 2026-10-14, after Jake's phone test: zoomed in under the
+    // foot, the sole was nearly black. Every light above was fixed in world
+    // space and aimed from above or the side, so any surface facing down (the
+    // sole, the palm turned over, the underside of the jaw) got only the dark
+    // hemisphere ground colour. Jake: "everything should be highlighted and
+    // easy to see". Fix: the main light now rides on the camera (a headlight,
+    // offset up and to the right so curved surfaces still shade), so whatever
+    // you are looking at is lit from your side; the ground colour is lifted so
+    // no face goes black; one fixed light from above keeps a consistent sense
+    // of top. ACES (above) still rolls off highlights.
+    this.scene.add(new THREE.HemisphereLight(0xffffff, 0x8a8478, 0.55));
+    const head = new THREE.DirectionalLight(0xffffff, 1.0);
+    head.position.set(2.5, 3, 6);         // relative to the camera
+    head.target.position.set(0, 0, -10);  // straight ahead of the camera
+    this.camera.add(head);
+    this.camera.add(head.target);
+    this.scene.add(this.camera);
+    const top = new THREE.DirectionalLight(0xffffff, 0.35);
+    top.position.set(4, 8, 6);
+    this.scene.add(top);
+    const fill = new THREE.DirectionalLight(0xfff4e8, 0.2);
+    fill.position.set(-3, -4, -6);
     this.scene.add(fill);
-    const rim = new THREE.DirectionalLight(0x88bbff, 0.18);
-    rim.position.set(-6, 2, -4);
-    this.scene.add(rim);
 
     this.controls = new OrbitControls(this.camera, this.renderer.domElement, new THREE.Vector3(0, 0, 0));
     this.raycaster = new THREE.Raycaster();
