@@ -71,8 +71,10 @@ They are part of the combined model under CC BY-SA 4.0.
 All meshes were rescaled and repositioned into one coordinate frame, decimated,
 renamed, re-materialled (emissive removed, surface colours from material slots),
 and converted to glTF. Muscles were mirrored about the sagittal plane to make
-left and right sides. Some BodyParts3D foot muscles were replaced by Z-Anatomy
-equivalents. CC 4.0 licences require that modifications be indicated; this
+left and right sides. Some BodyParts3D foot muscles (2026-08-01) and the 24 wrist and
+hand muscles (2026-10-14) were replaced by Z-Anatomy equivalents, so they sit on
+the Z-Anatomy skeleton; both sources are CC BY-SA, so this changes no licence
+terms. CC 4.0 licences require that modifications be indicated; this
 section and the Credits screen do that.
 
 ---
