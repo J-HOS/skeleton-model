@@ -300,6 +300,10 @@ canvas { display: block; touch-action: none; }
   /* 2026-10-14: every control is in the menu, so the phone top-bar wrapping
      rules (2026-10-08) and the bottom layer row are gone. */
   #topbar { top: 10px; left: 10px; }
+  /* Hint at the top on phones (2026-10-16, review N2): at the bottom it sat
+     under the detail card, so "no 3D model" was never seen. Below the menu
+     button, clear of the card. */
+  #hint { bottom: auto; top: 64px; max-width: calc(100vw - 24px); text-align: center; }
   .overlay { padding: 12px; }
   .credits-card { max-height: calc(100vh - 24px); }
 }

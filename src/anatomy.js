@@ -318,7 +318,9 @@ export function selectionGroup(id, sceneIds, bilateral, aliases) {
   for (const sided of [`${id}_left`, `${id}_right`, `${id}_l_ZA`, `${id}_r_ZA`]) {
     if (present.has(sided)) out.add(sided);
   }
-  if (!out.size) out.add(id); // nothing in the scene: keep the id so callers can say so
+  // Nothing in the scene matches (a structure with no mesh): return an EMPTY
+  // set (2026-10-16, review N2). Keeping the id made the selection non-empty,
+  // so every other mesh dimmed although nothing was lit.
   return out;
 }
 

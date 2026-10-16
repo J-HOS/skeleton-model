@@ -9,15 +9,15 @@
  * the loader.
  */
 
-import { LAYERS, PATHS } from './config.js?v=67094af755ca';
-import { loadDataset, buildSearchIndex } from './dataset.js?v=67094af755ca';
-import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap } from './anatomy.js?v=67094af755ca';
-import { fetchLocal, sanitizeQuery } from './security.js?v=67094af755ca';
-import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral } from './storage.js?v=67094af755ca';
-import { Viewer } from './viewer.js?v=67094af755ca';
-import { mountDevPanel } from './devpanel.js?v=67094af755ca';
-import { byId } from './dom.js?v=67094af755ca';
-import * as ui from './ui.js?v=67094af755ca';
+import { LAYERS, PATHS } from './config.js?v=7aa0c8ce5a6e';
+import { loadDataset, buildSearchIndex } from './dataset.js?v=7aa0c8ce5a6e';
+import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap } from './anatomy.js?v=7aa0c8ce5a6e';
+import { fetchLocal, sanitizeQuery } from './security.js?v=7aa0c8ce5a6e';
+import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral } from './storage.js?v=7aa0c8ce5a6e';
+import { Viewer } from './viewer.js?v=7aa0c8ce5a6e';
+import { mountDevPanel } from './devpanel.js?v=7aa0c8ce5a6e';
+import { byId } from './dom.js?v=7aa0c8ce5a6e';
+import * as ui from './ui.js?v=7aa0c8ce5a6e';
 
 const state = {
   data: null,
@@ -96,7 +96,7 @@ function showAndFocus(structureId) {
   const hasMesh = revealForFocus(structureId);
   show(structureId);
   if (!hasMesh) {
-    ui.flashHint('Content shown — no mesh for this structure in the model yet.');
+    ui.flashHint('No 3D model for this structure yet - its card is shown.', 4000);
     return;
   }
   // The card has just opened; give the viewer its size now (the observer
@@ -315,7 +315,11 @@ async function boot() {
   // an empty list.
   mountDevPanel(state.viewer);
 
-  if (!hasAcknowledgedDisclaimer()) ui.renderDisclaimer(acknowledgeDisclaimer);
+  // First-run hint waits until the notice is dismissed (2026-10-16, review N3):
+  // started before, its timer ran out unseen behind the notice.
+  if (!hasAcknowledgedDisclaimer()) {
+    ui.renderDisclaimer(() => { acknowledgeDisclaimer(); firstRunHint(); });
+  }
 }
 
 /**
@@ -454,7 +458,11 @@ function wireInterface() {
   const recents = getRecents();
   // Panning has no visible affordance, so first-time users are told once.
   if (recents.length) ui.flashHint(`Last viewed: ${recents[0]}`);
-  else ui.flashHint('Drag to rotate · two fingers or right-drag to move · pinch or scroll to zoom', 5200);
+  else if (hasAcknowledgedDisclaimer()) firstRunHint();
+}
+
+function firstRunHint() {
+  ui.flashHint('Tap a muscle or bone, or Menu > Search · drag to rotate · pinch or scroll to zoom', 6500);
 }
 
 /**
