@@ -1,7 +1,7 @@
-# Skeleton Model — Licences and Credits
+# Skeleton Model — Licenses and Credits
 
 *Written 2026-10-08, when the release decision was made: **publish free, comply
-with share-alike.** No licence in this project charges a fee. Updated 2026-10-09:
+with share-alike.** No license in this project charges a fee. Updated 2026-10-09:
 the one non-commercial component (the ear ossicles) has been replaced.*
 
 This file is the full notice. The app shows the same content on its **Credits**
@@ -25,21 +25,21 @@ Required attribution, in the licensor's own wording:
 
 > BodyParts3D, Copyright© The Database Center for Life Science licensed by CC Attribution-Share Alike 2.1 Japan
 
-- Licence: [CC BY-SA 2.1 JP](https://creativecommons.org/licenses/by-sa/2.1/jp/deed.en)
+- License: [CC BY-SA 2.1 JP](https://creativecommons.org/licenses/by-sa/2.1/jp/deed.en)
 - Source: <https://dbarchive.biosciencedbc.jp/en/bodyparts3d/download.html>
 - Used for: the muscle meshes, and (through Z-Anatomy) most bone meshes.
 - CC BY-SA 2.x allows adaptations to be released under a later version with the
-  same licence elements, which is how the combined model can be CC BY-SA 4.0.
+  same license elements, which is how the combined model can be CC BY-SA 4.0.
   Z-Anatomy relicensed its BodyParts3D-derived files the same way.
 
 ### 1.2 Z-Anatomy
 
-Requested attribution, from the licence text inside Z-Anatomy's `Startup.blend`:
+Requested attribution, from the license text inside Z-Anatomy's `Startup.blend`:
 
 > "BodyParts3D, © The Database Center for Life Science licensed under CC Attribution-Share Alike 2.1 Japan"
 > mixed and modified by 'Z-anatomy.com'
 
-- Licence: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+- License: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
 - Authors: Gauthier Kervyn (design, 3D, anatomy) and contributors
 - Source: <https://github.com/Z-Anatomy/Models-of-human-anatomy>
 - Used for: all bone meshes, several muscle meshes (latissimus dorsi, rectus
@@ -58,7 +58,7 @@ They are part of the combined model under CC BY-SA 4.0.
   McGill "Anatomy of the Inner Ear" meshes (CC BY-NC-SA 4.0, included via
   Z-Anatomy) - the only non-commercial component the model ever had. They were
   replaced by `01 3D Model/(C) swap_ossicles_glb.py`, which the export script runs
-  before the licence stamp; the stamp refuses to run if any of the six still
+  before the license stamp; the stamp refuses to run if any of the six still
   carries the Dundee mesh. The node names were kept so the app is unchanged.
 - **The master `.blend` still contains the Dundee objects.** They never ship: every
   export passes through the swap. Replace them in the `.blend` the next time
@@ -69,12 +69,12 @@ They are part of the combined model under CC BY-SA 4.0.
 ### 1.4 Changes made for this app
 
 All meshes were rescaled and repositioned into one coordinate frame, decimated,
-renamed, re-materialled (emissive removed, surface colours from material slots),
+renamed, re-materialed (emissive removed, surface colors from material slots),
 and converted to glTF. Muscles were mirrored about the sagittal plane to make
 left and right sides. Some BodyParts3D foot muscles (2026-08-01) and the 24 wrist and
 hand muscles (2026-10-14) were replaced by Z-Anatomy equivalents, so they sit on
-the Z-Anatomy skeleton; both sources are CC BY-SA, so this changes no licence
-terms. CC 4.0 licences require that modifications be indicated; this
+the Z-Anatomy skeleton; both sources are CC BY-SA, so this changes no license
+terms. CC 4.0 licenses require that modifications be indicated; this
 section and the Credits screen do that.
 
 ---
@@ -105,7 +105,7 @@ credit described where the text came from and that is no longer true.
   The MIT notice is kept in the header of each vendored file and on the Credits screen.
 - **App code** (`02 Development/app/`): © 2026 Skeleton Model. All rights reserved.
   Share-alike applies to the model, not to code that only loads and displays it.
-  Releasing the code under an open licence too is an option, not an obligation.
+  Releasing the code under an open license too is an option, not an obligation.
 
 ---
 
@@ -113,7 +113,7 @@ credit described where the text came from and that is no longer true.
 
 - [x] Credits screen in the app with full attribution (Credits button, top bar)
 - [x] Short attribution on every content card, pointing to Credits
-- [x] Licence and attribution written inside the shipped `.glb`
+- [x] License and attribution written inside the shipped `.glb`
 - [x] Modifications indicated
 - [ ] Do not add DRM or terms that stop people reusing the model
 - [x] Non-commercial ossicles replaced with original ones (2026-10-09) - the

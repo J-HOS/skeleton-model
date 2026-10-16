@@ -259,8 +259,8 @@
     ],
     "source_note": "Entries originally derived from the flashcard deck named in 'source'. All 128 entries were re-sourced on 2026-09-16 (see 'verification_log') and rewritten in original wording; no entry retains flashcard phrasing.",
     "verification_caveat": "Final state, 2026-09-16 close-out (recounted 2026-10-08): all 128 entries cite two or more approved sources, drawn from 65 distinct NIH/NCBI StatPearls articles (cited by NBK number in notes) plus Kenhub. 95 entries rest on two StatPearls articles - separately authored but one publisher; 33 span two publishers. No print reference (Gray's, Netter's, Moore's) has been consulted, and sources were read via machine summaries. teachmeanatomy.info is not an approved source and counts toward nothing. An earlier mid-session audit recorded 10/48/70 for two/one/none; that figure is superseded.",
-    "textbook_check_2026_10_09": "All 128 entries checked 2026-10-09 against sources independent of StatPearls: the UAMS/TTUHSC medical-school anatomy tables (.edu, all 128 except the two serratus posterior muscles), the UW Musculoskeletal Atlas (.edu) for limb conflicts, Loyola LUMEN (.edu), Radiopaedia (.org) and Kenhub. Result: 116 agree, 9 documented source conflicts (mostly nerve root levels), 3 corrections (flexor digitorum superficialis insertion, transversus abdominis costal origin - reverting a 2026-09-16 change, psoas major origin). Every entry now rests on at least one non-StatPearls publisher. LIMITS: these are medical-school teaching tables and atlases, not the printed Gray's/Netter's/Moore's; pages were read through a summarising fetch tool, not verbatim.",
-    "head_muscles_2026_10_14": "43 head and anterior-neck muscles added 2026-10-14 (sections 12-16) at Jake's request ('everything in the head'). Each rests on the UAMS head-and-neck table (.edu) plus StatPearls (.gov), with Kenhub where StatPearls gave no attachments; sources cited per entry. Temporoparietalis omitted: no approved source for its attachments or nerve. Buccinator, levator labii superioris alaeque nasi, styloglossus and palatoglossus have no Z-Anatomy mesh. Conflicts left open in notes: procerus branch, occipitalis direction (StatPearls), depressor labii inferioris branch. Read via summarising fetch; no print reference."
+    "textbook_check_2026_10_09": "All 128 entries checked 2026-10-09 against sources independent of StatPearls: the UAMS/TTUHSC medical-school anatomy tables (.edu, all 128 except the two serratus posterior muscles), the UW Musculoskeletal Atlas (.edu) for limb conflicts, Loyola LUMEN (.edu), Radiopaedia (.org) and Kenhub. Result: 116 agree, 9 documented source conflicts (mostly nerve root levels), 3 corrections (flexor digitorum superficialis insertion, transversus abdominis costal origin - reverting a 2026-09-16 change, psoas major origin). Every entry now rests on at least one non-StatPearls publisher. LIMITS: these are medical-school teaching tables and atlases, not the printed Gray's/Netter's/Moore's; pages were read through a summarizing fetch tool, not verbatim.",
+    "head_muscles_2026_10_14": "43 head and anterior-neck muscles added 2026-10-14 (sections 12-16) at Jake's request ('everything in the head'). Each rests on the UAMS head-and-neck table (.edu) plus StatPearls (.gov), with Kenhub where StatPearls gave no attachments; sources cited per entry. Temporoparietalis omitted: no approved source for its attachments or nerve. Buccinator, levator labii superioris alaeque nasi, styloglossus and palatoglossus have no Z-Anatomy mesh. Conflicts left open in notes: procerus branch, occipitalis direction (StatPearls), depressor labii inferioris branch. Read via summarizing fetch; no print reference."
   },
   "muscles": [
     {
@@ -269,7 +269,7 @@
       "section_id": "1",
       "origin": "Margins of the 3rd to 5th ribs, adjacent to their costochondral junctions.",
       "insertion": "Medial border and superior surface of the coracoid process of the scapula.",
-      "action": "Stabilises the scapula by drawing it downward and anteriorly against the thoracic wall: depression, protraction and downward rotation. Assists inspiration when the scapula is fixed.",
+      "action": "Stabilizes the scapula by drawing it downward and anteriorly against the thoracic wall: depression, protraction and downward rotation. Assists inspiration when the scapula is fixed.",
       "nerve_innervation": "Medial pectoral nerve (C8-T1)",
       "notes": "Re-sourced 2026-09-16 to two approved sources: StatPearls NBK545241 (Pectoral Muscles, .gov) and Kenhub. NBK545241 lists both medial and lateral pectoral nerves; the medial is the conventional and consistent attribution and is recorded, with the lateral contribution noted here. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
       "review_flag": ""
@@ -302,7 +302,7 @@
       "section_id": "1",
       "origin": "Transverse processes of C1-C4, from their posterior tubercles.",
       "insertion": "Medial border of the scapula, from the superior angle to the root of the scapular spine.",
-      "action": "Scapular elevation, retraction and downward rotation of the glenoid cavity; stabilises the scapula during movement. Acting on the neck: unilateral lateral flexion toward the contracting side.",
+      "action": "Scapular elevation, retraction and downward rotation of the glenoid cavity; stabilizes the scapula during movement. Acting on the neck: unilateral lateral flexion toward the contracting side.",
       "nerve_innervation": "Dorsal scapular nerve (C5), with direct branches from the anterior rami of C3-C4",
       "notes": "Re-sourced 2026-09-16 to two approved sources: StatPearls NBK537216 (Back, Extrinsic Muscles, .gov) and Kenhub. Both give the dual supply - dorsal scapular plus direct C3-C4 branches - which is why a dorsal scapular nerve injury does not abolish its function. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
       "review_flag": ""
@@ -325,7 +325,7 @@
       "origin": "External occipital protuberance, medial third of the superior nuchal line, and the ligamentum nuchae, which itself attaches to the spinous processes of C1-C6.",
       "insertion": "Posterior border of the lateral third of the clavicle.",
       "action": "Scapular elevation, retraction (adduction), and upward rotation. Bilateral: extension of the head and neck. Unilateral: lateral flexion toward the contracting side with rotation of the face away.",
-      "nerve_innervation": "Accessory nerve (CN XI) for motor supply, with proprioceptive fibres from C3-C4",
+      "nerve_innervation": "Accessory nerve (CN XI) for motor supply, with proprioceptive fibers from C3-C4",
       "notes": "Verified 2026-09-16 against Kenhub and StatPearls (NBK518994). A suspected error was checked and found NOT to be one: the reference to C1-C6 spinous processes looked wrong because the atlas has no spinous process, but the attachment is by way of the ligamentum nuchae, which Kenhub describes the same way. The origin is now explicit about that path, and 'medial third' has been added to the superior nuchal line. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
       "review_flag": ""
     },
@@ -336,7 +336,7 @@
       "origin": "Spinous processes and supraspinous ligaments of C6-T3.",
       "insertion": "Medial margin of the acromion and the superior crest of the scapular spine.",
       "action": "Scapular retraction, drawing it medially, with assistance in upward rotation.",
-      "nerve_innervation": "Accessory nerve (CN XI) for motor supply, with sensory and proprioceptive fibres from the ventral rami of C3-C4",
+      "nerve_innervation": "Accessory nerve (CN XI) for motor supply, with sensory and proprioceptive fibers from the ventral rami of C3-C4",
       "notes": "Re-sourced 2026-09-16 to three approved sources: StatPearls NBK518994 (Back, Trapezius) and NBK537216 (Back, Extrinsic Muscles), both .gov, plus Kenhub. SOURCE VARIATION on the vertebral range, not resolved: both .gov articles describe the whole muscle as arising from C7-T12 without subdividing it, Kenhub gives T1-T4 for the transverse part, and kinesiology texts commonly give C7-T3. The existing C6-T3 sits within that spread and has been kept rather than picked over the alternatives. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
       "review_flag": ""
     },
@@ -347,7 +347,7 @@
       "origin": "Spinous processes and supraspinous ligaments of T4-T12.",
       "insertion": "Aponeurosis at the medial end of the scapular spine, onto its tubercle.",
       "action": "Scapular depression, retraction (adduction), and upward rotation.",
-      "nerve_innervation": "Accessory nerve (CN XI) for motor supply, with proprioceptive fibres from C3-C4",
+      "nerve_innervation": "Accessory nerve (CN XI) for motor supply, with proprioceptive fibers from C3-C4",
       "notes": "Verified 2026-09-16 against Kenhub and StatPearls (NBK518994); T4-T12 range confirmed exactly. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
       "review_flag": ""
     },
@@ -366,7 +366,7 @@
       "name": "PectoralisMajor(sternalhead)",
       "section": "Shoulder Joint",
       "section_id": "2",
-      "origin": "Anterior surface of the sternum and the costal cartilages of the 1st-6th ribs; the lowest fibres arise from the aponeurosis of the external oblique.",
+      "origin": "Anterior surface of the sternum and the costal cartilages of the 1st-6th ribs; the lowest fibers arise from the aponeurosis of the external oblique.",
       "insertion": "Lateral lip of the intertubercular (bicipital) groove of the humerus.",
       "action": "Shoulder adduction, horizontal adduction, and internal rotation. Extends the flexed arm back toward the anatomical position.",
       "nerve_innervation": "Medial pectoral nerve (C8-T1)",
@@ -381,7 +381,7 @@
       "insertion": "Deltoid tuberosity on the lateral surface of the humerus.",
       "action": "Shoulder flexion and internal rotation; horizontal adduction. Works with pectoralis major to flex the arm during walking.",
       "nerve_innervation": "Axillary nerve (C5-C6)",
-      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK537056 (Deltoid Muscle) and NBK546633 (Scapulohumeral Muscles). Both confirm origin, insertion and nerve. The abduction previously credited to this head is not supported by either: NBK537056 assigns abduction to the acromial fibres and describes the anterior fibres as flexors. Dropped from the action. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK537056 (Deltoid Muscle) and NBK546633 (Scapulohumeral Muscles). Both confirm origin, insertion and nerve. The abduction previously credited to this head is not supported by either: NBK537056 assigns abduction to the acromial fibers and describes the anterior fibers as flexors. Dropped from the action. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
       "review_flag": ""
     },
     {
@@ -403,7 +403,7 @@
       "insertion": "Deltoid tuberosity on the lateral surface of the humerus.",
       "action": "Shoulder extension and external rotation; horizontal abduction. Works with latissimus dorsi to extend the arm during walking.",
       "nerve_innervation": "Axillary nerve (C5-C6)",
-      "notes": "Re-sourced 2026-09-16 against StatPearls NBK537056 and NBK546633, both .gov. Abduction dropped for the same reason as the anterior head - neither source assigns it to these fibres. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "notes": "Re-sourced 2026-09-16 against StatPearls NBK537056 and NBK546633, both .gov. Abduction dropped for the same reason as the anterior head - neither source assigns it to these fibers. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
       "review_flag": ""
     },
     {
@@ -423,7 +423,7 @@
       "section_id": "2",
       "origin": "Posterior surface of the inferior angle and lower third of the lateral border of the scapula.",
       "insertion": "Medial lip of the intertubercular (bicipital) groove of the humerus.",
-      "action": "Shoulder extension, adduction and internal rotation; assists in stabilising the humeral head.",
+      "action": "Shoulder extension, adduction and internal rotation; assists in stabilizing the humeral head.",
       "nerve_innervation": "Lower subscapular nerve (C5-C7)",
       "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK580487 (Teres Major Muscle) and NBK546633. Root range corrected from C5-C6 to C5-C7 per NBK580487, which states the lower subscapular nerve arises from C5, C6 and C7. SOURCE CONFLICT, not resolved: NBK546633 lists both the thoracodorsal and lower subscapular nerves; NBK580487 names the lower subscapular alone, which is the conventional attribution and is what is recorded. TEXTBOOK-LEVEL CHECK 2026-10-09 against the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source); the UW Musculoskeletal Atlas (rad.uw.edu, .edu): attachments and actions agree. SOURCE CONFLICT, documented not changed: Root levels differ between sources: TTUHSC gives the lower subscapular nerve as C5-C6, the UW Musculoskeletal Atlas as C6-C7; C5-C7 recorded as the span of both.",
       "review_flag": ""
@@ -445,7 +445,7 @@
       "section_id": "2",
       "origin": "Supraspinous fossa of the scapula.",
       "insertion": "Superior facet of the greater tubercle of the humerus.",
-      "action": "Initiates shoulder abduction through the first 15 degrees, before the deltoid can act; stabilises the humeral head in the glenoid cavity.",
+      "action": "Initiates shoulder abduction through the first 15 degrees, before the deltoid can act; stabilizes the humeral head in the glenoid cavity.",
       "nerve_innervation": "Suprascapular nerve (C5-C6)",
       "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK441844 (Rotator Cuff) and NBK546633. C5-C6 confirmed by both, upholding the correction made earlier the same day from the previous 'C5'. SOURCE CONFLICT, not resolved: NBK546633 adds lateral rotation to the action; NBK441844 gives abduction alone, which is recorded. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
       "review_flag": ""
@@ -456,7 +456,7 @@
       "section_id": "2",
       "origin": "Infraspinous fossa of the scapula.",
       "insertion": "Middle facet of the greater tubercle of the humerus, below the supraspinatus attachment.",
-      "action": "External rotation of the humerus - the most powerful external rotator; stabilises the humeral head in the glenoid cavity.",
+      "action": "External rotation of the humerus - the most powerful external rotator; stabilizes the humeral head in the glenoid cavity.",
       "nerve_innervation": "Suprascapular nerve (C5-C6)",
       "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK441844 and NBK546633. The abduction and horizontal abduction in the original flashcard entry are supported by neither and have been dropped; NBK441844 calls it a powerful lateral rotator and nothing more. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
       "review_flag": ""
@@ -467,7 +467,7 @@
       "section_id": "2",
       "origin": "Upper part of the posterior surface of the lateral border of the scapula, below the infraglenoid tubercle.",
       "insertion": "Inferior facet of the greater tubercle of the humerus, below the infraspinatus tendon.",
-      "action": "External rotation of the humerus; stabilises the glenohumeral joint as part of the rotator cuff.",
+      "action": "External rotation of the humerus; stabilizes the glenohumeral joint as part of the rotator cuff.",
       "nerve_innervation": "Axillary nerve (C5-C6)",
       "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK441844 and NBK513324 (Teres Minor Muscle). The adduction and extension carried in the original entry are described by neither - NBK513324 was asked directly and states the muscle is not an adductor or extensor. Removed rather than kept as 'assists'. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
       "review_flag": ""
@@ -555,7 +555,7 @@
       "section_id": "3",
       "origin": "Posterior surface of the lateral epicondyle of the humerus, at the common extensor origin.",
       "insertion": "Lateral surface of the olecranon and the upper posterior surface of the ulna.",
-      "action": "Assists elbow extension and stabilises the joint; draws the joint capsule clear of the advancing olecranon. Abducts the ulna during pronation.",
+      "action": "Assists elbow extension and stabilizes the joint; draws the joint capsule clear of the advancing olecranon. Abducts the ulna during pronation.",
       "nerve_innervation": "Radial nerve (C7-C8), by a branch given off before the posterior interosseous nerve",
       "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK536975 (Forearm Muscles) and NBK539784 (Forearm Compartments). Both make the same point, which the entry now carries: anconeus is supplied by the radial nerve directly and NOT through the posterior interosseous branch, unlike the deep extensors around it - so it is spared in posterior interosseous nerve palsy. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
       "review_flag": ""
@@ -744,7 +744,7 @@
       "insertion": "Radial side of the base of the proximal phalanx of the thumb.",
       "action": "Abduction of the thumb at the carpometacarpal and metacarpophalangeal joints; contributes to opposition.",
       "nerve_innervation": "Recurrent branch of the median nerve (C8-T1)",
-      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK537229 (Hand Muscles) and NBK539810 (Hand Intrinsic Muscles), the latter naming the recurrent motor branch explicitly. SOURCE NOTE: both .gov articles give unusually broad root ranges for the thenar group (C5-T1 and C5-C8); the conventional C8-T1 is recorded, since the recurrent branch carries the median nerve's most distal fibres. The recurrent branch is superficial and easily severed by a palmar laceration, which is why this muscle is the one tested for median motor function. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK537229 (Hand Muscles) and NBK539810 (Hand Intrinsic Muscles), the latter naming the recurrent motor branch explicitly. SOURCE NOTE: both .gov articles give unusually broad root ranges for the thenar group (C5-T1 and C5-C8); the conventional C8-T1 is recorded, since the recurrent branch carries the median nerve's most distal fibers. The recurrent branch is superficial and easily severed by a palmar laceration, which is why this muscle is the one tested for median motor function. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
       "review_flag": ""
     },
     {
@@ -766,7 +766,7 @@
       "insertion": "Radial side of the base of the proximal phalanx of the thumb, over a sesamoid bone.",
       "action": "Flexion of the thumb at the metacarpophalangeal joint; assists flexion and opposition at the carpometacarpal joint.",
       "nerve_innervation": "Superficial head: recurrent branch of the median nerve (C8-T1). Deep head: deep branch of the ulnar nerve (C8-T1)",
-      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK537229 and NBK539810. The split median/ulnar supply is confirmed by NBK537229 and is the reason this muscle is unreliable for localising a nerve lesion. A stray 'N ' prefix corrupting the start of this field was removed earlier the same day. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK537229 and NBK539810. The split median/ulnar supply is confirmed by NBK537229 and is the reason this muscle is unreliable for localizing a nerve lesion. A stray 'N ' prefix corrupting the start of this field was removed earlier the same day. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
       "review_flag": ""
     },
     {
@@ -853,8 +853,8 @@
       "origin": "Sternal head: superior part of the anterior surface of the manubrium. Clavicular head: superior surface of the medial third of the clavicle.",
       "insertion": "Lateral surface of the mastoid process, continuing onto the lateral half of the superior nuchal line of the occipital bone.",
       "action": "Bilateral: flexes the lower cervical spine while extending the head at the atlanto-occipital joint; assists inspiration by raising the sternum and clavicle. Unilateral: lateral flexion toward the contracting side with rotation of the face to the opposite side.",
-      "nerve_innervation": "Accessory nerve (CN XI) for motor supply, with proprioceptive fibres from the cervical plexus (C2-C3)",
-      "notes": "Re-sourced 2026-09-16 to two approved sources: StatPearls NBK532881 (.gov) and Kenhub. NBK532881 notes variants in which the lower part receives fibres from C1 by the ansa cervicalis. All four fields confirmed. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "nerve_innervation": "Accessory nerve (CN XI) for motor supply, with proprioceptive fibers from the cervical plexus (C2-C3)",
+      "notes": "Re-sourced 2026-09-16 to two approved sources: StatPearls NBK532881 (.gov) and Kenhub. NBK532881 notes variants in which the lower part receives fibers from C1 by the ansa cervicalis. All four fields confirmed. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
       "review_flag": ""
     },
     {
@@ -940,7 +940,7 @@
       "section_id": "6",
       "origin": "Transverse processes of the vertebrae, from C2 to S1, though the muscles are inconstant outside the thoracic region.",
       "insertion": "Lamina and base of the spinous process of the vertebra one or two levels above.",
-      "action": "Bilateral: extension and segmental stabilisation of the vertebral column. Unilateral: rotation to the opposite side. Their high muscle-spindle density suggests a substantial proprioceptive role.",
+      "action": "Bilateral: extension and segmental stabilization of the vertebral column. Unilateral: rotation to the opposite side. Their high muscle-spindle density suggests a substantial proprioceptive role.",
       "nerve_innervation": "Medial branches of the posterior (dorsal) rami of the adjacent spinal nerves",
       "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK537074 and NBK539746. Both place the rotatores in the transversospinalis group and state they are best developed - NBK539746 says 'particularly' - in the THORACIC region. The original entry implied a uniform muscle from C2 to S1, which a reference used by clinicians should not. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
       "review_flag": ""
@@ -951,7 +951,7 @@
       "section_id": "6",
       "origin": "Cervical: superior articular processes of C4-C7. Thoracic: transverse processes. Lumbar: mammillary processes, posterior surface of the sacrum, posterior superior iliac spine and the posterior sacroiliac ligament.",
       "insertion": "Lateral aspect and tips of the spinous processes of vertebrae two to five levels above the origin.",
-      "action": "Bilateral: extension and segmental stabilisation of the vertebral column. Unilateral: lateral flexion toward the contracting side and rotation to the opposite side.",
+      "action": "Bilateral: extension and segmental stabilization of the vertebral column. Unilateral: lateral flexion toward the contracting side and rotation to the opposite side.",
       "nerve_innervation": "Medial branches of the posterior (dorsal) rami of the adjacent spinal nerves",
       "notes": "Re-sourced 2026-09-16 to two approved sources: StatPearls NBK539746 (.gov) and Kenhub. The lumbar origin is from the MAMMILLARY processes, not the transverse processes - a distinction that matters for anyone palpating or injecting, and one the original entry got wrong. The typo 'illium' was corrected earlier the same day. Source variation on the span: 2-4 segments per NBK539746, 2-5 per Kenhub. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
       "review_flag": ""
@@ -964,7 +964,7 @@
       "insertion": "Internal surface of the 12th rib and the transverse processes of L1-L4.",
       "action": "Bilateral: lumbar extension; anterior pelvic rotation and tilt. Unilateral: lumbar lateral flexion and elevation of the pelvis on the same side.",
       "nerve_innervation": "Subcostal nerve (T12), with the iliohypogastric and ilioinguinal nerves (L1)",
-      "notes": "Re-sourced 2026-09-16 to two approved sources: StatPearls NBK535407 (Quadratus Lumborum, .gov) and Kenhub. TWO SOURCE CONFLICTS, neither resolved. (1) Innervation: NBK535407 gives T12 plus iliohypogastric and ilioinguinal; Kenhub gives the subcostal nerve plus anterior rami L1-L4. (2) Respiratory role: the entry previously called it an accessory muscle of expiration, following Kenhub, but NBK535407 states it CANNOT act as a true accessory respiratory muscle because the mobility of the 12th rib prevents it transmitting force to the diaphragm - so that claim has been removed from the action pending resolution. NBK535407 also reports its contribution to extension is small, around 10 N, against much larger forces from neighbouring muscles. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "notes": "Re-sourced 2026-09-16 to two approved sources: StatPearls NBK535407 (Quadratus Lumborum, .gov) and Kenhub. TWO SOURCE CONFLICTS, neither resolved. (1) Innervation: NBK535407 gives T12 plus iliohypogastric and ilioinguinal; Kenhub gives the subcostal nerve plus anterior rami L1-L4. (2) Respiratory role: the entry previously called it an accessory muscle of expiration, following Kenhub, but NBK535407 states it CANNOT act as a true accessory respiratory muscle because the mobility of the 12th rib prevents it transmitting force to the diaphragm - so that claim has been removed from the action pending resolution. NBK535407 also reports its contribution to extension is small, around 10 N, against much larger forces from neighboring muscles. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
       "review_flag": ""
     },
     {
@@ -1071,10 +1071,10 @@
       "section": "Abdominal and Respiratory",
       "section_id": "7",
       "origin": "Inferior borders of the 1st-11th ribs, running from the rib tubercle posteriorly to the costochondral junction anteriorly.",
-      "insertion": "Superior borders of the 2nd-12th ribs, the fibres running inferomedially.",
+      "insertion": "Superior borders of the 2nd-12th ribs, the fibers running inferomedially.",
       "action": "Elevate the ribs during inspiration, increasing the transverse diameter of the thorax; resist indrawing of the intercostal spaces in quiet breathing.",
       "nerve_innervation": "Intercostal nerves, the anterior rami of T1-T11",
-      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK538321 and NBK535414 (Thorax, Wall). Both give T1-T11 and the inspiratory role. NBK535414 adds that the anterior fibres are replaced by the external intercostal membrane, which is why the muscle does not reach the sternum. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with Loyola LUMEN Master Muscle List (lumen.luc.edu, .edu); the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK538321 and NBK535414 (Thorax, Wall). Both give T1-T11 and the inspiratory role. NBK535414 adds that the anterior fibers are replaced by the external intercostal membrane, which is why the muscle does not reach the sternum. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with Loyola LUMEN Master Muscle List (lumen.luc.edu, .edu); the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
       "review_flag": ""
     },
     {
@@ -1082,10 +1082,10 @@
       "section": "Abdominal and Respiratory",
       "section_id": "7",
       "origin": "Costal groove of the 1st-11th ribs and the adjacent costal cartilages, running from the sternum anteriorly to the rib angles posteriorly.",
-      "insertion": "Superior borders of the 2nd-12th ribs, the fibres running inferolaterally.",
-      "action": "Depress the ribs during forced expiration; stabilise the ribs in quiet breathing.",
+      "insertion": "Superior borders of the 2nd-12th ribs, the fibers running inferolaterally.",
+      "action": "Depress the ribs during forced expiration; stabilize the ribs in quiet breathing.",
       "nerve_innervation": "Intercostal nerves, the anterior rami of T1-T11",
-      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK538321 and NBK535414. Attachments given in the anatomical convention - costal groove of the rib above to the superior border of the rib below - which both sources use. NBK535414 adds that the posterior fibres are replaced by the internal intercostal membrane. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK538321 and NBK535414. Attachments given in the anatomical convention - costal groove of the rib above to the superior border of the rib below - which both sources use. NBK535414 adds that the posterior fibers are replaced by the internal intercostal membrane. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
       "review_flag": ""
     },
     {
@@ -1127,7 +1127,7 @@
       "section_id": "8",
       "origin": "Upper two-thirds of the iliac fossa, with slips from the ala of the sacrum and the anterior sacroiliac ligament.",
       "insertion": "Lesser trochanter of the femur, by the tendon shared with psoas major, and the adjacent shaft.",
-      "action": "Hip flexion - a prime mover; stabilises the pelvis during hip flexion and assists trunk flexion when the limb is fixed. Anterior pelvic rotation and tilt.",
+      "action": "Hip flexion - a prime mover; stabilizes the pelvis during hip flexion and assists trunk flexion when the limb is fixed. Anterior pelvic rotation and tilt.",
       "nerve_innervation": "Femoral nerve (L2-L4)",
       "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK531508 (Iliopsoas Muscle) and NBK500008 (Femoral Muscles). Both give femoral L2-L4, upholding the earlier correction from L2-L3. NBK531508 makes the point the paired entries now carry: iliacus and psoas major have DIFFERENT nerve supplies despite sharing a tendon. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
       "review_flag": ""
@@ -1138,9 +1138,9 @@
       "section_id": "8",
       "origin": "Lateral surfaces of the bodies of T12-L5 and the intervening intervertebral discs, and the transverse processes of all five lumbar vertebrae.",
       "insertion": "Lesser trochanter of the femur, by the tendon shared with iliacus.",
-      "action": "Hip flexion - a prime mover; assists adduction and external rotation. Stabilises the lumbar spine in sitting; lumbar flexion and lateral flexion; anterior pelvic rotation and tilt.",
+      "action": "Hip flexion - a prime mover; assists adduction and external rotation. Stabilizes the lumbar spine in sitting; lumbar flexion and lateral flexion; anterior pelvic rotation and tilt.",
       "nerve_innervation": "Anterior rami of L1-L3, directly from the lumbar plexus rather than through a named nerve",
-      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK531508 and NBK500008. Both give L1-L3 direct from the lumbar plexus, in contrast to iliacus's femoral supply. TEXTBOOK-LEVEL CHECK 2026-10-09 - CORRECTED: Origin extended 2026-10-09 from L1-L4 to T12-L5 (bodies) and all lumbar transverse processes: the UW Musculoskeletal Atlas gives transverse processes of L1-L5 and bodies and discs of T12-L5, and the UAMS/TTUHSC tables give the bodies and transverse processes of the lumbar vertebrae. Nerve: UW gives direct fibres of L1-L3 (as recorded); UAMS/TTUHSC give ventral rami L2-L4. Checked against the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source); the UW Musculoskeletal Atlas (rad.uw.edu, .edu).",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK531508 and NBK500008. Both give L1-L3 direct from the lumbar plexus, in contrast to iliacus's femoral supply. TEXTBOOK-LEVEL CHECK 2026-10-09 - CORRECTED: Origin extended 2026-10-09 from L1-L4 to T12-L5 (bodies) and all lumbar transverse processes: the UW Musculoskeletal Atlas gives transverse processes of L1-L5 and bodies and discs of T12-L5, and the UAMS/TTUHSC tables give the bodies and transverse processes of the lumbar vertebrae. Nerve: UW gives direct fibers of L1-L3 (as recorded); UAMS/TTUHSC give ventral rami L2-L4. Checked against the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source); the UW Musculoskeletal Atlas (rad.uw.edu, .edu).",
       "review_flag": ""
     },
     {
@@ -1204,7 +1204,7 @@
       "section_id": "8",
       "origin": "Anterior superior iliac spine and the outer lip of the anterior iliac crest.",
       "insertion": "Iliotibial tract, which continues to the lateral condyle of the tibia at Gerdy's tubercle.",
-      "action": "Hip: internal rotation, abduction and flexion; stabilises the pelvis in standing and gait. Knee: external rotation of the leg, and stabilisation of the extended knee through the iliotibial tract.",
+      "action": "Hip: internal rotation, abduction and flexion; stabilizes the pelvis in standing and gait. Knee: external rotation of the leg, and stabilization of the extended knee through the iliotibial tract.",
       "nerve_innervation": "Superior gluteal nerve (L4-S1)",
       "notes": "Re-sourced 2026-09-16 to two approved sources from different publishers: StatPearls NBK499870 (Tensor Fasciae Latae, .gov) and Kenhub. SOURCE CONFLICT on the knee, not resolved, and it partly vindicates the original entry: NBK499870 calls it an accessory knee FLEXOR once the knee is past about 30 degrees, while Kenhub says it can weakly flex OR EXTEND depending on the degree of knee flexion. Both agree on external rotation of the leg, which an earlier revision on 2026-09-16 had wrongly dropped as unsupported - it is restored. What both rule out is the flashcard's flat description of it as a knee extensor. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
       "review_flag": ""
@@ -1248,7 +1248,7 @@
       "section_id": "8",
       "origin": "Gluteal surface of the ilium, between the anterior and inferior gluteal lines.",
       "insertion": "Anterior aspect of the greater trochanter of the femur.",
-      "action": "Hip abduction and internal rotation; assists flexion. With gluteus medius, stabilises the pelvis over the stance limb during gait.",
+      "action": "Hip abduction and internal rotation; assists flexion. With gluteus medius, stabilizes the pelvis over the stance limb during gait.",
       "nerve_innervation": "Superior gluteal nerve (L4-S1)",
       "notes": "Re-sourced 2026-09-16 to two approved sources from different publishers: StatPearls NBK556144 (Gluteus Minimus, .gov) and Kenhub, with the nerve additionally confirmed by NBK535408. Both give the same attachments between the anterior and inferior gluteal lines. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
       "review_flag": ""
@@ -1259,9 +1259,9 @@
       "section_id": "8",
       "origin": "Gluteal surface of the ilium, between the anterior and posterior gluteal lines.",
       "insertion": "Lateral aspect of the greater trochanter of the femur, by fibrocartilage.",
-      "action": "Hip abduction; anterior fibres internally rotate the thigh, posterior fibres externally rotate it with the knee extended. Holds the pelvis level over the stance limb - its failure produces the Trendelenburg sign, in which the pelvis sinks on the UNSUPPORTED side.",
+      "action": "Hip abduction; anterior fibers internally rotate the thigh, posterior fibers externally rotate it with the knee extended. Holds the pelvis level over the stance limb - its failure produces the Trendelenburg sign, in which the pelvis sinks on the UNSUPPORTED side.",
       "nerve_innervation": "Superior gluteal nerve (L4-S1)",
-      "notes": "Re-sourced 2026-09-16 to two approved sources from different publishers: StatPearls NBK557509 (Gluteus Medius, .gov) and Kenhub, with the nerve additionally confirmed by NBK535408 (Superior Gluteal Nerve). NBK557509 specifies that the posterior fibres rotate laterally only with the knee extended, and that the Trendelenburg drop occurs on the unsupported side - commonly stated backwards. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "notes": "Re-sourced 2026-09-16 to two approved sources from different publishers: StatPearls NBK557509 (Gluteus Medius, .gov) and Kenhub, with the nerve additionally confirmed by NBK535408 (Superior Gluteal Nerve). NBK557509 specifies that the posterior fibers rotate laterally only with the knee extended, and that the Trendelenburg drop occurs on the unsupported side - commonly stated backwards. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
       "review_flag": ""
     },
     {
@@ -1269,10 +1269,10 @@
       "section": "Pelvic Girdle and Hip Joint",
       "section_id": "8",
       "origin": "Gluteal surface of the ilium behind the posterior gluteal line, lateroposterior surface of the sacrum and coccyx, sacrotuberous ligament, and the thoracolumbar fascia.",
-      "insertion": "Superficial fibres into the iliotibial tract; the deep quarter into the gluteal tuberosity of the femur, between adductor magnus and vastus lateralis.",
-      "action": "Hip extension and external rotation. An antigravity muscle recruited in rising from sitting, stair climbing and running rather than level walking; extends the trunk from a flexed position and stabilises the pelvis in upright posture. Upper fibres abduct, lower fibres adduct.",
+      "insertion": "Superficial fibers into the iliotibial tract; the deep quarter into the gluteal tuberosity of the femur, between adductor magnus and vastus lateralis.",
+      "action": "Hip extension and external rotation. An antigravity muscle recruited in rising from sitting, stair climbing and running rather than level walking; extends the trunk from a flexed position and stabilizes the pelvis in upright posture. Upper fibers abduct, lower fibers adduct.",
       "nerve_innervation": "Inferior gluteal nerve (L5-S2) - the only muscle this nerve supplies",
-      "notes": "Re-sourced 2026-09-16 to two approved sources from different publishers: StatPearls NBK538193 (Gluteus Maximus, .gov) and Kenhub. Both give the sacrotuberous ligament and thoracolumbar fascia in the origin and the split of superficial fibres to the iliotibial tract from deep fibres to the gluteal tuberosity - neither of which was in the original entry. Actions corroborated by NBK470555 (Hip Joint). TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "notes": "Re-sourced 2026-09-16 to two approved sources from different publishers: StatPearls NBK538193 (Gluteus Maximus, .gov) and Kenhub. Both give the sacrotuberous ligament and thoracolumbar fascia in the origin and the split of superficial fibers to the iliotibial tract from deep fibers to the gluteal tuberosity - neither of which was in the original entry. Actions corroborated by NBK470555 (Hip Joint). TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
       "review_flag": ""
     },
     {
@@ -1314,7 +1314,7 @@
       "section_id": "9",
       "origin": "Intertrochanteric line, greater trochanter, gluteal tuberosity, and the lateral lip of the linea aspera.",
       "insertion": "Lateral border of the patella by the quadriceps tendon, and by the patellar ligament to the tibial tuberosity.",
-      "action": "Knee extension; its oblique distal fibres draw the patella laterally, opposed by vastus medialis.",
+      "action": "Knee extension; its oblique distal fibers draw the patella laterally, opposed by vastus medialis.",
       "nerve_innervation": "Femoral nerve (L2-L4)",
       "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK482445 (Thigh Muscles) and NBK500008 (Femoral Muscles). The largest of the four quadriceps components. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
       "review_flag": ""
@@ -1327,7 +1327,7 @@
       "insertion": "Deep surface of the quadriceps tendon at the proximal border of the patella, and by the patellar ligament to the tibial tuberosity.",
       "action": "Knee extension.",
       "nerve_innervation": "Femoral nerve (L2-L4)",
-      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK482445 and NBK500008. Its deepest fibres form articularis genu, which retracts the suprapatellar bursa during extension. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
+      "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK482445 and NBK500008. Its deepest fibers form articularis genu, which retracts the suprapatellar bursa during extension. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
       "review_flag": ""
     },
     {
@@ -1336,7 +1336,7 @@
       "section_id": "9",
       "origin": "Intertrochanteric line, medial lip of the linea aspera, medial supracondylar line, and the tendon of adductor magnus.",
       "insertion": "Medial border of the patella by the quadriceps tendon, and by the patellar ligament to the tibial tuberosity.",
-      "action": "Knee extension; its distal oblique fibres draw the patella medially and are the principal restraint against lateral patellar tracking.",
+      "action": "Knee extension; its distal oblique fibers draw the patella medially and are the principal restraint against lateral patellar tracking.",
       "nerve_innervation": "Femoral nerve (L2-L4)",
       "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK482445 and NBK500008. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
       "review_flag": ""
@@ -1611,7 +1611,7 @@
       "section_id": "8",
       "origin": "Anterior surface of the sacrum, the gluteal surface of the ilium near the margin of the greater sciatic notch, the capsule of the sacroiliac joint, and sometimes the sacrotuberous ligament.",
       "insertion": "Superior aspect of the greater trochanter of the femur, with the tendons of obturator internus and the gemelli.",
-      "action": "External rotation of the thigh with the hip extended; abduction of the flexed hip, which in walking shifts body weight and prevents falling. Stabilises the femoral head in the acetabulum.",
+      "action": "External rotation of the thigh with the hip extended; abduction of the flexed hip, which in walking shifts body weight and prevents falling. Stabilizes the femoral head in the acetabulum.",
       "nerve_innervation": "Anterior rami of S1-S2 (nerve to piriformis); variants from S2 alone or L5-S2",
       "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK519497 (Piriformis Muscle) and NBK589636 (Obturator Muscles), the latter reporting that the obturator internus and piriformis tendons merge before insertion in about 10 percent of people. The sciatic nerve usually leaves the pelvis below this muscle, but in roughly one in five people it passes above or through it, or divides that high - the anatomical basis of piriformis syndrome. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
       "review_flag": ""
@@ -1622,7 +1622,7 @@
       "section_id": "8",
       "origin": "Ischial spine.",
       "insertion": "Medial surface of the greater trochanter of the femur, in conjunction with obturator internus.",
-      "action": "External rotation of the hip; abduction of the flexed hip; stabilises the femoral head in the acetabulum.",
+      "action": "External rotation of the hip; abduction of the flexed hip; stabilizes the femoral head in the acetabulum.",
       "nerve_innervation": "Nerve to obturator internus (L4-S2)",
       "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK557420 (Gemelli Muscles) and NBK589636 (Obturator Muscles), the latter confirming that the nerve to obturator internus also supplies the superior gemellus in most cases. Root range widened from L5-S2 to L4-S2 per NBK557420. The 'contribution from the nerve to quadratus femoris in about 60 percent' claim in the original entry is carried by neither .gov source and has been dropped pending re-sourcing. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
       "review_flag": ""
@@ -1633,7 +1633,7 @@
       "section_id": "8",
       "origin": "Pelvic surface of the obturator membrane and the rami surrounding the obturator foramen.",
       "insertion": "Medial surface of the greater trochanter of the femur, by a conjoint tendon with the gemelli.",
-      "action": "External rotation of the hip, particularly when extended; abduction of the flexed hip; stabilises the femoral head in the acetabulum.",
+      "action": "External rotation of the hip, particularly when extended; abduction of the flexed hip; stabilizes the femoral head in the acetabulum.",
       "nerve_innervation": "Nerve to obturator internus (L5-S2)",
       "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK589636 (Obturator Muscles) and NBK557420. All four fields confirmed. NBK589636 notes the obturator internus and piriformis tendons merge before insertion in about 10 percent of people. The muscle turns sharply around the ischium as it leaves the pelvis through the lesser sciatic foramen. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
       "review_flag": ""
@@ -1644,7 +1644,7 @@
       "section_id": "8",
       "origin": "Ischial tuberosity, at its upper part.",
       "insertion": "Medial surface of the greater trochanter of the femur, by the conjoint tendon shared with obturator internus and gemellus superior.",
-      "action": "External rotation of the hip; abduction of the flexed hip; stabilises the femoral head in the acetabulum.",
+      "action": "External rotation of the hip; abduction of the flexed hip; stabilizes the femoral head in the acetabulum.",
       "nerve_innervation": "Nerve to quadratus femoris (L4-S1)",
       "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK557420 (Gemelli Muscles) and NBK589636 (Obturator Muscles). The split from its twin is confirmed by both: the SUPERIOR gemellus takes the nerve to obturator internus, the INFERIOR the nerve to quadratus femoris. The two gemelli and obturator internus together form the triceps coxae. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
       "review_flag": ""
@@ -1653,9 +1653,9 @@
       "name": "Obturator Externus",
       "section": "Pelvic Girdle and Hip Joint",
       "section_id": "8",
-      "origin": "Bony margin of the obturator foramen on the external surface of the pelvis, with fibres from the obturator membrane.",
+      "origin": "Bony margin of the obturator foramen on the external surface of the pelvis, with fibers from the obturator membrane.",
       "insertion": "Trochanteric fossa on the medial surface of the greater trochanter, by a cylindrical tendon.",
-      "action": "External rotation of the hip in neutral or flexed positions; assists adduction of the flexed hip; stabilises the femoral head.",
+      "action": "External rotation of the hip in neutral or flexed positions; assists adduction of the flexed hip; stabilizes the femoral head.",
       "nerve_innervation": "Obturator nerve, posterior branch (L2-L4)",
       "notes": "Re-sourced 2026-09-16 against two .gov sources: StatPearls NBK589636 (Obturator Muscles) and NBK500008 (Femoral Muscles) for the obturator nerve's posterior division at L2-L4. The only deep external rotator supplied from the lumbar rather than the sacral plexus, which is why it groups developmentally with the adductors. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
       "review_flag": ""
@@ -1666,7 +1666,7 @@
       "section_id": "8",
       "origin": "Upper part of the lateral border of the ischial tuberosity.",
       "insertion": "Quadrate tubercle on the intertrochanteric crest of the femur, above the adductor magnus attachment.",
-      "action": "External rotation of the thigh at the hip; stabilises the femoral head in the acetabulum; assists adduction.",
+      "action": "External rotation of the thigh at the hip; stabilizes the femoral head in the acetabulum; assists adduction.",
       "nerve_innervation": "Nerve to quadratus femoris (L4-S1)",
       "notes": "Re-sourced 2026-09-16 to two approved sources from different publishers: Kenhub for the attachments and StatPearls NBK557420 (Gemelli Muscles, .gov) for the nerve, which it shares with the inferior gemellus; the action is corroborated by NBK470555 (Hip Joint). This entry previously had no approved source for its attachments at all. TEXTBOOK-LEVEL CHECK 2026-10-09: agrees with the UAMS/TTUHSC medical-school anatomy tables (medicine.uams.edu, anatomy.ttuhscep.edu - .edu; identical tables from one lineage, counted as one source).",
       "review_flag": ""
@@ -1679,7 +1679,7 @@
       "insertion": "Skin and superficial fascia of the eyebrow and lower forehead, interlacing with procerus, corrugator supercilii and orbicularis oculi.",
       "action": "Raises the eyebrows and wrinkles the forehead transversely; acting with occipitalis it moves the scalp.",
       "nerve_innervation": "Temporal (frontal) branches of the facial nerve (CN VII)",
-      "notes": "Frontal belly of occipitofrontalis. Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK557752 (Frontalis Muscle); Kenhub (facial muscles). Kenhub names the eyebrow skin as origin and the aponeurosis as insertion - the same attachments with the convention reversed; UAMS and StatPearls are followed. The supraorbital and supratrochlear nerves supply the overlying skin, not the muscle (NBK557752). Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Frontal belly of occipitofrontalis. Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK557752 (Frontalis Muscle); Kenhub (facial muscles). Kenhub names the eyebrow skin as origin and the aponeurosis as insertion - the same attachments with the convention reversed; UAMS and StatPearls are followed. The supraorbital and supratrochlear nerves supply the overlying skin, not the muscle (NBK557752). Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -1690,7 +1690,7 @@
       "insertion": "Epicranial aponeurosis (galea aponeurotica).",
       "action": "Draws the scalp backward; working with frontalis it helps raise the eyebrows and wrinkle the forehead.",
       "nerve_innervation": "Posterior auricular branch of the facial nerve (CN VII)",
-      "notes": "Occipital belly of occipitofrontalis. Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); Kenhub (facial muscles). CONFLICT noted: StatPearls NBK557752 (as summarised) says the occipital part moves the scalp forwards; UAMS and Kenhub both give backward (posterior) traction, which is recorded. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Occipital belly of occipitofrontalis. Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); Kenhub (facial muscles). CONFLICT noted: StatPearls NBK557752 (as summarized) says the occipital part moves the scalp forwards; UAMS and Kenhub both give backward (posterior) traction, which is recorded. Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -1701,7 +1701,7 @@
       "insertion": "Orbital part: encircles the orbit and blends with the skin and soft tissue around it. Palpebral part: lateral palpebral raphe. Lacrimal part: the tarsal plates and lateral palpebral raphe.",
       "action": "Closes the eyelids: the palpebral part gently (blinking, sleep), the orbital part forcefully (squeezing the eyes shut). The lacrimal part draws the lids medially and helps pump tears into the lacrimal sac.",
       "nerve_innervation": "Temporal and zygomatic branches of the facial nerve (CN VII)",
-      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK441907 (Orbicularis Oculi Muscle); Kenhub (facial muscles). NBK441907 divides the palpebral part into preseptal and pretarsal sections with superficial and deep heads, and states the temporal branch supplies the upper half and the zygomatic branch the lower half. Mesh: Z-Anatomy orbital and palpebral parts joined. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK441907 (Orbicularis Oculi Muscle); Kenhub (facial muscles). NBK441907 divides the palpebral part into preseptal and pretarsal sections with superficial and deep heads, and states the temporal branch supplies the upper half and the zygomatic branch the lower half. Mesh: Z-Anatomy orbital and palpebral parts joined. Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -1712,7 +1712,7 @@
       "insertion": "Skin of the middle and medial part of the eyebrow.",
       "action": "Draws the eyebrows medially and downward, producing vertical frown lines between them.",
       "nerve_innervation": "Temporal branch of the facial nerve (CN VII); contributions from the zygomatic and buccal branches are described",
-      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK542280 (Eye Corrugator Muscle); Kenhub (facial muscles). All three name the temporal branch; NBK542280 adds zygomatic supply to the oblique head and a buccal (angular nerve) contribution, with individual variation. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK542280 (Eye Corrugator Muscle); Kenhub (facial muscles). All three name the temporal branch; NBK542280 adds zygomatic supply to the oblique head and a buccal (angular nerve) contribution, with individual variation. Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -1723,7 +1723,7 @@
       "insertion": "Skin between the eyebrows (glabella), blending with frontalis.",
       "action": "Pulls the medial ends of the eyebrows downward, producing horizontal wrinkles across the root of the nose.",
       "nerve_innervation": "Facial nerve (CN VII): temporal branch per UAMS and Kenhub; buccal and zygomatic contributions are described",
-      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK534763 (Procerus Muscle); Kenhub (facial muscles). CONFLICT on branch: UAMS gives the temporal branch; NBK534763 reports studies naming buccal, temporal and zygomatic branches, or the angular nerve from buccal and zygomatic branches; Kenhub lists temporal, lower zygomatic or buccal. Left open for Jake. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK534763 (Procerus Muscle); Kenhub (facial muscles). CONFLICT on branch: UAMS gives the temporal branch; NBK534763 reports studies naming buccal, temporal and zygomatic branches, or the angular nerve from buccal and zygomatic branches; Kenhub lists temporal, lower zygomatic or buccal. Left open for Jake. Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -1734,7 +1734,7 @@
       "insertion": "Transverse part: an aponeurosis across the bridge of the nose, joining its partner of the other side. Alar part: skin of the nasal ala.",
       "action": "Transverse part compresses the nasal aperture; alar part draws the ala outward and flares the nostril.",
       "nerve_innervation": "Buccal branch of the facial nerve (CN VII)",
-      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); Kenhub (facial muscles; nasalis). StatPearls NBK551530 (Face) agrees on action (compression of the nasal bridge, elevation of the nostrils) and gives facial-nerve supply without a branch. Kenhub used because StatPearls gives no attachments. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); Kenhub (facial muscles; nasalis). StatPearls NBK551530 (Face) agrees on action (compression of the nasal bridge, elevation of the nostrils) and gives facial-nerve supply without a branch. Kenhub used because StatPearls gives no attachments. Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -1745,7 +1745,7 @@
       "insertion": "Mobile part of the nasal septum.",
       "action": "Draws the nasal septum and tip downward, helping to widen the nostrils.",
       "nerve_innervation": "Buccal branch of the facial nerve (CN VII)",
-      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK551530 (Face) - which labels it 'depressor alae nasi' in places but gives the same incisive-fossa origin and septal insertion, with facial-nerve supply (no branch). The branch is from UAMS only. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK551530 (Face) - which labels it 'depressor alae nasi' in places but gives the same incisive-fossa origin and septal insertion, with facial-nerve supply (no branch). The branch is from UAMS only. Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -1756,7 +1756,7 @@
       "insertion": "Skin and mucous membrane of the lips; upper (nasal) bundles also attach near the anterior nasal spine and the nasal septum.",
       "action": "Closes and purses the lips and presses them against the teeth; shapes the lips for speech, sucking, whistling and keeping food in the mouth.",
       "nerve_innervation": "Buccal and marginal mandibular branches of the facial nerve (CN VII)",
-      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK545169 (Orbicularis Oris Muscle); Kenhub (orbicularis oris). UAMS names the buccal branch only; NBK545169 gives buccal and mandibular branches - the fuller description is recorded. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK545169 (Orbicularis Oris Muscle); Kenhub (orbicularis oris). UAMS names the buccal branch only; NBK545169 gives buccal and mandibular branches - the fuller description is recorded. Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -1767,7 +1767,7 @@
       "insertion": "Skin and muscle of the upper lip.",
       "action": "Elevates and everts the upper lip and deepens the nasolabial fold.",
       "nerve_innervation": "Zygomatic and buccal branches of the facial nerve (CN VII)",
-      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK541031 (Levator Labii Superioris Muscle); Kenhub (facial muscles). UAMS names the buccal branch; NBK541031 and Kenhub give zygomatic with buccal - recorded as both. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK541031 (Levator Labii Superioris Muscle); Kenhub (facial muscles). UAMS names the buccal branch; NBK541031 and Kenhub give zygomatic with buccal - recorded as both. Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -1778,7 +1778,7 @@
       "insertion": "Two slips: one to the skin and cartilage of the nasal ala, one to the skin and muscle of the upper lip.",
       "action": "Elevates and everts the upper lip and dilates the nostril.",
       "nerve_innervation": "Zygomatic and buccal branches of the facial nerve (CN VII)",
-      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); Kenhub (facial muscles). StatPearls NBK541031 confirms its alar and lip anchorage and facial-nerve supply but gives no detail. UAMS names the buccal branch; Kenhub zygomatic and buccal. No 3D mesh: Z-Anatomy, the model's source, has no separate mesh for this muscle, so it appears in search but cannot be tapped on the model. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); Kenhub (facial muscles). StatPearls NBK541031 confirms its alar and lip anchorage and facial-nerve supply but gives no detail. UAMS names the buccal branch; Kenhub zygomatic and buccal. No 3D mesh: Z-Anatomy, the model's source, has no separate mesh for this muscle, so it appears in search but cannot be tapped on the model. Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -1789,7 +1789,7 @@
       "insertion": "Modiolus at the angle of the mouth, interlacing with the other muscles there.",
       "action": "Draws the angle of the mouth upward and laterally, as in smiling.",
       "nerve_innervation": "Zygomatic and buccal branches of the facial nerve (CN VII)",
-      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); Kenhub (zygomaticus major); StatPearls NBK493209 (Facial Muscles: modiolus insertion, upward-outward action, zygomatic and buccal supply) and NBK551530 (Face). Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); Kenhub (zygomaticus major); StatPearls NBK493209 (Facial Muscles: modiolus insertion, upward-outward action, zygomatic and buccal supply) and NBK551530 (Face). Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -1800,7 +1800,7 @@
       "insertion": "Skin and muscle of the lateral upper lip, medial to the insertion of zygomaticus major.",
       "action": "Elevates the upper lip, showing the upper teeth, and deepens the nasolabial fold.",
       "nerve_innervation": "Zygomatic and buccal branches of the facial nerve (CN VII)",
-      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); Kenhub (zygomaticus minor); StatPearls NBK551530 (Face: zygomatic origin, upper-lip insertion, elevates the upper lip). NBK493209 gives a modiolus insertion for both zygomatici; UAMS, Kenhub and NBK551530 put minor's insertion in the upper lip, which is recorded. UAMS names the buccal branch. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); Kenhub (zygomaticus minor); StatPearls NBK551530 (Face: zygomatic origin, upper-lip insertion, elevates the upper lip). NBK493209 gives a modiolus insertion for both zygomatici; UAMS, Kenhub and NBK551530 put minor's insertion in the upper lip, which is recorded. UAMS names the buccal branch. Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -1811,7 +1811,7 @@
       "insertion": "Modiolus at the angle of the mouth.",
       "action": "Raises the angle of the mouth, helping to show the upper teeth in smiling.",
       "nerve_innervation": "Buccal branch of the facial nerve (CN VII), entering on its superficial surface",
-      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK547688 (Levator Anguli Oris Muscle); Kenhub (facial muscles - adds the zygomatic branch). Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK547688 (Levator Anguli Oris Muscle); Kenhub (facial muscles - adds the zygomatic branch). Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -1822,7 +1822,7 @@
       "insertion": "Skin at the angle of the mouth (modiolus).",
       "action": "Draws the angle of the mouth laterally.",
       "nerve_innervation": "Buccal branch of the facial nerve (CN VII); a marginal mandibular contribution is described",
-      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK540999 (Risorius Muscle); Kenhub (facial muscles). NBK540999 notes debate between buccal and marginal mandibular supply, possibly both. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK540999 (Risorius Muscle); Kenhub (facial muscles). NBK540999 notes debate between buccal and marginal mandibular supply, possibly both. Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -1833,7 +1833,7 @@
       "insertion": "Modiolus at the angle of the mouth, blending with orbicularis oris into both lips.",
       "action": "Presses the cheek against the teeth, keeping food between the molars; draws the angle of the mouth laterally; used in blowing and sucking.",
       "nerve_innervation": "Buccal branches of the facial nerve (CN VII)",
-      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK546678 (Buccinator Muscle); Kenhub (facial muscles). NBK546678 describes motor supply via the temporofacial and cervicofacial divisions of CN VII; UAMS and Kenhub name the buccal branches, recorded. The buccal nerve of the trigeminal is sensory to the cheek and does not supply the muscle. No 3D mesh: Z-Anatomy, the model's source, has no separate mesh for this muscle, so it appears in search but cannot be tapped on the model. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK546678 (Buccinator Muscle); Kenhub (facial muscles). NBK546678 describes motor supply via the temporofacial and cervicofacial divisions of CN VII; UAMS and Kenhub name the buccal branches, recorded. The buccal nerve of the trigeminal is sensory to the cheek and does not supply the muscle. No 3D mesh: Z-Anatomy, the model's source, has no separate mesh for this muscle, so it appears in search but cannot be tapped on the model. Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -1844,7 +1844,7 @@
       "insertion": "Modiolus at the angle of the mouth.",
       "action": "Draws the angle of the mouth downward and laterally.",
       "nerve_innervation": "Marginal mandibular and buccal branches of the facial nerve (CN VII)",
-      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); Kenhub (depressor anguli oris); StatPearls NBK493209 (Facial Muscles: marginal mandibular supply). Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); Kenhub (depressor anguli oris); StatPearls NBK493209 (Facial Muscles: marginal mandibular supply). Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -1855,7 +1855,7 @@
       "insertion": "Skin and mucosa of the lower lip, blending with its partner and orbicularis oris.",
       "action": "Draws the lower lip downward and laterally and everts it.",
       "nerve_innervation": "Marginal mandibular branch of the facial nerve (CN VII)",
-      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK493209 (Facial Muscles); Kenhub (depressor labii inferioris, innervation section). CONFLICT noted: StatPearls NBK507900 (Lips) and Kenhub's key-facts table describe supply from a cervical branch. Marginal mandibular is recorded (UAMS, NBK493209, Kenhub text); left for Jake's review. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK493209 (Facial Muscles); Kenhub (depressor labii inferioris, innervation section). CONFLICT noted: StatPearls NBK507900 (Lips) and Kenhub's key-facts table describe supply from a cervical branch. Marginal mandibular is recorded (UAMS, NBK493209, Kenhub text); left for Jake's review. Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -1866,7 +1866,7 @@
       "insertion": "Skin of the chin.",
       "action": "Raises and wrinkles the skin of the chin, elevating and protruding the lower lip.",
       "nerve_innervation": "Marginal mandibular branch of the facial nerve (CN VII)",
-      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); Kenhub (mentalis); StatPearls NBK493209 (Facial Muscles: marginal mandibular supply, lower-lip protrusion) and NBK551530 (Face). Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); Kenhub (mentalis); StatPearls NBK493209 (Facial Muscles: marginal mandibular supply, lower-lip protrusion) and NBK551530 (Face). Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -1877,7 +1877,7 @@
       "insertion": "Inferior border of the mandible, the skin of the lower face and the angle of the mouth, blending with depressor anguli oris and orbicularis oris.",
       "action": "Tenses the skin of the neck; draws the corners of the mouth and the lower lip downward; assists depression of the mandible.",
       "nerve_innervation": "Cervical branch of the facial nerve (CN VII)",
-      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK545294 (Platysma); Kenhub (facial muscles). NBK545294 notes occasional additional supply from the marginal mandibular branch. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK545294 (Platysma); Kenhub (facial muscles). NBK545294 notes occasional additional supply from the marginal mandibular branch. Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -1888,7 +1888,7 @@
       "insertion": "Lateral surface of the ramus and angle of the mandible, extending up toward the coronoid process.",
       "action": "Elevates the mandible to close the jaw and clench the teeth; superficial fibers assist protrusion, deeper fibers assist retraction.",
       "nerve_innervation": "Masseteric nerve, from the mandibular division of the trigeminal nerve (CN V3)",
-      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK541027 (Mastication Muscles). NBK541027 describes superficial, intermediate and deep layers without separate attachments. Mesh: Z-Anatomy superficial and deep parts joined. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK541027 (Mastication Muscles). NBK541027 describes superficial, intermediate and deep layers without separate attachments. Mesh: Z-Anatomy superficial and deep parts joined. Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -1899,7 +1899,7 @@
       "insertion": "Coronoid process and anterior border of the ramus of the mandible, by a tendon passing deep to the zygomatic arch.",
       "action": "Elevates the mandible; its posterior fibers retract it.",
       "nerve_innervation": "Deep temporal nerves, from the mandibular division of the trigeminal nerve (CN V3)",
-      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK541027 (Mastication Muscles) and NBK507912 (Temporoparietal Fascia). Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK541027 (Mastication Muscles) and NBK507912 (Temporoparietal Fascia). Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -1910,7 +1910,7 @@
       "insertion": "Medial surface of the ramus and angle of the mandible.",
       "action": "Elevates and protrudes the mandible; with the lateral pterygoid, moves the jaw from side to side in grinding.",
       "nerve_innervation": "Nerve to medial pterygoid, from the mandibular division of the trigeminal nerve (CN V3)",
-      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK541027 (Mastication Muscles). Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK541027 (Mastication Muscles). Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -1921,7 +1921,7 @@
       "insertion": "Pterygoid fovea on the neck of the mandibular condyle; the superior head also reaches the articular disc and capsule of the temporomandibular joint.",
       "action": "Protrudes the mandible and draws the condyle forward as the mouth opens; produces side-to-side grinding movements.",
       "nerve_innervation": "Nerve to lateral pterygoid, from the mandibular division of the trigeminal nerve (CN V3)",
-      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK541027 (Mastication Muscles), which notes that opening the mouth is largely gravity-assisted. Mesh: Z-Anatomy superior and inferior heads joined. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK541027 (Mastication Muscles), which notes that opening the mouth is largely gravity-assisted. Mesh: Z-Anatomy superior and inferior heads joined. Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -1932,7 +1932,7 @@
       "insertion": "Through its aponeurosis into the skin of the upper eyelid and the anterior surface of the superior tarsal plate; a smooth-muscle slip (superior tarsal muscle) attaches to the upper margin of the tarsal plate.",
       "action": "Raises and holds up the upper eyelid.",
       "nerve_innervation": "Superior division of the oculomotor nerve (CN III); the superior tarsal smooth-muscle slip is supplied by sympathetic fibers",
-      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK536921 (Levator Palpebrae Superioris Muscle) and NBK519565 (Eye Extraocular Muscles). NBK536921 contains a sentence saying the muscle 'primarily closes the eyelid', contradicting its own description of elevation; not used. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK536921 (Levator Palpebrae Superioris Muscle) and NBK519565 (Eye Extraocular Muscles). NBK536921 contains a sentence saying the muscle 'primarily closes the eyelid', contradicting its own description of elevation; not used. Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -1943,7 +1943,7 @@
       "insertion": "Sclera on the upper surface of the eyeball, about 7.7 mm behind the limbus.",
       "action": "Elevates the eye (chiefly when it is abducted); also adducts and intorts it.",
       "nerve_innervation": "Superior division of the oculomotor nerve (CN III)",
-      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK470534 (Eye Muscles: primary elevation, secondary adduction, tertiary intorsion) and NBK519565 (insertion distance). The 'chiefly when abducted' qualifier is standard teaching but is not stated in these sources. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK470534 (Eye Muscles: primary elevation, secondary adduction, tertiary intorsion) and NBK519565 (insertion distance). The 'chiefly when abducted' qualifier is standard teaching but is not stated in these sources. Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -1954,7 +1954,7 @@
       "insertion": "Sclera on the lower surface of the eyeball, about 6.5 mm behind the limbus.",
       "action": "Depresses the eye; also extorts and adducts it.",
       "nerve_innervation": "Inferior division of the oculomotor nerve (CN III)",
-      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK470534 (Eye Muscles) and NBK519565 (insertion distance). Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK470534 (Eye Muscles) and NBK519565 (insertion distance). Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -1965,7 +1965,7 @@
       "insertion": "Sclera on the medial surface of the eyeball, about 5.5 mm behind the limbus.",
       "action": "Adducts the eye.",
       "nerve_innervation": "Inferior division of the oculomotor nerve (CN III)",
-      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK470534 (Eye Muscles) and NBK519565 (insertion distance). Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK470534 (Eye Muscles) and NBK519565 (insertion distance). Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -1976,7 +1976,7 @@
       "insertion": "Sclera on the lateral surface of the eyeball, about 6.9 mm behind the limbus.",
       "action": "Abducts the eye.",
       "nerve_innervation": "Abducens nerve (CN VI)",
-      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK470534 (Eye Muscles) and NBK519565 (insertion distance). Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK470534 (Eye Muscles) and NBK519565 (insertion distance). Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -1987,7 +1987,7 @@
       "insertion": "Its tendon passes through the trochlea at the superomedial orbital margin, turns backward and laterally, and inserts on the sclera of the posterior superolateral quadrant of the eyeball, beneath the superior rectus.",
       "action": "Intorts, depresses and abducts the eye; its depressing action is greatest when the eye is adducted.",
       "nerve_innervation": "Trochlear nerve (CN IV)",
-      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK537152 (Eye Superior Oblique Muscle), NBK470534 and NBK519565. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK537152 (Eye Superior Oblique Muscle), NBK470534 and NBK519565. Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -1998,7 +1998,7 @@
       "insertion": "Sclera of the posterior inferolateral quadrant of the eyeball, near the macula.",
       "action": "Extorts, elevates and abducts the eye.",
       "nerve_innervation": "Inferior division of the oculomotor nerve (CN III)",
-      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK470534 (Eye Muscles) and NBK519565. UAMS gives the insertion simply as the inferior surface of the eyeball; NBK470534 (inferotemporal globe) and NBK519565 (near the macula) are more specific and recorded. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK470534 (Eye Muscles) and NBK519565. UAMS gives the insertion simply as the inferior surface of the eyeball; NBK470534 (inferotemporal globe) and NBK519565 (near the macula) are more specific and recorded. Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -2009,7 +2009,7 @@
       "insertion": "Fans into the tongue from tip to root along its dorsum, through the lingual aponeurosis; the lowest fibers reach the body of the hyoid bone.",
       "action": "Protrudes the tongue and depresses its central part; acting on one side, deviates the tongue to the opposite side.",
       "nerve_innervation": "Hypoglossal nerve (CN XII)",
-      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK507782 (Tongue); Kenhub (tongue). Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK507782 (Tongue); Kenhub (tongue). Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -2020,7 +2020,7 @@
       "insertion": "Side of the posterior half of the tongue, between styloglossus laterally and the inferior longitudinal muscle medially.",
       "action": "Depresses and retracts the tongue.",
       "nerve_innervation": "Hypoglossal nerve (CN XII)",
-      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK574565 (Hyoglossus Muscle) and NBK507782 (Tongue); Kenhub (tongue). Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK574565 (Hyoglossus Muscle) and NBK507782 (Tongue); Kenhub (tongue). Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -2031,7 +2031,7 @@
       "insertion": "Side of the tongue: longitudinal fibers blend with the inferior longitudinal muscle, oblique fibers interlace with hyoglossus.",
       "action": "Retracts the tongue and elevates its sides.",
       "nerve_innervation": "Hypoglossal nerve (CN XII)",
-      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK507782 (Tongue: origin, action, nerve); Kenhub (tongue: insertion detail - StatPearls gives none). No 3D mesh: Z-Anatomy, the model's source, has no separate mesh for this muscle, so it appears in search but cannot be tapped on the model. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK507782 (Tongue: origin, action, nerve); Kenhub (tongue: insertion detail - StatPearls gives none). No 3D mesh: Z-Anatomy, the model's source, has no separate mesh for this muscle, so it appears in search but cannot be tapped on the model. Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -2042,7 +2042,7 @@
       "insertion": "Posterolateral part of the tongue, some fibers blending with the transverse intrinsic muscle.",
       "action": "Elevates the back of the tongue and draws the soft palate down, narrowing the oropharyngeal isthmus.",
       "nerve_innervation": "Pharyngeal branch of the vagus nerve (CN X), via the pharyngeal plexus",
-      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK549823 (Palatoglossus Muscle) and NBK507782; Kenhub (tongue). The only tongue muscle not supplied by the hypoglossal nerve. No 3D mesh: Z-Anatomy, the model's source, has no separate mesh for this muscle, so it appears in search but cannot be tapped on the model. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK549823 (Palatoglossus Muscle) and NBK507782; Kenhub (tongue). The only tongue muscle not supplied by the hypoglossal nerve. No 3D mesh: Z-Anatomy, the model's source, has no separate mesh for this muscle, so it appears in search but cannot be tapped on the model. Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -2053,7 +2053,7 @@
       "insertion": "Within the tongue: longitudinal fibers toward the tip, transverse fibers to the lateral margins, vertical fibers to the underside.",
       "action": "Change the shape of the tongue: the longitudinal muscles shorten it and curl the tip up (superior) or down (inferior); the transverse muscle narrows and lengthens it; the vertical muscle flattens and broadens it.",
       "nerve_innervation": "Hypoglossal nerve (CN XII)",
-      "notes": "Superior and inferior longitudinal, transverse and vertical muscles. Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK507782 (Tongue). Mesh: the Z-Anatomy model has the tongue as one midline mesh, which stands for these muscles; tapping it shows this entry. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Superior and inferior longitudinal, transverse and vertical muscles. Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK507782 (Tongue). Mesh: the Z-Anatomy model has the tongue as one midline mesh, which stands for these muscles; tapping it shows this entry. Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -2064,7 +2064,7 @@
       "insertion": "Intermediate tendon, held to the hyoid bone at the junction of its body and greater horn by a fibrous sling.",
       "action": "Depresses the mandible to open the mouth when the hyoid is fixed; elevates the hyoid during swallowing.",
       "nerve_innervation": "Anterior belly: nerve to mylohyoid, from the inferior alveolar nerve (CN V3). Posterior belly: facial nerve (CN VII)",
-      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK546710 (Suprahyoid Muscle). Mesh: Z-Anatomy anterior belly, intermediate tendon and posterior belly joined. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK546710 (Suprahyoid Muscle). Mesh: Z-Anatomy anterior belly, intermediate tendon and posterior belly joined. Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -2075,7 +2075,7 @@
       "insertion": "Median fibrous raphe running from the symphysis to the hyoid, and the body of the hyoid bone.",
       "action": "Raises the floor of the mouth, the tongue and the hyoid in swallowing and speech; depresses the mandible when the hyoid is fixed.",
       "nerve_innervation": "Nerve to mylohyoid, a branch of the inferior alveolar nerve (CN V3)",
-      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK546710 (Suprahyoid Muscle). Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK546710 (Suprahyoid Muscle). Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -2086,7 +2086,7 @@
       "insertion": "Body of the hyoid at its junction with the greater horn, splitting around the intermediate tendon of the digastric.",
       "action": "Elevates and retracts the hyoid, lengthening the floor of the mouth during swallowing.",
       "nerve_innervation": "Facial nerve (CN VII)",
-      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK546710 (Suprahyoid Muscle). UAMS gives the posterior side of the styloid process, NBK546710 its middle - recorded without the qualifier. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK546710 (Suprahyoid Muscle). UAMS gives the posterior side of the styloid process, NBK546710 its middle - recorded without the qualifier. Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -2097,7 +2097,7 @@
       "insertion": "Anterior surface of the body of the hyoid bone.",
       "action": "Draws the hyoid upward and forward, widening the pharynx; depresses the mandible when the hyoid is fixed.",
       "nerve_innervation": "Fibers of the C1 ventral ramus carried by the hypoglossal nerve",
-      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK546710 (Suprahyoid Muscle). Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK546710 (Suprahyoid Muscle). Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -2108,7 +2108,7 @@
       "insertion": "Lower border of the body of the hyoid, medial to the omohyoid.",
       "action": "Depresses the hyoid after swallowing and in speech.",
       "nerve_innervation": "Ansa cervicalis (C1-C3)",
-      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK557475 (Anterior Cervical Region). Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK557475 (Anterior Cervical Region). Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -2119,7 +2119,7 @@
       "insertion": "Superior belly: lower border of the body of the hyoid, lateral to the sternohyoid. The two bellies are joined by an intermediate tendon.",
       "action": "Depresses and steadies the hyoid bone.",
       "nerve_innervation": "Ansa cervicalis (C1-C3)",
-      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK557475 (Anterior Cervical Region). Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK557475 (Anterior Cervical Region). Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -2130,7 +2130,7 @@
       "insertion": "Oblique line of the thyroid cartilage.",
       "action": "Depresses the larynx (thyroid cartilage).",
       "nerve_innervation": "Ansa cervicalis (C1-C3)",
-      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK557475 (Anterior Cervical Region) and NBK541063 (Thyroid Muscles). UAMS lists its action as depressing or steadying the hyoid, but the muscle has no hyoid attachment; NBK541063 gives depression of the larynx, which is recorded. Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK557475 (Anterior Cervical Region) and NBK541063 (Thyroid Muscles). UAMS lists its action as depressing or steadying the hyoid, but the muscle has no hyoid attachment; NBK541063 gives depression of the larynx, which is recorded. Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     },
     {
@@ -2141,7 +2141,7 @@
       "insertion": "Lower border of the body and greater horn of the hyoid bone.",
       "action": "Depresses the hyoid; when the hyoid is fixed, raises the larynx.",
       "nerve_innervation": "Fibers of the C1 ventral ramus carried by the hypoglossal nerve (not through the ansa cervicalis)",
-      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK557475 and NBK541063; Kenhub (thyrohyoid: attachments - StatPearls gives none). Added 2026-10-14; pages read via a summarising fetch, not verbatim. No print reference consulted.",
+      "notes": "Sources: UAMS 'Muscles of the Head and Neck' anatomy table (medicine.uams.edu, .edu); StatPearls NBK557475 and NBK541063; Kenhub (thyrohyoid: attachments - StatPearls gives none). Added 2026-10-14; pages read via a summarizing fetch, not verbatim. No print reference consulted.",
       "review_flag": ""
     }
   ],

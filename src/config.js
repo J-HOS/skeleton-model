@@ -336,7 +336,7 @@ export const CREDITS = Object.freeze([
       'licensed by CC Attribution-Share Alike 2.1 Japan',
     note: 'Source of the muscle meshes and, through Z-Anatomy, most bone meshes.',
     links: [
-      ['Licence', 'https://creativecommons.org/licenses/by-sa/2.1/jp/deed.en'],
+      ['License', 'https://creativecommons.org/licenses/by-sa/2.1/jp/deed.en'],
       ['BodyParts3D', 'https://dbarchive.biosciencedbc.jp/en/bodyparts3d/download.html'],
     ],
   },
@@ -348,7 +348,7 @@ export const CREDITS = Object.freeze([
       '(Gauthier Kervyn and contributors).',
     note: 'Source of the bone meshes and several muscle meshes.',
     links: [
-      ['Licence', 'https://creativecommons.org/licenses/by-sa/4.0/'],
+      ['License', 'https://creativecommons.org/licenses/by-sa/4.0/'],
       ['Z-Anatomy', 'https://github.com/Z-Anatomy/Models-of-human-anatomy'],
     ],
   },
@@ -368,7 +368,7 @@ export const CREDITS = Object.freeze([
   {
     title: 'three.js',
     text: 'three.js 0.160.1, Copyright 2010-2023 Three.js Authors. MIT License.',
-    links: [['Licence', 'https://github.com/mrdoob/three.js/blob/r160/LICENSE']],
+    links: [['License', 'https://github.com/mrdoob/three.js/blob/r160/LICENSE']],
   },
   {
     title: 'Muscle content',

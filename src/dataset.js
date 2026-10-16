@@ -10,9 +10,9 @@
  * Any failure throws and the app shows an error instead of partial anatomy.
  */
 
-import { PATHS } from './config.js?v=8292cd6aa198';
-import { fetchLocal, verifyIntegrity } from './security.js?v=8292cd6aa198';
-import { buildMuscleIndex, buildLandmarkIndex, prettyName } from './anatomy.js?v=8292cd6aa198';
+import { PATHS } from './config.js?v=820257be18cd';
+import { fetchLocal, verifyIntegrity } from './security.js?v=820257be18cd';
+import { buildMuscleIndex, buildLandmarkIndex, prettyName } from './anatomy.js?v=820257be18cd';
 
 /** Every muscle record must carry these, per the CLAUDE.md data-structure rule. */
 const REQUIRED_MUSCLE_FIELDS = ['name', 'section', 'origin', 'insertion', 'action', 'nerve_innervation'];
@@ -67,7 +67,7 @@ export async function loadDataset() {
   // foot) and handled by exact-match-first, but a NEW collision means a mesh
   // name could silently resolve to the wrong muscle — worth seeing.
   if (muscleIndex.collisions.length) {
-    console.info('Normalised-name collisions (exact match takes precedence):', muscleIndex.collisions);
+    console.info('Normalized-name collisions (exact match takes precedence):', muscleIndex.collisions);
   }
 
   return {

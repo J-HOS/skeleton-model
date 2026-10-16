@@ -7,9 +7,9 @@
  * correctness of the anatomy or the security posture.
  */
 
-import { byId, clear, el, fieldRow, replace } from './dom.js?v=8292cd6aa198';
-import { ATTRIBUTION, CREDITS, DISCLAIMER, LAYERS, LIMITS } from './config.js?v=8292cd6aa198';
-import { parseLandmarkCard, prettyName } from './anatomy.js?v=8292cd6aa198';
+import { byId, clear, el, fieldRow, replace } from './dom.js?v=820257be18cd';
+import { ATTRIBUTION, CREDITS, DISCLAIMER, LAYERS, LIMITS } from './config.js?v=820257be18cd';
+import { parseLandmarkCard, prettyName } from './anatomy.js?v=820257be18cd';
 
 /* ---------------------------------------------------------------- status -- */
 
@@ -295,8 +295,8 @@ export function renderCredits({ onClose, onClearData } = {}) {
     on: { click: () => { onClearData(); clearBtn.textContent = 'Cleared'; clearBtn.disabled = true; } },
   }) : null;
   replace(panel, [
-    el('div', { className: 'error-card credits-card', attrs: { role: 'dialog', 'aria-label': 'Credits and licences' } }, [
-      el('h2', { text: 'Credits and licences' }),
+    el('div', { className: 'error-card credits-card', attrs: { role: 'dialog', 'aria-label': 'Credits and licenses' } }, [
+      el('h2', { text: 'Credits and licenses' }),
       ...CREDITS.map((c) => el('section', { className: 'credit' }, [
         el('h3', { text: c.title }),
         el('p', { text: c.text }),

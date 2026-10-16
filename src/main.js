@@ -9,15 +9,15 @@
  * the loader.
  */
 
-import { LAYERS, PATHS } from './config.js?v=8292cd6aa198';
-import { loadDataset, buildSearchIndex } from './dataset.js?v=8292cd6aa198';
-import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap } from './anatomy.js?v=8292cd6aa198';
-import { fetchLocal, sanitizeQuery } from './security.js?v=8292cd6aa198';
-import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral } from './storage.js?v=8292cd6aa198';
-import { Viewer } from './viewer.js?v=8292cd6aa198';
-import { mountDevPanel } from './devpanel.js?v=8292cd6aa198';
-import { byId } from './dom.js?v=8292cd6aa198';
-import * as ui from './ui.js?v=8292cd6aa198';
+import { LAYERS, PATHS } from './config.js?v=820257be18cd';
+import { loadDataset, buildSearchIndex } from './dataset.js?v=820257be18cd';
+import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap } from './anatomy.js?v=820257be18cd';
+import { fetchLocal, sanitizeQuery } from './security.js?v=820257be18cd';
+import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral } from './storage.js?v=820257be18cd';
+import { Viewer } from './viewer.js?v=820257be18cd';
+import { mountDevPanel } from './devpanel.js?v=820257be18cd';
+import { byId } from './dom.js?v=820257be18cd';
+import * as ui from './ui.js?v=820257be18cd';
 
 const state = {
   data: null,
@@ -415,7 +415,7 @@ function wireInterface() {
   // so there has to be a way back that does not involve hunting for it.
   byId('resetViewBtn').addEventListener('click', () => {
     state.viewer?.resetView();
-    ui.flashHint('View recentred.');
+    ui.flashHint('View recentered.');
   });
 
   const input = byId('searchInput');
