@@ -6,12 +6,12 @@
  * this boundary is what lets every other module be tested in plain Node.
  */
 
-import * as THREE from '../vendor/three.module.js?v=7aa0c8ce5a6e';
-import { GLTFLoader } from '../vendor/GLTFLoader.js?v=7aa0c8ce5a6e';
-import { OrbitControls } from './controls.js?v=7aa0c8ce5a6e';
-import { BONE_SURFACE_COLORS, COLORS, LAYERS, LIMITS, MODEL_FIT_UNITS, MUSCLE_SECTION_COLORS, PATHS, PEEL, RENDER } from './config.js?v=7aa0c8ce5a6e';
-import { assertLooksLikeGLB, fetchLocal } from './security.js?v=7aa0c8ce5a6e';
-import { attachmentWeight, axialParameter, axialTaper, boneSurfaceKey, classifyLayer, findMuscleRecord, hiddenByIsolation, isPeeled, recordAliases, resolvesToContent, scaleChannels, selectionGroup, varyLightness, viewOffsetFor, fitDistance } from './anatomy.js?v=7aa0c8ce5a6e';
+import * as THREE from '../vendor/three.module.js?v=8292cd6aa198';
+import { GLTFLoader } from '../vendor/GLTFLoader.js?v=8292cd6aa198';
+import { OrbitControls } from './controls.js?v=8292cd6aa198';
+import { BONE_SURFACE_COLORS, COLORS, LAYERS, LIMITS, MODEL_FIT_UNITS, MUSCLE_SECTION_COLORS, PATHS, PEEL, RENDER } from './config.js?v=8292cd6aa198';
+import { assertLooksLikeGLB, fetchLocal } from './security.js?v=8292cd6aa198';
+import { attachmentWeight, axialParameter, axialTaper, boneSurfaceKey, classifyLayer, findMuscleRecord, hiddenByIsolation, isPeeled, recordAliases, resolvesToContent, scaleChannels, selectionGroup, varyLightness, viewOffsetFor, fitDistance } from './anatomy.js?v=8292cd6aa198';
 
 const TAP_MOVE_TOLERANCE_PX = 8; // beyond this, the gesture was a drag, not a tap
 
@@ -678,6 +678,14 @@ export class Viewer {
         material.needsUpdate = true;
       }
       material.opacity = opacity;
+      // One pass, not two, for a see-through double-sided material (review
+      // N4, 2026-10-16). Every material in the model is double-sided, and
+      // three.js otherwise draws each transparent one twice (back faces, then
+      // front faces) - a bone selection went from 944 to 1,870 draw calls a
+      // frame. With depth-write off the second pass bought little; the
+      // before/after renders are in 03 Testing & Review. No effect on opaque
+      // materials.
+      material.forceSinglePass = true;
       // Disabling depth-write on transparent meshes lets structures behind
       // them draw normally instead of being occluded by a mostly-invisible
       // surface — the standard "see-through shell" technique, needed most for
