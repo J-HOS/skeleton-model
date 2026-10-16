@@ -11,7 +11,7 @@ import { GLTFLoader } from '../vendor/GLTFLoader.js';
 import { OrbitControls } from './controls.js';
 import { BONE_SURFACE_COLORS, COLORS, LAYERS, LIMITS, MODEL_FIT_UNITS, MUSCLE_SECTION_COLORS, PATHS, PEEL, RENDER } from './config.js';
 import { assertLooksLikeGLB, fetchLocal } from './security.js';
-import { attachmentWeight, axialParameter, axialTaper, boneSurfaceKey, classifyLayer, findMuscleRecord, isPeeled, recordAliases, resolvesToContent, scaleChannels, selectionGroup, varyLightness } from './anatomy.js';
+import { attachmentWeight, axialParameter, axialTaper, boneSurfaceKey, classifyLayer, findMuscleRecord, hiddenByIsolation, isPeeled, recordAliases, resolvesToContent, scaleChannels, selectionGroup, varyLightness } from './anatomy.js';
 
 const TAP_MOVE_TOLERANCE_PX = 8; // beyond this, the gesture was a drag, not a tap
 
@@ -525,11 +525,17 @@ export class Viewer {
   }
 
   _applyVisibility() {
+    // Muscle isolation (2026-10-16): a muscle selection hides every other
+    // muscle. Decided per mesh by hiddenByIsolation() in anatomy.js.
+    const selectionHasMuscle = this.selectable.some(
+      (m) => m.userData.layer === 'muscle' && this.selectedIds.has(m.userData.structureId));
     for (const mesh of this.selectable) {
       const layerOn = this.layerVisibility[mesh.userData.layer] !== false;
       const peeled = mesh.userData.layer === 'muscle'
         && isPeeled(mesh.userData.structureId, this.layerMap, this.peelDepth, PEEL.side);
-      mesh.visible = layerOn && !peeled;
+      const isolated = hiddenByIsolation(
+        mesh.userData.layer, this.selectedIds.has(mesh.userData.structureId), selectionHasMuscle);
+      mesh.visible = layerOn && !peeled && !isolated;
     }
   }
 
@@ -567,6 +573,7 @@ export class Viewer {
   select(id) {
     this.selectedId = id || null;
     this.selectedIds = selectionGroup(this.selectedId, this.structureIds(), this.bilateral, this._aliases());
+    this._applyVisibility();
     this._applyMaterialState();
     return this.selectedIds;
   }

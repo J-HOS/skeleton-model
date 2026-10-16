@@ -757,6 +757,20 @@ export function isPeeled(structureId, map, depth, side = 'right') {
   return (map.get(structureId) ?? 1) < depth;
 }
 
+/**
+ * Muscle isolation (Jake, 2026-10-16): when a MUSCLE is selected, every other
+ * muscle is hidden so the selected one stands clear against ghosted bone.
+ * Selecting a bone keeps the old look (muscles ghosted as context), and a
+ * selection that matched no mesh hides nothing.
+ * @param {string} meshLayer          layer of the mesh being decided
+ * @param {boolean} meshIsSelected    is this mesh part of the selection
+ * @param {boolean} selectionHasMuscle does the selection light any muscle mesh
+ * @returns {boolean} true if this mesh should be hidden
+ */
+export function hiddenByIsolation(meshLayer, meshIsSelected, selectionHasMuscle) {
+  return Boolean(selectionHasMuscle) && meshLayer === 'muscle' && !meshIsSelected;
+}
+
 /** Next depth for the cycling control: off -> 2 -> 3 ... -> deepest -> off. */
 export function nextPeelDepth(current, deepest) {
   if (deepest < 2) return 0;
