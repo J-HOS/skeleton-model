@@ -53,7 +53,9 @@ canvas { display: block; touch-action: none; }
 
 /* 2026-10-14: the top bar is now just the menu button, top-left. It no
    longer spans the width, so the model is not covered by a gradient strip. */
-#topbar { position: fixed; top: 12px; left: 12px; z-index: 9; }
+/* z-index 11 (2026-10-15 team review): above the detail card (#info, 10) so
+   the open menu is never drawn under it on phones; still below search (15). */
+#topbar { position: fixed; top: 12px; left: 12px; z-index: 11; }
 
 .icon-btn {
   min-height: var(--touch); padding: 0 14px;
@@ -191,7 +193,13 @@ canvas { display: block; touch-action: none; }
   position: fixed; inset: 0; z-index: 30;
   display: flex; align-items: center; justify-content: center; padding: 24px;
   background: rgba(14,17,22,.88);
+  /* 2026-10-15 (team review P0): at 200% zoom or large text the disclaimer's
+     button sat below the screen and nothing could scroll, so the app could
+     never be entered. The overlay now scrolls; the card centres itself with
+     margin:auto when it fits and starts at the top when it does not. */
+  overflow-y: auto; overscroll-behavior: contain;
 }
+.overlay > * { margin: auto; }
 .error-card {
   max-width: 420px; padding: 22px;
   background: var(--panel); border: 1px solid var(--line); border-radius: 16px;

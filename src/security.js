@@ -127,18 +127,30 @@ export function assertLooksLikeGLB(buffer, maxBytes = LIMITS.modelBytes) {
 }
 
 /**
- * fetch() with a timeout and a same-origin guard.
+ * fetch() with a STALL timeout and a same-origin guard.
  * Every asset path in this app is relative and resolved against our own
  * origin; this makes that a checked invariant rather than a convention.
+ *
+ * 2026-10-15 (team review P0): the timeout used to cover the WHOLE download,
+ * so the 13 MB model (30 s cap) could never finish below ~3.6 Mbit/s - on
+ * Slow-4G the error appeared at 42 s, and "Try again" restarted from zero.
+ * It is now a stall guard: the timer is re-armed every time bytes arrive, so
+ * a slow-but-moving download completes and only a truly hung one aborts.
+ * onProgress(bytesReceived) is called as chunks arrive (buffer reads only).
  */
 export async function fetchLocal(path, options = {}) {
-  const { as = 'json', timeoutMs = LIMITS.fetchTimeoutMs } = options;
+  const { as = 'json', timeoutMs = LIMITS.fetchTimeoutMs, onProgress = null } = options;
   const url = new URL(path, document.baseURI);
   if (url.origin !== location.origin) {
     throw new Error(`Refusing to fetch off-origin asset: ${url.origin}`);
   }
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  let timer = null;
+  const rearm = () => {
+    clearTimeout(timer);
+    timer = setTimeout(() => controller.abort(), timeoutMs);
+  };
+  rearm();
   try {
     const res = await fetch(url, {
       signal: controller.signal,
@@ -152,7 +164,23 @@ export async function fetchLocal(path, options = {}) {
       error.path = path;
       throw error;
     }
-    return as === 'buffer' ? await res.arrayBuffer() : await res.json();
+    if (as !== 'buffer') return await res.json();
+    if (!res.body || !res.body.getReader) return await res.arrayBuffer();
+    const reader = res.body.getReader();
+    const chunks = [];
+    let received = 0;
+    for (;;) {
+      rearm();
+      const { done, value } = await reader.read();
+      if (done) break;
+      chunks.push(value);
+      received += value.byteLength;
+      if (onProgress) onProgress(received);
+    }
+    const out = new Uint8Array(received);
+    let offset = 0;
+    for (const chunk of chunks) { out.set(chunk, offset); offset += chunk.byteLength; }
+    return out.buffer;
   } finally {
     clearTimeout(timer);
   }

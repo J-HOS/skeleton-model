@@ -44,7 +44,7 @@ export const LIMITS = Object.freeze({
   recentItems: 8,            // max stored recently-viewed entries
   storedIdChars: 64,         // max length of any single stored structure id
   modelBytes: 96 * 1024 * 1024, // reject .glb files larger than this
-  fetchTimeoutMs: 30000,     // abort a hung asset fetch
+  fetchTimeoutMs: 30000,     // abort a fetch that receives NO bytes for this long (a stall guard, re-armed per chunk - not a cap on the whole download)
 });
 
 /**

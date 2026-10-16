@@ -23,7 +23,8 @@ const state = {
   data: null,
   viewer: null,
   searchIndex: [],
-  layerVisibility: Object.fromEntries(LAYERS.map((l) => [l.id, l.id === 'skeleton'])),
+  // Skeleton and Muscle on at start (Jake, 2026-10-15 team review decision D2).
+  layerVisibility: Object.fromEntries(LAYERS.map((l) => [l.id, l.id === 'skeleton' || l.id === 'muscle'])),
   xray: false,
   bilateral: getBilateral(),
   peelDepth: 0,
@@ -61,13 +62,44 @@ function show(structureId) {
   );
 }
 
-/** Selecting from search also frames the structure, since it may be off-screen. */
+/**
+ * Selecting from search also frames the structure, since it may be off-screen.
+ * 2026-10-15 (team review P0): first make it visible - turn on any layer that
+ * hides it, and step Deep view back only as far as this muscle's layer - so
+ * a search pick never lands on an empty model. "No mesh" is said only when
+ * the structure has no mesh at all, never because one is merely hidden.
+ */
+function revealForFocus(structureId) {
+  const viewer = state.viewer;
+  if (!viewer) return false;
+  const info = viewer.revealInfo(structureId);
+  if (!info.exists) return false;
+  let changed = false;
+  for (const layer of info.layers) {
+    if (state.layerVisibility[layer] === false) {
+      state.layerVisibility[layer] = true;
+      viewer.setLayerVisible(layer, true);
+      changed = true;
+    }
+  }
+  if (info.peeledLayer !== null) {
+    state.peelDepth = info.peeledLayer >= 2 ? info.peeledLayer : 0;
+    viewer.setPeelDepth(state.peelDepth);
+    changed = true;
+  }
+  if (changed) refreshLayers();
+  return true;
+}
+
 function showAndFocus(structureId) {
   ui.closeSearch();
+  const hasMesh = revealForFocus(structureId);
   show(structureId);
-  if (state.viewer && !state.viewer.focus(structureId)) {
+  if (!hasMesh) {
     ui.flashHint('Content shown — no mesh for this structure in the model yet.');
+    return;
   }
+  state.viewer.focus(structureId);
 }
 
 /* ----------------------------------------------------------------- model -- */
@@ -230,13 +262,25 @@ async function boot() {
     return;
   }
 
-  ui.setLoading('Loading the 3D model…');
+  ui.setLoading('Loading the 3D model… (Wi-Fi recommended)');
   state.viewer = new Viewer(byId('canvas-host'), state.data.muscleIndex);
   state.viewer.onSelect(show);
   state.viewer.bilateral = state.bilateral;
 
   try {
-    const added = await state.viewer.load(PATHS.model, { replace: true });
+    // Progress in MB, not percent: GitHub Pages compresses the model (~13 MB
+    // on the wire) but the reader counts the unpacked bytes (~19 MB), so the
+    // size header (when present) does not match what is counted here.
+    let shownMb = -1;
+    const added = await state.viewer.load(PATHS.model, {
+      replace: true,
+      onProgress: (bytes) => {
+        const mb = Math.floor(bytes / (1024 * 1024) * 2) / 2;
+        if (mb === shownMb) return;
+        shownMb = mb;
+        ui.setLoading(`Loading the 3D model… ${mb.toFixed(1)} MB (Wi-Fi recommended)`);
+      },
+    });
     for (const [id, visible] of Object.entries(state.layerVisibility)) {
       state.viewer.setLayerVisible(id, visible);
     }

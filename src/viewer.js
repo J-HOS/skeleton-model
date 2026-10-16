@@ -206,7 +206,7 @@ export class Viewer {
    *   forceLayer - override layer classification for every mesh in the file
    */
   async load(path, options = {}) {
-    const buffer = await fetchLocal(path, { as: 'buffer', timeoutMs: LIMITS.fetchTimeoutMs });
+    const buffer = await fetchLocal(path, { as: 'buffer', timeoutMs: LIMITS.fetchTimeoutMs, onProgress: options.onProgress });
     assertLooksLikeGLB(buffer, LIMITS.modelBytes);
     const gltf = await this._loader.parseAsync(buffer, '');
     return this._integrate(gltf.scene, options);
@@ -642,6 +642,29 @@ export class Viewer {
     if (dimmed) return RENDER.dimOpacity;
     if (xrayed) return RENDER.xrayOpacity;
     return 1;
+  }
+
+  /**
+   * What stands between a structure and the screen (2026-10-15, team review
+   * P0). Search used to call focus() on a muscle while the Muscle layer was
+   * off, find no VISIBLE mesh, and claim "no mesh". This reports, for the
+   * structure's meshes: whether any exist at all, which layers they are on,
+   * and the shallowest measured layer among those Deep view is hiding - so
+   * the caller can turn the right layer on and step Deep view back only as
+   * far as needed.
+   */
+  revealInfo(id) {
+    const group = selectionGroup(id, this.structureIds(), this.bilateral, this._aliases());
+    const meshes = this.selectable.filter((m) => group.has(m.userData.structureId));
+    const layers = new Set(meshes.map((m) => m.userData.layer));
+    let peeledLayer = null;
+    for (const m of meshes) {
+      if (m.userData.layer !== 'muscle') continue;
+      if (!isPeeled(m.userData.structureId, this.layerMap, this.peelDepth, PEEL.side)) continue;
+      const layer = this.layerMap?.get(m.userData.structureId) ?? 1;
+      peeledLayer = peeledLayer === null ? layer : Math.min(peeledLayer, layer);
+    }
+    return { exists: meshes.length > 0, layers, peeledLayer };
   }
 
   /** Frame a structure: move the orbit target to it and pull the camera in. */
