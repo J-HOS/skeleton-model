@@ -6,12 +6,12 @@
  * this boundary is what lets every other module be tested in plain Node.
  */
 
-import * as THREE from '../vendor/three.module.js';
-import { GLTFLoader } from '../vendor/GLTFLoader.js';
-import { OrbitControls } from './controls.js';
-import { BONE_SURFACE_COLORS, COLORS, LAYERS, LIMITS, MODEL_FIT_UNITS, MUSCLE_SECTION_COLORS, PATHS, PEEL, RENDER } from './config.js';
-import { assertLooksLikeGLB, fetchLocal } from './security.js';
-import { attachmentWeight, axialParameter, axialTaper, boneSurfaceKey, classifyLayer, findMuscleRecord, hiddenByIsolation, isPeeled, recordAliases, resolvesToContent, scaleChannels, selectionGroup, varyLightness } from './anatomy.js';
+import * as THREE from '../vendor/three.module.js?v=67094af755ca';
+import { GLTFLoader } from '../vendor/GLTFLoader.js?v=67094af755ca';
+import { OrbitControls } from './controls.js?v=67094af755ca';
+import { BONE_SURFACE_COLORS, COLORS, LAYERS, LIMITS, MODEL_FIT_UNITS, MUSCLE_SECTION_COLORS, PATHS, PEEL, RENDER } from './config.js?v=67094af755ca';
+import { assertLooksLikeGLB, fetchLocal } from './security.js?v=67094af755ca';
+import { attachmentWeight, axialParameter, axialTaper, boneSurfaceKey, classifyLayer, findMuscleRecord, hiddenByIsolation, isPeeled, recordAliases, resolvesToContent, scaleChannels, selectionGroup, varyLightness, viewOffsetFor, fitDistance } from './anatomy.js?v=67094af755ca';
 
 const TAP_MOVE_TOLERANCE_PX = 8; // beyond this, the gesture was a drag, not a tap
 
@@ -169,12 +169,57 @@ export class Viewer {
     const w = window.innerWidth;
     const h = window.innerHeight;
     this.camera.aspect = w / h;
-    this.camera.updateProjectionMatrix();
     this.renderer.setSize(w, h);
+    this._applyViewOffset();
   };
+
+  /**
+   * Keep the selection in the part of the screen the detail card leaves
+   * uncovered (2026-10-16, review N1). `inset` is the covered px on the
+   * right (desktop card) and bottom (phone card); {} or zeros = none. The
+   * offset eases toward the target in the render loop, roughly in step with
+   * the card's .2s slide. Taps stay accurate: Raycaster.setFromCamera uses
+   * the projection matrix, which includes the view offset.
+   */
+  setViewInset(inset = {}) {
+    this._insetTarget = { right: Number(inset.right) || 0, bottom: Number(inset.bottom) || 0 };
+  }
+
+  _stepViewInset() {
+    const target = this._insetTarget || { right: 0, bottom: 0 };
+    const cur = this._inset || (this._inset = { right: 0, bottom: 0 });
+    // Time-based easing (time constant 60 ms, ~0.2 s to settle) so the slide
+    // takes the same time at 60 fps, on a slow phone, or under software GL -
+    // a per-frame step was still sliding seconds later at low frame rates.
+    const now = performance.now();
+    const dt = this._insetAt ? Math.min(now - this._insetAt, 1000) : 16;
+    this._insetAt = now;
+    const k = 1 - Math.exp(-dt / 60);
+    let moved = false;
+    for (const key of ['right', 'bottom']) {
+      const d = target[key] - cur[key];
+      if (Math.abs(d) < 0.5) {
+        if (cur[key] !== target[key]) { cur[key] = target[key]; moved = true; }
+      } else {
+        cur[key] += d * k;
+        moved = true;
+      }
+    }
+    if (moved) this._applyViewOffset();
+  }
+
+  _applyViewOffset() {
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    const off = viewOffsetFor(w, h, this._inset || {});
+    if (off) this.camera.setViewOffset(w, h, off.x, off.y, w, h);
+    else this.camera.clearViewOffset();
+    this.camera.updateProjectionMatrix();
+  }
 
   _animate = () => {
     requestAnimationFrame(this._animate);
+    this._stepViewInset();
     this.renderer.render(this.scene, this.camera);
   };
 
@@ -684,8 +729,11 @@ export class Viewer {
     if (box.isEmpty()) return false;
     const size = box.getSize(new THREE.Vector3());
     this.controls.target.copy(box.getCenter(new THREE.Vector3()));
+    // Usual framing, or further out if the open card leaves too little room
+    // (2026-10-16): fit to the area the card's TARGET inset leaves visible.
+    const fit = fitDistance(size, this.camera.fov, window.innerWidth, window.innerHeight, this._insetTarget || {});
     this.controls.radius = Math.min(
-      Math.max(Math.max(size.x, size.y, size.z) * 3.2, 1.6),
+      Math.max(Math.max(size.x, size.y, size.z) * 3.2, fit, 1.6),
       12
     );
     this.controls.update();

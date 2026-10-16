@@ -771,6 +771,48 @@ export function hiddenByIsolation(meshLayer, meshIsSelected, selectionHasMuscle)
   return Boolean(selectionHasMuscle) && meshLayer === 'muscle' && !meshIsSelected;
 }
 
+/**
+ * Camera view offset for a panel covering part of the screen (2026-10-16,
+ * review N1 / old P1 #6). The detail card covers the bottom of a phone screen
+ * and the right edge on desktop, and focus() used to centre the selection
+ * UNDER it. Shifting the projection by half the covered size puts the orbit
+ * target in the middle of the part still visible. Returns the x/y passed to
+ * camera.setViewOffset(width, height, x, y, width, height), or null for none.
+ * @param {number} width   canvas width in CSS px
+ * @param {number} height  canvas height in CSS px
+ * @param {{right?: number, bottom?: number}} inset  covered px on each edge
+ */
+export function viewOffsetFor(width, height, inset = {}) {
+  const clamp = (v, max) => Math.min(Math.max(Number(v) || 0, 0), max * 0.9);
+  const right = clamp(inset.right, width);
+  const bottom = clamp(inset.bottom, height);
+  if (right < 0.5 && bottom < 0.5) return null;
+  return { x: right / 2, y: bottom / 2 };
+}
+
+/**
+ * How far the camera must be to fit a box of `size` into the part of the
+ * screen the card leaves visible (2026-10-16, review N1). Uses the box's
+ * bounding sphere, so it holds from any orbit angle. Callers take the larger
+ * of this and their usual framing, so focusing never zooms in further than it
+ * did before the card was accounted for.
+ * @param {{x:number,y:number,z:number}} size  box size in world units
+ * @param {number} fovDeg  vertical field of view in degrees
+ * @param {number} width   canvas width in px
+ * @param {number} height  canvas height in px
+ * @param {{right?: number, bottom?: number}} inset  covered px
+ */
+export function fitDistance(size, fovDeg, width, height, inset = {}) {
+  const r = Math.hypot(size.x || 0, size.y || 0, size.z || 0) / 2;
+  if (!(r > 0) || !(width > 0) || !(height > 0)) return 0;
+  const visW = Math.max(width - Math.min(Math.max(Number(inset.right) || 0, 0), width * 0.9), 1);
+  const visH = Math.max(height - Math.min(Math.max(Number(inset.bottom) || 0, 0), height * 0.9), 1);
+  const tanV = Math.tan((fovDeg * Math.PI) / 360);
+  const halfV = Math.atan(tanV * (visH / height));
+  const halfH = Math.atan(tanV * (width / height) * (visW / width));
+  return (r / Math.sin(Math.min(halfV, halfH))) * 1.1;
+}
+
 /** Next depth for the cycling control: off -> 2 -> 3 ... -> deepest -> off. */
 export function nextPeelDepth(current, deepest) {
   if (deepest < 2) return 0;

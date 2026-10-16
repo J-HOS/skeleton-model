@@ -34,7 +34,7 @@
      auto-requesting /favicon.ico (which this app doesn't have) and logging a
      404 for it on every load. Allowed under the CSP's img-src 'self' data:. -->
 <link rel="icon" href="data:,">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=67094af755ca">
 </head>
 <body>
 
@@ -84,7 +84,11 @@
 
 <div id="hint" hidden></div>
 
-<div id="loading" hidden></div>
+<!-- Visible before any script runs (2026-10-16, review P1 #9): if the app's
+     code never starts (old and new files mixed after a deploy, a dropped
+     request), this line says what to do instead of leaving a black screen.
+     main.js replaces it with its own loading messages. -->
+<div id="loading"><span>Loading&hellip; If this stays on screen, reload the page.</span></div>
 
 <!-- Search -->
 <!-- hidden by attribute, not only by CSS (2026-10-15): if styles.css fails
@@ -115,6 +119,6 @@
 <div id="credits" class="overlay" hidden></div>
 <div id="error" class="overlay" hidden></div>
 
-<script type="module" src="src/main.js"></script>
+<script type="module" src="src/main.js?v=67094af755ca"></script>
 </body>
 </html>

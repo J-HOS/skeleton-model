@@ -14,8 +14,8 @@
  * in, exactly like a network response.
  */
 
-import { LIMITS } from './config.js';
-import { isValidStructureId } from './security.js';
+import { LIMITS } from './config.js?v=67094af755ca';
+import { isValidStructureId } from './security.js?v=67094af755ca';
 
 const RECENTS_KEY = 'skeletonModel.recentlyViewed.v1';
 const DISCLAIMER_KEY = 'skeletonModel.disclaimerAcknowledged.v1';

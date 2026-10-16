@@ -9,15 +9,15 @@
  * the loader.
  */
 
-import { LAYERS, PATHS } from './config.js';
-import { loadDataset, buildSearchIndex } from './dataset.js';
-import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap } from './anatomy.js';
-import { fetchLocal, sanitizeQuery } from './security.js';
-import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral } from './storage.js';
-import { Viewer } from './viewer.js';
-import { mountDevPanel } from './devpanel.js';
-import { byId } from './dom.js';
-import * as ui from './ui.js';
+import { LAYERS, PATHS } from './config.js?v=67094af755ca';
+import { loadDataset, buildSearchIndex } from './dataset.js?v=67094af755ca';
+import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap } from './anatomy.js?v=67094af755ca';
+import { fetchLocal, sanitizeQuery } from './security.js?v=67094af755ca';
+import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral } from './storage.js?v=67094af755ca';
+import { Viewer } from './viewer.js?v=67094af755ca';
+import { mountDevPanel } from './devpanel.js?v=67094af755ca';
+import { byId } from './dom.js?v=67094af755ca';
+import * as ui from './ui.js?v=67094af755ca';
 
 const state = {
   data: null,
@@ -99,6 +99,9 @@ function showAndFocus(structureId) {
     ui.flashHint('Content shown — no mesh for this structure in the model yet.');
     return;
   }
+  // The card has just opened; give the viewer its size now (the observer
+  // fires a microtask later) so focus() frames for the visible area.
+  updateViewInset();
   state.viewer.focus(structureId);
 }
 
@@ -202,7 +205,10 @@ async function ensureStyles() {
   console.warn('styles.css did not apply - fetching it again');
   const link = document.createElement('link');
   link.rel = 'stylesheet';
-  link.href = `styles.css?retry=${Date.now()}`;
+  // Re-request the SAME stylesheet the page links to (it carries the build's
+  // ?v= suffix on the live site - 2026-10-16), plus a cache-buster.
+  const current = document.querySelector('link[rel="stylesheet"]')?.getAttribute('href') || 'styles.css';
+  link.href = `${current}${current.includes('?') ? '&' : '?'}retry=${Date.now()}`;
   await new Promise((resolve) => {
     const timer = setTimeout(resolve, 8000);
     link.addEventListener('load', () => { clearTimeout(timer); resolve(); });
@@ -265,6 +271,7 @@ async function boot() {
   ui.setLoading('Loading the 3D model… (Wi-Fi recommended)');
   state.viewer = new Viewer(byId('canvas-host'), state.data.muscleIndex);
   state.viewer.onSelect(show);
+  watchCardForViewInset();
   state.viewer.bilateral = state.bilateral;
 
   try {
@@ -317,6 +324,28 @@ async function boot() {
  * user picked a structure the model would stay dimmed with no way back to
  * a normal view short of picking something else.
  */
+/**
+ * Tell the viewer how much of the screen the detail card covers, so the
+ * selection is framed in the uncovered part (2026-10-16, review N1). Phone
+ * layout (styles.css, max-width 640px): a bottom sheet; otherwise a right-hand
+ * panel. offsetWidth/offsetHeight ignore the slide transform, so this is the
+ * card's resting size, known the moment it opens. Watched with a
+ * MutationObserver on the card's class, so every open/close path is covered.
+ */
+const PHONE_LAYOUT = '(max-width: 640px)';
+function updateViewInset() {
+  if (!state.viewer) return;
+  const card = byId('info');
+  if (!card.classList.contains('open')) { state.viewer.setViewInset({}); return; }
+  const phone = window.matchMedia(PHONE_LAYOUT).matches;
+  state.viewer.setViewInset(phone ? { bottom: card.offsetHeight } : { right: card.offsetWidth });
+}
+function watchCardForViewInset() {
+  new MutationObserver(updateViewInset).observe(byId('info'), { attributes: true, attributeFilter: ['class'] });
+  window.addEventListener('resize', updateViewInset);
+  updateViewInset();
+}
+
 function closeInfoPanel() {
   ui.closeInfo();
   state.viewer?.select(null);
