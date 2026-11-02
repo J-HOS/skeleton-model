@@ -7,9 +7,9 @@
  * correctness of the anatomy or the security posture.
  */
 
-import { byId, clear, el, fieldRow, replace } from './dom.js?v=820257be18cd';
-import { ATTRIBUTION, CREDITS, DISCLAIMER, LAYERS, LIMITS } from './config.js?v=820257be18cd';
-import { parseLandmarkCard, prettyName } from './anatomy.js?v=820257be18cd';
+import { byId, clear, el, fieldRow, replace } from './dom.js?v=aae17007a880';
+import { ATTRIBUTION, CREDITS, DISCLAIMER, LAYERS, LIMITS } from './config.js?v=aae17007a880';
+import { parseLandmarkCard, prettyName } from './anatomy.js?v=aae17007a880';
 
 /* ---------------------------------------------------------------- status -- */
 
@@ -308,7 +308,7 @@ export function renderCredits({ onClose, onClearData } = {}) {
       ])),
       onClearData ? el('section', { className: 'credit credit-data' }, [
         el('h3', { text: 'Your data' }),
-        el('p', { text: 'This app keeps your recent structures, the first-run notice and the Both sides setting in this browser only. Nothing is sent anywhere.' }),
+        el('p', { text: 'This app keeps your recent structures, the first-run notice and the Both sides setting in this browser only, and runs no analytics. The site host (GitHub) keeps standard server logs, such as IP addresses.' }),
         clearBtn,
       ]) : null,
       el('button', { className: 'btn', text: 'Close', on: { click: close } }),
