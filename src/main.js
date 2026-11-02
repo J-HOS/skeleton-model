@@ -9,15 +9,15 @@
  * the loader.
  */
 
-import { LAYERS, PATHS } from './config.js?v=aae17007a880';
-import { loadDataset, buildSearchIndex } from './dataset.js?v=aae17007a880';
-import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap } from './anatomy.js?v=aae17007a880';
-import { fetchLocal, sanitizeQuery } from './security.js?v=aae17007a880';
-import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral } from './storage.js?v=aae17007a880';
-import { Viewer } from './viewer.js?v=aae17007a880';
-import { mountDevPanel } from './devpanel.js?v=aae17007a880';
-import { byId } from './dom.js?v=aae17007a880';
-import * as ui from './ui.js?v=aae17007a880';
+import { LAYERS, PATHS } from './config.js?v=d8044973f3d0';
+import { loadDataset, buildSearchIndex } from './dataset.js?v=d8044973f3d0';
+import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap } from './anatomy.js?v=d8044973f3d0';
+import { fetchLocal, sanitizeQuery } from './security.js?v=d8044973f3d0';
+import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral } from './storage.js?v=d8044973f3d0';
+import { Viewer } from './viewer.js?v=d8044973f3d0';
+import { mountDevPanel } from './devpanel.js?v=d8044973f3d0';
+import { byId } from './dom.js?v=d8044973f3d0';
+import * as ui from './ui.js?v=d8044973f3d0';
 
 const state = {
   data: null,

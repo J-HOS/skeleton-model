@@ -82,7 +82,7 @@ section and the Credits screen do that.
 ## 2. Muscle content — `(C) muscle_database.json`
 
 All origins, insertions, actions and nerve innervations are written in **original
-wording** and verified against NIH/NCBI StatPearls articles and Kenhub (re-sourced
+wording** and verified against NIH/NCBI StatPearls articles (re-sourced
 2026-09-16; each entry cites its sources by NBK number in `notes`), and checked
 on 2026-10-09 against university medical-school anatomy tables and atlases
 (UAMS/TTUHSC, University of Washington, Loyola LUMEN) and Radiopaedia. Those

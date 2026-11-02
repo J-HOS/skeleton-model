@@ -301,10 +301,12 @@ export const MODEL_FIT_UNITS = 7;
  *
  * Rewritten 2026-10-08. The previous line credited the 2013 flashcard deck as
  * the content source; since 2026-09-16 every entry is original wording,
- * verified against NIH/NCBI StatPearls and Kenhub, so that was no longer true.
+ * verified against NIH/NCBI StatPearls, so that was no longer true.
+ * 2026-11-02: one source was dropped from this line under the commercial-use
+ * rule in CLAUDE.md (no source whose terms stop us charging).
  */
 export const ATTRIBUTION =
-  'Muscle text: original, verified against NIH/NCBI StatPearls, Kenhub and ' +
+  'Muscle text: original, verified against NIH/NCBI StatPearls and ' +
   'university anatomy tables. ' +
   '3D model: BodyParts3D © DBCLS (CC BY-SA 2.1 JP), mixed and modified by ' +
   'Z-anatomy.com (CC BY-SA 4.0); ear ossicles original to this project. ' +
@@ -373,7 +375,7 @@ export const CREDITS = Object.freeze([
   {
     title: 'Muscle content',
     text: 'Origins, insertions, actions and innervations are written in original ' +
-      'wording and verified against NIH/NCBI StatPearls articles and Kenhub, ' +
+      'wording and verified against NIH/NCBI StatPearls articles, ' +
       'and checked against university medical-school anatomy tables and ' +
       'atlases (UAMS/TTUHSC, University of Washington, Loyola) and ' +
       'Radiopaedia; each entry cites its sources. These sources were used for ' +

@@ -7,9 +7,9 @@
  * correctness of the anatomy or the security posture.
  */
 
-import { byId, clear, el, fieldRow, replace } from './dom.js?v=aae17007a880';
-import { ATTRIBUTION, CREDITS, DISCLAIMER, LAYERS, LIMITS } from './config.js?v=aae17007a880';
-import { parseLandmarkCard, prettyName } from './anatomy.js?v=aae17007a880';
+import { byId, clear, el, fieldRow, replace } from './dom.js?v=d8044973f3d0';
+import { ATTRIBUTION, CREDITS, DISCLAIMER, LAYERS, LIMITS } from './config.js?v=d8044973f3d0';
+import { parseLandmarkCard, prettyName } from './anatomy.js?v=d8044973f3d0';
 
 /* ---------------------------------------------------------------- status -- */
 
