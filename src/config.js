@@ -377,8 +377,8 @@ export const CREDITS = Object.freeze([
     text: 'Origins, insertions, actions and innervations are written in original ' +
       'wording and verified against NIH/NCBI StatPearls articles, ' +
       'and checked against university medical-school anatomy tables and ' +
-      'atlases (UAMS/TTUHSC, University of Washington, Loyola) and ' +
-      'Radiopaedia; each entry cites its sources. These sources were used for ' +
+      'atlases (UAMS/TTUHSC, University of Washington, Loyola); ' +
+      'each entry cites its sources. These sources were used for ' +
       'facts only; no text is reproduced from them.',
   },
 ]);

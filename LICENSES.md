@@ -85,7 +85,7 @@ All origins, insertions, actions and nerve innervations are written in **origina
 wording** and verified against NIH/NCBI StatPearls articles (re-sourced
 2026-09-16; each entry cites its sources by NBK number in `notes`), and checked
 on 2026-10-09 against university medical-school anatomy tables and atlases
-(UAMS/TTUHSC, University of Washington, Loyola LUMEN) and Radiopaedia. Those
+(UAMS/TTUHSC, University of Washington, Loyola LUMEN). Those
 sources were used for facts only; no text is reproduced from them. Facts are not
 copyrightable; expression is.
 
