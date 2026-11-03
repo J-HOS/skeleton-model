@@ -6,12 +6,12 @@
  * this boundary is what lets every other module be tested in plain Node.
  */
 
-import * as THREE from '../vendor/three.module.js?v=0f2631ce7146';
-import { GLTFLoader } from '../vendor/GLTFLoader.js?v=0f2631ce7146';
-import { OrbitControls } from './controls.js?v=0f2631ce7146';
-import { BONE_SURFACE_COLORS, COLORS, LAYERS, LIMITS, MODEL_FIT_UNITS, MUSCLE_SECTION_COLORS, PATHS, PEEL, RENDER } from './config.js?v=0f2631ce7146';
-import { assertLooksLikeGLB, fetchLocal } from './security.js?v=0f2631ce7146';
-import { attachmentWeight, axialParameter, axialTaper, boneSurfaceKey, classifyLayer, findMuscleRecord, hiddenByIsolation, isPeeled, recordAliases, resolvesToContent, scaleChannels, selectionGroup, varyLightness, viewOffsetFor, fitDistance } from './anatomy.js?v=0f2631ce7146';
+import * as THREE from '../vendor/three.module.js?v=7045c29c94e2';
+import { GLTFLoader } from '../vendor/GLTFLoader.js?v=7045c29c94e2';
+import { OrbitControls } from './controls.js?v=7045c29c94e2';
+import { BONE_SURFACE_COLORS, COLORS, LAYERS, LIMITS, MODEL_FIT_UNITS, MUSCLE_SECTION_COLORS, PATHS, PEEL, RENDER } from './config.js?v=7045c29c94e2';
+import { assertLooksLikeGLB, fetchLocal } from './security.js?v=7045c29c94e2';
+import { attachmentWeight, axialParameter, axialTaper, boneSurfaceKey, classifyLayer, findMuscleRecord, hiddenByIsolation, isPeeled, recordAliases, resolvesToContent, scaleChannels, selectionGroup, varyLightness, viewOffsetFor, fitDistance } from './anatomy.js?v=7045c29c94e2';
 
 const TAP_MOVE_TOLERANCE_PX = 8; // beyond this, the gesture was a drag, not a tap
 
@@ -580,8 +580,46 @@ export class Viewer {
         && isPeeled(mesh.userData.structureId, this.layerMap, this.peelDepth, PEEL.side);
       const isolated = hiddenByIsolation(
         mesh.userData.layer, this.selectedIds.has(mesh.userData.structureId), selectionHasMuscle);
-      mesh.visible = layerOn && !peeled && !isolated;
+      // Study scope (2026-11-02): during a muscle Find-it round only the
+      // region's muscles are shown, so the user taps among the right set.
+      const outOfScope = this.studyScope && mesh.userData.layer === 'muscle'
+        && !this.studyScope.has(mesh.userData.structureId);
+      mesh.visible = layerOn && !peeled && !isolated && !outOfScope;
     }
+  }
+
+  /** Study rounds: show only these muscle ids (a Set), or null for all. */
+  setStudyScope(ids) {
+    this.studyScope = ids ? new Set(ids) : null;
+    this._applyVisibility();
+  }
+
+  /**
+   * Light exactly these structure ids (e.g. both sides of a study answer),
+   * dimming the rest as select() does. Pass an empty list to clear.
+   */
+  selectIds(ids) {
+    this.selectedId = null;
+    this.selectedIds = new Set(ids || []);
+    this._applyVisibility();
+    this._applyMaterialState();
+    return this.selectedIds;
+  }
+
+  /** Frame every visible mesh of these ids (a study region). Returns false if none. */
+  frameIds(ids) {
+    const wanted = new Set(ids);
+    const meshes = this.selectable.filter((m) => wanted.has(m.userData.structureId) && m.visible);
+    if (!meshes.length) return false;
+    const box = new THREE.Box3();
+    for (const mesh of meshes) box.expandByObject(mesh);
+    if (box.isEmpty()) return false;
+    const size = box.getSize(new THREE.Vector3());
+    this.controls.target.copy(box.getCenter(new THREE.Vector3()));
+    const fit = fitDistance(size, this.camera.fov, window.innerWidth, window.innerHeight, this._insetTarget || {});
+    this.controls.radius = Math.min(Math.max(Math.max(size.x, size.y, size.z) * 1.6, fit, 1.6), 12);
+    this.controls.update();
+    return true;
   }
 
   /** Install the measured layers (Map from parseLayerMap). */

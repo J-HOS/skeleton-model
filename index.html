@@ -34,7 +34,7 @@
      auto-requesting /favicon.ico (which this app doesn't have) and logging a
      404 for it on every load. Allowed under the CSP's img-src 'self' data:. -->
 <link rel="icon" href="data:,">
-<link rel="stylesheet" href="styles.css?v=0f2631ce7146">
+<link rel="stylesheet" href="styles.css?v=7045c29c94e2">
 </head>
 <body>
 
@@ -53,6 +53,9 @@
       <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
     </button>
     <div id="menu" class="menu" hidden>
+      <button id="studyBtn" class="menu-item" type="button" aria-label="Study: find muscles and bones">
+        <span>Study</span>
+      </button>
       <button id="searchBtn" class="menu-item" type="button" aria-label="Search structures">
         <span>Search</span><span class="kbd" aria-hidden="true">/</span>
       </button>
@@ -117,8 +120,12 @@
 
 <div id="disclaimer" class="overlay" hidden></div>
 <div id="credits" class="overlay" hidden></div>
+<!-- Study (2026-11-02): the subject/region picker, and the bar shown during a
+     Find-it round. Built by ui.js; hidden by attribute like every overlay. -->
+<div id="study" class="overlay" hidden></div>
+<div id="studyBar" hidden></div>
 <div id="error" class="overlay" hidden></div>
 
-<script type="module" src="src/main.js?v=0f2631ce7146"></script>
+<script type="module" src="src/main.js?v=7045c29c94e2"></script>
 </body>
 </html>

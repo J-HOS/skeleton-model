@@ -293,6 +293,44 @@ canvas { display: block; touch-action: none; }
 }
 .attribution { margin: 16px 0 0; color: var(--muted); font-size: 11px; line-height: 1.45; }
 
+/* ------------------------------------------------------------------ study */
+/* Study (2026-11-02): region picker dialog and the round bar. The bar sits at
+   the bottom on every screen (the viewer frames the region above it); during
+   a round the hint moves to the top. The detail card is closed during a round. */
+.study-card { max-width: 480px; width: 100%; }
+.study-tabs { display: flex; gap: 6px; margin: 0 0 12px; }
+.study-tab {
+  flex: 1; min-height: var(--touch); border-radius: var(--radius);
+  background: var(--panel-2); color: var(--text); border: 1px solid var(--line);
+  font: inherit; font-weight: 600; cursor: pointer;
+}
+.study-tab.active { background: var(--accent); color: #06222a; border-color: var(--accent); }
+.study-tab:focus-visible, .study-region:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+.study-regions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 0 0 14px; }
+.study-region {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 2px;
+  min-height: 56px; padding: 8px 12px; border-radius: var(--radius);
+  background: var(--panel-2); color: var(--text); border: 1px solid var(--line);
+  font: inherit; text-align: left; cursor: pointer;
+}
+.study-region:hover { border-color: var(--accent); }
+.study-region-name { font-weight: 600; font-size: 14px; }
+.study-region-meta { color: var(--muted); font-size: 12px; }
+#studyBar {
+  position: fixed; bottom: 12px; left: 50%; transform: translateX(-50%); z-index: 9;
+  width: min(560px, calc(100vw - 24px));
+  padding: 10px 14px 12px; border-radius: 16px;
+  background: rgba(23,28,36,.96); border: 1px solid var(--line);
+}
+.study-bar-head { display: flex; justify-content: space-between; gap: 8px; color: var(--muted); font-size: 12px; }
+.study-bar-prompt { margin: 4px 0 6px; font-size: 18px; font-weight: 650; }
+.study-bar-feedback { margin: 0 0 8px; font-size: 13.5px; }
+.study-bar-feedback.good { color: #4ade80; }
+.study-bar-feedback.bad { color: var(--warning); }
+.study-bar-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.study-bar-actions .btn { min-height: 40px; padding: 0 14px; }
+body.studying #hint { bottom: auto; top: 64px; }
+
 @media (max-width: 640px) {
   #info { width: 100%; top: auto; height: 62vh; border-left: 0; border-top: 1px solid var(--line);
           border-radius: 18px 18px 0 0; transform: translateY(101%); }
@@ -306,6 +344,8 @@ canvas { display: block; touch-action: none; }
   #hint { bottom: auto; top: 64px; max-width: calc(100vw - 24px); text-align: center; }
   .overlay { padding: 12px; }
   .credits-card { max-height: calc(100vh - 24px); }
+  #studyBar { bottom: 10px; width: calc(100vw - 20px); }
+  .study-regions { grid-template-columns: 1fr 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {

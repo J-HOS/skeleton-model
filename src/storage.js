@@ -2,7 +2,8 @@
  * storage.js — the only module that touches persistent storage.
  *
  * What is stored: a short list of recently-viewed structure ids, e.g.
- * "Deltoid" or "Tibia_l_ZA". Nothing else. No account, no personal data, no
+ * "Deltoid" or "Tibia_l_ZA", two display settings, and best study scores
+ * (numbers per subject and region). Nothing else. No account, no personal data, no
  * clinical or patient data, no free text the user typed. Per
  * (C) security-architecture.md §4 and the HIPAA note, keeping it to
  * non-identifying app state is what keeps this app outside the PHI boundary —
@@ -14,13 +15,18 @@
  * in, exactly like a network response.
  */
 
-import { LIMITS } from './config.js?v=0f2631ce7146';
-import { isValidStructureId } from './security.js?v=0f2631ce7146';
+import { LIMITS } from './config.js?v=7045c29c94e2';
+import { isValidStructureId } from './security.js?v=7045c29c94e2';
 
 const RECENTS_KEY = 'skeletonModel.recentlyViewed.v1';
 const DISCLAIMER_KEY = 'skeletonModel.disclaimerAcknowledged.v1';
 // A display preference, not personal data: "light both sides on selection".
 const BILATERAL_KEY = 'skeletonModel.bilateralSelection.v1';
+// Study scores (2026-11-02): best Find-it result per subject and region, e.g.
+// {"muscles:hand": {"best": 7, "total": 10}}. Numbers only - no answers, no
+// timing, nothing that identifies the user.
+const STUDY_KEY = 'skeletonModel.studyBest.v1';
+const STUDY_KEY_RE = /^(muscles|bones):(head|thorax|upperArm|lowerArm|hand|hip|upperLeg|lowerLeg|foot)$/;
 
 /**
  * localStorage throws in some contexts (Safari private browsing, disabled
@@ -84,6 +90,40 @@ export function setBilateral(enabled) {
   writeRaw(BILATERAL_KEY, enabled ? 'true' : 'false');
 }
 
+/** Best study scores, re-validated on read: { "kind:region": { best, total } }. */
+export function getStudyBest() {
+  let parsed;
+  try {
+    parsed = JSON.parse(readRaw(STUDY_KEY) || '{}');
+  } catch {
+    return {};
+  }
+  if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) return {};
+  const out = {};
+  for (const [key, v] of Object.entries(parsed)) {
+    if (!STUDY_KEY_RE.test(key) || !v || typeof v !== 'object') continue;
+    const { best, total } = v;
+    if (Number.isInteger(best) && Number.isInteger(total) && total > 0 && total <= 500 && best >= 0 && best <= total) {
+      out[key] = { best, total };
+    }
+  }
+  return out;
+}
+
+/** Record a finished round; keeps the better score. Returns true if it is a new best. */
+export function recordStudyScore(kind, region, score, total) {
+  const key = `${kind}:${region}`;
+  if (!STUDY_KEY_RE.test(key) || !Number.isInteger(score) || !Number.isInteger(total) || total <= 0 || score < 0 || score > total) return false;
+  const all = getStudyBest();
+  const prev = all[key];
+  const better = !prev || prev.total !== total || score > prev.best;
+  if (better) {
+    all[key] = { best: score, total };
+    writeRaw(STUDY_KEY, JSON.stringify(all));
+  }
+  return better && Boolean(prev);
+}
+
 /** Wipe everything this app has stored. Wired to the "Clear data" button. */
 export function clearAll() {
   memoryFallback.clear();
@@ -92,6 +132,7 @@ export function clearAll() {
       localStorage.removeItem(RECENTS_KEY);
       localStorage.removeItem(DISCLAIMER_KEY);
       localStorage.removeItem(BILATERAL_KEY);
+      localStorage.removeItem(STUDY_KEY);
     }
   } catch {
     // nothing to do

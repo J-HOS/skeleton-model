@@ -9,15 +9,16 @@
  * the loader.
  */
 
-import { LAYERS, PATHS } from './config.js?v=0f2631ce7146';
-import { loadDataset, buildSearchIndex } from './dataset.js?v=0f2631ce7146';
-import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap } from './anatomy.js?v=0f2631ce7146';
-import { fetchLocal, sanitizeQuery } from './security.js?v=0f2631ce7146';
-import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral } from './storage.js?v=0f2631ce7146';
-import { Viewer } from './viewer.js?v=0f2631ce7146';
-import { mountDevPanel } from './devpanel.js?v=0f2631ce7146';
-import { byId } from './dom.js?v=0f2631ce7146';
-import * as ui from './ui.js?v=0f2631ce7146';
+import { LAYERS, PATHS } from './config.js?v=7045c29c94e2';
+import { loadDataset, buildSearchIndex } from './dataset.js?v=7045c29c94e2';
+import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap, prettyName } from './anatomy.js?v=7045c29c94e2';
+import { STUDY_KINDS, STUDY_REGIONS, answerTap, boneBaseName, buildStudyCatalog, currentItem, giveUp, itemForId, newRound, nextQuestion } from './study.js?v=7045c29c94e2';
+import { fetchLocal, sanitizeQuery } from './security.js?v=7045c29c94e2';
+import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral, getStudyBest, recordStudyScore } from './storage.js?v=7045c29c94e2';
+import { Viewer } from './viewer.js?v=7045c29c94e2';
+import { mountDevPanel } from './devpanel.js?v=7045c29c94e2';
+import { byId } from './dom.js?v=7045c29c94e2';
+import * as ui from './ui.js?v=7045c29c94e2';
 
 const state = {
   data: null,
@@ -28,6 +29,11 @@ const state = {
   xray: false,
   bilateral: getBilateral(),
   peelDepth: 0,
+  // Study (2026-11-02): the catalog is built once the model is in; `study` is
+  // the round in progress, or null.
+  catalog: null,
+  study: null,
+  studyKind: 'muscles',
 };
 
 /* ------------------------------------------------------------- selection -- */
@@ -339,6 +345,11 @@ async function boot() {
 const PHONE_LAYOUT = '(max-width: 640px)';
 function updateViewInset() {
   if (!state.viewer) return;
+  // During a study round the bar at the bottom covers the screen instead.
+  if (state.study && !byId('studyBar').hidden) {
+    state.viewer.setViewInset({ bottom: byId('studyBar').offsetHeight + 16 });
+    return;
+  }
   const card = byId('info');
   if (!card.classList.contains('open')) { state.viewer.setViewInset({}); return; }
   const phone = window.matchMedia(PHONE_LAYOUT).matches;
@@ -353,6 +364,182 @@ function watchCardForViewInset() {
 function closeInfoPanel() {
   ui.closeInfo();
   state.viewer?.select(null);
+}
+
+/* ----------------------------------------------------------------- study */
+// "Find it" (2026-11-02, Jake): pick muscles or bones and a region; the app
+// names a structure and the user taps it on the model. While a round runs,
+// taps go to studyTap() instead of opening the detail card. Everything the
+// round changes (layers, Deep view, X-ray, view) is put back by endStudy().
+
+function studyCatalog() {
+  if (!state.catalog && state.viewer) {
+    state.catalog = buildStudyCatalog(state.viewer.structureIds(), state.data.muscleIndex);
+  }
+  return state.catalog;
+}
+
+const regionLabel = (id) => STUDY_REGIONS.find((r) => r.id === id)?.label || id;
+const kindLabel = (id) => STUDY_KINDS.find((k) => k.id === id)?.label || id;
+
+function openStudy() {
+  endStudy();
+  ui.closeSearch();
+  closeInfoPanel();
+  const catalog = studyCatalog();
+  if (!catalog) { ui.flashHint('Study needs the 3D model - it has not loaded.'); return; }
+  ui.renderStudyPicker({
+    kinds: STUDY_KINDS,
+    regions: STUDY_REGIONS,
+    counts: (kind, region) => catalog[kind][region].length,
+    best: getStudyBest(),
+    kind: state.studyKind,
+    onStart: startStudy,
+  });
+}
+
+function setXrayState(on) {
+  state.xray = on;
+  state.viewer?.setXray(on);
+  const btn = byId('xrayBtn');
+  btn.classList.toggle('active', on);
+  btn.setAttribute('aria-pressed', String(on));
+}
+
+function startStudy(kind, region) {
+  const items = studyCatalog()?.[kind]?.[region] || [];
+  if (!items.length) return;
+  const viewer = state.viewer;
+  if (!state.study) {
+    state.study = { saved: { layers: { ...state.layerVisibility }, peel: state.peelDepth, xray: state.xray } };
+  }
+  Object.assign(state.study, { kind, region, items, round: newRound(items) });
+  state.studyKind = kind;
+  closeInfoPanel();
+  // Bones: skeleton only. Muscles: skeleton for orientation plus the region's
+  // muscles; everything else off.
+  for (const layer of LAYERS) {
+    const on = layer.id === 'skeleton' || (kind === 'muscles' && layer.id === 'muscle');
+    state.layerVisibility[layer.id] = on;
+    viewer.setLayerVisible(layer.id, on);
+  }
+  state.peelDepth = 0;
+  viewer.setPeelDepth(0);
+  if (state.xray) setXrayState(false);
+  const allIds = items.flatMap((item) => item.ids);
+  viewer.setStudyScope(kind === 'muscles' ? allIds : null);
+  viewer.selectIds([]);
+  refreshLayers();
+  viewer.onSelect(studyTap);
+  document.body.classList.add('studying');
+  drawStudy();
+  updateViewInset();
+  viewer.frameIds(allIds);
+}
+
+function drawStudy(feedback = null) {
+  const study = state.study;
+  const round = study.round;
+  const item = currentItem(round);
+  const actions = [];
+  if (!round.answered) {
+    actions.push({ label: 'Show me', onClick: studyGiveUp });
+    if (study.kind === 'muscles' && state.viewer.layerMap) {
+      actions.push({ label: state.peelDepth ? `Peel: layer ${state.peelDepth}` : 'Peel a layer', onClick: () => { cyclePeel(); drawStudy(feedback); } });
+    }
+  } else {
+    actions.push({ label: round.index + 1 < round.items.length ? 'Next' : 'See score', primary: true, onClick: studyNext });
+  }
+  actions.push({ label: 'End', onClick: endStudy });
+  ui.renderStudyBar({
+    title: `${kindLabel(study.kind)} · ${regionLabel(study.region)}`,
+    progress: `${round.index + 1} / ${round.items.length}`,
+    prompt: `Find: ${item.label}`,
+    feedback,
+    actions,
+  });
+}
+
+/** Plain name for whatever was tapped, for "that was the ..." feedback. */
+function nameForId(id) {
+  const item = itemForId(state.study.items, id);
+  if (item) return item.label;
+  const bone = classifyBone(id);
+  if (bone) return boneBaseName(bone.display);
+  const muscle = findMuscleRecord(state.data.muscleIndex, id);
+  return muscle ? prettyName(muscle.record.name) : 'a structure outside this set';
+}
+
+function studyTap(id) {
+  const study = state.study;
+  if (!study || study.round.answered) return;
+  // In a muscle round the bones are there for orientation; a bone tap is not
+  // an answer.
+  if (study.kind === 'muscles' && classifyBone(id)) {
+    ui.flashHint(`That is the ${boneBaseName(classifyBone(id).display)} - tap a muscle.`);
+    return;
+  }
+  const result = answerTap(study.round, id);
+  if (!result) return;
+  state.viewer.selectIds(result.item.ids);
+  drawStudy(result.correct
+    ? { text: 'Correct!', good: true }
+    : { text: `Not quite - that was ${nameForId(id)}. ${result.item.label} is now lit.`, good: false });
+}
+
+function studyGiveUp() {
+  const result = giveUp(state.study.round);
+  if (!result) return;
+  state.viewer.selectIds(result.item.ids);
+  drawStudy({ text: `${result.item.label} is now lit.`, good: false });
+}
+
+function studyNext() {
+  const study = state.study;
+  state.viewer.selectIds([]);
+  if (nextQuestion(study.round)) { drawStudy(); return; }
+  const { correct, missed, items } = study.round;
+  const total = items.length;
+  const before = getStudyBest()[`${study.kind}:${study.region}`];
+  recordStudyScore(study.kind, study.region, correct, total);
+  const bestNote = !before ? ' First score saved.' : correct > before.best ? ' New best!' : ` Best: ${before.best} / ${before.total}.`;
+  const shown = missed.slice(0, 8).join(', ') + (missed.length > 8 ? `, and ${missed.length - 8} more` : '');
+  ui.renderStudyBar({
+    title: `${kindLabel(study.kind)} · ${regionLabel(study.region)}`,
+    progress: 'Done',
+    prompt: `Score: ${correct} / ${total}.${bestNote}`,
+    feedback: missed.length ? { text: `Missed: ${shown}`, good: false } : { text: 'Perfect round!', good: true },
+    actions: [
+      { label: 'Again', primary: true, onClick: () => startStudy(study.kind, study.region) },
+      { label: 'Other region', onClick: openStudy },
+      { label: 'Done', onClick: endStudy },
+    ],
+  });
+}
+
+/** Leave study and put the model back the way the user had it. */
+function endStudy() {
+  const study = state.study;
+  if (!study) return;
+  state.study = null;
+  ui.hideStudyBar();
+  document.body.classList.remove('studying');
+  updateViewInset();
+  const viewer = state.viewer;
+  if (!viewer) return;
+  viewer.onSelect(show);
+  viewer.setStudyScope(null);
+  viewer.selectIds([]);
+  viewer.select(null);
+  for (const [id, on] of Object.entries(study.saved.layers)) {
+    state.layerVisibility[id] = on;
+    viewer.setLayerVisible(id, on);
+  }
+  state.peelDepth = study.saved.peel;
+  viewer.setPeelDepth(state.peelDepth);
+  if (study.saved.xray !== state.xray) setXrayState(study.saved.xray);
+  refreshLayers();
+  viewer.resetView();
 }
 
 /* ------------------------------------------------------------------ menu */
@@ -374,24 +561,19 @@ function wireMenu() {
   document.addEventListener('pointerdown', (event) => {
     if (isMenuOpen() && !event.target.closest('.menu-wrap')) setMenu(false);
   });
-  for (const id of ['searchBtn', 'resetViewBtn', 'creditsBtn']) {
+  for (const id of ['studyBtn', 'searchBtn', 'resetViewBtn', 'creditsBtn']) {
     byId(id).addEventListener('click', () => setMenu(false));
   }
 }
 
 function wireInterface() {
   wireMenu();
-  byId('searchBtn').addEventListener('click', ui.openSearch);
+  byId('studyBtn').addEventListener('click', openStudy);
+  byId('searchBtn').addEventListener('click', () => { endStudy(); ui.openSearch(); });
   byId('searchClose').addEventListener('click', ui.closeSearch);
   byId('infoClose').addEventListener('click', closeInfoPanel);
 
-  byId('xrayBtn').addEventListener('click', () => {
-    state.xray = !state.xray;
-    state.viewer?.setXray(state.xray);
-    const btn = byId('xrayBtn');
-    btn.classList.toggle('active', state.xray);
-    btn.setAttribute('aria-pressed', String(state.xray));
-  });
+  byId('xrayBtn').addEventListener('click', () => setXrayState(!state.xray));
 
   // Bilateral / unilateral selection (2026-10-09). Remembered between visits.
   const sidesBtn = byId('sidesBtn');
@@ -444,6 +626,8 @@ function wireInterface() {
     if (event.key === 'Escape') {
       if (isMenuOpen()) { setMenu(false); byId('menuBtn').focus(); return; }
       if (ui.closeCredits()) return;
+      if (ui.closeStudyPicker()) return;
+      if (state.study) { endStudy(); return; }
       if (ui.isSearchOpen()) ui.closeSearch();
       else closeInfoPanel();
     }
@@ -451,6 +635,7 @@ function wireInterface() {
     if (event.key === '/' && !['INPUT', 'TEXTAREA'].includes(event.target.tagName)) {
       event.preventDefault();
       setMenu(false);
+      endStudy();
       ui.openSearch();
     }
   });

@@ -7,9 +7,9 @@
  * correctness of the anatomy or the security posture.
  */
 
-import { byId, clear, el, fieldRow, replace } from './dom.js?v=0f2631ce7146';
-import { ATTRIBUTION, CREDITS, DISCLAIMER, LAYERS, LIMITS } from './config.js?v=0f2631ce7146';
-import { parseLandmarkCard, prettyName } from './anatomy.js?v=0f2631ce7146';
+import { byId, clear, el, fieldRow, replace } from './dom.js?v=7045c29c94e2';
+import { ATTRIBUTION, CREDITS, DISCLAIMER, LAYERS, LIMITS } from './config.js?v=7045c29c94e2';
+import { parseLandmarkCard, prettyName } from './anatomy.js?v=7045c29c94e2';
 
 /* ---------------------------------------------------------------- status -- */
 
@@ -308,7 +308,7 @@ export function renderCredits({ onClose, onClearData } = {}) {
       ])),
       onClearData ? el('section', { className: 'credit credit-data' }, [
         el('h3', { text: 'Your data' }),
-        el('p', { text: 'This app keeps your recent structures, the first-run notice and the Both sides setting in this browser only, and runs no analytics. The site host (GitHub) keeps standard server logs, such as IP addresses.' }),
+        el('p', { text: 'This app keeps your recent structures, your study scores, the first-run notice and the Both sides setting in this browser only, and runs no analytics. The site host (GitHub) keeps standard server logs, such as IP addresses.' }),
         clearBtn,
       ]) : null,
       el('button', { className: 'btn', text: 'Close', on: { click: close } }),
@@ -322,4 +322,96 @@ export function closeCredits() {
   if (panel.hidden) return false;
   panel.hidden = true;
   return true;
+}
+
+/* ----------------------------------------------------------------- study -- */
+// Study section, first version (2026-11-02): "Find it" by subject and region.
+// The picker is a dialog over the model; during a round only a slim bar at
+// the top is shown, so the model stays tappable.
+
+/**
+ * @param {object} o
+ *   kinds, regions - from study.js
+ *   counts(kind, region) -> number of questions
+ *   best -> { "kind:region": { best, total } }
+ *   kind - the subject tab to show first
+ *   onStart(kind, region), onClose()
+ */
+export function renderStudyPicker({ kinds, regions, counts, best, kind, onStart, onClose }) {
+  const panel = byId('study');
+  let current = kind || kinds[0].id;
+  const close = () => { panel.hidden = true; onClose?.(); };
+  const draw = () => {
+    const tabs = el('div', { className: 'study-tabs', attrs: { role: 'tablist', 'aria-label': 'Subject' } },
+      kinds.map((k) => el('button', {
+        className: 'study-tab' + (k.id === current ? ' active' : ''),
+        text: k.label,
+        attrs: { type: 'button', role: 'tab', 'aria-selected': String(k.id === current) },
+        on: { click: () => { current = k.id; draw(); } },
+      })));
+    const list = el('div', { className: 'study-regions' }, regions.map((r) => {
+      const n = counts(current, r.id);
+      const b = best[`${current}:${r.id}`];
+      return el('button', {
+        className: 'study-region',
+        attrs: { type: 'button', 'aria-label': `${r.label}: ${n} to find${b ? `, best ${b.best} of ${b.total}` : ''}` },
+        on: { click: () => { if (n) { panel.hidden = true; onStart(current, r.id); } } },
+      }, [
+        el('span', { className: 'study-region-name', text: r.label }),
+        el('span', { className: 'study-region-meta', text: b ? `${n} · best ${b.best}/${b.total}` : `${n}` }),
+      ]);
+    }));
+    replace(panel, [
+      el('div', { className: 'error-card study-card', attrs: { role: 'dialog', 'aria-label': 'Study' } }, [
+        el('h2', { text: 'Study: Find it' }),
+        el('p', { text: 'Pick a region. The app names a structure; tap it on the model. Either side counts.' }),
+        tabs,
+        list,
+        el('button', { className: 'btn subtle', text: 'Close', attrs: { type: 'button' }, on: { click: close } }),
+      ]),
+    ]);
+  };
+  draw();
+  panel.hidden = false;
+}
+
+export function closeStudyPicker() {
+  const panel = byId('study');
+  if (panel.hidden) return false;
+  panel.hidden = true;
+  return true;
+}
+
+/**
+ * The bar shown during a round.
+ * @param {object} o
+ *   title - e.g. "Muscles · Upper arm"; progress - "3 / 12"
+ *   prompt - the question line; feedback - { text, good } or null
+ *   actions - [{ label, onClick, primary }]
+ */
+export function renderStudyBar({ title, progress, prompt, feedback, actions }) {
+  const bar = byId('studyBar');
+  replace(bar, [
+    el('div', { className: 'study-bar-head' }, [
+      el('span', { className: 'study-bar-title', text: title }),
+      el('span', { className: 'study-bar-progress', text: progress || '' }),
+    ]),
+    el('p', { className: 'study-bar-prompt', text: prompt, attrs: { 'aria-live': 'polite' } }),
+    feedback ? el('p', {
+      className: 'study-bar-feedback ' + (feedback.good ? 'good' : 'bad'),
+      text: feedback.text,
+      attrs: { role: 'status' },
+    }) : null,
+    el('div', { className: 'study-bar-actions' }, actions.map((a) => el('button', {
+      className: 'btn' + (a.primary ? '' : ' subtle'),
+      text: a.label,
+      attrs: { type: 'button' },
+      on: { click: a.onClick },
+    }))),
+  ]);
+  bar.hidden = false;
+}
+
+export function hideStudyBar() {
+  byId('studyBar').hidden = true;
 }
