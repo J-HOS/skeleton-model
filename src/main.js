@@ -9,16 +9,16 @@
  * the loader.
  */
 
-import { LAYERS, PATHS } from './config.js?v=410801c52c48';
-import { loadDataset, buildSearchIndex } from './dataset.js?v=410801c52c48';
-import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap, prettyName } from './anatomy.js?v=410801c52c48';
-import { STUDY_KINDS, STUDY_REGIONS, answerTap, studyMuscleLabel, boneBaseName, buildStudyCatalog, currentItem, giveUp, itemForId, newRound, nextQuestion } from './study.js?v=410801c52c48';
-import { fetchLocal, sanitizeQuery } from './security.js?v=410801c52c48';
-import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral, getStudyBest, recordStudyScore } from './storage.js?v=410801c52c48';
-import { Viewer } from './viewer.js?v=410801c52c48';
-import { mountDevPanel } from './devpanel.js?v=410801c52c48';
-import { byId } from './dom.js?v=410801c52c48';
-import * as ui from './ui.js?v=410801c52c48';
+import { LAYERS, PATHS } from './config.js?v=ebc8e2db2873';
+import { loadDataset, buildSearchIndex } from './dataset.js?v=ebc8e2db2873';
+import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap, prettyName } from './anatomy.js?v=ebc8e2db2873';
+import { STUDY_KINDS, STUDY_REGIONS, answerTap, studyMuscleLabel, boneBaseName, buildStudyCatalog, currentItem, giveUp, itemForId, newRound, nextQuestion } from './study.js?v=ebc8e2db2873';
+import { fetchLocal, sanitizeQuery } from './security.js?v=ebc8e2db2873';
+import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral, getStudyBest, recordStudyScore } from './storage.js?v=ebc8e2db2873';
+import { Viewer } from './viewer.js?v=ebc8e2db2873';
+import { mountDevPanel } from './devpanel.js?v=ebc8e2db2873';
+import { byId } from './dom.js?v=ebc8e2db2873';
+import * as ui from './ui.js?v=ebc8e2db2873';
 
 const state = {
   data: null,

@@ -7,8 +7,9 @@ particular it covers:
 
   * the application code: index.html, styles.css and everything in src/;
   * the anatomical reference text in data/anatomy.json (muscle origins,
-    insertions, actions, innervations, notes and bony-landmark text) -
-    written in original wording for this project.
+    insertions, actions, innervations and notes) - written in original
+    wording for this project. The bony-landmark names in the same file are
+    standard anatomical terms and are not claimed as original.
 
 You may use the app through its published website. You may not copy,
 modify, republish, redistribute or create derivative works from the

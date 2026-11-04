@@ -304,10 +304,12 @@ export const MODEL_FIT_UNITS = 7;
  * verified against NIH/NCBI StatPearls, so that was no longer true.
  * 2026-11-02: one source was dropped from this line under the commercial-use
  * rule in CLAUDE.md (no source whose terms stop us charging).
+ * 2026-11-04 (team review 2026-11-03): "verified" -> "checked against", which is
+ * what was done; two more university sources dropped under the same rule.
  */
 export const ATTRIBUTION =
-  'Muscle text: original, verified against NIH/NCBI StatPearls and ' +
-  'university anatomy tables. ' +
+  'Muscle text: original wording, checked against NIH/NCBI StatPearls and ' +
+  'university anatomy tables; sources sometimes differ, especially on nerve root levels. ' +
   '3D model: BodyParts3D © DBCLS (CC BY-SA 2.1 JP), mixed and modified by ' +
   'Z-anatomy.com (CC BY-SA 4.0); ear ossicles original to this project. ' +
   'See Credits.';
@@ -375,15 +377,16 @@ export const CREDITS = Object.freeze([
   {
     title: 'Muscle content',
     text: 'Origins, insertions, actions and innervations are written in original ' +
-      'wording and verified against NIH/NCBI StatPearls articles, ' +
-      'and checked against university medical-school anatomy tables and ' +
-      'atlases (UAMS/TTUHSC, University of Washington, Loyola); ' +
-      'each entry cites its sources. These sources were used for ' +
-      'facts only; no text is reproduced from them.',
+      'wording and checked against NIH/NCBI StatPearls articles ' +
+      'and university medical-school anatomy tables and atlases ' +
+      '(TTUHSC, University of Washington); each entry cites its sources. ' +
+      'Sources sometimes differ, especially on nerve root levels, and a few ' +
+      'facts rest on a single source; those entries are flagged. ' +
+      'These sources were used for facts only; no text is reproduced from them.',
   },
 ]);
 
 /** Shown once per session. This is a reference tool, not a clinical one. */
 export const DISCLAIMER =
-  'Educational anatomical reference. Not a diagnostic or clinical ' +
-  'decision-making tool. Verify against a primary source before clinical use.';
+  'For education only. Not for diagnosis, treatment or clinical decisions. ' +
+  'Check important facts against a primary source.';

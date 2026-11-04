@@ -10,9 +10,9 @@
  * Any failure throws and the app shows an error instead of partial anatomy.
  */
 
-import { PATHS } from './config.js?v=410801c52c48';
-import { fetchLocal, verifyIntegrity } from './security.js?v=410801c52c48';
-import { buildMuscleIndex, buildLandmarkIndex, prettyName } from './anatomy.js?v=410801c52c48';
+import { PATHS } from './config.js?v=ebc8e2db2873';
+import { fetchLocal, verifyIntegrity } from './security.js?v=ebc8e2db2873';
+import { buildMuscleIndex, buildLandmarkIndex, prettyName } from './anatomy.js?v=ebc8e2db2873';
 
 /** Every muscle record must carry these, per the CLAUDE.md data-structure rule. */
 const REQUIRED_MUSCLE_FIELDS = ['name', 'section', 'origin', 'insertion', 'action', 'nerve_innervation'];
