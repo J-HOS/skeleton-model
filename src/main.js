@@ -9,16 +9,16 @@
  * the loader.
  */
 
-import { LAYERS, PATHS } from './config.js?v=7045c29c94e2';
-import { loadDataset, buildSearchIndex } from './dataset.js?v=7045c29c94e2';
-import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap, prettyName } from './anatomy.js?v=7045c29c94e2';
-import { STUDY_KINDS, STUDY_REGIONS, answerTap, boneBaseName, buildStudyCatalog, currentItem, giveUp, itemForId, newRound, nextQuestion } from './study.js?v=7045c29c94e2';
-import { fetchLocal, sanitizeQuery } from './security.js?v=7045c29c94e2';
-import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral, getStudyBest, recordStudyScore } from './storage.js?v=7045c29c94e2';
-import { Viewer } from './viewer.js?v=7045c29c94e2';
-import { mountDevPanel } from './devpanel.js?v=7045c29c94e2';
-import { byId } from './dom.js?v=7045c29c94e2';
-import * as ui from './ui.js?v=7045c29c94e2';
+import { LAYERS, PATHS } from './config.js?v=410801c52c48';
+import { loadDataset, buildSearchIndex } from './dataset.js?v=410801c52c48';
+import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap, prettyName } from './anatomy.js?v=410801c52c48';
+import { STUDY_KINDS, STUDY_REGIONS, answerTap, studyMuscleLabel, boneBaseName, buildStudyCatalog, currentItem, giveUp, itemForId, newRound, nextQuestion } from './study.js?v=410801c52c48';
+import { fetchLocal, sanitizeQuery } from './security.js?v=410801c52c48';
+import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral, getStudyBest, recordStudyScore } from './storage.js?v=410801c52c48';
+import { Viewer } from './viewer.js?v=410801c52c48';
+import { mountDevPanel } from './devpanel.js?v=410801c52c48';
+import { byId } from './dom.js?v=410801c52c48';
+import * as ui from './ui.js?v=410801c52c48';
 
 const state = {
   data: null,
@@ -144,6 +144,9 @@ function refreshLayers() {
       available: new Set(LAYERS.map((l) => l.id).filter((id) => state.viewer?.hasLayer(id))),
     },
     (layerId) => {
+      // A round sets the layers it needs; changing them mid-round could hide
+      // every answer (team review 2026-11-03). End restores the user's own.
+      if (state.study) { ui.flashHint('The round sets the layers. End it to change them.'); return; }
       state.layerVisibility[layerId] = !state.layerVisibility[layerId];
       state.viewer.setLayerVisible(layerId, state.layerVisibility[layerId]);
       refreshLayers();
@@ -159,7 +162,8 @@ function refreshLayers() {
  * the body's right side; the left side stays whole. Turning it on also turns
  * the muscle layer on, since there is nothing to peel otherwise.
  */
-function cyclePeel() {
+function cyclePeel(fromRound = false) {
+  if (state.study && !fromRound) { ui.flashHint('Use Peel a layer in the round bar.'); return; }
   const deepest = deepestLayer(state.viewer.layerMap);
   state.peelDepth = nextPeelDepth(state.peelDepth, deepest);
   if (state.peelDepth && !state.layerVisibility.muscle) {
@@ -383,6 +387,7 @@ const regionLabel = (id) => STUDY_REGIONS.find((r) => r.id === id)?.label || id;
 const kindLabel = (id) => STUDY_KINDS.find((k) => k.id === id)?.label || id;
 
 function openStudy() {
+  if (!okToLeaveStudy()) return;
   endStudy();
   ui.closeSearch();
   closeInfoPanel();
@@ -425,7 +430,11 @@ function startStudy(kind, region) {
   }
   state.peelDepth = 0;
   viewer.setPeelDepth(0);
-  if (state.xray) setXrayState(false);
+  // Muscle rounds ghost the skeleton (X-ray) and let only muscles answer a
+  // tap, so a muscle behind bone can be seen and hit (team review 2026-11-03).
+  // Bone rounds show solid bone.
+  setXrayState(kind === 'muscles');
+  viewer.setTapLayer(kind === 'muscles' ? 'muscle' : null);
   const allIds = items.flatMap((item) => item.ids);
   viewer.setStudyScope(kind === 'muscles' ? allIds : null);
   viewer.selectIds([]);
@@ -445,7 +454,7 @@ function drawStudy(feedback = null) {
   if (!round.answered) {
     actions.push({ label: 'Show me', onClick: studyGiveUp });
     if (study.kind === 'muscles' && state.viewer.layerMap) {
-      actions.push({ label: state.peelDepth ? `Peel: layer ${state.peelDepth}` : 'Peel a layer', onClick: () => { cyclePeel(); drawStudy(feedback); } });
+      actions.push({ label: state.peelDepth ? `Peel: layer ${state.peelDepth}` : 'Peel a layer', onClick: () => { cyclePeel(true); drawStudy(feedback); } });
     }
   } else {
     actions.push({ label: round.index + 1 < round.items.length ? 'Next' : 'See score', primary: true, onClick: studyNext });
@@ -467,7 +476,7 @@ function nameForId(id) {
   const bone = classifyBone(id);
   if (bone) return boneBaseName(bone.display);
   const muscle = findMuscleRecord(state.data.muscleIndex, id);
-  return muscle ? prettyName(muscle.record.name) : 'a structure outside this set';
+  return muscle ? studyMuscleLabel(muscle.record.name) : 'a structure outside this set';
 }
 
 function studyTap(id) {
@@ -501,8 +510,8 @@ function studyNext() {
   const { correct, missed, items } = study.round;
   const total = items.length;
   const before = getStudyBest()[`${study.kind}:${study.region}`];
-  recordStudyScore(study.kind, study.region, correct, total);
-  const bestNote = !before ? ' First score saved.' : correct > before.best ? ' New best!' : ` Best: ${before.best} / ${before.total}.`;
+  const isNewBest = recordStudyScore(study.kind, study.region, correct, total);
+  const bestNote = !before ? ' First score saved.' : isNewBest ? ' New best!' : ` Best: ${before.best} / ${before.total}.`;
   const shown = missed.slice(0, 8).join(', ') + (missed.length > 8 ? `, and ${missed.length - 8} more` : '');
   ui.renderStudyBar({
     title: `${kindLabel(study.kind)} · ${regionLabel(study.region)}`,
@@ -517,6 +526,24 @@ function studyNext() {
   });
 }
 
+/**
+ * Leaving a round part-way loses it, so Escape, "/", Search and Study ask for
+ * a second press first (team review 2026-11-03). A round not yet started, or
+ * already finished, leaves at once. Not a modal dialog: a hint, and the same
+ * key or button again within 4 s.
+ */
+function okToLeaveStudy() {
+  const study = state.study;
+  if (!study) return true;
+  const round = study.round;
+  const started = round.index > 0 || round.answered;
+  const finished = round.index >= round.items.length || (round.index === round.items.length - 1 && round.answered);
+  if (!started || finished || study.leaveArmedUntil > Date.now()) return true;
+  study.leaveArmedUntil = Date.now() + 4000;
+  ui.flashHint('This ends your round and loses its score. Press again to leave.');
+  return false;
+}
+
 /** Leave study and put the model back the way the user had it. */
 function endStudy() {
   const study = state.study;
@@ -528,6 +555,7 @@ function endStudy() {
   const viewer = state.viewer;
   if (!viewer) return;
   viewer.onSelect(show);
+  viewer.setTapLayer(null);
   viewer.setStudyScope(null);
   viewer.selectIds([]);
   viewer.select(null);
@@ -569,7 +597,7 @@ function wireMenu() {
 function wireInterface() {
   wireMenu();
   byId('studyBtn').addEventListener('click', openStudy);
-  byId('searchBtn').addEventListener('click', () => { endStudy(); ui.openSearch(); });
+  byId('searchBtn').addEventListener('click', () => { if (!okToLeaveStudy()) return; endStudy(); ui.openSearch(); });
   byId('searchClose').addEventListener('click', ui.closeSearch);
   byId('infoClose').addEventListener('click', closeInfoPanel);
 
@@ -627,7 +655,7 @@ function wireInterface() {
       if (isMenuOpen()) { setMenu(false); byId('menuBtn').focus(); return; }
       if (ui.closeCredits()) return;
       if (ui.closeStudyPicker()) return;
-      if (state.study) { endStudy(); return; }
+      if (state.study) { if (okToLeaveStudy()) endStudy(); return; }
       if (ui.isSearchOpen()) ui.closeSearch();
       else closeInfoPanel();
     }
@@ -635,6 +663,7 @@ function wireInterface() {
     if (event.key === '/' && !['INPUT', 'TEXTAREA'].includes(event.target.tagName)) {
       event.preventDefault();
       setMenu(false);
+      if (!okToLeaveStudy()) return;
       endStudy();
       ui.openSearch();
     }

@@ -7,9 +7,9 @@
  * correctness of the anatomy or the security posture.
  */
 
-import { byId, clear, el, fieldRow, replace } from './dom.js?v=7045c29c94e2';
-import { ATTRIBUTION, CREDITS, DISCLAIMER, LAYERS, LIMITS } from './config.js?v=7045c29c94e2';
-import { parseLandmarkCard, prettyName } from './anatomy.js?v=7045c29c94e2';
+import { byId, clear, el, fieldRow, replace } from './dom.js?v=410801c52c48';
+import { ATTRIBUTION, CREDITS, DISCLAIMER, LAYERS, LIMITS } from './config.js?v=410801c52c48';
+import { parseLandmarkCard, prettyName } from './anatomy.js?v=410801c52c48';
 
 /* ---------------------------------------------------------------- status -- */
 
@@ -365,6 +365,9 @@ export function renderStudyPicker({ kinds, regions, counts, best, kind, onStart,
       el('div', { className: 'error-card study-card', attrs: { role: 'dialog', 'aria-label': 'Study' } }, [
         el('h2', { text: 'Study: Find it' }),
         el('p', { text: 'Pick a region. The app names a structure; tap it on the model. Either side counts.' }),
+        el('p', { className: 'study-note', text: current === 'muscles'
+          ? 'Early version: answer by tapping; a list option is coming. Scapula movers are under Thorax. Eight deep throat and jaw muscles are not asked yet, because they cannot be seen from outside.'
+          : 'Early version: answer by tapping; a list option is coming. Wrist bones are under Hand; ankle bones are under Foot.' }),
         tabs,
         list,
         el('button', { className: 'btn subtle', text: 'Close', attrs: { type: 'button' }, on: { click: close } }),

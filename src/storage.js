@@ -15,8 +15,9 @@
  * in, exactly like a network response.
  */
 
-import { LIMITS } from './config.js?v=7045c29c94e2';
-import { isValidStructureId } from './security.js?v=7045c29c94e2';
+import { LIMITS } from './config.js?v=410801c52c48';
+import { isValidStructureId } from './security.js?v=410801c52c48';
+import { STUDY_KINDS, STUDY_REGIONS } from './study.js?v=410801c52c48';
 
 const RECENTS_KEY = 'skeletonModel.recentlyViewed.v1';
 const DISCLAIMER_KEY = 'skeletonModel.disclaimerAcknowledged.v1';
@@ -26,7 +27,8 @@ const BILATERAL_KEY = 'skeletonModel.bilateralSelection.v1';
 // {"muscles:hand": {"best": 7, "total": 10}}. Numbers only - no answers, no
 // timing, nothing that identifies the user.
 const STUDY_KEY = 'skeletonModel.studyBest.v1';
-const STUDY_KEY_RE = /^(muscles|bones):(head|thorax|upperArm|lowerArm|hand|hip|upperLeg|lowerLeg|foot)$/;
+// Built from study.js so the region list lives in one place (team review 2026-11-03).
+const STUDY_KEY_RE = new RegExp(`^(${STUDY_KINDS.map((k) => k.id).join('|')}):(${STUDY_REGIONS.map((r) => r.id).join('|')})$`);
 
 /**
  * localStorage throws in some contexts (Safari private browsing, disabled
@@ -110,13 +112,24 @@ export function getStudyBest() {
   return out;
 }
 
+/**
+ * Is score/total better than prev.best/prev.total? Compared as fractions, so a
+ * region whose number of questions changed (a fix adds or moves a structure)
+ * never replaces a better best with a worse one (team review 2026-11-03: 3/4
+ * was overwritten by 0/3). An equal fraction keeps the old record.
+ */
+export function isBetterScore(score, total, prev) {
+  if (!prev) return true;
+  return score * prev.total > prev.best * total;
+}
+
 /** Record a finished round; keeps the better score. Returns true if it is a new best. */
 export function recordStudyScore(kind, region, score, total) {
   const key = `${kind}:${region}`;
   if (!STUDY_KEY_RE.test(key) || !Number.isInteger(score) || !Number.isInteger(total) || total <= 0 || score < 0 || score > total) return false;
   const all = getStudyBest();
   const prev = all[key];
-  const better = !prev || prev.total !== total || score > prev.best;
+  const better = isBetterScore(score, total, prev);
   if (better) {
     all[key] = { best: score, total };
     writeRaw(STUDY_KEY, JSON.stringify(all));

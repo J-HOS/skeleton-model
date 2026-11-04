@@ -351,6 +351,14 @@ export function recordAliases(sceneIds, muscleIndex) {
  * "abductordigitiminimi". Exact-first means search, which always passes a
  * literal database name, is never ambiguous.
  */
+/**
+ * The name three.js gives a glTF node (PropertyBinding.sanitizeNodeName):
+ * whitespace becomes "_" and the characters [ ] . : / are dropped.
+ */
+export function sanitizeNodeName(name) {
+  return String(name).replace(/\s/g, '_').replace(/[[\].:/]/g, '');
+}
+
 export function buildMuscleIndex(muscles) {
   const exact = new Map();
   const fuzzy = new Map();
@@ -358,6 +366,16 @@ export function buildMuscleIndex(muscles) {
   const collisions = [];
   for (const muscle of muscles) {
     exact.set(muscle.name, muscle);
+  }
+  // Also the sanitized form of every name, so a mesh name three.js has
+  // rewritten still matches exactly (team review 2026-11-03, P0): the foot's
+  // "Abductor Digiti Minimi" became "Abductor_Digiti_Minimi", missed the exact
+  // map, and the loose key then found the HAND muscle AbductorDigitiMinimi.
+  for (const muscle of muscles) {
+    const s = sanitizeNodeName(muscle.name);
+    if (!exact.has(s)) exact.set(s, muscle);
+  }
+  for (const muscle of muscles) {
     const key = normKey(muscle.name);
     if (fuzzy.has(key)) collisions.push(muscle.name);
     else fuzzy.set(key, muscle);

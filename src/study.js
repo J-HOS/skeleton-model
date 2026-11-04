@@ -22,15 +22,21 @@
  * - Bones have no attachments to split by, so the shoulder girdle (scapula,
  *   clavicle) goes with the upper arm; the hip bone, sacrum and coccyx form
  *   the hip.
- *   The wrist (carpals) is in the lower arm, the talus in the lower leg.
+ *   The carpals are bones of the hand and every tarsal, the talus included,
+ *   is a bone of the foot (2026-11-04, Jake, decision D1 of the 11-03 team
+ *   review - how Moore and Gray's teach them; it was lower arm / lower leg).
  *
  * Left out of Find it, because they cannot be tapped fairly: teeth, the ear
  * ossicles, bones hidden inside the skull (inferior nasal concha, palatine,
  * vomer) and the foot sesamoids. Muscles with no 3D model drop out by
  * themselves: an item is built only from meshes that are in the scene.
+ * Eight throat and jaw muscles are also left out for now (2026-11-04, decision
+ * D3): the team review measured 0 visible pixels for each from the front, the
+ * back and every Peel depth, so a round could not be fair. They stay in
+ * Search and on the cards.
  */
 
-import { classifyBone, findMuscleRecord, prettyName } from './anatomy.js?v=7045c29c94e2';
+import { classifyBone, findMuscleRecord, prettyName } from './anatomy.js?v=410801c52c48';
 
 export const STUDY_KINDS = Object.freeze([
   { id: 'muscles', label: 'Muscles' },
@@ -106,6 +112,49 @@ export function muscleRegion(record) {
   return SECTION_REGION[record.section] || null;
 }
 
+/** Muscles that cannot be seen from any view the app frames (decision D3). */
+export const MUSCLE_EXCLUDED = new Set([
+  'Genioglossus', 'Geniohyoid', 'Hyoglossus', 'Mylohyoid', 'Stylohyoid', 'Thyrohyoid', 'Sternothyroid',
+  'LateralPterygoid',
+]);
+
+/**
+ * Question labels for muscles whose database name does not read well
+ * (2026-11-04, team review #7). Database names are mesh lookup keys and stay
+ * unchanged; these are display only. Terminologia Anatomica terms.
+ */
+const MUSCLE_LABELS = Object.freeze({
+  'AbductorDigitiMinimi': 'Abductor Digiti Minimi (Hand)',
+  'Abductor Digiti Minimi': 'Abductor Digiti Minimi (Foot)',
+  'FlexorDigitiMinimi': 'Flexor Digiti Minimi Brevis (Hand)',
+  'FlexorDigitiMinimi (Foot)': 'Flexor Digiti Minimi Brevis (Foot)',
+  'ObliquusCapitis(SuperiorandInferior)': 'Obliquus Capitis (Superior and Inferior)',
+  'RectusCapitisPosterior(MajorandMinor)': 'Rectus Capitis Posterior (Major and Minor)',
+  'Scalenes(Anterior,Middle,Posterior)': 'Scalenes (Anterior, Middle, Posterior)',
+  'Peroneus(Fibularis)Brevis': 'Fibularis (Peroneus) Brevis',
+  'Peroneus(Fibularis)Longus': 'Fibularis (Peroneus) Longus',
+  'Peroneus(Fibularis)Tertius': 'Fibularis (Peroneus) Tertius',
+  'ErectorSpinae:Iliocostalis(Lumborum,Thoracis,Cervicis)': 'Erector Spinae: Iliocostalis',
+  'ErectorSpinae:Longissimus(Thoracis,Cervicis,Capitis)': 'Erector Spinae: Longissimus',
+  'ErectorSpinae:Spinalis(Thoracis,Cervicis)': 'Erector Spinae: Spinalis',
+  'Transverse Abdominis': 'Transversus Abdominis',
+  'TransverseThoracis': 'Transversus Thoracis',
+  'Rhomboids(major&minor)': 'Rhomboids (Major and Minor)',
+  'Trapezius(upper)': 'Trapezius (Upper)',
+  'Trapezius(middle)': 'Trapezius (Middle)',
+  'Trapezius(lower)': 'Trapezius (Lower)',
+  'Deltoid(anteriorhead)': 'Deltoid (Anterior Head)',
+  'Deltoid(middlehead)': 'Deltoid (Middle Head)',
+  'Deltoid(posteriorhead)': 'Deltoid (Posterior Head)',
+  'PectoralisMajor(clavicularhead)': 'Pectoralis Major (Clavicular Head)',
+  'PectoralisMajor(sternalhead)': 'Pectoralis Major (Sternal Head)',
+});
+
+/** The name a muscle is asked by, and named by in Study feedback. */
+export function studyMuscleLabel(name) {
+  return MUSCLE_LABELS[name] || studyLabel(prettyName(name));
+}
+
 /** Bones that cannot be tapped fairly (hidden or tiny) - not asked in Find it. */
 const BONE_EXCLUDED = new Set(['Inferior nasal concha', 'Palatine bone', 'Vomer', 'Sesamoid bones of foot']);
 
@@ -126,10 +175,10 @@ export function boneRegion(bone) {
     case 'Pelvis': return 'hip';
     case 'Shoulder girdle': return 'upperArm';
     case 'Upper limb': return name === 'Humerus' ? 'upperArm' : 'lowerArm';
-    case 'Wrist': return 'lowerArm';
+    case 'Wrist': return 'hand';
     case 'Hand': return 'hand';
     case 'Lower limb': return (name === 'Femur' || name === 'Patella') ? 'upperLeg' : 'lowerLeg';
-    case 'Foot': return name === 'Talus' ? 'lowerLeg' : 'foot';
+    case 'Foot': return 'foot';
     default: return null;
   }
 }
@@ -155,9 +204,10 @@ export function buildStudyCatalog(sceneIds, muscleIndex) {
     }
     const hit = findMuscleRecord(muscleIndex, id);
     if (!hit) continue;
+    if (MUSCLE_EXCLUDED.has(hit.record.name)) continue;
     const region = muscleRegion(hit.record);
     if (!region) continue;
-    addTo(catalog.muscles[region], hit.record.name, prettyName(hit.record.name), id);
+    addTo(catalog.muscles[region], hit.record.name, studyMuscleLabel(hit.record.name), id);
   }
   const out = { muscles: {}, bones: {} };
   for (const kind of Object.keys(catalog)) {

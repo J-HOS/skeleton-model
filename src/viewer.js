@@ -6,12 +6,12 @@
  * this boundary is what lets every other module be tested in plain Node.
  */
 
-import * as THREE from '../vendor/three.module.js?v=7045c29c94e2';
-import { GLTFLoader } from '../vendor/GLTFLoader.js?v=7045c29c94e2';
-import { OrbitControls } from './controls.js?v=7045c29c94e2';
-import { BONE_SURFACE_COLORS, COLORS, LAYERS, LIMITS, MODEL_FIT_UNITS, MUSCLE_SECTION_COLORS, PATHS, PEEL, RENDER } from './config.js?v=7045c29c94e2';
-import { assertLooksLikeGLB, fetchLocal } from './security.js?v=7045c29c94e2';
-import { attachmentWeight, axialParameter, axialTaper, boneSurfaceKey, classifyLayer, findMuscleRecord, hiddenByIsolation, isPeeled, recordAliases, resolvesToContent, scaleChannels, selectionGroup, varyLightness, viewOffsetFor, fitDistance } from './anatomy.js?v=7045c29c94e2';
+import * as THREE from '../vendor/three.module.js?v=410801c52c48';
+import { GLTFLoader } from '../vendor/GLTFLoader.js?v=410801c52c48';
+import { OrbitControls } from './controls.js?v=410801c52c48';
+import { BONE_SURFACE_COLORS, COLORS, LAYERS, LIMITS, MODEL_FIT_UNITS, MUSCLE_SECTION_COLORS, PATHS, PEEL, RENDER } from './config.js?v=410801c52c48';
+import { assertLooksLikeGLB, fetchLocal } from './security.js?v=410801c52c48';
+import { attachmentWeight, axialParameter, axialTaper, boneSurfaceKey, classifyLayer, findMuscleRecord, hiddenByIsolation, isPeeled, recordAliases, resolvesToContent, scaleChannels, selectionGroup, varyLightness, viewOffsetFor, fitDistance } from './anatomy.js?v=410801c52c48';
 
 const TAP_MOVE_TOLERANCE_PX = 8; // beyond this, the gesture was a drag, not a tap
 
@@ -233,9 +233,11 @@ export class Viewer {
     this._pointer.y = -(event.clientY / window.innerHeight) * 2 + 1;
     this.raycaster.setFromCamera(this._pointer, this.camera);
 
+    // In a muscle Find-it round only muscles answer a tap, so a bone in front
+    // no longer eats it (team review 2026-11-03: supinator could not be hit).
     const hit = this.raycaster
       .intersectObjects(this.selectable, false)
-      .find((h) => h.object.visible);
+      .find((h) => h.object.visible && (!this.tapLayer || h.object.userData.layer === this.tapLayer));
     if (hit) this._selectHandler(hit.object.userData.structureId);
   };
 
@@ -588,6 +590,11 @@ export class Viewer {
     }
   }
 
+  /** Study rounds: only meshes of this layer answer a tap ('muscle'), or null for any. */
+  setTapLayer(layer) {
+    this.tapLayer = layer || null;
+  }
+
   /** Study rounds: show only these muscle ids (a Set), or null for all. */
   setStudyScope(ids) {
     this.studyScope = ids ? new Set(ids) : null;
@@ -669,6 +676,10 @@ export class Viewer {
    */
   setBilateral(enabled) {
     this.bilateral = Boolean(enabled);
+    // A study answer is lit with selectIds() (both sides already, no
+    // selectedId). Re-selecting would clear it while the bar still says "now
+    // lit" (team review 2026-11-03), so leave an id-set selection alone.
+    if (!this.selectedId) return this.selectedIds;
     return this.select(this.selectedId);
   }
 
