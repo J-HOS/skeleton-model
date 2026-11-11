@@ -331,6 +331,16 @@ canvas { display: block; touch-action: none; }
 .study-bar-actions { display: flex; flex-wrap: wrap; gap: 8px; }
 .study-bar-actions .btn { min-height: 40px; padding: 0 14px; }
 body.studying #hint { bottom: auto; top: 64px; }
+/* Name it (2026-11-04): the answer box. 16px text so iOS does not zoom in. */
+.study-answer-row { display: flex; gap: 8px; margin: 0 0 8px; }
+.study-answer {
+  flex: 1; min-width: 0; min-height: 40px; padding: 0 12px; border-radius: var(--radius);
+  background: var(--panel-2); color: var(--text); border: 1px solid var(--line); font: inherit; font-size: 16px;
+}
+.study-answer:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.study-answer-row .btn { min-height: 40px; padding: 0 14px; }
+.study-region:disabled { opacity: .45; cursor: not-allowed; }
+.study-card { max-height: calc(100vh - 24px); overflow-y: auto; }
 
 @media (max-width: 640px) {
   #info { width: 100%; top: auto; height: 62vh; border-left: 0; border-top: 1px solid var(--line);

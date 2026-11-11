@@ -7,9 +7,9 @@
  * correctness of the anatomy or the security posture.
  */
 
-import { byId, clear, el, fieldRow, replace } from './dom.js?v=ebc8e2db2873';
-import { ATTRIBUTION, CREDITS, DISCLAIMER, LAYERS, LIMITS } from './config.js?v=ebc8e2db2873';
-import { parseLandmarkCard, prettyName } from './anatomy.js?v=ebc8e2db2873';
+import { byId, clear, el, fieldRow, replace } from './dom.js?v=6a22cbdfe9ce';
+import { ATTRIBUTION, CREDITS, DISCLAIMER, LAYERS, LIMITS } from './config.js?v=6a22cbdfe9ce';
+import { parseLandmarkCard, prettyName } from './anatomy.js?v=6a22cbdfe9ce';
 
 /* ---------------------------------------------------------------- status -- */
 
@@ -59,7 +59,7 @@ export function flashHint(message, ms = 2600) {
 /* ---------------------------------------------------------------- layers -- */
 
 export function renderLayers(state, onToggle, peel = null) {
-  const buttons = LAYERS.map((layer) => {
+  const buttons = LAYERS.filter((layer) => !layer.hidden).map((layer) => {
       const available = state.available.has(layer.id);
       const on = available && state.visible[layer.id];
       return el(
@@ -331,44 +331,51 @@ export function closeCredits() {
 
 /**
  * @param {object} o
- *   kinds, regions - from study.js
- *   counts(kind, region) -> number of questions
- *   best -> { "kind:region": { best, total } }
- *   kind - the subject tab to show first
- *   onStart(kind, region), onClose()
+ *   kinds, modes - from study.js; groups(kind) -> [{ id, label }]
+ *   counts(kind, group) -> number of questions
+ *   best(kind, group, mode) -> "7 / 12" or null
+ *   kind, mode - the tabs to show first
+ *   onStart(kind, group, mode), onClose()
  */
-export function renderStudyPicker({ kinds, regions, counts, best, kind, onStart, onClose }) {
+export function renderStudyPicker({ kinds, modes, groups, counts, best, kind, mode, onStart, onClose }) {
   const panel = byId('study');
   let current = kind || kinds[0].id;
+  let how = mode || modes[0].id;
   const close = () => { panel.hidden = true; onClose?.(); };
+  const NOTES = {
+    'muscles:find': 'Scapula movers are under Thorax. Eight deep throat and jaw muscles are not asked yet, because they cannot be seen from outside.',
+    'bones:find': 'Wrist bones are under Hand; ankle bones are under Foot.',
+    'landmarks:find': 'The landmarks on each bone card, placed on the model. Tap the spot; the nearest landmark to your tap is the one you chose. Either side counts.',
+    'muscles:name': 'A muscle lights up; type its name. Exact spelling scores 1, one or two letters off scores ½. Capitals, spaces and word order do not matter.',
+    'bones:name': 'A bone lights up; type its name. Exact spelling scores 1, one or two letters off scores ½. "Rib 7" and "7th rib" both count.',
+    'landmarks:name': 'A dot marks a landmark; type its name. Exact spelling scores 1, one or two letters off scores ½.',
+  };
+  const tabRow = (label, items, value, pick) => el('div', { className: 'study-tabs', attrs: { role: 'tablist', 'aria-label': label } },
+    items.map((k) => el('button', {
+      className: 'study-tab' + (k.id === value ? ' active' : ''),
+      text: k.label,
+      attrs: { type: 'button', role: 'tab', 'aria-selected': String(k.id === value) },
+      on: { click: () => pick(k.id) },
+    })));
   const draw = () => {
-    const tabs = el('div', { className: 'study-tabs', attrs: { role: 'tablist', 'aria-label': 'Subject' } },
-      kinds.map((k) => el('button', {
-        className: 'study-tab' + (k.id === current ? ' active' : ''),
-        text: k.label,
-        attrs: { type: 'button', role: 'tab', 'aria-selected': String(k.id === current) },
-        on: { click: () => { current = k.id; draw(); } },
-      })));
-    const list = el('div', { className: 'study-regions' }, regions.map((r) => {
+    const list = el('div', { className: 'study-regions' }, groups(current).map((r) => {
       const n = counts(current, r.id);
-      const b = best[`${current}:${r.id}`];
+      const b = best(current, r.id, how);
       return el('button', {
         className: 'study-region',
-        attrs: { type: 'button', 'aria-label': `${r.label}: ${n} to find${b ? `, best ${b.best} of ${b.total}` : ''}` },
-        on: { click: () => { if (n) { panel.hidden = true; onStart(current, r.id); } } },
+        attrs: { type: 'button', disabled: n ? null : 'disabled', 'aria-label': `${r.label}: ${n} questions${b ? `, best ${b}` : ''}` },
+        on: { click: () => { if (n) { panel.hidden = true; onStart(current, r.id, how); } } },
       }, [
         el('span', { className: 'study-region-name', text: r.label }),
-        el('span', { className: 'study-region-meta', text: b ? `${n} · best ${b.best}/${b.total}` : `${n}` }),
+        el('span', { className: 'study-region-meta', text: b ? `${n} · best ${b}` : `${n}` }),
       ]);
     }));
     replace(panel, [
       el('div', { className: 'error-card study-card', attrs: { role: 'dialog', 'aria-label': 'Study' } }, [
-        el('h2', { text: 'Study: Find it' }),
-        el('p', { text: 'Pick a region. The app names a structure; tap it on the model. Either side counts.' }),
-        el('p', { className: 'study-note', text: current === 'muscles'
-          ? 'Early version: answer by tapping; a list option is coming. Scapula movers are under Thorax. Eight deep throat and jaw muscles are not asked yet, because they cannot be seen from outside.'
-          : 'Early version: answer by tapping; a list option is coming. Wrist bones are under Hand; ankle bones are under Foot.' }),
-        tabs,
+        el('h2', { text: 'Study' }),
+        tabRow('How', modes, how, (id) => { how = id; draw(); }),
+        tabRow('Subject', kinds, current, (id) => { current = id; draw(); }),
+        el('p', { className: 'study-note', text: NOTES[`${current}:${how}`] || '' }),
         list,
         el('button', { className: 'btn subtle', text: 'Close', attrs: { type: 'button' }, on: { click: close } }),
       ]),
@@ -392,14 +399,34 @@ export function closeStudyPicker() {
  *   prompt - the question line; feedback - { text, good } or null
  *   actions - [{ label, onClick, primary }]
  */
-export function renderStudyBar({ title, progress, prompt, feedback, actions }) {
+export function renderStudyBar({ title, progress, prompt, feedback, actions, answer }) {
   const bar = byId('studyBar');
+  // Name it (2026-11-04): a typed answer. A form so Enter submits on every
+  // keyboard; spellcheck and autocorrect are off, or the phone would fix the
+  // spelling the round is grading.
+  let form = null;
+  if (answer) {
+    const input = el('input', {
+      className: 'study-answer',
+      attrs: {
+        id: 'studyAnswer', type: 'text', autocomplete: 'off', autocapitalize: 'off', autocorrect: 'off',
+        spellcheck: 'false', maxlength: '80', enterkeyhint: 'done', placeholder: answer.placeholder || 'Type the name',
+        'aria-label': 'Your answer',
+      },
+    });
+    if (answer.value) input.value = answer.value;
+    form = el('form', {
+      className: 'study-answer-row',
+      on: { submit: (e) => { e.preventDefault(); answer.onSubmit(input.value); } },
+    }, [input, el('button', { className: 'btn', text: 'Check', attrs: { type: 'submit' } })]);
+  }
   replace(bar, [
     el('div', { className: 'study-bar-head' }, [
       el('span', { className: 'study-bar-title', text: title }),
       el('span', { className: 'study-bar-progress', text: progress || '' }),
     ]),
     el('p', { className: 'study-bar-prompt', text: prompt, attrs: { 'aria-live': 'polite' } }),
+    form,
     feedback ? el('p', {
       className: 'study-bar-feedback ' + (feedback.good ? 'good' : 'bad'),
       text: feedback.text,
@@ -413,6 +440,7 @@ export function renderStudyBar({ title, progress, prompt, feedback, actions }) {
     }))),
   ]);
   bar.hidden = false;
+  if (form && answer.focus !== false) form.querySelector('input').focus({ preventScroll: true });
 }
 
 export function hideStudyBar() {

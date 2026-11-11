@@ -77,6 +77,19 @@ the Z-Anatomy skeleton; both sources are CC BY-SA, so this changes no license
 terms. CC 4.0 licenses require that modifications be indicated; this
 section and the Credits screen do that.
 
+### 1.5 Bony-landmark positions — `data/landmarks.json` (added 2026-11-04)
+
+The 3D positions of the bony landmarks used in Study were taken from
+Z-Anatomy's own landmark labels (the end of each label's pointer line on the
+bone surface), transformed into the app's model frame and matched to the
+landmark names on the bone cards by
+`03 Testing & Review/(C) landmarks_2026-11-04/(C) extract_landmarks.py`.
+That makes the file an adaptation of Z-Anatomy, so it is licensed
+**CC BY-SA 4.0**, like the model, and is listed as a third-party component in
+the site LICENSE. Changes: positions transformed and mirrored to the left
+side; the two femoral supracondylar labels, which Z-Anatomy has swapped, were
+corrected. Landmark names are standard anatomical terms.
+
 ---
 
 ## 2. Muscle content — `(C) muscle_database.json`

@@ -1,0 +1,4896 @@
+{
+ "metadata": {
+  "source": "Z-Anatomy (CC BY-SA 4.0) landmark pointer lines, matched to the Section 11 bone cards by (C) extract_landmarks.py, 2026-11-04",
+  "units": "glTF model units (about 1 mm), same frame as (C) skeleton_v2.glb before the app fits it to the screen",
+  "skipped": {
+   "clavicle": [
+    "Deltoid tubercle (no separate label)"
+   ],
+   "humerus": [],
+   "radius": [
+    "Groove for ECRB, groove for ECRL, groove for EPL/ED/EI (one shared label only)"
+   ],
+   "ulna": [
+    "Supinator fossa (no label)"
+   ],
+   "hand": [
+    "carpals, metacarpals, phalanges (whole bones - asked in Bones)"
+   ],
+   "cervical": [
+    "all nine (Z-Anatomy labels these only on L3)"
+   ],
+   "atlasaxis": [
+    "atlas transverse process/foramen, vertebral foramen; axis items other than the dens (no label)"
+   ],
+   "thoracic": [
+    "body, pedicle, transverse process, lamina, articular processes, spinous process, vertebral foramen (labelled on L3 only)"
+   ],
+   "lumbar": [
+    "Vertebral foramen (a space)"
+   ],
+   "hip": [
+    "Obturator foramen (a space)"
+   ],
+   "sacrum": [
+    "Lumbosacral articulation, articulating facets (ambiguous)",
+    "Coccyx (separate bone)"
+   ],
+   "femur": [
+    "Medial and lateral lips of the linea aspera (one label for the whole line)",
+    "Articular surfaces of the tibiofemoral joint (= the condyles)"
+   ],
+   "patella": [
+    "all five (Patella has no labels in Z-Anatomy)"
+   ],
+   "foot": [
+    "tarsals, metatarsals, phalanges, sesamoids (whole bones)",
+    "Tuberosity of 5th metatarsal (no label)"
+   ]
+  },
+  "corrections": [
+   "femur: Z-Anatomy medial/lateral supracondylar line labels are swapped; corrected (see MAP)"
+  ],
+  "checked": "every point checked 2026-11-04 by its position within its bone (medial/anterior/superior) and by rendered front/back/side views"
+ },
+ "landmarks": [
+  {
+   "card": "clavicle",
+   "label": "Sternal end",
+   "za": "Sternal end",
+   "bone": "Clavicle",
+   "points": {
+    "Clavicle_r_ZA": [
+     -62.3,
+     1522.18,
+     72.34
+    ],
+    "Clavicle_l_ZA": [
+     -5.68,
+     1522.18,
+     72.34
+    ]
+   },
+   "normals": {
+    "Clavicle_r_ZA": [
+     0.002,
+     0.957,
+     0.289
+    ],
+    "Clavicle_l_ZA": [
+     -0.002,
+     0.957,
+     0.289
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "clavicle",
+   "label": "Acromial end",
+   "za": "Acromial end",
+   "bone": "Clavicle",
+   "points": {
+    "Clavicle_r_ZA": [
+     -172.75,
+     1530.0,
+     -8.98
+    ],
+    "Clavicle_l_ZA": [
+     104.77,
+     1530.0,
+     -8.98
+    ]
+   },
+   "normals": {
+    "Clavicle_r_ZA": [
+     -0.218,
+     0.897,
+     -0.385
+    ],
+    "Clavicle_l_ZA": [
+     0.218,
+     0.897,
+     -0.385
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "clavicle",
+   "label": "Conoid tubercle",
+   "za": "Conoid tubercle",
+   "bone": "Clavicle",
+   "points": {
+    "Clavicle_r_ZA": [
+     -136.67,
+     1519.76,
+     8.65
+    ],
+    "Clavicle_l_ZA": [
+     68.69,
+     1519.76,
+     8.65
+    ]
+   },
+   "normals": {
+    "Clavicle_r_ZA": [
+     -0.235,
+     -0.969,
+     0.081
+    ],
+    "Clavicle_l_ZA": [
+     0.235,
+     -0.969,
+     0.081
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "clavicle",
+   "label": "Trapezoid line",
+   "za": "Trapezoid line",
+   "bone": "Clavicle",
+   "points": {
+    "Clavicle_r_ZA": [
+     -152.43,
+     1524.48,
+     10.38
+    ],
+    "Clavicle_l_ZA": [
+     84.45,
+     1524.48,
+     10.38
+    ]
+   },
+   "normals": {
+    "Clavicle_r_ZA": [
+     -0.394,
+     -0.632,
+     0.667
+    ],
+    "Clavicle_l_ZA": [
+     0.394,
+     -0.632,
+     0.667
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "clavicle",
+   "label": "Subclavian groove",
+   "za": "Groove for subclavius muscle",
+   "bone": "Clavicle",
+   "points": {
+    "Clavicle_r_ZA": [
+     -119.67,
+     1516.93,
+     34.86
+    ],
+    "Clavicle_l_ZA": [
+     51.69,
+     1516.93,
+     34.86
+    ]
+   },
+   "normals": {
+    "Clavicle_r_ZA": [
+     0.216,
+     -0.871,
+     -0.441
+    ],
+    "Clavicle_l_ZA": [
+     -0.216,
+     -0.871,
+     -0.441
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "clavicle",
+   "label": "Costal tubercle",
+   "za": "Impression for costoclavicular ligament",
+   "bone": "Clavicle",
+   "points": {
+    "Clavicle_r_ZA": [
+     -62.66,
+     1506.44,
+     69.08
+    ],
+    "Clavicle_l_ZA": [
+     -5.32,
+     1506.44,
+     69.08
+    ]
+   },
+   "normals": {
+    "Clavicle_r_ZA": [
+     -0.237,
+     -0.76,
+     -0.606
+    ],
+    "Clavicle_l_ZA": [
+     0.237,
+     -0.76,
+     -0.606
+    ]
+   },
+   "note": "costal tuberosity = impression for the costoclavicular ligament",
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "scapula",
+   "label": "Superior angle",
+   "za": "Superior angle of scapula",
+   "bone": "Scapula",
+   "points": {
+    "Scapula_r_ZA": [
+     -114.13,
+     1517.15,
+     -42.32
+    ],
+    "Scapula_l_ZA": [
+     46.15,
+     1517.15,
+     -42.32
+    ]
+   },
+   "normals": {
+    "Scapula_r_ZA": [
+     0.337,
+     0.837,
+     0.432
+    ],
+    "Scapula_l_ZA": [
+     -0.337,
+     0.837,
+     0.432
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "scapula",
+   "label": "Medial border",
+   "za": "Medial border of scapula",
+   "bone": "Scapula",
+   "points": {
+    "Scapula_r_ZA": [
+     -94.74,
+     1438.44,
+     -71.59
+    ],
+    "Scapula_l_ZA": [
+     26.76,
+     1438.44,
+     -71.59
+    ]
+   },
+   "normals": {
+    "Scapula_r_ZA": [
+     0.813,
+     0.021,
+     -0.582
+    ],
+    "Scapula_l_ZA": [
+     -0.813,
+     0.021,
+     -0.582
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.01,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "scapula",
+   "label": "Inferior angle",
+   "za": "Inferior angle of scapula",
+   "bone": "Scapula",
+   "points": {
+    "Scapula_r_ZA": [
+     -125.18,
+     1366.25,
+     -66.05
+    ],
+    "Scapula_l_ZA": [
+     57.2,
+     1366.25,
+     -66.05
+    ]
+   },
+   "normals": {
+    "Scapula_r_ZA": [
+     -0.112,
+     -0.979,
+     -0.171
+    ],
+    "Scapula_l_ZA": [
+     0.112,
+     -0.979,
+     -0.171
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "scapula",
+   "label": "Lateral border",
+   "za": "Lateral border of scapula",
+   "bone": "Scapula",
+   "points": {
+    "Scapula_r_ZA": [
+     -160.6,
+     1436.63,
+     -30.51
+    ],
+    "Scapula_l_ZA": [
+     92.62,
+     1436.63,
+     -30.51
+    ]
+   },
+   "normals": {
+    "Scapula_r_ZA": [
+     -0.029,
+     -0.624,
+     0.781
+    ],
+    "Scapula_l_ZA": [
+     0.029,
+     -0.624,
+     0.781
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.01,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "scapula",
+   "label": "Infraglenoid tubercle",
+   "za": "Infraglenoid tubercle",
+   "bone": "Scapula",
+   "points": {
+    "Scapula_r_ZA": [
+     -184.83,
+     1472.25,
+     -10.39
+    ],
+    "Scapula_l_ZA": [
+     116.85,
+     1472.25,
+     -10.39
+    ]
+   },
+   "normals": {
+    "Scapula_r_ZA": [
+     -0.802,
+     -0.581,
+     -0.137
+    ],
+    "Scapula_l_ZA": [
+     0.802,
+     -0.581,
+     -0.137
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.01,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "scapula",
+   "label": "Glenoid fossa",
+   "za": "Glenoid fossa",
+   "bone": "Scapula",
+   "points": {
+    "Scapula_r_ZA": [
+     -175.22,
+     1483.09,
+     -3.6
+    ],
+    "Scapula_l_ZA": [
+     107.24,
+     1483.09,
+     -3.6
+    ]
+   },
+   "normals": {
+    "Scapula_r_ZA": [
+     -0.836,
+     0.158,
+     0.525
+    ],
+    "Scapula_l_ZA": [
+     0.836,
+     0.158,
+     0.525
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.01,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "scapula",
+   "label": "Supraglenoid tubercle",
+   "za": "Supraglenoid tubercle",
+   "bone": "Scapula",
+   "points": {
+    "Scapula_r_ZA": [
+     -173.41,
+     1503.11,
+     2.26
+    ],
+    "Scapula_l_ZA": [
+     105.43,
+     1503.11,
+     2.26
+    ]
+   },
+   "normals": {
+    "Scapula_r_ZA": [
+     -0.808,
+     0.347,
+     0.475
+    ],
+    "Scapula_l_ZA": [
+     0.808,
+     0.347,
+     0.475
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.01,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "scapula",
+   "label": "Coracoid process",
+   "za": "Coracoid process",
+   "bone": "Scapula",
+   "points": {
+    "Scapula_r_ZA": [
+     -168.44,
+     1498.68,
+     32.36
+    ],
+    "Scapula_l_ZA": [
+     100.46,
+     1498.68,
+     32.36
+    ]
+   },
+   "normals": {
+    "Scapula_r_ZA": [
+     -0.464,
+     -0.36,
+     0.809
+    ],
+    "Scapula_l_ZA": [
+     0.464,
+     -0.36,
+     0.809
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.01,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "scapula",
+   "label": "Acromion process",
+   "za": "Acromion",
+   "bone": "Scapula",
+   "points": {
+    "Scapula_r_ZA": [
+     -190.99,
+     1522.26,
+     -13.99
+    ],
+    "Scapula_l_ZA": [
+     123.01,
+     1522.26,
+     -13.99
+    ]
+   },
+   "normals": {
+    "Scapula_r_ZA": [
+     -0.047,
+     0.98,
+     -0.195
+    ],
+    "Scapula_l_ZA": [
+     0.047,
+     0.98,
+     -0.195
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.01,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "scapula",
+   "label": "Suprascapular notch",
+   "za": "Scapular notch",
+   "bone": "Scapula",
+   "points": {
+    "Scapula_r_ZA": [
+     -145.73,
+     1494.88,
+     -17.51
+    ],
+    "Scapula_l_ZA": [
+     77.75,
+     1494.88,
+     -17.51
+    ]
+   },
+   "normals": {
+    "Scapula_r_ZA": [
+     0.138,
+     0.948,
+     0.287
+    ],
+    "Scapula_l_ZA": [
+     -0.138,
+     0.948,
+     0.287
+    ]
+   },
+   "note": "TA incisura scapulae",
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "scapula",
+   "label": "Supraspinous fossa",
+   "za": "Supraspinous fossa",
+   "bone": "Scapula",
+   "points": {
+    "Scapula_r_ZA": [
+     -135.54,
+     1489.1,
+     -37.79
+    ],
+    "Scapula_l_ZA": [
+     67.56,
+     1489.1,
+     -37.79
+    ]
+   },
+   "normals": {
+    "Scapula_r_ZA": [
+     -0.242,
+     0.915,
+     -0.322
+    ],
+    "Scapula_l_ZA": [
+     0.242,
+     0.915,
+     -0.322
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "scapula",
+   "label": "Spine of scapula",
+   "za": "Spine of scapula",
+   "bone": "Scapula",
+   "points": {
+    "Scapula_r_ZA": [
+     -143.83,
+     1495.82,
+     -57.4
+    ],
+    "Scapula_l_ZA": [
+     75.85,
+     1495.82,
+     -57.4
+    ]
+   },
+   "normals": {
+    "Scapula_r_ZA": [
+     -0.41,
+     0.175,
+     -0.895
+    ],
+    "Scapula_l_ZA": [
+     0.41,
+     0.175,
+     -0.895
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.01,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "scapula",
+   "label": "Infraspinous fossa",
+   "za": "Infraspinous fossa",
+   "bone": "Scapula",
+   "points": {
+    "Scapula_r_ZA": [
+     -127.8,
+     1439.97,
+     -57.42
+    ],
+    "Scapula_l_ZA": [
+     59.82,
+     1439.97,
+     -57.42
+    ]
+   },
+   "normals": {
+    "Scapula_r_ZA": [
+     -0.539,
+     0.205,
+     -0.817
+    ],
+    "Scapula_l_ZA": [
+     0.539,
+     0.205,
+     -0.817
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "scapula",
+   "label": "Subscapular fossa",
+   "za": "Subscapular fossa",
+   "bone": "Scapula",
+   "points": {
+    "Scapula_r_ZA": [
+     -126.46,
+     1446.64,
+     -53.15
+    ],
+    "Scapula_l_ZA": [
+     58.48,
+     1446.64,
+     -53.15
+    ]
+   },
+   "normals": {
+    "Scapula_r_ZA": [
+     0.489,
+     -0.267,
+     0.831
+    ],
+    "Scapula_l_ZA": [
+     -0.489,
+     -0.267,
+     0.831
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.01,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "humerus",
+   "label": "Lesser tubercle",
+   "za": "Lesser tubercle",
+   "bone": "Humerus",
+   "points": {
+    "Humerus_r_ZA": [
+     -196.2,
+     1492.79,
+     28.59
+    ],
+    "Humerus_l_ZA": [
+     128.22,
+     1492.79,
+     28.59
+    ]
+   },
+   "normals": {
+    "Humerus_r_ZA": [
+     0.301,
+     0.316,
+     0.9
+    ],
+    "Humerus_l_ZA": [
+     -0.301,
+     0.316,
+     0.9
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "humerus",
+   "label": "Intertubercular groove",
+   "za": "Intertubercular sulcus",
+   "bone": "Humerus",
+   "points": {
+    "Humerus_r_ZA": [
+     -210.59,
+     1491.43,
+     20.36
+    ],
+    "Humerus_l_ZA": [
+     142.61,
+     1491.43,
+     20.36
+    ]
+   },
+   "normals": {
+    "Humerus_r_ZA": [
+     -0.588,
+     -0.104,
+     0.802
+    ],
+    "Humerus_l_ZA": [
+     0.588,
+     -0.104,
+     0.802
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "humerus",
+   "label": "Coronoid fossa",
+   "za": "Coronoid fossa",
+   "bone": "Humerus",
+   "points": {
+    "Humerus_r_ZA": [
+     -243.76,
+     1231.1,
+     -1.69
+    ],
+    "Humerus_l_ZA": [
+     175.78,
+     1231.1,
+     -1.69
+    ]
+   },
+   "normals": {
+    "Humerus_r_ZA": [
+     -0.27,
+     0.259,
+     0.927
+    ],
+    "Humerus_l_ZA": [
+     0.27,
+     0.259,
+     0.927
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "humerus",
+   "label": "Medial supracondylar ridge",
+   "za": "Medial supracondylar ridge",
+   "bone": "Humerus",
+   "points": {
+    "Humerus_r_ZA": [
+     -222.39,
+     1238.34,
+     -3.64
+    ],
+    "Humerus_l_ZA": [
+     154.41,
+     1238.34,
+     -3.64
+    ]
+   },
+   "normals": {
+    "Humerus_r_ZA": [
+     0.89,
+     0.442,
+     -0.107
+    ],
+    "Humerus_l_ZA": [
+     -0.89,
+     0.442,
+     -0.107
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "humerus",
+   "label": "Medial epicondyle",
+   "za": "Medial epicondyle of humerus",
+   "bone": "Humerus",
+   "points": {
+    "Humerus_r_ZA": [
+     -212.68,
+     1225.93,
+     -3.11
+    ],
+    "Humerus_l_ZA": [
+     144.7,
+     1225.93,
+     -3.11
+    ]
+   },
+   "normals": {
+    "Humerus_r_ZA": [
+     0.959,
+     0.283,
+     -0.029
+    ],
+    "Humerus_l_ZA": [
+     -0.959,
+     0.283,
+     -0.029
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "humerus",
+   "label": "Trochlea",
+   "za": "Trochlea of humerus",
+   "bone": "Humerus",
+   "points": {
+    "Humerus_r_ZA": [
+     -244.46,
+     1215.28,
+     5.72
+    ],
+    "Humerus_l_ZA": [
+     176.48,
+     1215.28,
+     5.72
+    ]
+   },
+   "normals": {
+    "Humerus_r_ZA": [
+     -0.242,
+     -0.459,
+     0.854
+    ],
+    "Humerus_l_ZA": [
+     0.242,
+     -0.459,
+     0.854
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "humerus",
+   "label": "Capitulum",
+   "za": "Capitulum of humerus",
+   "bone": "Humerus",
+   "points": {
+    "Humerus_r_ZA": [
+     -267.13,
+     1220.68,
+     5.9
+    ],
+    "Humerus_l_ZA": [
+     199.15,
+     1220.68,
+     5.9
+    ]
+   },
+   "normals": {
+    "Humerus_r_ZA": [
+     -0.077,
+     -0.328,
+     0.942
+    ],
+    "Humerus_l_ZA": [
+     0.077,
+     -0.328,
+     0.942
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "humerus",
+   "label": "Lateral epicondyle",
+   "za": "Lateral epicondyle of humerus",
+   "bone": "Humerus",
+   "points": {
+    "Humerus_r_ZA": [
+     -275.45,
+     1228.98,
+     -10.65
+    ],
+    "Humerus_l_ZA": [
+     207.47,
+     1228.98,
+     -10.65
+    ]
+   },
+   "normals": {
+    "Humerus_r_ZA": [
+     -0.713,
+     0.007,
+     -0.702
+    ],
+    "Humerus_l_ZA": [
+     0.713,
+     0.007,
+     -0.702
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "humerus",
+   "label": "Lateral supracondylar ridge",
+   "za": "Lateral supracondylar ridge",
+   "bone": "Humerus",
+   "points": {
+    "Humerus_r_ZA": [
+     -266.3,
+     1251.15,
+     -17.08
+    ],
+    "Humerus_l_ZA": [
+     198.32,
+     1251.15,
+     -17.08
+    ]
+   },
+   "normals": {
+    "Humerus_r_ZA": [
+     -0.85,
+     0.236,
+     -0.47
+    ],
+    "Humerus_l_ZA": [
+     0.85,
+     0.236,
+     -0.47
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "humerus",
+   "label": "Deltoid tuberosity",
+   "za": "Deltoid tuberosity",
+   "bone": "Humerus",
+   "points": {
+    "Humerus_r_ZA": [
+     -236.01,
+     1397.58,
+     -1.09
+    ],
+    "Humerus_l_ZA": [
+     168.03,
+     1397.58,
+     -1.09
+    ]
+   },
+   "normals": {
+    "Humerus_r_ZA": [
+     -0.951,
+     0.215,
+     -0.221
+    ],
+    "Humerus_l_ZA": [
+     0.951,
+     0.215,
+     -0.221
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "humerus",
+   "label": "Greater tubercle",
+   "za": "Greater tubercle",
+   "bone": "Humerus",
+   "points": {
+    "Humerus_r_ZA": [
+     -220.89,
+     1505.65,
+     7.74
+    ],
+    "Humerus_l_ZA": [
+     152.91,
+     1505.65,
+     7.74
+    ]
+   },
+   "normals": {
+    "Humerus_r_ZA": [
+     -0.947,
+     0.288,
+     0.14
+    ],
+    "Humerus_l_ZA": [
+     0.947,
+     0.288,
+     0.14
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "humerus",
+   "label": "Head",
+   "za": "Head of humerus",
+   "bone": "Humerus",
+   "points": {
+    "Humerus_r_ZA": [
+     -200.0,
+     1508.71,
+     16.72
+    ],
+    "Humerus_l_ZA": [
+     132.02,
+     1508.71,
+     16.72
+    ]
+   },
+   "normals": {
+    "Humerus_r_ZA": [
+     -0.184,
+     0.812,
+     0.554
+    ],
+    "Humerus_l_ZA": [
+     0.184,
+     0.812,
+     0.554
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "humerus",
+   "label": "Neck",
+   "za": "Anatomical neck of humerus",
+   "bone": "Humerus",
+   "points": {
+    "Humerus_r_ZA": [
+     -180.98,
+     1479.09,
+     11.9
+    ],
+    "Humerus_l_ZA": [
+     113.0,
+     1479.09,
+     11.9
+    ]
+   },
+   "normals": {
+    "Humerus_r_ZA": [
+     0.634,
+     -0.737,
+     -0.235
+    ],
+    "Humerus_l_ZA": [
+     -0.634,
+     -0.737,
+     -0.235
+    ]
+   },
+   "note": "card says \"Neck\"; placed at the anatomical neck",
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "humerus",
+   "label": "Shaft",
+   "za": "Body of humerus",
+   "bone": "Humerus",
+   "points": {
+    "Humerus_r_ZA": [
+     -221.21,
+     1376.85,
+     7.01
+    ],
+    "Humerus_l_ZA": [
+     153.23,
+     1376.85,
+     7.01
+    ]
+   },
+   "normals": {
+    "Humerus_r_ZA": [
+     0.565,
+     -0.191,
+     0.803
+    ],
+    "Humerus_l_ZA": [
+     -0.565,
+     -0.191,
+     0.803
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.24,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "humerus",
+   "label": "Olecranon fossa",
+   "za": "Olecranon fossa",
+   "bone": "Humerus",
+   "points": {
+    "Humerus_r_ZA": [
+     -244.73,
+     1227.85,
+     -6.32
+    ],
+    "Humerus_l_ZA": [
+     176.75,
+     1227.85,
+     -6.32
+    ]
+   },
+   "normals": {
+    "Humerus_r_ZA": [
+     0.377,
+     0.388,
+     -0.841
+    ],
+    "Humerus_l_ZA": [
+     -0.377,
+     0.388,
+     -0.841
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "radius",
+   "label": "Head",
+   "za": "Head of radius",
+   "bone": "Radius",
+   "points": {
+    "Radius_r_ZA": [
+     -256.3,
+     1199.5,
+     1.36
+    ],
+    "Radius_l_ZA": [
+     188.32,
+     1199.5,
+     1.36
+    ]
+   },
+   "normals": {
+    "Radius_r_ZA": [
+     0.813,
+     -0.544,
+     -0.206
+    ],
+    "Radius_l_ZA": [
+     -0.813,
+     -0.544,
+     -0.206
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.05,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "radius",
+   "label": "Neck",
+   "za": "Neck of radius",
+   "bone": "Radius",
+   "points": {
+    "Radius_r_ZA": [
+     -273.22,
+     1191.87,
+     6.72
+    ],
+    "Radius_l_ZA": [
+     205.24,
+     1191.87,
+     6.72
+    ]
+   },
+   "normals": {
+    "Radius_r_ZA": [
+     -0.995,
+     -0.047,
+     0.092
+    ],
+    "Radius_l_ZA": [
+     0.995,
+     -0.047,
+     0.092
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.03,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "radius",
+   "label": "Radial tuberosity",
+   "za": "Radial tuberosity",
+   "bone": "Radius",
+   "points": {
+    "Radius_r_ZA": [
+     -270.43,
+     1179.44,
+     20.4
+    ],
+    "Radius_l_ZA": [
+     202.45,
+     1179.44,
+     20.4
+    ]
+   },
+   "normals": {
+    "Radius_r_ZA": [
+     -0.57,
+     0.339,
+     0.748
+    ],
+    "Radius_l_ZA": [
+     0.57,
+     0.339,
+     0.748
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.6,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "radius",
+   "label": "Interosseous crest",
+   "za": "Interosseous border of radius",
+   "bone": "Radius",
+   "points": {
+    "Radius_r_ZA": [
+     -277.19,
+     1085.52,
+     21.14
+    ],
+    "Radius_l_ZA": [
+     209.21,
+     1085.52,
+     21.14
+    ]
+   },
+   "normals": {
+    "Radius_r_ZA": [
+     0.624,
+     -0.214,
+     -0.752
+    ],
+    "Radius_l_ZA": [
+     -0.624,
+     -0.214,
+     -0.752
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.04,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "radius",
+   "label": "Ulnar notch",
+   "za": "Ulnar notch",
+   "bone": "Radius",
+   "points": {
+    "Radius_r_ZA": [
+     -284.08,
+     991.91,
+     43.91
+    ],
+    "Radius_l_ZA": [
+     216.1,
+     991.91,
+     43.91
+    ]
+   },
+   "normals": {
+    "Radius_r_ZA": [
+     0.976,
+     0.036,
+     -0.215
+    ],
+    "Radius_l_ZA": [
+     -0.976,
+     0.036,
+     -0.215
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.18,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "radius",
+   "label": "Styloid process",
+   "za": "Radial styloid process",
+   "bone": "Radius",
+   "points": {
+    "Radius_r_ZA": [
+     -311.41,
+     979.86,
+     48.51
+    ],
+    "Radius_l_ZA": [
+     243.43,
+     979.86,
+     48.51
+    ]
+   },
+   "normals": {
+    "Radius_r_ZA": [
+     -0.086,
+     -0.988,
+     0.127
+    ],
+    "Radius_l_ZA": [
+     0.086,
+     -0.988,
+     0.127
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.09,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "radius",
+   "label": "Dorsal tubercle",
+   "za": "Dorsal radial tubercle",
+   "bone": "Radius",
+   "points": {
+    "Radius_r_ZA": [
+     -300.75,
+     986.23,
+     34.77
+    ],
+    "Radius_l_ZA": [
+     232.77,
+     986.23,
+     34.77
+    ]
+   },
+   "normals": {
+    "Radius_r_ZA": [
+     0.04,
+     -0.831,
+     -0.555
+    ],
+    "Radius_l_ZA": [
+     -0.04,
+     -0.831,
+     -0.555
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.49,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "ulna",
+   "label": "Olecranon process",
+   "za": "Olecranon",
+   "bone": "Ulna",
+   "points": {
+    "Ulna_r_ZA": [
+     -242.44,
+     1221.46,
+     -21.74
+    ],
+    "Ulna_l_ZA": [
+     174.46,
+     1221.46,
+     -21.74
+    ]
+   },
+   "normals": {
+    "Ulna_r_ZA": [
+     0.078,
+     0.618,
+     -0.782
+    ],
+    "Ulna_l_ZA": [
+     -0.078,
+     0.618,
+     -0.782
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.03,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "ulna",
+   "label": "Semilunar notch",
+   "za": "Trochlear notch",
+   "bone": "Ulna",
+   "points": {
+    "Ulna_r_ZA": [
+     -245.22,
+     1207.98,
+     -8.56
+    ],
+    "Ulna_l_ZA": [
+     177.24,
+     1207.98,
+     -8.56
+    ]
+   },
+   "normals": {
+    "Ulna_r_ZA": [
+     -0.168,
+     0.718,
+     0.675
+    ],
+    "Ulna_l_ZA": [
+     0.168,
+     0.718,
+     0.675
+    ]
+   },
+   "note": "semilunar = trochlear notch",
+   "pointerGapMm": 0.03,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "ulna",
+   "label": "Coronoid process",
+   "za": "Coronoid process of ulna",
+   "bone": "Ulna",
+   "points": {
+    "Ulna_r_ZA": [
+     -246.89,
+     1208.71,
+     9.71
+    ],
+    "Ulna_l_ZA": [
+     178.91,
+     1208.71,
+     9.71
+    ]
+   },
+   "normals": {
+    "Ulna_r_ZA": [
+     0.027,
+     0.439,
+     0.898
+    ],
+    "Ulna_l_ZA": [
+     -0.027,
+     0.439,
+     0.898
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.03,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "ulna",
+   "label": "Radial notch",
+   "za": "Radial notch",
+   "bone": "Ulna",
+   "points": {
+    "Ulna_r_ZA": [
+     -253.88,
+     1200.29,
+     -3.71
+    ],
+    "Ulna_l_ZA": [
+     185.9,
+     1200.29,
+     -3.71
+    ]
+   },
+   "normals": {
+    "Ulna_r_ZA": [
+     -0.865,
+     0.423,
+     0.269
+    ],
+    "Ulna_l_ZA": [
+     0.865,
+     0.423,
+     0.269
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.05,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "ulna",
+   "label": "Ulnar tuberosity",
+   "za": "Tuberosity of ulna",
+   "bone": "Ulna",
+   "points": {
+    "Ulna_r_ZA": [
+     -250.76,
+     1181.83,
+     2.93
+    ],
+    "Ulna_l_ZA": [
+     182.78,
+     1181.83,
+     2.93
+    ]
+   },
+   "normals": {
+    "Ulna_r_ZA": [
+     0.062,
+     -0.146,
+     0.987
+    ],
+    "Ulna_l_ZA": [
+     -0.062,
+     -0.146,
+     0.987
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.02,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "ulna",
+   "label": "Supinator crest",
+   "za": "Supinator crest",
+   "bone": "Ulna",
+   "points": {
+    "Ulna_r_ZA": [
+     -259.42,
+     1176.75,
+     -5.68
+    ],
+    "Ulna_l_ZA": [
+     191.44,
+     1176.75,
+     -5.68
+    ]
+   },
+   "normals": {
+    "Ulna_r_ZA": [
+     -0.96,
+     0.215,
+     0.181
+    ],
+    "Ulna_l_ZA": [
+     0.96,
+     0.215,
+     0.181
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.04,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "ulna",
+   "label": "Interosseous crest",
+   "za": "Interosseous border of ulna",
+   "bone": "Ulna",
+   "points": {
+    "Ulna_r_ZA": [
+     -266.82,
+     1087.69,
+     21.9
+    ],
+    "Ulna_l_ZA": [
+     198.84,
+     1087.69,
+     21.9
+    ]
+   },
+   "normals": {
+    "Ulna_r_ZA": [
+     -0.846,
+     0.145,
+     0.513
+    ],
+    "Ulna_l_ZA": [
+     0.846,
+     0.145,
+     0.513
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.01,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "ulna",
+   "label": "Head",
+   "za": "Head of ulna",
+   "bone": "Ulna",
+   "points": {
+    "Ulna_r_ZA": [
+     -266.28,
+     993.68,
+     44.59
+    ],
+    "Ulna_l_ZA": [
+     198.3,
+     993.68,
+     44.59
+    ]
+   },
+   "normals": {
+    "Ulna_r_ZA": [
+     0.886,
+     0.065,
+     0.459
+    ],
+    "Ulna_l_ZA": [
+     -0.886,
+     0.065,
+     0.459
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.02,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "ulna",
+   "label": "Styloid process",
+   "za": "Ulnar styloid process",
+   "bone": "Ulna",
+   "points": {
+    "Ulna_r_ZA": [
+     -270.44,
+     979.46,
+     43.32
+    ],
+    "Ulna_l_ZA": [
+     202.46,
+     979.46,
+     43.32
+    ]
+   },
+   "normals": {
+    "Ulna_r_ZA": [
+     0.399,
+     -0.79,
+     0.465
+    ],
+    "Ulna_l_ZA": [
+     -0.399,
+     -0.79,
+     0.465
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.01,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "hand",
+   "label": "Hook of hamate",
+   "za": "Hook of hamate bone",
+   "bone": "Hamate bone",
+   "points": {
+    "Hamate_bone_r_ZA": [
+     -279.62,
+     964.23,
+     64.04
+    ],
+    "Hamate_bone_l_ZA": [
+     211.64,
+     964.23,
+     64.04
+    ]
+   },
+   "normals": {
+    "Hamate_bone_r_ZA": [
+     0.453,
+     -0.32,
+     0.832
+    ],
+    "Hamate_bone_l_ZA": [
+     -0.453,
+     -0.32,
+     0.832
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "hand",
+   "label": "Base of metacarpal",
+   "za": "Metacarpal base",
+   "bone": "Third metacarpal bone",
+   "points": {
+    "Third_metacarpal_bone_r_ZA": [
+     -290.56,
+     949.92,
+     51.19
+    ],
+    "Third_metacarpal_bone_l_ZA": [
+     222.58,
+     949.92,
+     51.19
+    ]
+   },
+   "normals": {
+    "Third_metacarpal_bone_r_ZA": [
+     0.969,
+     0.248,
+     0.019
+    ],
+    "Third_metacarpal_bone_l_ZA": [
+     -0.969,
+     0.248,
+     0.019
+    ]
+   },
+   "note": "shown on the 3rd metacarpal",
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "hand",
+   "label": "Shaft of metacarpal",
+   "za": "Body of metacarpal bone",
+   "bone": "Third metacarpal bone",
+   "points": {
+    "Third_metacarpal_bone_r_ZA": [
+     -294.54,
+     925.67,
+     58.89
+    ],
+    "Third_metacarpal_bone_l_ZA": [
+     226.56,
+     925.67,
+     58.89
+    ]
+   },
+   "normals": {
+    "Third_metacarpal_bone_r_ZA": [
+     0.985,
+     0.052,
+     0.163
+    ],
+    "Third_metacarpal_bone_l_ZA": [
+     -0.985,
+     0.052,
+     0.163
+    ]
+   },
+   "note": "shown on the 3rd metacarpal",
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "hand",
+   "label": "Head of metacarpal",
+   "za": "Head of metacarpal bone",
+   "bone": "Third metacarpal bone",
+   "points": {
+    "Third_metacarpal_bone_r_ZA": [
+     -294.5,
+     902.48,
+     65.8
+    ],
+    "Third_metacarpal_bone_l_ZA": [
+     226.52,
+     902.48,
+     65.8
+    ]
+   },
+   "normals": {
+    "Third_metacarpal_bone_r_ZA": [
+     0.973,
+     -0.231,
+     0.015
+    ],
+    "Third_metacarpal_bone_l_ZA": [
+     -0.973,
+     -0.231,
+     0.015
+    ]
+   },
+   "note": "shown on the 3rd metacarpal",
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "atlasaxis",
+   "label": "Anterior arch",
+   "za": "Anterior arch of atlas",
+   "bone": "Atlas (C1)",
+   "points": {
+    "Atlas_C1_ZA": [
+     -29.53,
+     1650.91,
+     30.26
+    ]
+   },
+   "normals": {
+    "Atlas_C1_ZA": [
+     -0.279,
+     0.96,
+     0.035
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.07,
+   "mirrorSnapMm": null
+  },
+  {
+   "card": "atlasaxis",
+   "label": "Anterior tubercle",
+   "za": "Anterior tubercle of atlas",
+   "bone": "Atlas (C1)",
+   "points": {
+    "Atlas_C1_ZA": [
+     -33.96,
+     1642.89,
+     34.87
+    ]
+   },
+   "normals": {
+    "Atlas_C1_ZA": [
+     0.296,
+     -0.094,
+     0.951
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": null
+  },
+  {
+   "card": "atlasaxis",
+   "label": "Facet for dens of axis",
+   "za": "Facet for dens",
+   "bone": "Atlas (C1)",
+   "points": {
+    "Atlas_C1_ZA": [
+     -33.97,
+     1646.47,
+     29.1
+    ]
+   },
+   "normals": {
+    "Atlas_C1_ZA": [
+     -0.058,
+     -0.105,
+     -0.993
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.01,
+   "mirrorSnapMm": null
+  },
+  {
+   "card": "atlasaxis",
+   "label": "Superior articular process (atlas)",
+   "za": "Superior articular surface of atlas",
+   "bone": "Atlas (C1)",
+   "points": {
+    "Atlas_C1_ZA": [
+     -17.2,
+     1651.95,
+     19.96
+    ]
+   },
+   "normals": {
+    "Atlas_C1_ZA": [
+     -0.29,
+     0.914,
+     -0.283
+    ]
+   },
+   "note": "card \"process\"; the facet on the lateral mass",
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": null
+  },
+  {
+   "card": "atlasaxis",
+   "label": "Inferior articular process (atlas)",
+   "za": "Inferior articular surface of atlas",
+   "bone": "Atlas (C1)",
+   "points": {
+    "Atlas_C1_ZA": [
+     -18.22,
+     1640.53,
+     20.85
+    ]
+   },
+   "normals": {
+    "Atlas_C1_ZA": [
+     -0.314,
+     -0.934,
+     -0.171
+    ]
+   },
+   "note": "card \"process\"; the facet on the lateral mass",
+   "pointerGapMm": 0.03,
+   "mirrorSnapMm": null
+  },
+  {
+   "card": "atlasaxis",
+   "label": "Posterior arch",
+   "za": "Posterior arch of atlas",
+   "bone": "Atlas (C1)",
+   "points": {
+    "Atlas_C1_ZA": [
+     -21.5,
+     1641.06,
+     -5.24
+    ]
+   },
+   "normals": {
+    "Atlas_C1_ZA": [
+     0.539,
+     -0.372,
+     -0.756
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": null
+  },
+  {
+   "card": "atlasaxis",
+   "label": "Posterior tubercle",
+   "za": "Posterior tubercle of atlas",
+   "bone": "Atlas (C1)",
+   "points": {
+    "Atlas_C1_ZA": [
+     -33.97,
+     1642.6,
+     -12.62
+    ]
+   },
+   "normals": {
+    "Atlas_C1_ZA": [
+     0.468,
+     -0.074,
+     -0.881
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.03,
+   "mirrorSnapMm": null
+  },
+  {
+   "card": "atlasaxis",
+   "label": "Dens (odontoid process)",
+   "za": "Dens axis",
+   "bone": "Axis (C2)",
+   "points": {
+    "Axis_C2_ZA": [
+     -34.25,
+     1651.64,
+     27.91
+    ]
+   },
+   "normals": {
+    "Axis_C2_ZA": [
+     -0.137,
+     0.24,
+     0.961
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.01,
+   "mirrorSnapMm": null
+  },
+  {
+   "card": "thoracic",
+   "label": "Superior costal hemifacet",
+   "za": "Superior costal facet",
+   "bone": "Vertebra T8",
+   "points": {
+    "Vertebra_T8_ZA": [
+     -19.62,
+     1385.01,
+     -28.7
+    ]
+   },
+   "normals": {
+    "Vertebra_T8_ZA": [
+     0.77,
+     0.569,
+     0.288
+    ]
+   },
+   "note": "shown on T8",
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": null
+  },
+  {
+   "card": "thoracic",
+   "label": "Inferior costal hemifacet",
+   "za": "Inferior costal facet",
+   "bone": "Vertebra T8",
+   "points": {
+    "Vertebra_T8_ZA": [
+     -16.16,
+     1368.17,
+     -23.98
+    ]
+   },
+   "normals": {
+    "Vertebra_T8_ZA": [
+     0.987,
+     0.159,
+     0.036
+    ]
+   },
+   "note": "shown on T8",
+   "pointerGapMm": 0.14,
+   "mirrorSnapMm": null
+  },
+  {
+   "card": "thoracic",
+   "label": "Transverse costal facet",
+   "za": "Transverse costal facet",
+   "bone": "Vertebra T8",
+   "points": {
+    "Vertebra_T8_ZA": [
+     -5.49,
+     1381.82,
+     -44.15
+    ]
+   },
+   "normals": {
+    "Vertebra_T8_ZA": [
+     0.643,
+     0.358,
+     0.677
+    ]
+   },
+   "note": "shown on T8",
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": null
+  },
+  {
+   "card": "lumbar",
+   "label": "Body",
+   "za": "Vertebral body",
+   "bone": "Vertebra L3",
+   "points": {
+    "Vertebra_L3_ZA": [
+     -17.81,
+     1159.39,
+     42.58
+    ]
+   },
+   "normals": {
+    "Vertebra_L3_ZA": [
+     0.776,
+     0.23,
+     0.587
+    ]
+   },
+   "note": "shown on L3",
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": null
+  },
+  {
+   "card": "lumbar",
+   "label": "Pedicle",
+   "za": "Pedicle of vertebral arch",
+   "bone": "Vertebra L3",
+   "points": {
+    "Vertebra_L3_ZA": [
+     -12.26,
+     1170.6,
+     12.72
+    ]
+   },
+   "normals": {
+    "Vertebra_L3_ZA": [
+     0.864,
+     0.208,
+     0.459
+    ]
+   },
+   "note": "shown on L3",
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": null
+  },
+  {
+   "card": "lumbar",
+   "label": "Transverse process",
+   "za": "Transverse process",
+   "bone": "Vertebra L3",
+   "points": {
+    "Vertebra_L3_ZA": [
+     5.28,
+     1172.32,
+     -0.56
+    ]
+   },
+   "normals": {
+    "Vertebra_L3_ZA": [
+     0.667,
+     0.292,
+     -0.686
+    ]
+   },
+   "note": "shown on L3",
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": null
+  },
+  {
+   "card": "lumbar",
+   "label": "Lamina",
+   "za": "Lamina of vertebral arch",
+   "bone": "Vertebra L3",
+   "points": {
+    "Vertebra_L3_ZA": [
+     -27.45,
+     1159.88,
+     -4.25
+    ]
+   },
+   "normals": {
+    "Vertebra_L3_ZA": [
+     0.591,
+     0.518,
+     -0.619
+    ]
+   },
+   "note": "shown on L3",
+   "pointerGapMm": 0.03,
+   "mirrorSnapMm": null
+  },
+  {
+   "card": "lumbar",
+   "label": "Superior articular process",
+   "za": "Superior articular process of vertebra",
+   "bone": "Vertebra L3",
+   "points": {
+    "Vertebra_L3_ZA": [
+     -16.22,
+     1182.7,
+     -1.84
+    ]
+   },
+   "normals": {
+    "Vertebra_L3_ZA": [
+     -0.22,
+     0.936,
+     -0.273
+    ]
+   },
+   "note": "shown on L3",
+   "pointerGapMm": 0.04,
+   "mirrorSnapMm": null
+  },
+  {
+   "card": "lumbar",
+   "label": "Inferior articular process",
+   "za": "Inferior articular facet of vertebra",
+   "bone": "Vertebra L3",
+   "points": {
+    "Vertebra_L3_ZA": [
+     -18.15,
+     1142.52,
+     -5.89
+    ]
+   },
+   "normals": {
+    "Vertebra_L3_ZA": [
+     -0.184,
+     -0.595,
+     -0.783
+    ]
+   },
+   "note": "shown on L3; the facet on the process",
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": null
+  },
+  {
+   "card": "lumbar",
+   "label": "Spinous process",
+   "za": "Spinous process",
+   "bone": "Vertebra L3",
+   "points": {
+    "Vertebra_L3_ZA": [
+     -34.15,
+     1144.58,
+     -30.98
+    ]
+   },
+   "normals": {
+    "Vertebra_L3_ZA": [
+     -0.289,
+     -0.404,
+     -0.868
+    ]
+   },
+   "note": "shown on L3",
+   "pointerGapMm": 0.01,
+   "mirrorSnapMm": null
+  },
+  {
+   "card": "hip",
+   "label": "Iliac fossa",
+   "za": "Iliac fossa",
+   "bone": "Hip bone",
+   "points": {
+    "Hip_bone_r_ZA": [
+     -119.63,
+     1059.04,
+     24.5
+    ],
+    "Hip_bone_l_ZA": [
+     51.65,
+     1059.04,
+     24.5
+    ]
+   },
+   "normals": {
+    "Hip_bone_r_ZA": [
+     0.63,
+     0.387,
+     0.674
+    ],
+    "Hip_bone_l_ZA": [
+     -0.63,
+     0.387,
+     0.674
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.02,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "hip",
+   "label": "Iliac crest",
+   "za": "Iliac crest",
+   "bone": "Hip bone",
+   "points": {
+    "Hip_bone_r_ZA": [
+     -155.16,
+     1118.06,
+     37.97
+    ],
+    "Hip_bone_l_ZA": [
+     87.18,
+     1118.06,
+     37.97
+    ]
+   },
+   "normals": {
+    "Hip_bone_r_ZA": [
+     -0.788,
+     0.615,
+     0.031
+    ],
+    "Hip_bone_l_ZA": [
+     0.788,
+     0.615,
+     0.031
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.01,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "hip",
+   "label": "Tubercle of iliac crest",
+   "za": "Iliac tubercle",
+   "bone": "Hip bone",
+   "points": {
+    "Hip_bone_r_ZA": [
+     -158.3,
+     1111.84,
+     26.38
+    ],
+    "Hip_bone_l_ZA": [
+     90.32,
+     1111.84,
+     26.38
+    ]
+   },
+   "normals": {
+    "Hip_bone_r_ZA": [
+     -0.848,
+     0.231,
+     -0.477
+    ],
+    "Hip_bone_l_ZA": [
+     0.848,
+     0.231,
+     -0.477
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.01,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "hip",
+   "label": "Anterior superior iliac spine (ASIS)",
+   "za": "Anterior superior iliac spine",
+   "bone": "Hip bone",
+   "points": {
+    "Hip_bone_r_ZA": [
+     -151.13,
+     1065.99,
+     86.22
+    ],
+    "Hip_bone_l_ZA": [
+     83.15,
+     1065.99,
+     86.22
+    ]
+   },
+   "normals": {
+    "Hip_bone_r_ZA": [
+     -0.068,
+     0.021,
+     0.997
+    ],
+    "Hip_bone_l_ZA": [
+     0.068,
+     0.021,
+     0.997
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.02,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "hip",
+   "label": "Anterior inferior iliac spine (AIIS)",
+   "za": "Anterior inferior iliac spine",
+   "bone": "Hip bone",
+   "points": {
+    "Hip_bone_r_ZA": [
+     -125.07,
+     1011.18,
+     54.97
+    ],
+    "Hip_bone_l_ZA": [
+     57.09,
+     1011.18,
+     54.97
+    ]
+   },
+   "normals": {
+    "Hip_bone_r_ZA": [
+     -0.094,
+     -0.718,
+     0.69
+    ],
+    "Hip_bone_l_ZA": [
+     0.094,
+     -0.718,
+     0.69
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.01,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "hip",
+   "label": "Iliopubic (pectineal) eminence",
+   "za": "Iliopubic eminence",
+   "bone": "Hip bone",
+   "points": {
+    "Hip_bone_r_ZA": [
+     -102.22,
+     1003.31,
+     54.53
+    ],
+    "Hip_bone_l_ZA": [
+     34.24,
+     1003.31,
+     54.53
+    ]
+   },
+   "normals": {
+    "Hip_bone_r_ZA": [
+     -0.048,
+     0.486,
+     0.873
+    ],
+    "Hip_bone_l_ZA": [
+     0.048,
+     0.486,
+     0.873
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.07,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "hip",
+   "label": "Sacroiliac articulation",
+   "za": "Auricular surface of ilium",
+   "bone": "Hip bone",
+   "points": {
+    "Hip_bone_r_ZA": [
+     -84.06,
+     1051.23,
+     -1.91
+    ],
+    "Hip_bone_l_ZA": [
+     16.08,
+     1051.23,
+     -1.91
+    ]
+   },
+   "normals": {
+    "Hip_bone_r_ZA": [
+     0.699,
+     0.211,
+     0.683
+    ],
+    "Hip_bone_l_ZA": [
+     -0.699,
+     0.211,
+     0.683
+    ]
+   },
+   "note": "the ilium's side of the joint",
+   "pointerGapMm": 0.02,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "hip",
+   "label": "Iliac tuberosity",
+   "za": "Iliac tuberosity",
+   "bone": "Hip bone",
+   "points": {
+    "Hip_bone_r_ZA": [
+     -88.5,
+     1106.13,
+     -31.54
+    ],
+    "Hip_bone_l_ZA": [
+     20.52,
+     1106.13,
+     -31.54
+    ]
+   },
+   "normals": {
+    "Hip_bone_r_ZA": [
+     0.533,
+     0.755,
+     -0.382
+    ],
+    "Hip_bone_l_ZA": [
+     -0.533,
+     0.755,
+     -0.382
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "hip",
+   "label": "Posterior superior iliac spine (PSIS)",
+   "za": "Posterior superior iliac spine",
+   "bone": "Hip bone",
+   "points": {
+    "Hip_bone_r_ZA": [
+     -71.13,
+     1069.95,
+     -47.57
+    ],
+    "Hip_bone_l_ZA": [
+     3.15,
+     1069.95,
+     -47.57
+    ]
+   },
+   "normals": {
+    "Hip_bone_r_ZA": [
+     0.519,
+     -0.291,
+     -0.804
+    ],
+    "Hip_bone_l_ZA": [
+     -0.519,
+     -0.291,
+     -0.804
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.06,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "hip",
+   "label": "Posterior inferior iliac spine (PIIS)",
+   "za": "Posterior inferior iliac spine",
+   "bone": "Hip bone",
+   "points": {
+    "Hip_bone_r_ZA": [
+     -79.86,
+     1037.81,
+     -24.33
+    ],
+    "Hip_bone_l_ZA": [
+     11.88,
+     1037.81,
+     -24.33
+    ]
+   },
+   "normals": {
+    "Hip_bone_r_ZA": [
+     0.463,
+     -0.517,
+     -0.72
+    ],
+    "Hip_bone_l_ZA": [
+     -0.463,
+     -0.517,
+     -0.72
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.01,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "hip",
+   "label": "Greater sciatic notch",
+   "za": "Greater sciatic notch",
+   "bone": "Hip bone",
+   "points": {
+    "Hip_bone_r_ZA": [
+     -94.42,
+     1031.12,
+     1.58
+    ],
+    "Hip_bone_l_ZA": [
+     26.44,
+     1031.12,
+     1.58
+    ]
+   },
+   "normals": {
+    "Hip_bone_r_ZA": [
+     0.407,
+     -0.43,
+     -0.806
+    ],
+    "Hip_bone_l_ZA": [
+     -0.407,
+     -0.43,
+     -0.806
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.06,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "hip",
+   "label": "External surface of ilium",
+   "za": "Gluteal surface of ilium",
+   "bone": "Hip bone",
+   "points": {
+    "Hip_bone_r_ZA": [
+     -119.66,
+     1059.36,
+     12.87
+    ],
+    "Hip_bone_l_ZA": [
+     51.68,
+     1059.36,
+     12.87
+    ]
+   },
+   "normals": {
+    "Hip_bone_r_ZA": [
+     -0.698,
+     -0.168,
+     -0.696
+    ],
+    "Hip_bone_l_ZA": [
+     0.698,
+     -0.168,
+     -0.696
+    ]
+   },
+   "note": "card: External surface (wing of ilium)",
+   "pointerGapMm": 0.04,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "hip",
+   "label": "Posterior gluteal line",
+   "za": "Posterior gluteal line",
+   "bone": "Hip bone",
+   "points": {
+    "Hip_bone_r_ZA": [
+     -97.25,
+     1074.6,
+     -36.27
+    ],
+    "Hip_bone_l_ZA": [
+     29.27,
+     1074.6,
+     -36.27
+    ]
+   },
+   "normals": {
+    "Hip_bone_r_ZA": [
+     -0.985,
+     -0.169,
+     -0.045
+    ],
+    "Hip_bone_l_ZA": [
+     0.985,
+     -0.169,
+     -0.045
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "hip",
+   "label": "Anterior gluteal line",
+   "za": "Anterior gluteal line",
+   "bone": "Hip bone",
+   "points": {
+    "Hip_bone_r_ZA": [
+     -135.08,
+     1089.03,
+     19.2
+    ],
+    "Hip_bone_l_ZA": [
+     67.1,
+     1089.03,
+     19.2
+    ]
+   },
+   "normals": {
+    "Hip_bone_r_ZA": [
+     -0.557,
+     -0.286,
+     -0.78
+    ],
+    "Hip_bone_l_ZA": [
+     0.557,
+     -0.286,
+     -0.78
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.02,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "hip",
+   "label": "Inferior gluteal line",
+   "za": "Inferior gluteal line",
+   "bone": "Hip bone",
+   "points": {
+    "Hip_bone_r_ZA": [
+     -132.9,
+     1026.59,
+     36.4
+    ],
+    "Hip_bone_l_ZA": [
+     64.92,
+     1026.59,
+     36.4
+    ]
+   },
+   "normals": {
+    "Hip_bone_r_ZA": [
+     -0.946,
+     -0.294,
+     -0.135
+    ],
+    "Hip_bone_l_ZA": [
+     0.946,
+     -0.294,
+     -0.135
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.01,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "hip",
+   "label": "Spine of the ischium",
+   "za": "Ischial spine",
+   "bone": "Hip bone",
+   "points": {
+    "Hip_bone_r_ZA": [
+     -75.49,
+     990.29,
+     -18.55
+    ],
+    "Hip_bone_l_ZA": [
+     7.51,
+     990.29,
+     -18.55
+    ]
+   },
+   "normals": {
+    "Hip_bone_r_ZA": [
+     0.704,
+     0.133,
+     -0.698
+    ],
+    "Hip_bone_l_ZA": [
+     -0.704,
+     0.133,
+     -0.698
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.04,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "hip",
+   "label": "Lesser sciatic notch",
+   "za": "Lesser sciatic notch",
+   "bone": "Hip bone",
+   "points": {
+    "Hip_bone_r_ZA": [
+     -86.48,
+     977.04,
+     -14.88
+    ],
+    "Hip_bone_l_ZA": [
+     18.5,
+     977.04,
+     -14.88
+    ]
+   },
+   "normals": {
+    "Hip_bone_r_ZA": [
+     0.252,
+     0.197,
+     -0.947
+    ],
+    "Hip_bone_l_ZA": [
+     -0.252,
+     0.197,
+     -0.947
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.03,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "hip",
+   "label": "Body of ischium",
+   "za": "Body of ischium",
+   "bone": "Hip bone",
+   "points": {
+    "Hip_bone_r_ZA": [
+     -97.01,
+     957.91,
+     4.6
+    ],
+    "Hip_bone_l_ZA": [
+     29.03,
+     957.91,
+     4.6
+    ]
+   },
+   "normals": {
+    "Hip_bone_r_ZA": [
+     -0.495,
+     -0.044,
+     0.868
+    ],
+    "Hip_bone_l_ZA": [
+     0.495,
+     -0.044,
+     0.868
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.02,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "hip",
+   "label": "Ischial tuberosity",
+   "za": "Ischial tuberosity",
+   "bone": "Hip bone",
+   "points": {
+    "Hip_bone_r_ZA": [
+     -99.82,
+     939.87,
+     -14.09
+    ],
+    "Hip_bone_l_ZA": [
+     31.84,
+     939.87,
+     -14.09
+    ]
+   },
+   "normals": {
+    "Hip_bone_r_ZA": [
+     -0.784,
+     -0.444,
+     -0.433
+    ],
+    "Hip_bone_l_ZA": [
+     0.784,
+     -0.444,
+     -0.433
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.02,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "hip",
+   "label": "Ramus of the ischium",
+   "za": "Ramus of ischium",
+   "bone": "Hip bone",
+   "points": {
+    "Hip_bone_r_ZA": [
+     -76.58,
+     935.09,
+     10.12
+    ],
+    "Hip_bone_l_ZA": [
+     8.6,
+     935.09,
+     10.12
+    ]
+   },
+   "normals": {
+    "Hip_bone_r_ZA": [
+     -0.692,
+     -0.466,
+     0.551
+    ],
+    "Hip_bone_l_ZA": [
+     0.692,
+     -0.466,
+     0.551
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.02,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "hip",
+   "label": "Inferior ramus of the pubis",
+   "za": "Inferior pubic ramus",
+   "bone": "Hip bone",
+   "points": {
+    "Hip_bone_r_ZA": [
+     -52.41,
+     948.67,
+     53.5
+    ],
+    "Hip_bone_l_ZA": [
+     -15.57,
+     948.67,
+     53.5
+    ]
+   },
+   "normals": {
+    "Hip_bone_r_ZA": [
+     -0.673,
+     -0.579,
+     0.461
+    ],
+    "Hip_bone_l_ZA": [
+     0.673,
+     -0.579,
+     0.461
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.03,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "hip",
+   "label": "Body of pubis",
+   "za": "Body of pubis",
+   "bone": "Hip bone",
+   "points": {
+    "Hip_bone_r_ZA": [
+     -83.14,
+     998.99,
+     52.28
+    ],
+    "Hip_bone_l_ZA": [
+     15.16,
+     998.99,
+     52.28
+    ]
+   },
+   "normals": {
+    "Hip_bone_r_ZA": [
+     0.751,
+     0.66,
+     -0.022
+    ],
+    "Hip_bone_l_ZA": [
+     -0.751,
+     0.66,
+     -0.022
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.01,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "hip",
+   "label": "Superior ramus of the pubis",
+   "za": "Superior pubic ramus",
+   "bone": "Hip bone",
+   "points": {
+    "Hip_bone_r_ZA": [
+     -72.2,
+     985.21,
+     64.31
+    ],
+    "Hip_bone_l_ZA": [
+     4.22,
+     985.21,
+     64.31
+    ]
+   },
+   "normals": {
+    "Hip_bone_r_ZA": [
+     0.256,
+     0.736,
+     0.627
+    ],
+    "Hip_bone_l_ZA": [
+     -0.256,
+     0.736,
+     0.627
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.01,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "hip",
+   "label": "Pubic tubercle",
+   "za": "Pubic tubercle",
+   "bone": "Hip bone",
+   "points": {
+    "Hip_bone_r_ZA": [
+     -65.26,
+     971.0,
+     74.41
+    ],
+    "Hip_bone_l_ZA": [
+     -2.72,
+     971.0,
+     74.41
+    ]
+   },
+   "normals": {
+    "Hip_bone_r_ZA": [
+     -0.764,
+     0.065,
+     0.642
+    ],
+    "Hip_bone_l_ZA": [
+     0.764,
+     0.065,
+     0.642
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.02,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "hip",
+   "label": "Pubic crest",
+   "za": "Pubic crest",
+   "bone": "Hip bone",
+   "points": {
+    "Hip_bone_r_ZA": [
+     -57.5,
+     974.94,
+     79.77
+    ],
+    "Hip_bone_l_ZA": [
+     -10.48,
+     974.94,
+     79.77
+    ]
+   },
+   "normals": {
+    "Hip_bone_r_ZA": [
+     -0.387,
+     0.706,
+     0.593
+    ],
+    "Hip_bone_l_ZA": [
+     0.387,
+     0.706,
+     0.593
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.01,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "hip",
+   "label": "Pectineal line (pubis)",
+   "za": "Pecten pubis",
+   "bone": "Hip bone",
+   "points": {
+    "Hip_bone_r_ZA": [
+     -81.38,
+     993.9,
+     57.36
+    ],
+    "Hip_bone_l_ZA": [
+     13.4,
+     993.9,
+     57.36
+    ]
+   },
+   "normals": {
+    "Hip_bone_r_ZA": [
+     0.108,
+     0.694,
+     0.712
+    ],
+    "Hip_bone_l_ZA": [
+     -0.108,
+     0.694,
+     0.712
+    ]
+   },
+   "note": "pectineal line of the pubis = pecten pubis",
+   "pointerGapMm": 0.02,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "hip",
+   "label": "Acetabulum",
+   "za": "Acetabulum",
+   "bone": "Hip bone",
+   "points": {
+    "Hip_bone_r_ZA": [
+     -89.77,
+     994.12,
+     17.41
+    ],
+    "Hip_bone_l_ZA": [
+     21.79,
+     994.12,
+     17.41
+    ]
+   },
+   "normals": {
+    "Hip_bone_r_ZA": [
+     -0.424,
+     -0.607,
+     0.672
+    ],
+    "Hip_bone_l_ZA": [
+     0.424,
+     -0.607,
+     0.672
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.02,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "sacrum",
+   "label": "Spinous processes (median sacral crest)",
+   "za": "Median sacral crest",
+   "bone": "Sacrum",
+   "points": {
+    "Sacrum_ZA": [
+     -34.03,
+     1056.32,
+     -43.63
+    ]
+   },
+   "normals": {
+    "Sacrum_ZA": [
+     -0.33,
+     0.194,
+     -0.924
+    ]
+   },
+   "note": "fused spinous processes",
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": null
+  },
+  {
+   "card": "sacrum",
+   "label": "Sacroiliac articulation (sacrum)",
+   "za": "Auricular surface of sacrum",
+   "bone": "Sacrum",
+   "points": {
+    "Sacrum_ZA": [
+     20.37,
+     1056.31,
+     2.08
+    ]
+   },
+   "normals": {
+    "Sacrum_ZA": [
+     0.572,
+     -0.178,
+     -0.801
+    ]
+   },
+   "note": "the sacrum's side of the joint",
+   "pointerGapMm": 0.03,
+   "mirrorSnapMm": null
+  },
+  {
+   "card": "sacrum",
+   "label": "Foramina",
+   "za": "Anterior sacral foramina",
+   "bone": "Sacrum",
+   "points": {
+    "Sacrum_ZA": [
+     -53.82,
+     1026.12,
+     -43.08
+    ]
+   },
+   "normals": {
+    "Sacrum_ZA": [
+     0.654,
+     0.311,
+     0.689
+    ]
+   },
+   "note": "anterior (pelvic) foramina",
+   "pointerGapMm": 5.61,
+   "mirrorSnapMm": null
+  },
+  {
+   "card": "femur",
+   "label": "Head",
+   "za": "Head of femur",
+   "bone": "Femur",
+   "points": {
+    "Femur_r_ZA": [
+     -106.61,
+     1004.7,
+     32.07
+    ],
+    "Femur_l_ZA": [
+     38.63,
+     1004.7,
+     32.07
+    ]
+   },
+   "normals": {
+    "Femur_r_ZA": [
+     0.356,
+     0.922,
+     0.15
+    ],
+    "Femur_l_ZA": [
+     -0.356,
+     0.922,
+     0.15
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.01,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "femur",
+   "label": "Fovea of the head",
+   "za": "Fovea for ligament of head of femur",
+   "bone": "Femur",
+   "points": {
+    "Femur_r_ZA": [
+     -96.77,
+     986.62,
+     22.55
+    ],
+    "Femur_l_ZA": [
+     28.79,
+     986.62,
+     22.55
+    ]
+   },
+   "normals": {
+    "Femur_r_ZA": [
+     0.668,
+     0.737,
+     0.104
+    ],
+    "Femur_l_ZA": [
+     -0.668,
+     0.737,
+     0.104
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.01,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "femur",
+   "label": "Neck",
+   "za": "Neck of femur",
+   "bone": "Femur",
+   "points": {
+    "Femur_r_ZA": [
+     -114.59,
+     958.02,
+     29.55
+    ],
+    "Femur_l_ZA": [
+     46.61,
+     958.02,
+     29.55
+    ]
+   },
+   "normals": {
+    "Femur_r_ZA": [
+     0.571,
+     -0.634,
+     0.521
+    ],
+    "Femur_l_ZA": [
+     -0.571,
+     -0.634,
+     0.521
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "femur",
+   "label": "Greater trochanter",
+   "za": "Greater trochanter",
+   "bone": "Femur",
+   "points": {
+    "Femur_r_ZA": [
+     -175.31,
+     967.13,
+     17.9
+    ],
+    "Femur_l_ZA": [
+     107.33,
+     967.13,
+     17.9
+    ]
+   },
+   "normals": {
+    "Femur_r_ZA": [
+     -0.948,
+     0.309,
+     -0.083
+    ],
+    "Femur_l_ZA": [
+     0.948,
+     0.309,
+     -0.083
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.02,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "femur",
+   "label": "Lesser trochanter",
+   "za": "Lesser trochanter",
+   "bone": "Femur",
+   "points": {
+    "Femur_r_ZA": [
+     -121.19,
+     912.82,
+     7.02
+    ],
+    "Femur_l_ZA": [
+     53.21,
+     912.82,
+     7.02
+    ]
+   },
+   "normals": {
+    "Femur_r_ZA": [
+     0.795,
+     -0.433,
+     -0.425
+    ],
+    "Femur_l_ZA": [
+     -0.795,
+     -0.433,
+     -0.425
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.01,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "femur",
+   "label": "Intertrochanteric line",
+   "za": "Intertrochanteric line",
+   "bone": "Femur",
+   "points": {
+    "Femur_r_ZA": [
+     -134.8,
+     950.63,
+     34.09
+    ],
+    "Femur_l_ZA": [
+     66.82,
+     950.63,
+     34.09
+    ]
+   },
+   "normals": {
+    "Femur_r_ZA": [
+     0.105,
+     -0.138,
+     0.985
+    ],
+    "Femur_l_ZA": [
+     -0.105,
+     -0.138,
+     0.985
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.02,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "femur",
+   "label": "Shaft",
+   "za": "Body of femur",
+   "bone": "Femur",
+   "points": {
+    "Femur_r_ZA": [
+     -145.12,
+     798.85,
+     34.46
+    ],
+    "Femur_l_ZA": [
+     77.14,
+     798.85,
+     34.46
+    ]
+   },
+   "normals": {
+    "Femur_r_ZA": [
+     -0.964,
+     -0.097,
+     0.247
+    ],
+    "Femur_l_ZA": [
+     0.964,
+     -0.097,
+     0.247
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.01,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "femur",
+   "label": "Lateral condyle",
+   "za": "Lateral condyle of femur",
+   "bone": "Femur",
+   "points": {
+    "Femur_r_ZA": [
+     -131.3,
+     574.93,
+     -13.96
+    ],
+    "Femur_l_ZA": [
+     63.32,
+     574.93,
+     -13.96
+    ]
+   },
+   "normals": {
+    "Femur_r_ZA": [
+     0.126,
+     -0.827,
+     -0.548
+    ],
+    "Femur_l_ZA": [
+     -0.126,
+     -0.827,
+     -0.548
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.01,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "femur",
+   "label": "Lateral epicondyle",
+   "za": "Lateral epicondyle of femur",
+   "bone": "Femur",
+   "points": {
+    "Femur_r_ZA": [
+     -146.23,
+     594.33,
+     3.34
+    ],
+    "Femur_l_ZA": [
+     78.25,
+     594.33,
+     3.34
+    ]
+   },
+   "normals": {
+    "Femur_r_ZA": [
+     -0.979,
+     0.118,
+     0.167
+    ],
+    "Femur_l_ZA": [
+     0.979,
+     0.118,
+     0.167
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.03,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "femur",
+   "label": "Medial condyle",
+   "za": "Medial condyle of femur",
+   "bone": "Femur",
+   "points": {
+    "Femur_r_ZA": [
+     -83.96,
+     570.4,
+     -13.9
+    ],
+    "Femur_l_ZA": [
+     15.98,
+     570.4,
+     -13.9
+    ]
+   },
+   "normals": {
+    "Femur_r_ZA": [
+     0.005,
+     -0.869,
+     -0.494
+    ],
+    "Femur_l_ZA": [
+     -0.005,
+     -0.869,
+     -0.494
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.01,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "femur",
+   "label": "Medial epicondyle",
+   "za": "Medial epicondyle of femur",
+   "bone": "Femur",
+   "points": {
+    "Femur_r_ZA": [
+     -66.66,
+     587.1,
+     -1.89
+    ],
+    "Femur_l_ZA": [
+     -1.32,
+     587.1,
+     -1.89
+    ]
+   },
+   "normals": {
+    "Femur_r_ZA": [
+     0.999,
+     -0.049,
+     -0.017
+    ],
+    "Femur_l_ZA": [
+     -0.999,
+     -0.049,
+     -0.017
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.04,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "femur",
+   "label": "Patellar surface",
+   "za": "Patellar surface of femur",
+   "bone": "Femur",
+   "points": {
+    "Femur_r_ZA": [
+     -112.65,
+     585.18,
+     27.96
+    ],
+    "Femur_l_ZA": [
+     44.67,
+     585.18,
+     27.96
+    ]
+   },
+   "normals": {
+    "Femur_r_ZA": [
+     0.302,
+     -0.606,
+     0.736
+    ],
+    "Femur_l_ZA": [
+     -0.302,
+     -0.606,
+     0.736
+    ]
+   },
+   "note": "card: articular surface of the patellofemoral joint",
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "femur",
+   "label": "Intertrochanteric crest",
+   "za": "Intertrochanteric crest",
+   "bone": "Femur",
+   "points": {
+    "Femur_r_ZA": [
+     -147.27,
+     935.22,
+     -2.77
+    ],
+    "Femur_l_ZA": [
+     79.29,
+     935.22,
+     -2.77
+    ]
+   },
+   "normals": {
+    "Femur_r_ZA": [
+     0.205,
+     -0.22,
+     -0.954
+    ],
+    "Femur_l_ZA": [
+     -0.205,
+     -0.22,
+     -0.954
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.05,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "femur",
+   "label": "Quadrate tubercle",
+   "za": "Quadrate tubercle",
+   "bone": "Femur",
+   "points": {
+    "Femur_r_ZA": [
+     -147.59,
+     945.11,
+     -5.47
+    ],
+    "Femur_l_ZA": [
+     79.61,
+     945.11,
+     -5.47
+    ]
+   },
+   "normals": {
+    "Femur_r_ZA": [
+     0.09,
+     -0.008,
+     -0.996
+    ],
+    "Femur_l_ZA": [
+     -0.09,
+     -0.008,
+     -0.996
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.02,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "femur",
+   "label": "Gluteal tuberosity",
+   "za": "Gluteal tuberosity",
+   "bone": "Femur",
+   "points": {
+    "Femur_r_ZA": [
+     -145.87,
+     900.88,
+     6.96
+    ],
+    "Femur_l_ZA": [
+     77.89,
+     900.88,
+     6.96
+    ]
+   },
+   "normals": {
+    "Femur_r_ZA": [
+     -0.081,
+     -0.247,
+     -0.966
+    ],
+    "Femur_l_ZA": [
+     0.081,
+     -0.247,
+     -0.966
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.01,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "femur",
+   "label": "Pectineal line",
+   "za": "Pectineal line of femur",
+   "bone": "Femur",
+   "points": {
+    "Femur_r_ZA": [
+     -133.58,
+     892.7,
+     11.58
+    ],
+    "Femur_l_ZA": [
+     65.6,
+     892.7,
+     11.58
+    ]
+   },
+   "normals": {
+    "Femur_r_ZA": [
+     0.593,
+     -0.111,
+     -0.798
+    ],
+    "Femur_l_ZA": [
+     -0.593,
+     -0.111,
+     -0.798
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.06,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "femur",
+   "label": "Medial supracondylar ridge",
+   "za": "Lateral supracondylar line",
+   "bone": "Femur",
+   "points": {
+    "Femur_r_ZA": [
+     -88.07,
+     627.26,
+     5.58
+    ],
+    "Femur_l_ZA": [
+     20.09,
+     627.26,
+     5.58
+    ]
+   },
+   "normals": {
+    "Femur_r_ZA": [
+     0.602,
+     0.548,
+     -0.581
+    ],
+    "Femur_l_ZA": [
+     -0.602,
+     0.548,
+     -0.581
+    ]
+   },
+   "note": "Z-Anatomy labels swapped; point checked against the adductor tubercle",
+   "pointerGapMm": 0.02,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "femur",
+   "label": "Lateral supracondylar ridge",
+   "za": "Medial supracondylar line",
+   "bone": "Femur",
+   "points": {
+    "Femur_r_ZA": [
+     -133.49,
+     625.59,
+     3.92
+    ],
+    "Femur_l_ZA": [
+     65.51,
+     625.59,
+     3.92
+    ]
+   },
+   "normals": {
+    "Femur_r_ZA": [
+     -0.733,
+     0.43,
+     -0.527
+    ],
+    "Femur_l_ZA": [
+     0.733,
+     0.43,
+     -0.527
+    ]
+   },
+   "note": "Z-Anatomy labels swapped; point checked against the lateral epicondyle",
+   "pointerGapMm": 0.01,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "femur",
+   "label": "Popliteal surface",
+   "za": "Popliteal surface of femur",
+   "bone": "Femur",
+   "points": {
+    "Femur_r_ZA": [
+     -113.52,
+     638.84,
+     5.76
+    ],
+    "Femur_l_ZA": [
+     45.54,
+     638.84,
+     5.76
+    ]
+   },
+   "normals": {
+    "Femur_r_ZA": [
+     0.302,
+     0.139,
+     -0.943
+    ],
+    "Femur_l_ZA": [
+     -0.302,
+     0.139,
+     -0.943
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.01,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "femur",
+   "label": "Adductor tubercle",
+   "za": "Adductor tubercle",
+   "bone": "Femur",
+   "points": {
+    "Femur_r_ZA": [
+     -68.98,
+     610.07,
+     0.54
+    ],
+    "Femur_l_ZA": [
+     1.0,
+     610.07,
+     0.54
+    ]
+   },
+   "normals": {
+    "Femur_r_ZA": [
+     0.554,
+     0.252,
+     0.793
+    ],
+    "Femur_l_ZA": [
+     -0.554,
+     0.252,
+     0.793
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.74,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "femur",
+   "label": "Intercondylar fossa",
+   "za": "Intercondylar fossa",
+   "bone": "Femur",
+   "points": {
+    "Femur_r_ZA": [
+     -107.07,
+     591.54,
+     -3.0
+    ],
+    "Femur_l_ZA": [
+     39.09,
+     591.54,
+     -3.0
+    ]
+   },
+   "normals": {
+    "Femur_r_ZA": [
+     -0.04,
+     -0.42,
+     -0.906
+    ],
+    "Femur_l_ZA": [
+     0.04,
+     -0.42,
+     -0.906
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.05,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "tibia",
+   "label": "Intercondylar eminence",
+   "za": "Intercondylar eminence",
+   "bone": "Tibia",
+   "points": {
+    "Tibia_r_ZA": [
+     -102.28,
+     566.05,
+     -5.08
+    ],
+    "Tibia_l_ZA": [
+     34.3,
+     566.05,
+     -5.08
+    ]
+   },
+   "normals": {
+    "Tibia_r_ZA": [
+     -0.004,
+     0.999,
+     -0.054
+    ],
+    "Tibia_l_ZA": [
+     0.004,
+     0.999,
+     -0.054
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.04,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "tibia",
+   "label": "Medial condyle",
+   "za": "Medial condyle of tibia",
+   "bone": "Tibia",
+   "points": {
+    "Tibia_r_ZA": [
+     -72.94,
+     546.78,
+     -9.67
+    ],
+    "Tibia_l_ZA": [
+     4.96,
+     546.78,
+     -9.67
+    ]
+   },
+   "normals": {
+    "Tibia_r_ZA": [
+     0.934,
+     -0.333,
+     -0.132
+    ],
+    "Tibia_l_ZA": [
+     -0.934,
+     -0.333,
+     -0.132
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.03,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "tibia",
+   "label": "Lateral condyle",
+   "za": "Lateral condyle of tibia",
+   "bone": "Tibia",
+   "points": {
+    "Tibia_r_ZA": [
+     -143.98,
+     558.06,
+     4.13
+    ],
+    "Tibia_l_ZA": [
+     76.0,
+     558.06,
+     4.13
+    ]
+   },
+   "normals": {
+    "Tibia_r_ZA": [
+     -0.994,
+     0.076,
+     0.084
+    ],
+    "Tibia_l_ZA": [
+     0.994,
+     0.076,
+     0.084
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.01,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "tibia",
+   "label": "Tibial tuberosity",
+   "za": "Tibial tuberosity",
+   "bone": "Tibia",
+   "points": {
+    "Tibia_r_ZA": [
+     -119.63,
+     534.79,
+     36.24
+    ],
+    "Tibia_l_ZA": [
+     51.65,
+     534.79,
+     36.24
+    ]
+   },
+   "normals": {
+    "Tibia_r_ZA": [
+     -0.211,
+     0.221,
+     0.952
+    ],
+    "Tibia_l_ZA": [
+     0.211,
+     0.221,
+     0.952
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.02,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "tibia",
+   "label": "Gerdy's tubercle",
+   "za": "Tubercle of iliotibial tract",
+   "bone": "Tibia",
+   "points": {
+    "Tibia_r_ZA": [
+     -128.59,
+     527.91,
+     19.85
+    ],
+    "Tibia_l_ZA": [
+     60.61,
+     527.91,
+     19.85
+    ]
+   },
+   "normals": {
+    "Tibia_r_ZA": [
+     -0.963,
+     -0.215,
+     0.164
+    ],
+    "Tibia_l_ZA": [
+     0.963,
+     -0.215,
+     0.164
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.01,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "tibia",
+   "label": "Anterior border",
+   "za": "Anterior border of tibia",
+   "bone": "Tibia",
+   "points": {
+    "Tibia_r_ZA": [
+     -116.94,
+     456.71,
+     30.87
+    ],
+    "Tibia_l_ZA": [
+     48.96,
+     456.71,
+     30.87
+    ]
+   },
+   "normals": {
+    "Tibia_r_ZA": [
+     -0.205,
+     -0.098,
+     0.974
+    ],
+    "Tibia_l_ZA": [
+     0.205,
+     -0.098,
+     0.974
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.02,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "tibia",
+   "label": "Interosseous crest",
+   "za": "Interosseous border of tibia",
+   "bone": "Tibia",
+   "points": {
+    "Tibia_r_ZA": [
+     -120.51,
+     429.77,
+     1.81
+    ],
+    "Tibia_l_ZA": [
+     52.53,
+     429.77,
+     1.81
+    ]
+   },
+   "normals": {
+    "Tibia_r_ZA": [
+     -0.809,
+     0.009,
+     -0.588
+    ],
+    "Tibia_l_ZA": [
+     0.809,
+     0.009,
+     -0.588
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.03,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "tibia",
+   "label": "Shaft",
+   "za": "Body of tibia",
+   "bone": "Tibia",
+   "points": {
+    "Tibia_r_ZA": [
+     -105.37,
+     403.13,
+     16.62
+    ],
+    "Tibia_l_ZA": [
+     37.39,
+     403.13,
+     16.62
+    ]
+   },
+   "normals": {
+    "Tibia_r_ZA": [
+     0.764,
+     -0.055,
+     0.643
+    ],
+    "Tibia_l_ZA": [
+     -0.764,
+     -0.055,
+     0.643
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.01,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "tibia",
+   "label": "Medial malleolus",
+   "za": "Medial malleolus",
+   "bone": "Tibia",
+   "points": {
+    "Tibia_r_ZA": [
+     -78.69,
+     235.38,
+     -4.19
+    ],
+    "Tibia_l_ZA": [
+     10.71,
+     235.38,
+     -4.19
+    ]
+   },
+   "normals": {
+    "Tibia_r_ZA": [
+     0.977,
+     0.183,
+     0.113
+    ],
+    "Tibia_l_ZA": [
+     -0.977,
+     0.183,
+     0.113
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "tibia",
+   "label": "Medial facet (articular surface)",
+   "za": "Articular surface of medial condyle",
+   "bone": "Tibia",
+   "points": {
+    "Tibia_r_ZA": [
+     -86.06,
+     557.32,
+     -5.28
+    ],
+    "Tibia_l_ZA": [
+     18.08,
+     557.32,
+     -5.28
+    ]
+   },
+   "normals": {
+    "Tibia_r_ZA": [
+     0.216,
+     0.968,
+     -0.128
+    ],
+    "Tibia_l_ZA": [
+     -0.216,
+     0.968,
+     -0.128
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.03,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "tibia",
+   "label": "Lateral facet (articular surface)",
+   "za": "Superior articular surface of lateral condyle",
+   "bone": "Tibia",
+   "points": {
+    "Tibia_r_ZA": [
+     -122.1,
+     564.58,
+     6.77
+    ],
+    "Tibia_l_ZA": [
+     54.12,
+     564.58,
+     6.77
+    ]
+   },
+   "normals": {
+    "Tibia_r_ZA": [
+     -0.186,
+     0.977,
+     -0.106
+    ],
+    "Tibia_l_ZA": [
+     0.186,
+     0.977,
+     -0.106
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.01,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "tibia",
+   "label": "Anterior intercondylar area",
+   "za": "Anterior intercondylar area",
+   "bone": "Tibia",
+   "points": {
+    "Tibia_r_ZA": [
+     -98.65,
+     565.99,
+     12.09
+    ],
+    "Tibia_l_ZA": [
+     30.67,
+     565.99,
+     12.09
+    ]
+   },
+   "normals": {
+    "Tibia_r_ZA": [
+     -0.254,
+     0.95,
+     0.182
+    ],
+    "Tibia_l_ZA": [
+     0.254,
+     0.95,
+     0.182
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "tibia",
+   "label": "Posterior intercondylar area",
+   "za": "Posterior intercondylar area",
+   "bone": "Tibia",
+   "points": {
+    "Tibia_r_ZA": [
+     -103.54,
+     559.79,
+     -14.66
+    ],
+    "Tibia_l_ZA": [
+     35.56,
+     559.79,
+     -14.66
+    ]
+   },
+   "normals": {
+    "Tibia_r_ZA": [
+     0.191,
+     0.539,
+     -0.82
+    ],
+    "Tibia_l_ZA": [
+     -0.191,
+     0.539,
+     -0.82
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "tibia",
+   "label": "Superior fibular articulation",
+   "za": "Fibular articular facet",
+   "bone": "Tibia",
+   "points": {
+    "Tibia_r_ZA": [
+     -136.43,
+     542.39,
+     -3.49
+    ],
+    "Tibia_l_ZA": [
+     68.45,
+     542.39,
+     -3.49
+    ]
+   },
+   "normals": {
+    "Tibia_r_ZA": [
+     -0.709,
+     -0.594,
+     -0.379
+    ],
+    "Tibia_l_ZA": [
+     0.709,
+     -0.594,
+     -0.379
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.02,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "tibia",
+   "label": "Soleal line",
+   "za": "Soleal line",
+   "bone": "Tibia",
+   "points": {
+    "Tibia_r_ZA": [
+     -107.2,
+     500.73,
+     -5.03
+    ],
+    "Tibia_l_ZA": [
+     39.22,
+     500.73,
+     -5.03
+    ]
+   },
+   "normals": {
+    "Tibia_r_ZA": [
+     -0.179,
+     -0.049,
+     -0.983
+    ],
+    "Tibia_l_ZA": [
+     0.179,
+     -0.049,
+     -0.983
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.01,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "tibia",
+   "label": "Inferior fibular articulation",
+   "za": "Fibular notch",
+   "bone": "Tibia",
+   "points": {
+    "Tibia_r_ZA": [
+     -123.1,
+     244.09,
+     -10.17
+    ],
+    "Tibia_l_ZA": [
+     55.12,
+     244.09,
+     -10.17
+    ]
+   },
+   "normals": {
+    "Tibia_r_ZA": [
+     -0.965,
+     0.005,
+     0.262
+    ],
+    "Tibia_l_ZA": [
+     0.965,
+     0.005,
+     0.262
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.02,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "tibia",
+   "label": "Facet for the talus (tibia)",
+   "za": "Inferior articular surface of tibia",
+   "bone": "Tibia",
+   "points": {
+    "Tibia_r_ZA": [
+     -103.99,
+     232.83,
+     -8.97
+    ],
+    "Tibia_l_ZA": [
+     36.01,
+     232.83,
+     -8.97
+    ]
+   },
+   "normals": {
+    "Tibia_r_ZA": [
+     -0.015,
+     -0.999,
+     -0.041
+    ],
+    "Tibia_l_ZA": [
+     0.015,
+     -0.999,
+     -0.041
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.02,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "fibula",
+   "label": "Head",
+   "za": "Head of fibula",
+   "bone": "Fibula",
+   "points": {
+    "Fibula_r_ZA": [
+     -155.03,
+     535.65,
+     -7.08
+    ],
+    "Fibula_l_ZA": [
+     87.05,
+     535.65,
+     -7.08
+    ]
+   },
+   "normals": {
+    "Fibula_r_ZA": [
+     -0.994,
+     -0.108,
+     -0.023
+    ],
+    "Fibula_l_ZA": [
+     0.994,
+     -0.108,
+     -0.023
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.03,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "fibula",
+   "label": "Styloid process",
+   "za": "Apex of head of fibula",
+   "bone": "Fibula",
+   "points": {
+    "Fibula_r_ZA": [
+     -143.01,
+     553.6,
+     -12.54
+    ],
+    "Fibula_l_ZA": [
+     75.03,
+     553.6,
+     -12.54
+    ]
+   },
+   "normals": {
+    "Fibula_r_ZA": [
+     -0.045,
+     0.766,
+     0.641
+    ],
+    "Fibula_l_ZA": [
+     0.045,
+     0.766,
+     0.641
+    ]
+   },
+   "note": "styloid process = apex of the head",
+   "pointerGapMm": 0.03,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "fibula",
+   "label": "Interosseous crest",
+   "za": "Interosseous crest of fibula",
+   "bone": "Fibula",
+   "points": {
+    "Fibula_r_ZA": [
+     -129.27,
+     357.92,
+     -14.9
+    ],
+    "Fibula_l_ZA": [
+     61.29,
+     357.92,
+     -14.9
+    ]
+   },
+   "normals": {
+    "Fibula_r_ZA": [
+     0.824,
+     0.051,
+     -0.564
+    ],
+    "Fibula_l_ZA": [
+     -0.824,
+     0.051,
+     -0.564
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.01,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "fibula",
+   "label": "Shaft",
+   "za": "Body of fibula",
+   "bone": "Fibula",
+   "points": {
+    "Fibula_r_ZA": [
+     -143.02,
+     429.62,
+     -10.56
+    ],
+    "Fibula_l_ZA": [
+     75.04,
+     429.62,
+     -10.56
+    ]
+   },
+   "normals": {
+    "Fibula_r_ZA": [
+     -0.834,
+     -0.038,
+     0.551
+    ],
+    "Fibula_l_ZA": [
+     0.834,
+     -0.038,
+     0.551
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.01,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "fibula",
+   "label": "Lateral malleolus",
+   "za": "Lateral malleolus",
+   "bone": "Fibula",
+   "points": {
+    "Fibula_r_ZA": [
+     -139.21,
+     215.38,
+     -16.17
+    ],
+    "Fibula_l_ZA": [
+     71.23,
+     215.38,
+     -16.17
+    ]
+   },
+   "normals": {
+    "Fibula_r_ZA": [
+     -0.989,
+     -0.085,
+     0.121
+    ],
+    "Fibula_l_ZA": [
+     0.989,
+     -0.085,
+     0.121
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.02,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "fibula",
+   "label": "Facet for the talus (fibula)",
+   "za": "Articular facet of lateral malleolus",
+   "bone": "Fibula",
+   "points": {
+    "Fibula_r_ZA": [
+     -121.23,
+     233.59,
+     -14.82
+    ],
+    "Fibula_l_ZA": [
+     53.25,
+     233.59,
+     -14.82
+    ]
+   },
+   "normals": {
+    "Fibula_r_ZA": [
+     0.971,
+     0.217,
+     0.098
+    ],
+    "Fibula_l_ZA": [
+     -0.971,
+     0.217,
+     0.098
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "foot",
+   "label": "Calcaneal tuberosity",
+   "za": "Calcaneal tuberosity",
+   "bone": "Calcaneus",
+   "points": {
+    "Calcaneus_r_ZA": [
+     -100.12,
+     172.15,
+     -52.51
+    ],
+    "Calcaneus_l_ZA": [
+     32.14,
+     172.15,
+     -52.51
+    ]
+   },
+   "normals": {
+    "Calcaneus_r_ZA": [
+     0.476,
+     -0.286,
+     -0.831
+    ],
+    "Calcaneus_l_ZA": [
+     -0.476,
+     -0.286,
+     -0.831
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "foot",
+   "label": "Medial calcaneal tubercle",
+   "za": "Medial process of calcaneal tuberosity",
+   "bone": "Calcaneus",
+   "points": {
+    "Calcaneus_r_ZA": [
+     -96.14,
+     163.09,
+     -24.72
+    ],
+    "Calcaneus_l_ZA": [
+     28.16,
+     163.09,
+     -24.72
+    ]
+   },
+   "normals": {
+    "Calcaneus_r_ZA": [
+     0.583,
+     -0.57,
+     0.579
+    ],
+    "Calcaneus_l_ZA": [
+     -0.583,
+     -0.57,
+     0.579
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "foot",
+   "label": "Lateral calcaneal tubercle",
+   "za": "Lateral process of calcaneal tuberosity",
+   "bone": "Calcaneus",
+   "points": {
+    "Calcaneus_r_ZA": [
+     -115.32,
+     161.25,
+     -39.08
+    ],
+    "Calcaneus_l_ZA": [
+     47.34,
+     161.25,
+     -39.08
+    ]
+   },
+   "normals": {
+    "Calcaneus_r_ZA": [
+     -0.303,
+     -0.809,
+     -0.503
+    ],
+    "Calcaneus_l_ZA": [
+     0.303,
+     -0.809,
+     -0.503
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "foot",
+   "label": "Sustentaculum tali",
+   "za": "Sustentaculum tali",
+   "bone": "Calcaneus",
+   "points": {
+    "Calcaneus_r_ZA": [
+     -91.43,
+     198.43,
+     -0.37
+    ],
+    "Calcaneus_l_ZA": [
+     23.45,
+     198.43,
+     -0.37
+    ]
+   },
+   "normals": {
+    "Calcaneus_r_ZA": [
+     0.826,
+     -0.019,
+     0.563
+    ],
+    "Calcaneus_l_ZA": [
+     -0.826,
+     -0.019,
+     0.563
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "foot",
+   "label": "Navicular tuberosity",
+   "za": "Tuberosity of navicular bone",
+   "bone": "Navicular bone",
+   "points": {
+    "Navicular_bone_r_ZA": [
+     -91.34,
+     196.86,
+     26.31
+    ],
+    "Navicular_bone_l_ZA": [
+     23.36,
+     196.86,
+     26.31
+    ]
+   },
+   "normals": {
+    "Navicular_bone_r_ZA": [
+     0.087,
+     -0.861,
+     -0.501
+    ],
+    "Navicular_bone_l_ZA": [
+     -0.087,
+     -0.861,
+     -0.501
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "foot",
+   "label": "Peroneal groove of cuboid",
+   "za": "Groove for tendon of fibularis longus muscle of cuboid bone",
+   "bone": "Cuboid bone",
+   "points": {
+    "Cuboid_bone_r_ZA": [
+     -133.46,
+     180.05,
+     19.68
+    ],
+    "Cuboid_bone_l_ZA": [
+     65.48,
+     180.05,
+     19.68
+    ]
+   },
+   "normals": {
+    "Cuboid_bone_r_ZA": [
+     0.09,
+     -0.985,
+     -0.148
+    ],
+    "Cuboid_bone_l_ZA": [
+     -0.09,
+     -0.985,
+     -0.148
+    ]
+   },
+   "note": null,
+   "pointerGapMm": 0.0,
+   "mirrorSnapMm": 0.0
+  }
+ ]
+}

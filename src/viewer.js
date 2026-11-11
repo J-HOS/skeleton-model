@@ -6,12 +6,12 @@
  * this boundary is what lets every other module be tested in plain Node.
  */
 
-import * as THREE from '../vendor/three.module.js?v=ebc8e2db2873';
-import { GLTFLoader } from '../vendor/GLTFLoader.js?v=ebc8e2db2873';
-import { OrbitControls } from './controls.js?v=ebc8e2db2873';
-import { BONE_SURFACE_COLORS, COLORS, LAYERS, LIMITS, MODEL_FIT_UNITS, MUSCLE_SECTION_COLORS, PATHS, PEEL, RENDER } from './config.js?v=ebc8e2db2873';
-import { assertLooksLikeGLB, fetchLocal } from './security.js?v=ebc8e2db2873';
-import { attachmentWeight, axialParameter, axialTaper, boneSurfaceKey, classifyLayer, findMuscleRecord, hiddenByIsolation, isPeeled, recordAliases, resolvesToContent, scaleChannels, selectionGroup, varyLightness, viewOffsetFor, fitDistance } from './anatomy.js?v=ebc8e2db2873';
+import * as THREE from '../vendor/three.module.js?v=6a22cbdfe9ce';
+import { GLTFLoader } from '../vendor/GLTFLoader.js?v=6a22cbdfe9ce';
+import { OrbitControls } from './controls.js?v=6a22cbdfe9ce';
+import { BONE_SURFACE_COLORS, COLORS, LAYERS, LIMITS, MODEL_FIT_UNITS, MUSCLE_SECTION_COLORS, PATHS, PEEL, RENDER } from './config.js?v=6a22cbdfe9ce';
+import { assertLooksLikeGLB, fetchLocal } from './security.js?v=6a22cbdfe9ce';
+import { attachmentWeight, axialParameter, axialTaper, boneSurfaceKey, classifyLayer, findMuscleRecord, hiddenByIsolation, isPeeled, recordAliases, resolvesToContent, scaleChannels, selectionGroup, varyLightness, viewOffsetFor, fitDistance } from './anatomy.js?v=6a22cbdfe9ce';
 
 const TAP_MOVE_TOLERANCE_PX = 8; // beyond this, the gesture was a drag, not a tap
 
@@ -220,8 +220,27 @@ export class Viewer {
   _animate = () => {
     requestAnimationFrame(this._animate);
     this._stepViewInset();
+    this._sizeMarkers();
     this.renderer.render(this.scene, this.camera);
   };
+
+  /**
+   * Keep landmark markers the same size on screen at any zoom (2026-11-04):
+   * a fixed size in millimetres was a speck on a phone with the whole femur
+   * in view, and would cover the bone when zoomed in.
+   */
+  _sizeMarkers() {
+    const group = this._markerGroup;
+    if (!group || !group.children.length || !group.parent) return;
+    const rootScale = this._modelRoot ? this._modelRoot.scale.x : 1;
+    const perPx = 2 * Math.tan((this.camera.fov * Math.PI) / 360) / window.innerHeight;
+    const world = this._markerWorld || (this._markerWorld = new THREE.Vector3());
+    for (const dot of group.children) {
+      dot.getWorldPosition(world);
+      const d = world.distanceTo(this.camera.position);
+      dot.scale.setScalar((d * perPx * dot.userData.px) / rootScale);
+    }
+  }
 
   _onPointerUp = (event) => {
     const down = this._downAt;
@@ -238,7 +257,22 @@ export class Viewer {
     const hit = this.raycaster
       .intersectObjects(this.selectable, false)
       .find((h) => h.object.visible && (!this.tapLayer || h.object.userData.layer === this.tapLayer));
-    if (hit) this._selectHandler(hit.object.userData.structureId);
+    if (!hit) return;
+    // Where on the mesh, in model space (the .glb's own coordinates), for
+    // landmark answers. Every node has an identity transform, so the model
+    // root's local space is the file's space.
+    const local = this._modelRoot ? this._modelRoot.worldToLocal(hit.point.clone()) : hit.point;
+    // Which way the tapped surface faces. Turned toward the camera rather than
+    // trusting triangle winding: the left-side bones are mirrored copies whose
+    // triangles wind the other way (see the 2026-10-14 X-ray fix). The model
+    // root has no rotation, so a world direction is a model-space direction.
+    let normal = null;
+    if (hit.face) {
+      const n = hit.face.normal.clone().transformDirection(hit.object.matrixWorld);
+      if (n.dot(this.raycaster.ray.direction) > 0) n.negate();
+      normal = [n.x, n.y, n.z];
+    }
+    this._selectHandler(hit.object.userData.structureId, { point: [local.x, local.y, local.z], normal });
   };
 
   /**
@@ -584,7 +618,9 @@ export class Viewer {
         mesh.userData.layer, this.selectedIds.has(mesh.userData.structureId), selectionHasMuscle);
       // Study scope (2026-11-02): during a muscle Find-it round only the
       // region's muscles are shown, so the user taps among the right set.
-      const outOfScope = this.studyScope && mesh.userData.layer === 'muscle'
+      // Landmark rounds (2026-11-04) scope the skeleton instead: only the
+      // bone card's bones are shown.
+      const outOfScope = this.studyScope && mesh.userData.layer === (this.studyScopeLayer || 'muscle')
         && !this.studyScope.has(mesh.userData.structureId);
       mesh.visible = layerOn && !peeled && !isolated && !outOfScope;
     }
@@ -595,10 +631,73 @@ export class Viewer {
     this.tapLayer = layer || null;
   }
 
-  /** Study rounds: show only these muscle ids (a Set), or null for all. */
-  setStudyScope(ids) {
+  /** Study rounds: show only these ids of `layer` (muscle by default), or null for all. */
+  setStudyScope(ids, layer = 'muscle') {
     this.studyScope = ids ? new Set(ids) : null;
+    this.studyScopeLayer = layer;
     this._applyVisibility();
+  }
+
+  /**
+   * Landmark markers (2026-11-04). `markers` is [{ point: [x, y, z], kind }]
+   * in model space (the .glb's own coordinates, about 1 mm per unit); kind is
+   * 'target' (asked / correct spot), 'tap' (where the user tapped) or 'miss'.
+   * Drawn on top of the bone so they show from any angle. [] clears them.
+   */
+  setMarkers(markers = []) {
+    if (!this._markerGroup) {
+      this._markerGroup = new THREE.Group();
+      this._markerGeometry = new THREE.SphereGeometry(1, 20, 14);
+      this._markerMaterials = {
+        target: new THREE.MeshBasicMaterial({ color: 0x22d3ee, depthTest: false, transparent: true, opacity: 0.95 }),
+        tap: new THREE.MeshBasicMaterial({ color: 0xf97316, depthTest: false, transparent: true, opacity: 0.95 }),
+        miss: new THREE.MeshBasicMaterial({ color: 0xfacc15, depthTest: false, transparent: true, opacity: 0.95 }),
+      };
+      // Each dot is drawn twice: solid where it is in view, faint where bone
+      // is in front of it, so a landmark on the back of a bone does not look
+      // as if it were on the front.
+      for (const key of Object.keys(this._markerMaterials)) {
+        const solid = this._markerMaterials[key];
+        solid.depthTest = true;
+        solid.transparent = false;
+        const faint = solid.clone();
+        faint.depthTest = false;
+        faint.depthWrite = false;
+        faint.transparent = true;
+        faint.opacity = 0.28;
+        this._markerMaterials[key] = { solid, faint };
+      }
+    }
+    const group = this._markerGroup;
+    if (this._modelRoot && group.parent !== this._modelRoot) this._modelRoot.add(group);
+    group.clear();
+    for (const m of markers) {
+      if (!Array.isArray(m.point) || m.point.length !== 3 || !m.point.every(Number.isFinite)) continue;
+      const mats = this._markerMaterials[m.kind] || this._markerMaterials.target;
+      const dot = new THREE.Group();
+      const faint = new THREE.Mesh(this._markerGeometry, mats.faint);
+      faint.renderOrder = 10;
+      const solid = new THREE.Mesh(this._markerGeometry, mats.solid);
+      solid.renderOrder = 11;
+      dot.add(faint, solid);
+      dot.position.set(m.point[0], m.point[1], m.point[2]);
+      dot.userData.px = m.kind === 'tap' ? 7 : 9; // radius in screen pixels, kept by _sizeMarkers()
+      group.add(dot);
+    }
+  }
+
+  /** Frame model-space points (a landmark) with `pad` model units around them. */
+  framePoints(points, pad = 60) {
+    if (!this._modelRoot || !points.length) return false;
+    const box = new THREE.Box3();
+    for (const p of points) box.expandByPoint(this._modelRoot.localToWorld(new THREE.Vector3(p[0], p[1], p[2])));
+    box.expandByScalar(pad * this._modelRoot.scale.x);
+    const size = box.getSize(new THREE.Vector3());
+    this.controls.target.copy(box.getCenter(new THREE.Vector3()));
+    const fit = fitDistance(size, this.camera.fov, window.innerWidth, window.innerHeight, this._insetTarget || {});
+    this.controls.radius = Math.min(Math.max(fit, 0.5), 12);
+    this.controls.update();
+    return true;
   }
 
   /**

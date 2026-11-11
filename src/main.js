@@ -9,16 +9,16 @@
  * the loader.
  */
 
-import { LAYERS, PATHS } from './config.js?v=ebc8e2db2873';
-import { loadDataset, buildSearchIndex } from './dataset.js?v=ebc8e2db2873';
-import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap, prettyName } from './anatomy.js?v=ebc8e2db2873';
-import { STUDY_KINDS, STUDY_REGIONS, answerTap, studyMuscleLabel, boneBaseName, buildStudyCatalog, currentItem, giveUp, itemForId, newRound, nextQuestion } from './study.js?v=ebc8e2db2873';
-import { fetchLocal, sanitizeQuery } from './security.js?v=ebc8e2db2873';
-import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral, getStudyBest, recordStudyScore } from './storage.js?v=ebc8e2db2873';
-import { Viewer } from './viewer.js?v=ebc8e2db2873';
-import { mountDevPanel } from './devpanel.js?v=ebc8e2db2873';
-import { byId } from './dom.js?v=ebc8e2db2873';
-import * as ui from './ui.js?v=ebc8e2db2873';
+import { LAYERS, PATHS } from './config.js?v=6a22cbdfe9ce';
+import { loadDataset, buildSearchIndex } from './dataset.js?v=6a22cbdfe9ce';
+import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap, prettyName } from './anatomy.js?v=6a22cbdfe9ce';
+import { STUDY_KINDS, STUDY_MODES, answerLandmarkTap, answerName, answerTap, studyMuscleLabel, boneBaseName, buildStudyCatalog, currentItem, formatPoints, giveUp, itemForId, newRound, nextQuestion, parseLandmarks, prepareNaming, studyGroups } from './study.js?v=6a22cbdfe9ce';
+import { fetchLocal, sanitizeQuery } from './security.js?v=6a22cbdfe9ce';
+import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral, getStudyBest, recordStudyScore, studyKey } from './storage.js?v=6a22cbdfe9ce';
+import { Viewer } from './viewer.js?v=6a22cbdfe9ce';
+import { mountDevPanel } from './devpanel.js?v=6a22cbdfe9ce';
+import { byId } from './dom.js?v=6a22cbdfe9ce';
+import * as ui from './ui.js?v=6a22cbdfe9ce';
 
 const state = {
   data: null,
@@ -32,8 +32,10 @@ const state = {
   // Study (2026-11-02): the catalog is built once the model is in; `study` is
   // the round in progress, or null.
   catalog: null,
+  landmarkCatalog: null,
   study: null,
   studyKind: 'muscles',
+  studyMode: 'find',
 };
 
 /* ------------------------------------------------------------- selection -- */
@@ -303,6 +305,7 @@ async function boot() {
     }
     indexBones();
     await loadLayerMap();
+    await loadLandmarks();
     ui.flashHint(`${added.length} structures loaded · ${state.data.muscles.length} muscle records`);
   } catch (error) {
     // A 404 here almost always means the server is an older process that
@@ -380,11 +383,33 @@ function studyCatalog() {
   if (!state.catalog && state.viewer) {
     state.catalog = buildStudyCatalog(state.viewer.structureIds(), state.data.muscleIndex);
   }
+  if (state.catalog) state.catalog.landmarks = state.landmarkCatalog || {};
   return state.catalog;
 }
 
-const regionLabel = (id) => STUDY_REGIONS.find((r) => r.id === id)?.label || id;
+/** Load the placed landmarks (2026-11-04). Optional: without them the Landmarks tab is empty. */
+async function loadLandmarks() {
+  try {
+    const parsed = parseLandmarks(await fetchLocal(PATHS.landmarks), state.viewer.structureIds());
+    if (!parsed) throw new Error('landmarks.json failed validation');
+    state.landmarkCatalog = parsed;
+  } catch (error) {
+    console.info('Landmark study unavailable:', error.message);
+  }
+}
+
+const groupLabel = (kind, id) => studyGroups(kind).find((r) => r.id === id)?.label || id;
 const kindLabel = (id) => STUDY_KINDS.find((k) => k.id === id)?.label || id;
+const modeLabel = (id) => STUDY_MODES.find((m) => m.id === id)?.label || id;
+// One side of a pair, for framing: the right side if there is one.
+const oneSide = (ids) => { const r = ids.filter((id) => /_r_ZA$|_right$/.test(id)); return r.length ? r : ids; };
+const rightPoint = (item) => item.points[oneSide(item.ids)[0]] || Object.values(item.points)[0];
+
+function bestText(kind, group, mode) {
+  const b = getStudyBest()[studyKey(kind, group, mode)];
+  if (!b) return null;
+  return mode === 'name' ? `${formatPoints(b.best / 2)}/${b.total / 2}` : `${b.best}/${b.total}`;
+}
 
 function openStudy() {
   if (!okToLeaveStudy()) return;
@@ -394,11 +419,13 @@ function openStudy() {
   const catalog = studyCatalog();
   if (!catalog) { ui.flashHint('Study needs the 3D model - it has not loaded.'); return; }
   ui.renderStudyPicker({
-    kinds: STUDY_KINDS,
-    regions: STUDY_REGIONS,
-    counts: (kind, region) => catalog[kind][region].length,
-    best: getStudyBest(),
+    kinds: STUDY_KINDS.filter((k) => !k.hidden),
+    modes: STUDY_MODES,
+    groups: studyGroups,
+    counts: (kind, group) => (catalog[kind]?.[group] || []).length,
+    best: bestText,
     kind: state.studyKind,
+    mode: state.studyMode,
     onStart: startStudy,
   });
 }
@@ -411,18 +438,21 @@ function setXrayState(on) {
   btn.setAttribute('aria-pressed', String(on));
 }
 
-function startStudy(kind, region) {
-  const items = studyCatalog()?.[kind]?.[region] || [];
+function startStudy(kind, region, mode = 'find') {
+  const catalog = studyCatalog();
+  const items = catalog?.[kind]?.[region] || [];
   if (!items.length) return;
   const viewer = state.viewer;
   if (!state.study) {
     state.study = { saved: { layers: { ...state.layerVisibility }, peel: state.peelDepth, xray: state.xray } };
   }
-  Object.assign(state.study, { kind, region, items, round: newRound(items) });
+  const naming = mode === 'name' ? prepareNaming(items, Object.values(catalog[kind]).flat()) : null;
+  Object.assign(state.study, { kind, region, mode, items, naming, round: newRound(items), leaveArmedUntil: 0 });
   state.studyKind = kind;
+  state.studyMode = mode;
   closeInfoPanel();
-  // Bones: skeleton only. Muscles: skeleton for orientation plus the region's
-  // muscles; everything else off.
+  // Bones and landmarks: skeleton only. Muscles: skeleton for orientation plus
+  // the region's muscles; everything else off.
   for (const layer of LAYERS) {
     const on = layer.id === 'skeleton' || (kind === 'muscles' && layer.id === 'muscle');
     state.layerVisibility[layer.id] = on;
@@ -432,40 +462,68 @@ function startStudy(kind, region) {
   viewer.setPeelDepth(0);
   // Muscle rounds ghost the skeleton (X-ray) and let only muscles answer a
   // tap, so a muscle behind bone can be seen and hit (team review 2026-11-03).
-  // Bone rounds show solid bone.
+  // Bone and landmark rounds show solid bone.
   setXrayState(kind === 'muscles');
   viewer.setTapLayer(kind === 'muscles' ? 'muscle' : null);
-  const allIds = items.flatMap((item) => item.ids);
-  viewer.setStudyScope(kind === 'muscles' ? allIds : null);
+  const allIds = [...new Set(items.flatMap((item) => item.ids))];
+  state.study.allIds = allIds;
+  // Landmark rounds show only the card's bones, so the bone stands out and a
+  // tap cannot land on a neighbour.
+  if (kind === 'muscles') viewer.setStudyScope(allIds);
+  else if (kind === 'landmarks') viewer.setStudyScope(allIds, 'skeleton');
+  else viewer.setStudyScope(null);
   viewer.selectIds([]);
+  viewer.setMarkers([]);
   refreshLayers();
   viewer.onSelect(studyTap);
   document.body.classList.add('studying');
   drawStudy();
   updateViewInset();
-  viewer.frameIds(allIds);
+  if (mode === 'find') viewer.frameIds(kind === 'landmarks' ? oneSide(allIds) : allIds);
+  else showNameQuestion();
 }
 
-function drawStudy(feedback = null) {
+/** Name it: show the structure being asked. */
+function showNameQuestion() {
+  const study = state.study;
+  const item = currentItem(study.round);
+  if (!item) return;
+  const viewer = state.viewer;
+  if (study.kind === 'landmarks') {
+    viewer.selectIds([]);
+    viewer.setMarkers(Object.values(item.points).map((point) => ({ point, kind: 'target' })));
+    viewer.framePoints([rightPoint(item)], 90);
+  } else {
+    viewer.selectIds(item.ids);
+    viewer.frameIds(oneSide(item.ids));
+  }
+}
+
+const NAME_PROMPT = { muscles: 'Name the lit muscle', bones: 'Name the lit bone', landmarks: 'Name the marked landmark' };
+
+function drawStudy(feedback = null, typed = '') {
   const study = state.study;
   const round = study.round;
   const item = currentItem(round);
   const actions = [];
+  const naming = study.mode === 'name';
   if (!round.answered) {
-    actions.push({ label: 'Show me', onClick: studyGiveUp });
-    if (study.kind === 'muscles' && state.viewer.layerMap) {
+    actions.push({ label: naming ? 'Show answer' : 'Show me', onClick: studyGiveUp });
+    if (!naming && study.kind === 'muscles' && state.viewer.layerMap) {
       actions.push({ label: state.peelDepth ? `Peel: layer ${state.peelDepth}` : 'Peel a layer', onClick: () => { cyclePeel(true); drawStudy(feedback); } });
     }
   } else {
     actions.push({ label: round.index + 1 < round.items.length ? 'Next' : 'See score', primary: true, onClick: studyNext });
   }
   actions.push({ label: 'End', onClick: endStudy });
+  const where = study.kind === 'landmarks' ? ` on the ${groupLabel('landmarks', study.region).toLowerCase()}` : '';
   ui.renderStudyBar({
-    title: `${kindLabel(study.kind)} · ${regionLabel(study.region)}`,
+    title: `${modeLabel(study.mode)} · ${kindLabel(study.kind)} · ${groupLabel(study.kind, study.region)}`,
     progress: `${round.index + 1} / ${round.items.length}`,
-    prompt: `Find: ${item.label}`,
+    prompt: naming ? `${NAME_PROMPT[study.kind]}${where}` : `Find: ${item.label}`,
     feedback,
     actions,
+    answer: naming && !round.answered ? { onSubmit: studySubmitName, value: typed } : null,
   });
 }
 
@@ -479,9 +537,11 @@ function nameForId(id) {
   return muscle ? studyMuscleLabel(muscle.record.name) : 'a structure outside this set';
 }
 
-function studyTap(id) {
+function studyTap(id, info = {}) {
   const study = state.study;
   if (!study || study.round.answered) return;
+  if (study.mode === 'name') { ui.flashHint('Type the name in the box below.'); return; }
+  if (study.kind === 'landmarks') { landmarkTap(id, info.point, info.normal); return; }
   // In a muscle round the bones are there for orientation; a bone tap is not
   // an answer.
   if (study.kind === 'muscles' && classifyBone(id)) {
@@ -496,9 +556,59 @@ function studyTap(id) {
     : { text: `Not quite - that was ${nameForId(id)}. ${result.item.label} is now lit.`, good: false });
 }
 
-function studyGiveUp() {
-  const result = giveUp(state.study.round);
+function landmarkTap(id, point, normal) {
+  const study = state.study;
+  if (!study.allIds.includes(id)) {
+    ui.flashHint(`Tap on the ${groupLabel('landmarks', study.region).toLowerCase()}.`);
+    return;
+  }
+  const result = answerLandmarkTap(study.round, id, point, normal);
   if (!result) return;
+  const target = result.item.points[id] || rightPoint(result.item);
+  state.viewer.setMarkers([{ point: target, kind: 'target' }, ...(result.correct ? [] : [{ point, kind: 'tap' }])]);
+  // A landmark facing away from the tapped surface is on the other side of the bone.
+  const tn = result.item.normals?.[id];
+  const behind = !result.correct && tn && normal && tn[0] * normal[0] + tn[1] * normal[1] + tn[2] * normal[2] < 0;
+  const turn = behind ? ' It is on the other side of the bone - drag to turn it.' : '';
+  drawStudy(result.correct
+    ? { text: `Correct - ${result.item.label}.`, good: true }
+    : { text: (result.nearest
+        ? `Not quite - your tap (orange) is nearest the ${result.nearest.label}. The ${result.item.label} is the blue dot.`
+        : `Not quite - your tap (orange) is not near a landmark on this card. The ${result.item.label} is the blue dot.`) + turn,
+      good: false });
+}
+
+function studySubmitName(raw) {
+  const study = state.study;
+  if (!study || study.round.answered) return;
+  const typed = sanitizeQuery(raw);
+  const result = answerName(study.round, typed, study.naming);
+  if (!result) return;
+  if (result.pending) {
+    if (result.verdict === 'vague') drawStudy({ text: `"${typed}" fits more than one structure here - give the full name.`, good: false }, typed);
+    else ui.flashHint('Type a name first.');
+    return;
+  }
+  const label = result.item.label;
+  const text = {
+    exact: `Correct - ${label}.`,
+    close: `Half a point: you wrote "${typed}". Correct spelling: ${label}.`,
+    other: `Not quite - "${typed}" is the ${result.other}. This is the ${label}.`,
+    wrong: `Not quite - this is the ${label}.`,
+  }[result.verdict];
+  drawStudy({ text, good: result.verdict === 'exact' });
+}
+
+function studyGiveUp() {
+  const study = state.study;
+  const result = giveUp(study.round);
+  if (!result) return;
+  if (study.mode === 'name') { drawStudy({ text: `This is the ${result.item.label}.`, good: false }); return; }
+  if (study.kind === 'landmarks') {
+    state.viewer.setMarkers(Object.values(result.item.points).map((point) => ({ point, kind: 'target' })));
+    drawStudy({ text: `The ${result.item.label} is the blue dot.`, good: false });
+    return;
+  }
   state.viewer.selectIds(result.item.ids);
   drawStudy({ text: `${result.item.label} is now lit.`, good: false });
 }
@@ -506,21 +616,29 @@ function studyGiveUp() {
 function studyNext() {
   const study = state.study;
   state.viewer.selectIds([]);
-  if (nextQuestion(study.round)) { drawStudy(); return; }
+  state.viewer.setMarkers([]);
+  if (nextQuestion(study.round)) {
+    drawStudy();
+    if (study.mode === 'name') showNameQuestion();
+    return;
+  }
   const { correct, missed, items } = study.round;
   const total = items.length;
-  const before = getStudyBest()[`${study.kind}:${study.region}`];
-  const isNewBest = recordStudyScore(study.kind, study.region, correct, total);
-  const bestNote = !before ? ' First score saved.' : isNewBest ? ' New best!' : ` Best: ${before.best} / ${before.total}.`;
+  const half = study.mode === 'name';
+  const key = studyKey(study.kind, study.region, study.mode);
+  const before = getStudyBest()[key];
+  const isNewBest = recordStudyScore(study.kind, study.region, half ? Math.round(correct * 2) : correct, half ? total * 2 : total, study.mode);
+  const prev = before ? (half ? `${formatPoints(before.best / 2)} / ${before.total / 2}` : `${before.best} / ${before.total}`) : '';
+  const bestNote = !before ? ' First score saved.' : isNewBest ? ' New best!' : ` Best: ${prev}.`;
   const shown = missed.slice(0, 8).join(', ') + (missed.length > 8 ? `, and ${missed.length - 8} more` : '');
   ui.renderStudyBar({
-    title: `${kindLabel(study.kind)} · ${regionLabel(study.region)}`,
+    title: `${modeLabel(study.mode)} · ${kindLabel(study.kind)} · ${groupLabel(study.kind, study.region)}`,
     progress: 'Done',
-    prompt: `Score: ${correct} / ${total}.${bestNote}`,
-    feedback: missed.length ? { text: `Missed: ${shown}`, good: false } : { text: 'Perfect round!', good: true },
+    prompt: `Score: ${formatPoints(correct)} / ${total}.${bestNote}`,
+    feedback: missed.length ? { text: `${half ? 'Not full marks' : 'Missed'}: ${shown}`, good: false } : { text: 'Perfect round!', good: true },
     actions: [
-      { label: 'Again', primary: true, onClick: () => startStudy(study.kind, study.region) },
-      { label: 'Other region', onClick: openStudy },
+      { label: 'Again', primary: true, onClick: () => startStudy(study.kind, study.region, study.mode) },
+      { label: 'Other set', onClick: openStudy },
       { label: 'Done', onClick: endStudy },
     ],
   });
@@ -557,6 +675,7 @@ function endStudy() {
   viewer.onSelect(show);
   viewer.setTapLayer(null);
   viewer.setStudyScope(null);
+  viewer.setMarkers([]);
   viewer.selectIds([]);
   viewer.select(null);
   for (const [id, on] of Object.entries(study.saved.layers)) {

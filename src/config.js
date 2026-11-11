@@ -20,6 +20,10 @@ export const PATHS = Object.freeze({
   // "03 Testing & Review/(C) layer_peel/(C) measure_layers.mjs". Optional:
   // without it the depth control is simply not offered.
   layers: 'data/muscle_layers.json',
+  // Bony landmarks placed on the model (2026-11-04), written by
+  // "03 Testing & Review/(C) landmarks_2026-11-04/(C) extract_landmarks.py".
+  // Optional: without it the Landmarks study tab is empty.
+  landmarks: 'data/landmarks.json',
 });
 
 /**
@@ -287,9 +291,12 @@ export const RENDER = Object.freeze({
 export const LAYERS = Object.freeze([
   { id: 'skeleton', label: 'Skeleton', color: '#ece0c5' },
   { id: 'muscle', label: 'Muscle', color: '#c0392b' },
-  { id: 'ligaments', label: 'Ligaments', color: '#d9b25a' },
-  { id: 'nerves', label: 'Nerves', color: '#e8d44d' },
-  { id: 'vessels', label: 'Vessels', color: '#4d7fe8' },
+  // Hidden from the menu for the initial release (2026-11-04, Jake): no
+  // meshes yet. Still defined so classifyLayer() keeps sorting stray meshes
+  // out of the skeleton and muscle layers. Set `hidden: false` to offer one.
+  { id: 'ligaments', label: 'Ligaments', color: '#d9b25a', hidden: true },
+  { id: 'nerves', label: 'Nerves', color: '#e8d44d', hidden: true },
+  { id: 'vessels', label: 'Vessels', color: '#4d7fe8', hidden: true },
 ]);
 
 /** Model is scaled so its longest axis is this many world units. */
@@ -350,7 +357,7 @@ export const CREDITS = Object.freeze([
       'CC Attribution-Share Alike 2.1 Japan" mixed and modified by ' +
       "'Z-anatomy.com'. Z-Anatomy is licensed CC BY-SA 4.0 " +
       '(Gauthier Kervyn and contributors).',
-    note: 'Source of the bone meshes and several muscle meshes.',
+    note: 'Source of the bone meshes, several muscle meshes, and the positions of the bony landmarks used in Study (data/landmarks.json, CC BY-SA 4.0).',
     links: [
       ['License', 'https://creativecommons.org/licenses/by-sa/4.0/'],
       ['Z-Anatomy', 'https://github.com/Z-Anatomy/Models-of-human-anatomy'],

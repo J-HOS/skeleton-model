@@ -15,9 +15,9 @@
  * in, exactly like a network response.
  */
 
-import { LIMITS } from './config.js?v=ebc8e2db2873';
-import { isValidStructureId } from './security.js?v=ebc8e2db2873';
-import { STUDY_KINDS, STUDY_REGIONS } from './study.js?v=ebc8e2db2873';
+import { LIMITS } from './config.js?v=6a22cbdfe9ce';
+import { isValidStructureId } from './security.js?v=6a22cbdfe9ce';
+import { LANDMARK_GROUPS, STUDY_KINDS, STUDY_REGIONS } from './study.js?v=6a22cbdfe9ce';
 
 const RECENTS_KEY = 'skeletonModel.recentlyViewed.v1';
 const DISCLAIMER_KEY = 'skeletonModel.disclaimerAcknowledged.v1';
@@ -28,7 +28,16 @@ const BILATERAL_KEY = 'skeletonModel.bilateralSelection.v1';
 // timing, nothing that identifies the user.
 const STUDY_KEY = 'skeletonModel.studyBest.v1';
 // Built from study.js so the region list lives in one place (team review 2026-11-03).
-const STUDY_KEY_RE = new RegExp(`^(${STUDY_KINDS.map((k) => k.id).join('|')}):(${STUDY_REGIONS.map((r) => r.id).join('|')})$`);
+// 2026-11-04: Name it scores are kept apart with a ":name" suffix and stored
+// in half points (best and total both doubled), since close spellings score
+// 1/2; landmark rounds are keyed by bone card. Typed answers are never stored.
+const GROUP_IDS = [...STUDY_REGIONS, ...LANDMARK_GROUPS].map((r) => r.id);
+const STUDY_KEY_RE = new RegExp(`^(${STUDY_KINDS.map((k) => k.id).join('|')}):(${[...new Set(GROUP_IDS)].join('|')})(:name)?$`);
+
+/** Storage key for a subject, group and mode. */
+export function studyKey(kind, group, mode = 'find') {
+  return `${kind}:${group}${mode === 'name' ? ':name' : ''}`;
+}
 
 /**
  * localStorage throws in some contexts (Safari private browsing, disabled
@@ -124,8 +133,8 @@ export function isBetterScore(score, total, prev) {
 }
 
 /** Record a finished round; keeps the better score. Returns true if it is a new best. */
-export function recordStudyScore(kind, region, score, total) {
-  const key = `${kind}:${region}`;
+export function recordStudyScore(kind, region, score, total, mode = 'find') {
+  const key = studyKey(kind, region, mode);
   if (!STUDY_KEY_RE.test(key) || !Number.isInteger(score) || !Number.isInteger(total) || total <= 0 || score < 0 || score > total) return false;
   const all = getStudyBest();
   const prev = all[key];

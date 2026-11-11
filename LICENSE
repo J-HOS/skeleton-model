@@ -2,7 +2,7 @@ Skeleton Model
 Copyright (c) 2026 Jacob Hosking. All rights reserved.
 
 This applies to everything in this repository and on the published site
-EXCEPT the two items listed under "Third-party components" below. In
+EXCEPT the items listed under "Third-party components" below. In
 particular it covers:
 
   * the application code: index.html, styles.css and everything in src/;
@@ -24,5 +24,8 @@ Third-party components (NOT covered by the notice above):
     2.1 JP) and Z-Anatomy (CC BY-SA 4.0), with ear ossicles original to this
     project. You may reuse the model under those terms. Full attribution
     and details: LICENSES.md and the Credits screen in the app.
+  * data/landmarks.json - the 3D positions of the bony landmarks used in
+    Study, taken from Z-Anatomy's landmark labels; CC BY-SA 4.0 (see
+    LICENSES.md section 1.5).
   * vendor/ - three.js 0.160.1, Copyright 2010-2023 Three.js Authors, MIT
     License.
