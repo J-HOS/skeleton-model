@@ -36,7 +36,7 @@
  * Search and on the cards.
  */
 
-import { classifyBone, findMuscleRecord, prettyName } from './anatomy.js?v=97735de37add';
+import { classifyBone, findMuscleRecord, prettyName } from './anatomy.js?v=938f4441c6df';
 
 export const STUDY_KINDS = Object.freeze([
   { id: 'muscles', label: 'Muscles' },
@@ -321,6 +321,11 @@ export const LANDMARK_GROUPS = Object.freeze([
   { id: 'foot', label: 'Foot' },
 ]);
 
+/** Items asked in a mode: spaces (a foramen) have no bone to tap, so Find it leaves them out (2026-11-11). */
+export function itemsForMode(items, mode) {
+  return mode === 'find' ? items.filter((item) => !item.space) : items;
+}
+
 /** The groups a subject is studied by: body regions, or bone cards for landmarks. */
 export function studyGroups(kind) {
   return kind === 'landmarks' ? LANDMARK_GROUPS : STUDY_REGIONS;
@@ -343,8 +348,11 @@ export function parseLandmarks(raw, sceneIds) {
   const seen = new Set();
   for (const lm of raw.landmarks) {
     if (!lm || typeof lm !== 'object') return null;
-    const { card, label, za, points, normals } = lm;
+    const { card, label, za, points, normals, whole, space } = lm;
     if (!LANDMARK_GROUP_IDS.has(card)) return null;
+    if (whole != null && typeof whole !== 'boolean') return null;
+    if (space != null && typeof space !== 'boolean') return null;
+    if (whole && space) return null;
     if (typeof label !== 'string' || !label || label.length > 80) return null;
     if (za != null && (typeof za !== 'string' || za.length > 120)) return null;
     if (!points || typeof points !== 'object' || Array.isArray(points)) return null;
@@ -363,7 +371,7 @@ export function parseLandmarks(raw, sceneIds) {
     }
     const ids = Object.keys(kept);
     if (!ids.length) continue;
-    out[card].push({ key, label, alt: za || null, ids, points: kept, normals: facing });
+    out[card].push({ key, label, alt: za || null, ids, points: kept, normals: facing, whole: Boolean(whole), space: Boolean(space) });
   }
   for (const g of Object.keys(out)) out[g].sort((a, b) => a.label.localeCompare(b.label));
   return out;
@@ -394,6 +402,8 @@ export function nearestLandmark(items, id, point, max = LANDMARK_TAP_MAX, normal
   const n = Array.isArray(normal) && normal.length === 3 && normal.every(Number.isFinite) ? normal : null;
   let best = null;
   for (const item of items) {
+    // Whole bones are matched by bone, spaces are never tapped (2026-11-11).
+    if (item.whole || item.space) continue;
     const p = item.points[id];
     if (!p) continue;
     const ln = item.normals && item.normals[id];
@@ -408,7 +418,19 @@ export function nearestLandmark(items, id, point, max = LANDMARK_TAP_MAX, normal
 export function answerLandmarkTap(round, id, point, normal = null) {
   const item = currentItem(round);
   if (!item || round.answered) return null;
-  const nearest = nearestLandmark(round.items, id, point, LANDMARK_TAP_MAX, normal);
+  // A whole-bone item (2026-11-11: "Lunate", "Metacarpals") is answered by a
+  // tap anywhere on its bones. Otherwise the nearest point landmark decides;
+  // a tap on a bone with no point landmark near it falls back to the
+  // whole-bone item for that bone, so the feedback can name it.
+  let nearest = null;
+  if (item.whole && item.ids.includes(id)) nearest = { item, distance: 0 };
+  else {
+    nearest = nearestLandmark(round.items, id, point, LANDMARK_TAP_MAX, normal);
+    if (!nearest) {
+      const bone = round.items.find((i) => i.whole && i.ids.includes(id));
+      if (bone) nearest = { item: bone, distance: 0 };
+    }
+  }
   const correct = Boolean(nearest && nearest.item === item);
   round.answered = true;
   if (correct) round.correct += 1; else round.missed.push(item.label);

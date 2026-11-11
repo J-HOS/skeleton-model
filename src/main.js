@@ -9,16 +9,16 @@
  * the loader.
  */
 
-import { LAYERS, PATHS } from './config.js?v=97735de37add';
-import { loadDataset, buildSearchIndex } from './dataset.js?v=97735de37add';
-import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap, prettyName } from './anatomy.js?v=97735de37add';
-import { STUDY_KINDS, STUDY_MODES, answerLandmarkTap, answerName, answerTap, studyMuscleLabel, boneBaseName, buildStudyCatalog, currentItem, formatPoints, giveUp, itemForId, newRound, nextQuestion, parseLandmarks, prepareNaming, studyGroups } from './study.js?v=97735de37add';
-import { fetchLocal, sanitizeQuery } from './security.js?v=97735de37add';
-import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral, getStudyBest, recordStudyScore, studyKey } from './storage.js?v=97735de37add';
-import { Viewer } from './viewer.js?v=97735de37add';
-import { mountDevPanel } from './devpanel.js?v=97735de37add';
-import { byId } from './dom.js?v=97735de37add';
-import * as ui from './ui.js?v=97735de37add';
+import { LAYERS, PATHS } from './config.js?v=938f4441c6df';
+import { loadDataset, buildSearchIndex } from './dataset.js?v=938f4441c6df';
+import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap, prettyName } from './anatomy.js?v=938f4441c6df';
+import { STUDY_KINDS, STUDY_MODES, answerLandmarkTap, answerName, answerTap, studyMuscleLabel, boneBaseName, buildStudyCatalog, currentItem, formatPoints, giveUp, itemForId, itemsForMode, newRound, nextQuestion, parseLandmarks, prepareNaming, studyGroups } from './study.js?v=938f4441c6df';
+import { fetchLocal, sanitizeQuery } from './security.js?v=938f4441c6df';
+import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral, getStudyBest, recordStudyScore, studyKey } from './storage.js?v=938f4441c6df';
+import { Viewer } from './viewer.js?v=938f4441c6df';
+import { mountDevPanel } from './devpanel.js?v=938f4441c6df';
+import { byId } from './dom.js?v=938f4441c6df';
+import * as ui from './ui.js?v=938f4441c6df';
 
 const state = {
   data: null,
@@ -422,7 +422,7 @@ function openStudy() {
     kinds: STUDY_KINDS.filter((k) => !k.hidden),
     modes: STUDY_MODES,
     groups: studyGroups,
-    counts: (kind, group) => (catalog[kind]?.[group] || []).length,
+    counts: (kind, group, mode) => itemsForMode(catalog[kind]?.[group] || [], mode).length,
     best: bestText,
     kind: state.studyKind,
     mode: state.studyMode,
@@ -440,7 +440,7 @@ function setXrayState(on) {
 
 function startStudy(kind, region, mode = 'find') {
   const catalog = studyCatalog();
-  const items = catalog?.[kind]?.[region] || [];
+  const items = itemsForMode(catalog?.[kind]?.[region] || [], mode);
   if (!items.length) return;
   const viewer = state.viewer;
   if (!state.study) {
@@ -489,7 +489,7 @@ function showNameQuestion() {
   const item = currentItem(study.round);
   if (!item) return;
   const viewer = state.viewer;
-  if (study.kind === 'landmarks') {
+  if (study.kind === 'landmarks' && !item.whole) {
     viewer.selectIds([]);
     viewer.setMarkers(Object.values(item.points).map((point) => ({ point, kind: 'target' })));
     viewer.framePoints([rightPoint(item)], 90);
@@ -500,6 +500,8 @@ function showNameQuestion() {
 }
 
 const NAME_PROMPT = { muscles: 'Name the lit muscle', bones: 'Name the lit bone', landmarks: 'Name the marked landmark' };
+// Whole-bone landmark items light the bone(s) instead of showing a dot (2026-11-11).
+const namePrompt = (kind, item) => (kind === 'landmarks' && item?.whole ? 'Name the lit bone(s)' : NAME_PROMPT[kind]);
 
 function drawStudy(feedback = null, typed = '') {
   const study = state.study;
@@ -520,7 +522,7 @@ function drawStudy(feedback = null, typed = '') {
   ui.renderStudyBar({
     title: `${modeLabel(study.mode)} · ${kindLabel(study.kind)} · ${groupLabel(study.kind, study.region)}`,
     progress: `${round.index + 1} / ${round.items.length}`,
-    prompt: naming ? `${NAME_PROMPT[study.kind]}${where}` : `Find: ${item.label}`,
+    prompt: naming ? `${namePrompt(study.kind, item)}${where}` : `Find: ${item.label}`,
     feedback,
     actions,
     answer: naming && !round.answered ? { onSubmit: studySubmitName, value: typed } : null,
@@ -564,6 +566,14 @@ function landmarkTap(id, point, normal) {
   }
   const result = answerLandmarkTap(study.round, id, point, normal);
   if (!result) return;
+  if (result.item.whole) {
+    state.viewer.selectIds(result.item.ids);
+    state.viewer.setMarkers(result.correct ? [] : [{ point, kind: 'tap' }]);
+    drawStudy(result.correct
+      ? { text: `Correct - ${result.item.label}.`, good: true }
+      : { text: `Not quite - that was ${result.nearest ? `the ${result.nearest.label}` : nameForId(id)}. The ${result.item.label} ${result.item.ids.length > 2 ? 'are' : 'is'} now lit.`, good: false });
+    return;
+  }
   const target = result.item.points[id] || rightPoint(result.item);
   state.viewer.setMarkers([{ point: target, kind: 'target' }, ...(result.correct ? [] : [{ point, kind: 'tap' }])]);
   // A landmark facing away from the tapped surface is on the other side of the bone.
@@ -604,6 +614,11 @@ function studyGiveUp() {
   const result = giveUp(study.round);
   if (!result) return;
   if (study.mode === 'name') { drawStudy({ text: `This is the ${result.item.label}.`, good: false }); return; }
+  if (study.kind === 'landmarks' && result.item.whole) {
+    state.viewer.selectIds(result.item.ids);
+    drawStudy({ text: `The ${result.item.label} ${result.item.ids.length > 2 ? 'are' : 'is'} now lit.`, good: false });
+    return;
+  }
   if (study.kind === 'landmarks') {
     state.viewer.setMarkers(Object.values(result.item.points).map((point) => ({ point, kind: 'target' })));
     drawStudy({ text: `The ${result.item.label} is the blue dot.`, good: false });

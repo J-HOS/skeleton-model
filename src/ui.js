@@ -7,9 +7,9 @@
  * correctness of the anatomy or the security posture.
  */
 
-import { byId, clear, el, fieldRow, replace } from './dom.js?v=97735de37add';
-import { ATTRIBUTION, CREDITS, DISCLAIMER, LAYERS, LIMITS } from './config.js?v=97735de37add';
-import { parseLandmarkCard, prettyName } from './anatomy.js?v=97735de37add';
+import { byId, clear, el, fieldRow, replace } from './dom.js?v=938f4441c6df';
+import { ATTRIBUTION, CREDITS, DISCLAIMER, LAYERS, LIMITS } from './config.js?v=938f4441c6df';
+import { parseLandmarkCard, prettyName } from './anatomy.js?v=938f4441c6df';
 
 /* ---------------------------------------------------------------- status -- */
 
@@ -345,10 +345,10 @@ export function renderStudyPicker({ kinds, modes, groups, counts, best, kind, mo
   const NOTES = {
     'muscles:find': 'Scapula movers are under Thorax. Eight deep throat and jaw muscles are not asked yet, because they cannot be seen from outside.',
     'bones:find': 'Wrist bones are under Hand; ankle bones are under Foot.',
-    'landmarks:find': 'The landmarks on each bone card, placed on the model. Tap the spot; the nearest landmark to your tap is the one you chose. Either side counts.',
+    'landmarks:find': 'The landmarks on each bone card, placed on the model. Tap the spot; the nearest landmark to your tap is the one you chose. For a whole bone, tap anywhere on it. Either side counts.',
     'muscles:name': 'A muscle lights up; type its name. Exact spelling scores 1, one or two letters off scores ½. Capitals, spaces and word order do not matter.',
     'bones:name': 'A bone lights up; type its name. Exact spelling scores 1, one or two letters off scores ½. "Rib 7" and "7th rib" both count.',
-    'landmarks:name': 'A dot marks a landmark; type its name. Exact spelling scores 1, one or two letters off scores ½.',
+    'landmarks:name': 'A dot marks a landmark, or a whole bone lights up; type its name. Exact spelling scores 1, one or two letters off scores ½. The two foramina are asked here only.',
   };
   const tabRow = (label, items, value, pick) => el('div', { className: 'study-tabs', attrs: { role: 'tablist', 'aria-label': label } },
     items.map((k) => el('button', {
@@ -359,7 +359,7 @@ export function renderStudyPicker({ kinds, modes, groups, counts, best, kind, mo
     })));
   const draw = () => {
     const list = el('div', { className: 'study-regions' }, groups(current).map((r) => {
-      const n = counts(current, r.id);
+      const n = counts(current, r.id, how);
       const b = best(current, r.id, how);
       return el('button', {
         className: 'study-region',

@@ -13,9 +13,7 @@
    "ulna": [
     "Supinator fossa (no label)"
    ],
-   "hand": [
-    "carpals, metacarpals, phalanges (whole bones - asked in Bones)"
-   ],
+   "hand": [],
    "cervical": [
     "all nine (Z-Anatomy labels these only on L3)"
    ],
@@ -25,15 +23,10 @@
    "thoracic": [
     "body, pedicle, transverse process, lamina, articular processes, spinous process, vertebral foramen (labelled on L3 only)"
    ],
-   "lumbar": [
-    "Vertebral foramen (a space)"
-   ],
-   "hip": [
-    "Obturator foramen (a space)"
-   ],
+   "lumbar": [],
+   "hip": [],
    "sacrum": [
-    "Lumbosacral articulation, articulating facets (ambiguous)",
-    "Coccyx (separate bone)"
+    "Lumbosacral articulation, articulating facets (ambiguous)"
    ],
    "femur": [
     "Medial and lateral lips of the linea aspera (one label for the whole line)",
@@ -43,14 +36,14 @@
     "all five (Patella has no labels in Z-Anatomy)"
    ],
    "foot": [
-    "tarsals, metatarsals, phalanges, sesamoids (whole bones)",
     "Tuberosity of 5th metatarsal (no label)"
    ]
   },
   "corrections": [
    "femur: Z-Anatomy medial/lateral supracondylar line labels are swapped; corrected (see MAP)"
   ],
-  "checked": "every point checked 2026-11-04 by its position within its bone (medial/anterior/superior) and by rendered front/back/side views"
+  "checked": "every point checked 2026-11-04 by its position within its bone (medial/anterior/superior) and by rendered front/back/side views",
+  "added_2026_11_11": "25 whole-bone items (hand, foot, coccyx) and 2 spaces (vertebral and obturator foramen), by \"(C) add_whole_bones_and_foramina.py\"; foramen points computed from the model geometry and checked (clear of bone, outside the mesh, ringed by bone)."
  },
  "landmarks": [
   {
@@ -4891,6 +4884,836 @@
    "note": null,
    "pointerGapMm": 0.0,
    "mirrorSnapMm": 0.0
+  },
+  {
+   "card": "hand",
+   "label": "Scaphoid",
+   "za": null,
+   "bone": "Scaphoid",
+   "whole": true,
+   "points": {
+    "Scaphoid_bone_r_ZA": [
+     -297.28,
+     978.41,
+     49.78
+    ],
+    "Scaphoid_bone_l_ZA": [
+     229.3,
+     978.41,
+     49.78
+    ]
+   },
+   "note": "Whole bone(s): any tap on these bones counts (2026-11-11)."
+  },
+  {
+   "card": "hand",
+   "label": "Lunate",
+   "za": null,
+   "bone": "Lunate",
+   "whole": true,
+   "points": {
+    "Lunate_bone_r_ZA": [
+     -279.46,
+     977.03,
+     48.16
+    ],
+    "Lunate_bone_l_ZA": [
+     211.48,
+     977.03,
+     48.16
+    ]
+   },
+   "note": "Whole bone(s): any tap on these bones counts (2026-11-11)."
+  },
+  {
+   "card": "hand",
+   "label": "Triquetrum",
+   "za": null,
+   "bone": "Triquetrum",
+   "whole": true,
+   "points": {
+    "Triquetrum_bone_r_ZA": [
+     -272.85,
+     969.61,
+     52.01
+    ],
+    "Triquetrum_bone_l_ZA": [
+     204.87,
+     969.61,
+     52.01
+    ]
+   },
+   "note": "Whole bone(s): any tap on these bones counts (2026-11-11)."
+  },
+  {
+   "card": "hand",
+   "label": "Pisiform",
+   "za": null,
+   "bone": "Pisiform",
+   "whole": true,
+   "points": {
+    "Pisiform_bone_r_ZA": [
+     -270.58,
+     968.93,
+     63.99
+    ],
+    "Pisiform_bone_l_ZA": [
+     202.6,
+     968.93,
+     63.99
+    ]
+   },
+   "note": "Whole bone(s): any tap on these bones counts (2026-11-11)."
+  },
+  {
+   "card": "hand",
+   "label": "Trapezium",
+   "za": null,
+   "bone": "Trapezium",
+   "whole": true,
+   "points": {
+    "Trapezium_bone_r_ZA": [
+     -307.14,
+     971.13,
+     58.53
+    ],
+    "Trapezium_bone_l_ZA": [
+     239.16,
+     971.13,
+     58.53
+    ]
+   },
+   "note": "Whole bone(s): any tap on these bones counts (2026-11-11)."
+  },
+  {
+   "card": "hand",
+   "label": "Trapezoid",
+   "za": null,
+   "bone": "Trapezoid",
+   "whole": true,
+   "points": {
+    "Trapezoid_bone_r_ZA": [
+     -301.33,
+     963.34,
+     51.24
+    ],
+    "Trapezoid_bone_l_ZA": [
+     233.35,
+     963.34,
+     51.24
+    ]
+   },
+   "note": "Whole bone(s): any tap on these bones counts (2026-11-11)."
+  },
+  {
+   "card": "hand",
+   "label": "Capitate",
+   "za": null,
+   "bone": "Capitate",
+   "whole": true,
+   "points": {
+    "Capitate_bone_r_ZA": [
+     -291.02,
+     967.45,
+     50.71
+    ],
+    "Capitate_bone_l_ZA": [
+     223.04,
+     967.45,
+     50.71
+    ]
+   },
+   "note": "Whole bone(s): any tap on these bones counts (2026-11-11)."
+  },
+  {
+   "card": "hand",
+   "label": "Hamate",
+   "za": null,
+   "bone": "Hamate",
+   "whole": true,
+   "points": {
+    "Hamate_bone_r_ZA": [
+     -280.08,
+     963.18,
+     51.68
+    ],
+    "Hamate_bone_l_ZA": [
+     212.1,
+     963.18,
+     51.68
+    ]
+   },
+   "note": "Whole bone(s): any tap on these bones counts (2026-11-11)."
+  },
+  {
+   "card": "hand",
+   "label": "Metacarpals",
+   "za": null,
+   "bone": "Metacarpals",
+   "whole": true,
+   "points": {
+    "First_metacarpal_bone_r_ZA": [
+     -328.46,
+     949.59,
+     70.96
+    ],
+    "First_metacarpal_bone_l_ZA": [
+     260.48,
+     949.59,
+     70.96
+    ],
+    "Second_metacarpal_bone_r_ZA": [
+     -312.01,
+     927.37,
+     61.22
+    ],
+    "Second_metacarpal_bone_l_ZA": [
+     244.03,
+     927.37,
+     61.22
+    ],
+    "Third_metacarpal_bone_r_ZA": [
+     -296.32,
+     930.8,
+     56.58
+    ],
+    "Third_metacarpal_bone_l_ZA": [
+     228.34,
+     930.8,
+     56.58
+    ],
+    "Fourth_metacarpal_bone_r_ZA": [
+     -283.12,
+     929.44,
+     57.7
+    ],
+    "Fourth_metacarpal_bone_l_ZA": [
+     215.14,
+     929.44,
+     57.7
+    ],
+    "Fifth_metacarpal_bone_r_ZA": [
+     -270.33,
+     933.53,
+     62.85
+    ],
+    "Fifth_metacarpal_bone_l_ZA": [
+     202.35,
+     933.53,
+     62.85
+    ]
+   },
+   "note": "Whole bone(s): any tap on these bones counts (2026-11-11)."
+  },
+  {
+   "card": "hand",
+   "label": "Proximal phalanges",
+   "za": null,
+   "bone": "Proximal phalanges",
+   "whole": true,
+   "points": {
+    "Proximal_phalanx_of_first_finger_of_hand_r_ZA": [
+     -343.88,
+     925.29,
+     83.79
+    ],
+    "Proximal_phalanx_of_first_finger_of_hand_l_ZA": [
+     275.9,
+     925.29,
+     83.79
+    ],
+    "Proximal_phalanx_of_second_finger_of_hand_r_ZA": [
+     -328.18,
+     878.25,
+     76.54
+    ],
+    "Proximal_phalanx_of_second_finger_of_hand_l_ZA": [
+     260.2,
+     878.25,
+     76.54
+    ],
+    "Proximal_phalanx_of_third_finger_of_hand_r_ZA": [
+     -304.28,
+     878.23,
+     80.65
+    ],
+    "Proximal_phalanx_of_third_finger_of_hand_l_ZA": [
+     236.3,
+     878.23,
+     80.65
+    ],
+    "Proximal_phalanx_of_fourth_finger_of_hand_r_ZA": [
+     -282.61,
+     881.75,
+     80.59
+    ],
+    "Proximal_phalanx_of_fourth_finger_of_hand_l_ZA": [
+     214.63,
+     881.75,
+     80.59
+    ],
+    "Proximal_phalanx_of_fifth_finger_of_hand_r_ZA": [
+     -261.64,
+     897.25,
+     78.32
+    ],
+    "Proximal_phalanx_of_fifth_finger_of_hand_l_ZA": [
+     193.66,
+     897.25,
+     78.32
+    ]
+   },
+   "note": "Whole bone(s): any tap on these bones counts (2026-11-11)."
+  },
+  {
+   "card": "hand",
+   "label": "Middle phalanges",
+   "za": null,
+   "bone": "Middle phalanges",
+   "whole": true,
+   "points": {
+    "Middle_phalanx_of_second_finger_of_hand_r_ZA": [
+     -337.65,
+     855.05,
+     92.75
+    ],
+    "Middle_phalanx_of_second_finger_of_hand_l_ZA": [
+     269.67,
+     855.05,
+     92.75
+    ],
+    "Middle_phalanx_of_third_finger_of_hand_r_ZA": [
+     -308.35,
+     851.51,
+     98.88
+    ],
+    "Middle_phalanx_of_third_finger_of_hand_l_ZA": [
+     240.37,
+     851.51,
+     98.88
+    ],
+    "Middle_phalanx_of_fourth_finger_of_hand_r_ZA": [
+     -283.35,
+     855.48,
+     99.42
+    ],
+    "Middle_phalanx_of_fourth_finger_of_hand_l_ZA": [
+     215.37,
+     855.48,
+     99.42
+    ],
+    "Middle_phalanx_of_fifth_finger_of_hand_r_ZA": [
+     -258.64,
+     871.17,
+     94.31
+    ],
+    "Middle_phalanx_of_fifth_finger_of_hand_l_ZA": [
+     190.66,
+     871.17,
+     94.31
+    ]
+   },
+   "note": "Whole bone(s): any tap on these bones counts (2026-11-11)."
+  },
+  {
+   "card": "hand",
+   "label": "Distal phalanges",
+   "za": null,
+   "bone": "Distal phalanges",
+   "whole": true,
+   "points": {
+    "Distal_phalanx_of_first_finger_of_hand_r_ZA": [
+     -351.65,
+     907.45,
+     95.85
+    ],
+    "Distal_phalanx_of_first_finger_of_hand_l_ZA": [
+     283.67,
+     907.45,
+     95.85
+    ],
+    "Distal_phalanx_of_second_finger_of_hand_r_ZA": [
+     -341.3,
+     844.18,
+     106.84
+    ],
+    "Distal_phalanx_of_second_finger_of_hand_l_ZA": [
+     273.32,
+     844.18,
+     106.84
+    ],
+    "Distal_phalanx_of_third_finger_of_hand_r_ZA": [
+     -311.16,
+     834.81,
+     116.21
+    ],
+    "Distal_phalanx_of_third_finger_of_hand_l_ZA": [
+     243.18,
+     834.81,
+     116.21
+    ],
+    "Distal_phalanx_of_fourth_finger_of_hand_r_ZA": [
+     -284.37,
+     843.74,
+     116.07
+    ],
+    "Distal_phalanx_of_fourth_finger_of_hand_l_ZA": [
+     216.39,
+     843.74,
+     116.07
+    ],
+    "Distal_phalanx_of_fifth_finger_of_hand_r_ZA": [
+     -257.58,
+     857.53,
+     105.71
+    ],
+    "Distal_phalanx_of_fifth_finger_of_hand_l_ZA": [
+     189.6,
+     857.53,
+     105.71
+    ]
+   },
+   "note": "Whole bone(s): any tap on these bones counts (2026-11-11)."
+  },
+  {
+   "card": "foot",
+   "label": "Calcaneus",
+   "za": null,
+   "bone": "Calcaneus",
+   "whole": true,
+   "points": {
+    "Calcaneus_r_ZA": [
+     -111.08,
+     189.44,
+     -13.99
+    ],
+    "Calcaneus_l_ZA": [
+     43.1,
+     189.44,
+     -13.99
+    ]
+   },
+   "note": "Whole bone(s): any tap on these bones counts (2026-11-11)."
+  },
+  {
+   "card": "foot",
+   "label": "Talus",
+   "za": null,
+   "bone": "Talus",
+   "whole": true,
+   "points": {
+    "Talus_r_ZA": [
+     -104.4,
+     212.43,
+     -2.37
+    ],
+    "Talus_l_ZA": [
+     36.42,
+     212.43,
+     -2.37
+    ]
+   },
+   "note": "Whole bone(s): any tap on these bones counts (2026-11-11)."
+  },
+  {
+   "card": "foot",
+   "label": "Navicular",
+   "za": null,
+   "bone": "Navicular",
+   "whole": true,
+   "points": {
+    "Navicular_bone_r_ZA": [
+     -107.03,
+     210.29,
+     28.52
+    ],
+    "Navicular_bone_l_ZA": [
+     39.05,
+     210.29,
+     28.52
+    ]
+   },
+   "note": "Whole bone(s): any tap on these bones counts (2026-11-11)."
+  },
+  {
+   "card": "foot",
+   "label": "Medial cuneiform",
+   "za": null,
+   "bone": "Medial cuneiform",
+   "whole": true,
+   "points": {
+    "Medial_cuneiform_bone_r_ZA": [
+     -102.73,
+     198.34,
+     48.42
+    ],
+    "Medial_cuneiform_bone_l_ZA": [
+     34.75,
+     198.34,
+     48.42
+    ]
+   },
+   "note": "Whole bone(s): any tap on these bones counts (2026-11-11)."
+  },
+  {
+   "card": "foot",
+   "label": "Middle cuneiform",
+   "za": "Intermediate cuneiform",
+   "bone": "Middle cuneiform",
+   "whole": true,
+   "points": {
+    "Intermediate_cuneiform_bone_r_ZA": [
+     -114.93,
+     204.91,
+     42.63
+    ],
+    "Intermediate_cuneiform_bone_l_ZA": [
+     46.95,
+     204.91,
+     42.63
+    ]
+   },
+   "note": "Whole bone(s): any tap on these bones counts (2026-11-11)."
+  },
+  {
+   "card": "foot",
+   "label": "Lateral cuneiform",
+   "za": null,
+   "bone": "Lateral cuneiform",
+   "whole": true,
+   "points": {
+    "Lateral_cuneiform_bone_r_ZA": [
+     -122.97,
+     198.96,
+     38.06
+    ],
+    "Lateral_cuneiform_bone_l_ZA": [
+     54.99,
+     198.96,
+     38.06
+    ]
+   },
+   "note": "Whole bone(s): any tap on these bones counts (2026-11-11)."
+  },
+  {
+   "card": "foot",
+   "label": "Cuboid",
+   "za": null,
+   "bone": "Cuboid",
+   "whole": true,
+   "points": {
+    "Cuboid_bone_r_ZA": [
+     -127.37,
+     189.77,
+     25.42
+    ],
+    "Cuboid_bone_l_ZA": [
+     59.39,
+     189.77,
+     25.42
+    ]
+   },
+   "note": "Whole bone(s): any tap on these bones counts (2026-11-11)."
+  },
+  {
+   "card": "foot",
+   "label": "Metatarsals",
+   "za": null,
+   "bone": "Metatarsals",
+   "whole": true,
+   "points": {
+    "First_metatarsal_bone_r_ZA": [
+     -103.8,
+     181.97,
+     81.43
+    ],
+    "First_metatarsal_bone_l_ZA": [
+     35.82,
+     181.97,
+     81.43
+    ],
+    "Second_metatarsal_bone_r_ZA": [
+     -121.29,
+     189.91,
+     70.63
+    ],
+    "Second_metatarsal_bone_l_ZA": [
+     53.31,
+     189.91,
+     70.63
+    ],
+    "Third_metatarsal_bone_r_ZA": [
+     -132.9,
+     180.55,
+     78.34
+    ],
+    "Third_metatarsal_bone_l_ZA": [
+     64.92,
+     180.55,
+     78.34
+    ],
+    "Fourth_metatarsal_bone_r_ZA": [
+     -138.5,
+     178.56,
+     63.55
+    ],
+    "Fourth_metatarsal_bone_l_ZA": [
+     70.52,
+     178.56,
+     63.55
+    ],
+    "Fifth_metatarsal_bone_r_ZA": [
+     -149.6,
+     172.16,
+     55.17
+    ],
+    "Fifth_metatarsal_bone_l_ZA": [
+     81.62,
+     172.16,
+     55.17
+    ]
+   },
+   "note": "Whole bone(s): any tap on these bones counts (2026-11-11)."
+  },
+  {
+   "card": "foot",
+   "label": "Proximal phalanges",
+   "za": null,
+   "bone": "Proximal phalanges",
+   "whole": true,
+   "points": {
+    "Proximal_phalanx_of_first_finger_of_foot_r_ZA": [
+     -106.66,
+     165.85,
+     126.19
+    ],
+    "Proximal_phalanx_of_first_finger_of_foot_l_ZA": [
+     38.68,
+     165.85,
+     126.19
+    ],
+    "Proximal_phalanx_of_second_finger_of_foot_r_ZA": [
+     -126.87,
+     166.37,
+     127.21
+    ],
+    "Proximal_phalanx_of_second_finger_of_foot_l_ZA": [
+     58.89,
+     166.37,
+     127.21
+    ],
+    "Proximal_phalanx_of_third_finger_of_foot_r_ZA": [
+     -141.74,
+     164.89,
+     119.05
+    ],
+    "Proximal_phalanx_of_third_finger_of_foot_l_ZA": [
+     73.76,
+     164.89,
+     119.05
+    ],
+    "Proximal_phalanx_of_fourth_finger_of_foot_r_ZA": [
+     -153.78,
+     164.34,
+     109.75
+    ],
+    "Proximal_phalanx_of_fourth_finger_of_foot_l_ZA": [
+     85.8,
+     164.34,
+     109.75
+    ],
+    "Proximal_phalanx_of_fifth_finger_of_foot_r_ZA": [
+     -165.86,
+     161.36,
+     97.58
+    ],
+    "Proximal_phalanx_of_fifth_finger_of_foot_l_ZA": [
+     97.88,
+     161.36,
+     97.58
+    ]
+   },
+   "note": "Whole bone(s): any tap on these bones counts (2026-11-11)."
+  },
+  {
+   "card": "foot",
+   "label": "Middle phalanges",
+   "za": null,
+   "bone": "Middle phalanges",
+   "whole": true,
+   "points": {
+    "Middle_phalanx_of_second_finger_of_foot_r_ZA": [
+     -132.66,
+     163.22,
+     146.62
+    ],
+    "Middle_phalanx_of_second_finger_of_foot_l_ZA": [
+     64.67,
+     163.22,
+     146.62
+    ],
+    "Middle_phalanx_of_third_finger_of_foot_r_ZA": [
+     -146.8,
+     162.34,
+     140.17
+    ],
+    "Middle_phalanx_of_third_finger_of_foot_l_ZA": [
+     78.82,
+     162.34,
+     140.17
+    ],
+    "Middle_phalanx_of_fourth_finger_of_foot_r_ZA": [
+     -159.95,
+     161.46,
+     128.02
+    ],
+    "Middle_phalanx_of_fourth_finger_of_foot_l_ZA": [
+     91.97,
+     161.46,
+     128.02
+    ],
+    "Middle_phalanx_of_fifth_finger_of_foot_r_ZA": [
+     -170.66,
+     160.4,
+     112.64
+    ],
+    "Middle_phalanx_of_fifth_finger_of_foot_l_ZA": [
+     102.68,
+     160.4,
+     112.64
+    ]
+   },
+   "note": "Whole bone(s): any tap on these bones counts (2026-11-11)."
+  },
+  {
+   "card": "foot",
+   "label": "Distal phalanges",
+   "za": null,
+   "bone": "Distal phalanges",
+   "whole": true,
+   "points": {
+    "Distal_phalanx_of_first_finger_of_foot_r_ZA": [
+     -112.7,
+     162.14,
+     148.6
+    ],
+    "Distal_phalanx_of_first_finger_of_foot_l_ZA": [
+     44.72,
+     162.14,
+     148.6
+    ],
+    "Distal_phalanx_of_second_finger_of_foot_r_ZA": [
+     -135.13,
+     160.97,
+     157.15
+    ],
+    "Distal_phalanx_of_second_finger_of_foot_l_ZA": [
+     67.15,
+     160.97,
+     157.15
+    ],
+    "Distal_phalanx_of_third_finger_of_foot_r_ZA": [
+     -149.75,
+     160.57,
+     151.27
+    ],
+    "Distal_phalanx_of_third_finger_of_foot_l_ZA": [
+     81.77,
+     160.57,
+     151.27
+    ],
+    "Distal_phalanx_of_fourth_finger_of_foot_r_ZA": [
+     -162.52,
+     160.38,
+     137.12
+    ],
+    "Distal_phalanx_of_fourth_finger_of_foot_l_ZA": [
+     94.54,
+     160.38,
+     137.12
+    ],
+    "Distal_phalanx_of_fifth_finger_of_foot_r_ZA": [
+     -172.49,
+     160.0,
+     119.58
+    ],
+    "Distal_phalanx_of_fifth_finger_of_foot_l_ZA": [
+     104.51,
+     160.0,
+     119.58
+    ]
+   },
+   "note": "Whole bone(s): any tap on these bones counts (2026-11-11)."
+  },
+  {
+   "card": "foot",
+   "label": "Sesamoid bones of big toe",
+   "za": "Sesamoid bones of foot",
+   "bone": "Sesamoid bones of big toe",
+   "whole": true,
+   "points": {
+    "Sesamoid_bones_of_foot_r_ZA": [
+     -105.88,
+     163.52,
+     99.99
+    ],
+    "Sesamoid_bones_of_foot_l_ZA": [
+     37.9,
+     163.52,
+     99.99
+    ]
+   },
+   "note": "Whole bone(s): any tap on these bones counts (2026-11-11)."
+  },
+  {
+   "card": "sacrum",
+   "label": "Coccyx",
+   "za": null,
+   "bone": "Coccyx",
+   "whole": true,
+   "points": {
+    "Coccyx_ZA": [
+     -33.98,
+     969.42,
+     -42.76
+    ]
+   },
+   "note": "Whole bone(s): any tap on these bones counts (2026-11-11)."
+  },
+  {
+   "card": "lumbar",
+   "label": "Vertebral foramen",
+   "za": null,
+   "bone": "Vertebra_L3",
+   "space": true,
+   "points": {
+    "Vertebra_L3_ZA": [
+     -34.0,
+     1165.0,
+     8.66
+    ]
+   },
+   "note": "A space, not bone: point at the middle of the opening; asked in Name it only (2026-11-11)."
+  },
+  {
+   "card": "hip",
+   "label": "Obturator foramen",
+   "za": null,
+   "bone": "Hip_bone",
+   "space": true,
+   "points": {
+    "Hip_bone_r_ZA": [
+     -72.95,
+     960.84,
+     31.92
+    ],
+    "Hip_bone_l_ZA": [
+     4.95,
+     960.84,
+     31.92
+    ]
+   },
+   "note": "A space, not bone: point at the middle of the opening; asked in Name it only (2026-11-11)."
   }
  ]
 }
