@@ -36,14 +36,14 @@
  * Search and on the cards.
  */
 
-import { classifyBone, findMuscleRecord, prettyName } from './anatomy.js?v=6a22cbdfe9ce';
+import { classifyBone, findMuscleRecord, prettyName } from './anatomy.js?v=97735de37add';
 
 export const STUDY_KINDS = Object.freeze([
   { id: 'muscles', label: 'Muscles' },
   { id: 'bones', label: 'Bones' },
-  // Hidden from the picker (2026-11-11, Jake): Name it and the hidden layers
-  // ship first; landmarks wait for Jake's local check. Remove `hidden` to offer it.
-  { id: 'landmarks', label: 'Landmarks', hidden: true },
+  // Offered again 2026-11-11 (Jake: "I want all the bony landmarks on there").
+  // Add `hidden: true` to take a subject out of the picker.
+  { id: 'landmarks', label: 'Landmarks' },
 ]);
 
 /**

@@ -9,16 +9,16 @@
  * the loader.
  */
 
-import { LAYERS, PATHS } from './config.js?v=6a22cbdfe9ce';
-import { loadDataset, buildSearchIndex } from './dataset.js?v=6a22cbdfe9ce';
-import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap, prettyName } from './anatomy.js?v=6a22cbdfe9ce';
-import { STUDY_KINDS, STUDY_MODES, answerLandmarkTap, answerName, answerTap, studyMuscleLabel, boneBaseName, buildStudyCatalog, currentItem, formatPoints, giveUp, itemForId, newRound, nextQuestion, parseLandmarks, prepareNaming, studyGroups } from './study.js?v=6a22cbdfe9ce';
-import { fetchLocal, sanitizeQuery } from './security.js?v=6a22cbdfe9ce';
-import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral, getStudyBest, recordStudyScore, studyKey } from './storage.js?v=6a22cbdfe9ce';
-import { Viewer } from './viewer.js?v=6a22cbdfe9ce';
-import { mountDevPanel } from './devpanel.js?v=6a22cbdfe9ce';
-import { byId } from './dom.js?v=6a22cbdfe9ce';
-import * as ui from './ui.js?v=6a22cbdfe9ce';
+import { LAYERS, PATHS } from './config.js?v=97735de37add';
+import { loadDataset, buildSearchIndex } from './dataset.js?v=97735de37add';
+import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap, prettyName } from './anatomy.js?v=97735de37add';
+import { STUDY_KINDS, STUDY_MODES, answerLandmarkTap, answerName, answerTap, studyMuscleLabel, boneBaseName, buildStudyCatalog, currentItem, formatPoints, giveUp, itemForId, newRound, nextQuestion, parseLandmarks, prepareNaming, studyGroups } from './study.js?v=97735de37add';
+import { fetchLocal, sanitizeQuery } from './security.js?v=97735de37add';
+import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral, getStudyBest, recordStudyScore, studyKey } from './storage.js?v=97735de37add';
+import { Viewer } from './viewer.js?v=97735de37add';
+import { mountDevPanel } from './devpanel.js?v=97735de37add';
+import { byId } from './dom.js?v=97735de37add';
+import * as ui from './ui.js?v=97735de37add';
 
 const state = {
   data: null,
