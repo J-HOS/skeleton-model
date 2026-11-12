@@ -6,12 +6,12 @@
  * this boundary is what lets every other module be tested in plain Node.
  */
 
-import * as THREE from '../vendor/three.module.js?v=938f4441c6df';
-import { GLTFLoader } from '../vendor/GLTFLoader.js?v=938f4441c6df';
-import { OrbitControls } from './controls.js?v=938f4441c6df';
-import { BONE_SURFACE_COLORS, COLORS, LAYERS, LIMITS, MODEL_FIT_UNITS, MUSCLE_SECTION_COLORS, PATHS, PEEL, RENDER } from './config.js?v=938f4441c6df';
-import { assertLooksLikeGLB, fetchLocal } from './security.js?v=938f4441c6df';
-import { attachmentWeight, axialParameter, axialTaper, boneSurfaceKey, classifyLayer, findMuscleRecord, hiddenByIsolation, isPeeled, recordAliases, resolvesToContent, scaleChannels, selectionGroup, varyLightness, viewOffsetFor, fitDistance } from './anatomy.js?v=938f4441c6df';
+import * as THREE from '../vendor/three.module.js?v=f244311c378e';
+import { GLTFLoader } from '../vendor/GLTFLoader.js?v=f244311c378e';
+import { OrbitControls } from './controls.js?v=f244311c378e';
+import { BONE_SURFACE_COLORS, COLORS, LAYERS, LIMITS, MODEL_FIT_UNITS, MUSCLE_SECTION_COLORS, PATHS, PEEL, RENDER } from './config.js?v=f244311c378e';
+import { assertLooksLikeGLB, fetchLocal } from './security.js?v=f244311c378e';
+import { attachmentWeight, axialParameter, axialTaper, boneSurfaceKey, classifyLayer, findMuscleRecord, hiddenByIsolation, isPeeled, recordAliases, resolvesToContent, scaleChannels, selectionGroup, varyLightness, viewOffsetFor, fitDistance } from './anatomy.js?v=f244311c378e';
 
 const TAP_MOVE_TOLERANCE_PX = 8; // beyond this, the gesture was a drag, not a tap
 
@@ -710,6 +710,22 @@ export class Viewer {
     this._applyVisibility();
     this._applyMaterialState();
     return this.selectedIds;
+  }
+
+  /**
+   * Largest dimension of these structures, in model units (about mm), or null.
+   * Used to frame a landmark closer on a small bone (patella, a vertebra)
+   * than on a long one (2026-11-11).
+   */
+  idsExtent(ids) {
+    if (!this._modelRoot) return null;
+    const wanted = new Set(ids);
+    const box = new THREE.Box3();
+    let any = false;
+    for (const m of this.selectable) if (wanted.has(m.userData.structureId)) { box.expandByObject(m); any = true; }
+    if (!any) return null;
+    const size = box.getSize(new THREE.Vector3());
+    return Math.max(size.x, size.y, size.z) / this._modelRoot.scale.x;
   }
 
   /** Frame every visible mesh of these ids (a study region). Returns false if none. */

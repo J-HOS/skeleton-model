@@ -9,16 +9,16 @@
  * the loader.
  */
 
-import { LAYERS, PATHS } from './config.js?v=938f4441c6df';
-import { loadDataset, buildSearchIndex } from './dataset.js?v=938f4441c6df';
-import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap, prettyName } from './anatomy.js?v=938f4441c6df';
-import { STUDY_KINDS, STUDY_MODES, answerLandmarkTap, answerName, answerTap, studyMuscleLabel, boneBaseName, buildStudyCatalog, currentItem, formatPoints, giveUp, itemForId, itemsForMode, newRound, nextQuestion, parseLandmarks, prepareNaming, studyGroups } from './study.js?v=938f4441c6df';
-import { fetchLocal, sanitizeQuery } from './security.js?v=938f4441c6df';
-import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral, getStudyBest, recordStudyScore, studyKey } from './storage.js?v=938f4441c6df';
-import { Viewer } from './viewer.js?v=938f4441c6df';
-import { mountDevPanel } from './devpanel.js?v=938f4441c6df';
-import { byId } from './dom.js?v=938f4441c6df';
-import * as ui from './ui.js?v=938f4441c6df';
+import { LAYERS, PATHS } from './config.js?v=f244311c378e';
+import { loadDataset, buildSearchIndex } from './dataset.js?v=f244311c378e';
+import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap, prettyName } from './anatomy.js?v=f244311c378e';
+import { STUDY_KINDS, STUDY_MODES, answerLandmarkTap, answerName, answerTap, studyMuscleLabel, boneBaseName, buildStudyCatalog, currentItem, formatPoints, giveUp, itemForId, itemsForMode, newRound, nextQuestion, parseLandmarks, prepareNaming, studyGroups } from './study.js?v=f244311c378e';
+import { fetchLocal, sanitizeQuery } from './security.js?v=f244311c378e';
+import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral, getStudyBest, recordStudyScore, studyKey } from './storage.js?v=f244311c378e';
+import { Viewer } from './viewer.js?v=f244311c378e';
+import { mountDevPanel } from './devpanel.js?v=f244311c378e';
+import { byId } from './dom.js?v=f244311c378e';
+import * as ui from './ui.js?v=f244311c378e';
 
 const state = {
   data: null,
@@ -492,7 +492,9 @@ function showNameQuestion() {
   if (study.kind === 'landmarks' && !item.whole) {
     viewer.selectIds([]);
     viewer.setMarkers(Object.values(item.points).map((point) => ({ point, kind: 'target' })));
-    viewer.framePoints([rightPoint(item)], 90);
+    // Pad by the bone's size: a patella or a vertebra is framed close, a femur as before (2026-11-11).
+    const ext = viewer.idsExtent(oneSide(item.ids));
+    viewer.framePoints([rightPoint(item)], ext ? Math.min(90, Math.max(22, ext * 0.55)) : 90);
   } else {
     viewer.selectIds(item.ids);
     viewer.frameIds(oneSide(item.ids));

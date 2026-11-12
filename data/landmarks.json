@@ -3,47 +3,31 @@
   "source": "Z-Anatomy (CC BY-SA 4.0) landmark pointer lines, matched to the Section 11 bone cards by (C) extract_landmarks.py, 2026-11-04",
   "units": "glTF model units (about 1 mm), same frame as (C) skeleton_v2.glb before the app fits it to the screen",
   "skipped": {
-   "clavicle": [
-    "Deltoid tubercle (no separate label)"
-   ],
-   "humerus": [],
    "radius": [
-    "Groove for ECRB, groove for ECRL, groove for EPL/ED/EI (one shared label only)"
-   ],
-   "ulna": [
-    "Supinator fossa (no label)"
-   ],
-   "hand": [],
-   "cervical": [
-    "all nine (Z-Anatomy labels these only on L3)"
-   ],
-   "atlasaxis": [
-    "atlas transverse process/foramen, vertebral foramen; axis items other than the dens (no label)"
-   ],
-   "thoracic": [
-    "body, pedicle, transverse process, lamina, articular processes, spinous process, vertebral foramen (labelled on L3 only)"
-   ],
-   "lumbar": [],
-   "hip": [],
-   "sacrum": [
-    "Lumbosacral articulation, articulating facets (ambiguous)"
+    "Grooves for ECRB, ECRL and EPL/ED/EI: the model's dorsal radius is smooth (no grooves modelled); placing them would be a guess"
    ],
    "femur": [
-    "Medial and lateral lips of the linea aspera (one label for the whole line)",
-    "Articular surfaces of the tibiofemoral joint (= the condyles)"
+    "Medial and lateral lips of the linea aspera: the model's posterior shaft has no ridge or lips (coarse mesh)",
+    "Articular surfaces of the tibiofemoral joint: the placed Medial/Lateral condyle points already sit on these surfaces, so a third point cannot be told apart"
    ],
-   "patella": [
-    "all five (Patella has no labels in Z-Anatomy)"
-   ],
-   "foot": [
-    "Tuberosity of 5th metatarsal (no label)"
-   ]
+   "hand": [],
+   "foot": [],
+   "lumbar": [],
+   "hip": [],
+   "sacrum": [],
+   "cervical": [],
+   "atlasaxis": [],
+   "thoracic": [],
+   "patella": [],
+   "clavicle": [],
+   "ulna": []
   },
   "corrections": [
    "femur: Z-Anatomy medial/lateral supracondylar line labels are swapped; corrected (see MAP)"
   ],
   "checked": "every point checked 2026-11-04 by its position within its bone (medial/anterior/superior) and by rendered front/back/side views",
-  "added_2026_11_11": "25 whole-bone items (hand, foot, coccyx) and 2 spaces (vertebral and obturator foramen), by \"(C) add_whole_bones_and_foramina.py\"; foramen points computed from the model geometry and checked (clear of bone, outside the mesh, ringed by bone)."
+  "added_2026_11_11": "25 whole-bone items (hand, foot, coccyx) and 2 spaces (vertebral and obturator foramen), by \"(C) add_whole_bones_and_foramina.py\"; foramen points computed from the model geometry and checked (clear of bone, outside the mesh, ringed by bone).",
+  "added_2026_11_11b": "39 landmarks placed from model geometry, each rule taken from two approved sources (listed in each note): cervical (C5) and thoracic (T8) parts, atlas/axis extras, patella, sacral base and facets, deltoid tubercle (flagged), supinator fossa, tuberosity of 5th metatarsal; vertebral and transverse foramina as spaces. Script \"(C) place_remaining_landmarks.py\"."
  },
  "landmarks": [
   {
@@ -5714,6 +5698,864 @@
     ]
    },
    "note": "A space, not bone: point at the middle of the opening; asked in Name it only (2026-11-11)."
+  },
+  {
+   "card": "cervical",
+   "label": "Vertebral foramen",
+   "za": null,
+   "bone": "Vertebra_C5",
+   "points": {
+    "Vertebra_C5_ZA": [
+     -34.12,
+     1588.77,
+     10.03
+    ]
+   },
+   "space": true,
+   "note": "Placed 2026-11-11 from model geometry: space; clearance 6.6 mm; inside-bone=False. Sources: StatPearls NBK539734 (cervical vertebrae); O'Rahilly Basic Human Anatomy ch.39 (Dartmouth .edu)."
+  },
+  {
+   "card": "cervical",
+   "label": "Transverse foramen",
+   "za": null,
+   "bone": "Vertebra_C5",
+   "points": {
+    "Vertebra_C5_ZA": [
+     -15.79,
+     1583.55,
+     19.19
+    ]
+   },
+   "space": true,
+   "note": "Placed 2026-11-11 from model geometry: space; clearance 2.5 mm; inside-bone=False. Sources: StatPearls NBK539734 (cervical vertebrae); O'Rahilly Basic Human Anatomy ch.39 (Dartmouth .edu)."
+  },
+  {
+   "card": "thoracic",
+   "label": "Vertebral foramen",
+   "za": null,
+   "bone": "Vertebra_T8",
+   "points": {
+    "Vertebra_T8_ZA": [
+     -34.12,
+     1377.49,
+     -35.43
+    ]
+   },
+   "space": true,
+   "note": "Placed 2026-11-11 from model geometry: space; clearance 7.7 mm; inside-bone=None. Sources: StatPearls NBK459153 (thoracic vertebrae), NBK539734; O'Rahilly ch.39."
+  },
+  {
+   "card": "atlasaxis",
+   "label": "Vertebral foramen (atlas)",
+   "za": null,
+   "bone": "Atlas_C1",
+   "points": {
+    "Atlas_C1_ZA": [
+     -34.08,
+     1646.22,
+     11.75
+    ]
+   },
+   "space": true,
+   "note": "Placed 2026-11-11 from model geometry: space; clearance 12.0 mm; inside-bone=False. Sources: StatPearls NBK539734, NBK525969; O'Rahilly ch.39."
+  },
+  {
+   "card": "atlasaxis",
+   "label": "Transverse foramen (atlas)",
+   "za": null,
+   "bone": "Atlas_C1",
+   "points": {
+    "Atlas_C1_ZA": [
+     -5.22,
+     1645.65,
+     18.49
+    ]
+   },
+   "space": true,
+   "note": "Placed 2026-11-11 from model geometry: space; clearance 3.7 mm; inside-bone=False. Sources: StatPearls NBK539734, NBK525969; O'Rahilly ch.39."
+  },
+  {
+   "card": "atlasaxis",
+   "label": "Vertebral foramen (axis)",
+   "za": null,
+   "bone": "Axis_C2",
+   "points": {
+    "Axis_C2_ZA": [
+     -34.1,
+     1626.53,
+     9.2
+    ]
+   },
+   "space": true,
+   "note": "Placed 2026-11-11 from model geometry: space; clearance 6.5 mm; inside-bone=False. Sources: StatPearls NBK539734, NBK525969; O'Rahilly ch.39."
+  },
+  {
+   "card": "atlasaxis",
+   "label": "Transverse foramen (axis)",
+   "za": null,
+   "bone": "Axis_C2",
+   "points": {
+    "Axis_C2_ZA": [
+     -16.33,
+     1629.73,
+     18.33
+    ]
+   },
+   "space": true,
+   "note": "Placed 2026-11-11 from model geometry: space; clearance 2.9 mm; inside-bone=False. Sources: StatPearls NBK539734, NBK525969; O'Rahilly ch.39."
+  },
+  {
+   "card": "cervical",
+   "label": "Body",
+   "za": null,
+   "bone": "Vertebra_C5",
+   "points": {
+    "Vertebra_C5_ZA": [
+     -34.0,
+     1582.58,
+     30.05
+    ]
+   },
+   "normals": {
+    "Vertebra_C5_ZA": [
+     -0.115,
+     -0.16,
+     0.98
+    ]
+   },
+   "note": "Placed 2026-11-11 from model geometry: anterior surface of the body, midline, mid-height. Sources: StatPearls NBK539734 (cervical vertebrae); O'Rahilly Basic Human Anatomy ch.39 (Dartmouth .edu)."
+  },
+  {
+   "card": "cervical",
+   "label": "Spinous process (bifid)",
+   "za": null,
+   "bone": "Vertebra_C5",
+   "points": {
+    "Vertebra_C5_ZA": [
+     -33.99,
+     1575.87,
+     -24.35
+    ]
+   },
+   "normals": {
+    "Vertebra_C5_ZA": [
+     0.0,
+     -0.204,
+     -0.979
+    ]
+   },
+   "note": "Placed 2026-11-11 from model geometry: tip of the spinous process. Sources: StatPearls NBK539734 (cervical vertebrae); O'Rahilly Basic Human Anatomy ch.39 (Dartmouth .edu)."
+  },
+  {
+   "card": "cervical",
+   "label": "Transverse process",
+   "za": null,
+   "bone": "Vertebra_C5",
+   "points": {
+    "Vertebra_C5_ZA": [
+     -4.17,
+     1581.31,
+     17.18
+    ]
+   },
+   "normals": {
+    "Vertebra_C5_ZA": [
+     0.938,
+     -0.301,
+     -0.172
+    ]
+   },
+   "note": "Placed 2026-11-11 from model geometry: lateral end of the transverse process. Sources: StatPearls NBK539734 (cervical vertebrae); O'Rahilly Basic Human Anatomy ch.39 (Dartmouth .edu)."
+  },
+  {
+   "card": "cervical",
+   "label": "Pedicle",
+   "za": null,
+   "bone": "Vertebra_C5",
+   "points": {
+    "Vertebra_C5_ZA": [
+     -19.86,
+     1583.55,
+     19.19
+    ]
+   },
+   "normals": {
+    "Vertebra_C5_ZA": [
+     0.729,
+     -0.644,
+     -0.231
+    ]
+   },
+   "note": "Placed 2026-11-11 from model geometry: lateral surface of the pedicle. Sources: StatPearls NBK539734 (cervical vertebrae); O'Rahilly Basic Human Anatomy ch.39 (Dartmouth .edu)."
+  },
+  {
+   "card": "cervical",
+   "label": "Lamina",
+   "za": null,
+   "bone": "Vertebra_C5",
+   "points": {
+    "Vertebra_C5_ZA": [
+     -28.0,
+     1588.77,
+     1.61
+    ]
+   },
+   "normals": {
+    "Vertebra_C5_ZA": [
+     0.184,
+     0.731,
+     -0.657
+    ]
+   },
+   "note": "Placed 2026-11-11 from model geometry: posterior surface of the lamina. Sources: StatPearls NBK539734 (cervical vertebrae); O'Rahilly Basic Human Anatomy ch.39 (Dartmouth .edu)."
+  },
+  {
+   "card": "cervical",
+   "label": "Superior articular process",
+   "za": null,
+   "bone": "Vertebra_C5",
+   "points": {
+    "Vertebra_C5_ZA": [
+     -16.77,
+     1590.41,
+     6.37
+    ]
+   },
+   "normals": {
+    "Vertebra_C5_ZA": [
+     -0.242,
+     0.925,
+     -0.293
+    ]
+   },
+   "note": "Placed 2026-11-11 from model geometry: superior articular facet (faces up and back), 19 verts. Sources: StatPearls NBK539734 (cervical vertebrae); O'Rahilly Basic Human Anatomy ch.39 (Dartmouth .edu)."
+  },
+  {
+   "card": "cervical",
+   "label": "Inferior articular process",
+   "za": null,
+   "bone": "Vertebra_C5",
+   "points": {
+    "Vertebra_C5_ZA": [
+     -18.07,
+     1582.06,
+     6.64
+    ]
+   },
+   "normals": {
+    "Vertebra_C5_ZA": [
+     0.226,
+     -0.692,
+     0.685
+    ]
+   },
+   "note": "Placed 2026-11-11 from model geometry: inferior articular facet (faces down and forward), 31 verts. Sources: StatPearls NBK539734 (cervical vertebrae); O'Rahilly Basic Human Anatomy ch.39 (Dartmouth .edu)."
+  },
+  {
+   "card": "thoracic",
+   "label": "Body",
+   "za": null,
+   "bone": "Vertebra_T8",
+   "points": {
+    "Vertebra_T8_ZA": [
+     -34.0,
+     1378.98,
+     4.16
+    ]
+   },
+   "normals": {
+    "Vertebra_T8_ZA": [
+     -0.001,
+     0.291,
+     0.957
+    ]
+   },
+   "note": "Placed 2026-11-11 from model geometry: anterior surface of the body, midline, mid-height. Sources: StatPearls NBK459153 (thoracic vertebrae), NBK539734; O'Rahilly ch.39."
+  },
+  {
+   "card": "thoracic",
+   "label": "Spinous process",
+   "za": null,
+   "bone": "Vertebra_T8",
+   "points": {
+    "Vertebra_T8_ZA": [
+     -33.99,
+     1339.34,
+     -62.44
+    ]
+   },
+   "normals": {
+    "Vertebra_T8_ZA": [
+     0.441,
+     -0.83,
+     -0.34
+    ]
+   },
+   "note": "Placed 2026-11-11 from model geometry: tip of the spinous process. Sources: StatPearls NBK459153 (thoracic vertebrae), NBK539734; O'Rahilly ch.39."
+  },
+  {
+   "card": "thoracic",
+   "label": "Transverse process",
+   "za": null,
+   "bone": "Vertebra_T8",
+   "points": {
+    "Vertebra_T8_ZA": [
+     -8.43,
+     1373.72,
+     -48.92
+    ]
+   },
+   "normals": {
+    "Vertebra_T8_ZA": [
+     -0.376,
+     -0.482,
+     -0.791
+    ]
+   },
+   "note": "Placed 2026-11-11 from model geometry: posterior surface of the transverse process, lateral part. Sources: StatPearls NBK459153 (thoracic vertebrae), NBK539734; O'Rahilly ch.39."
+  },
+  {
+   "card": "thoracic",
+   "label": "Pedicle",
+   "za": null,
+   "bone": "Vertebra_T8",
+   "points": {
+    "Vertebra_T8_ZA": [
+     -18.24,
+     1377.49,
+     -30.43
+    ]
+   },
+   "normals": {
+    "Vertebra_T8_ZA": [
+     0.88,
+     -0.09,
+     -0.466
+    ]
+   },
+   "note": "Placed 2026-11-11 from model geometry: lateral surface of the pedicle. Sources: StatPearls NBK459153 (thoracic vertebrae), NBK539734; O'Rahilly ch.39."
+  },
+  {
+   "card": "thoracic",
+   "label": "Lamina",
+   "za": null,
+   "bone": "Vertebra_T8",
+   "points": {
+    "Vertebra_T8_ZA": [
+     -29.0,
+     1377.49,
+     -46.6
+    ]
+   },
+   "normals": {
+    "Vertebra_T8_ZA": [
+     -0.07,
+     0.591,
+     -0.804
+    ]
+   },
+   "note": "Placed 2026-11-11 from model geometry: posterior surface of the lamina. Sources: StatPearls NBK459153 (thoracic vertebrae), NBK539734; O'Rahilly ch.39."
+  },
+  {
+   "card": "thoracic",
+   "label": "Superior articular process",
+   "za": null,
+   "bone": "Vertebra_T8",
+   "points": {
+    "Vertebra_T8_ZA": [
+     -24.3,
+     1384.6,
+     -43.98
+    ]
+   },
+   "normals": {
+    "Vertebra_T8_ZA": [
+     0.343,
+     -0.083,
+     -0.936
+    ]
+   },
+   "note": "Placed 2026-11-11 from model geometry: superior articular facet (faces back), 15 verts. Sources: StatPearls NBK459153 (thoracic vertebrae), NBK539734; O'Rahilly ch.39."
+  },
+  {
+   "card": "thoracic",
+   "label": "Inferior articular process",
+   "za": null,
+   "bone": "Vertebra_T8",
+   "points": {
+    "Vertebra_T8_ZA": [
+     -23.98,
+     1372.15,
+     -40.63
+    ]
+   },
+   "normals": {
+    "Vertebra_T8_ZA": [
+     -0.428,
+     -0.01,
+     0.904
+    ]
+   },
+   "note": "Placed 2026-11-11 from model geometry: inferior articular facet (faces forward), 33 verts. Sources: StatPearls NBK459153 (thoracic vertebrae), NBK539734; O'Rahilly ch.39."
+  },
+  {
+   "card": "atlasaxis",
+   "label": "Body (axis)",
+   "za": null,
+   "bone": "Axis_C2",
+   "points": {
+    "Axis_C2_ZA": [
+     -34.0,
+     1626.52,
+     32.23
+    ]
+   },
+   "normals": {
+    "Axis_C2_ZA": [
+     0.0,
+     0.079,
+     0.997
+    ]
+   },
+   "note": "Placed 2026-11-11 from model geometry: anterior surface of the body, midline, mid-height. Sources: StatPearls NBK539734, NBK525969; O'Rahilly ch.39."
+  },
+  {
+   "card": "atlasaxis",
+   "label": "Spinous process (axis)",
+   "za": "Spinous process (bifid)",
+   "bone": "Axis_C2",
+   "points": {
+    "Axis_C2_ZA": [
+     -34.7,
+     1615.73,
+     -18.9
+    ]
+   },
+   "normals": {
+    "Axis_C2_ZA": [
+     -0.019,
+     -0.264,
+     -0.964
+    ]
+   },
+   "note": "Placed 2026-11-11 from model geometry: tip of the spinous process. Sources: StatPearls NBK539734, NBK525969; O'Rahilly ch.39."
+  },
+  {
+   "card": "atlasaxis",
+   "label": "Transverse process (axis)",
+   "za": null,
+   "bone": "Axis_C2",
+   "points": {
+    "Axis_C2_ZA": [
+     -7.95,
+     1622.88,
+     19.45
+    ]
+   },
+   "normals": {
+    "Axis_C2_ZA": [
+     0.97,
+     -0.242,
+     0.024
+    ]
+   },
+   "note": "Placed 2026-11-11 from model geometry: lateral end of the transverse process. Sources: StatPearls NBK539734, NBK525969; O'Rahilly ch.39."
+  },
+  {
+   "card": "atlasaxis",
+   "label": "Pedicle (axis)",
+   "za": null,
+   "bone": "Axis_C2",
+   "points": {
+    "Axis_C2_ZA": [
+     -19.83,
+     1629.73,
+     18.33
+    ]
+   },
+   "normals": {
+    "Axis_C2_ZA": [
+     0.91,
+     -0.294,
+     0.294
+    ]
+   },
+   "note": "Placed 2026-11-11 from model geometry: lateral surface of the pedicle. Sources: StatPearls NBK539734, NBK525969; O'Rahilly ch.39."
+  },
+  {
+   "card": "atlasaxis",
+   "label": "Lamina (axis)",
+   "za": null,
+   "bone": "Axis_C2",
+   "points": {
+    "Axis_C2_ZA": [
+     -28.0,
+     1626.53,
+     -4.76
+    ]
+   },
+   "normals": {
+    "Axis_C2_ZA": [
+     0.577,
+     0.199,
+     -0.792
+    ]
+   },
+   "note": "Placed 2026-11-11 from model geometry: posterior surface of the lamina. Sources: StatPearls NBK539734, NBK525969; O'Rahilly ch.39."
+  },
+  {
+   "card": "atlasaxis",
+   "label": "Superior articular process (axis)",
+   "za": null,
+   "bone": "Axis_C2",
+   "points": {
+    "Axis_C2_ZA": [
+     -18.22,
+     1638.98,
+     20.85
+    ]
+   },
+   "normals": {
+    "Axis_C2_ZA": [
+     0.4,
+     0.915,
+     0.06
+    ]
+   },
+   "note": "Placed 2026-11-11 from model geometry: superior articular facet, directly under the atlas inferior facet (joint gap 1.4 mm). Sources: StatPearls NBK539734, NBK525969; O'Rahilly ch.39."
+  },
+  {
+   "card": "atlasaxis",
+   "label": "Inferior articular process (axis)",
+   "za": null,
+   "bone": "Axis_C2",
+   "points": {
+    "Axis_C2_ZA": [
+     -21.21,
+     1620.01,
+     4.23
+    ]
+   },
+   "normals": {
+    "Axis_C2_ZA": [
+     -0.569,
+     -0.789,
+     0.233
+    ]
+   },
+   "note": "Placed 2026-11-11 from model geometry: inferior articular facet (faces down and forward; 4.4 mm from C3). Sources: StatPearls NBK539734, NBK525969; O'Rahilly ch.39."
+  },
+  {
+   "card": "atlasaxis",
+   "label": "Transverse process (atlas)",
+   "za": null,
+   "bone": "Atlas_C1",
+   "points": {
+    "Atlas_C1_ZA": [
+     7.8,
+     1644.39,
+     16.8
+    ]
+   },
+   "normals": {
+    "Atlas_C1_ZA": [
+     0.924,
+     -0.372,
+     -0.092
+    ]
+   },
+   "note": "Placed 2026-11-11 from model geometry: lateral end of the transverse process. Sources: StatPearls NBK539734, NBK525969; O'Rahilly ch.39."
+  },
+  {
+   "card": "patella",
+   "label": "Base",
+   "za": null,
+   "bone": "Patella",
+   "points": {
+    "Patella_r_ZA": [
+     -119.94,
+     599.63,
+     39.86
+    ],
+    "Patella_l_ZA": [
+     51.94,
+     599.63,
+     39.86
+    ]
+   },
+   "normals": {
+    "Patella_r_ZA": [
+     -0.214,
+     0.948,
+     -0.234
+    ],
+    "Patella_l_ZA": [
+     0.214,
+     0.948,
+     -0.234
+    ]
+   },
+   "note": "Placed 2026-11-11 from model geometry: superior border (base). Sources: StatPearls NBK519534 (patella); O'Rahilly ch.12; MUSC knee anatomy (.edu) for the vertical ridge."
+  },
+  {
+   "card": "patella",
+   "label": "Apex",
+   "za": null,
+   "bone": "Patella",
+   "points": {
+    "Patella_r_ZA": [
+     -118.56,
+     559.89,
+     37.35
+    ],
+    "Patella_l_ZA": [
+     50.56,
+     559.89,
+     37.35
+    ]
+   },
+   "normals": {
+    "Patella_r_ZA": [
+     -0.039,
+     -0.999,
+     0.005
+    ],
+    "Patella_l_ZA": [
+     0.039,
+     -0.999,
+     0.005
+    ]
+   },
+   "note": "Placed 2026-11-11 from model geometry: inferior point (apex). Sources: StatPearls NBK519534 (patella); O'Rahilly ch.12; MUSC knee anatomy (.edu) for the vertical ridge."
+  },
+  {
+   "card": "patella",
+   "label": "Vertical ridge",
+   "za": null,
+   "bone": "Patella",
+   "points": {
+    "Patella_r_ZA": [
+     -115.77,
+     578.24,
+     31.26
+    ],
+    "Patella_l_ZA": [
+     47.77,
+     578.24,
+     31.26
+    ]
+   },
+   "normals": {
+    "Patella_r_ZA": [
+     -0.443,
+     0.394,
+     -0.805
+    ],
+    "Patella_l_ZA": [
+     0.443,
+     0.394,
+     -0.805
+    ]
+   },
+   "note": "Placed 2026-11-11 from model geometry: most posterior point of the articular surface at mid-height. Sources: StatPearls NBK519534 (patella); O'Rahilly ch.12; MUSC knee anatomy (.edu) for the vertical ridge."
+  },
+  {
+   "card": "patella",
+   "label": "Facet for lateral condyle of femur",
+   "za": null,
+   "bone": "Patella",
+   "points": {
+    "Patella_r_ZA": [
+     -129.56,
+     581.1,
+     39.44
+    ],
+    "Patella_l_ZA": [
+     61.56,
+     581.1,
+     39.44
+    ]
+   },
+   "normals": {
+    "Patella_r_ZA": [
+     -0.047,
+     0.327,
+     -0.944
+    ],
+    "Patella_l_ZA": [
+     0.047,
+     0.327,
+     -0.944
+    ]
+   },
+   "note": "Placed 2026-11-11 from model geometry: lateral facet centre; 16 lateral vs 5 medial articular verts; ridge 21.2 mm from lateral edge, 20.8 from medial. Sources: StatPearls NBK519534 (patella); O'Rahilly ch.12; MUSC knee anatomy (.edu) for the vertical ridge."
+  },
+  {
+   "card": "patella",
+   "label": "Facet for medial condyle of femur",
+   "za": null,
+   "bone": "Patella",
+   "points": {
+    "Patella_r_ZA": [
+     -103.69,
+     582.98,
+     34.54
+    ],
+    "Patella_l_ZA": [
+     35.69,
+     582.98,
+     34.54
+    ]
+   },
+   "normals": {
+    "Patella_r_ZA": [
+     0.457,
+     0.119,
+     -0.882
+    ],
+    "Patella_l_ZA": [
+     -0.457,
+     0.119,
+     -0.882
+    ]
+   },
+   "note": "Placed 2026-11-11 from model geometry: medial facet centre. Sources: StatPearls NBK519534 (patella); O'Rahilly ch.12; MUSC knee anatomy (.edu) for the vertical ridge."
+  },
+  {
+   "card": "clavicle",
+   "label": "Deltoid tubercle",
+   "za": null,
+   "bone": "Clavicle",
+   "points": {
+    "Clavicle_r_ZA": [
+     -161.65,
+     1525.71,
+     8.01
+    ],
+    "Clavicle_l_ZA": [
+     93.65,
+     1525.71,
+     8.01
+    ]
+   },
+   "normals": {
+    "Clavicle_r_ZA": [
+     -0.062,
+     -0.329,
+     0.942
+    ],
+    "Clavicle_l_ZA": [
+     0.062,
+     -0.329,
+     0.942
+    ]
+   },
+   "note": "Placed 2026-11-11 from model geometry: anterior border, middle of the lateral third (deltoid origin); REVIEW: tubercle not named by approved sources. Sources: StatPearls NBK525990 (clavicle; deltoid origin on the lateral third); UW Musculoskeletal Atlas (deltoid). The named tubercle is NOT in these sources - print check needed.",
+   "review": "Deltoid tubercle not named by approved sources; placed at the deltoid origin they describe. Check against print Gray's/Moore's."
+  },
+  {
+   "card": "foot",
+   "label": "Tuberosity of 5th metatarsal",
+   "za": null,
+   "bone": "Fifth_metatarsal_bone",
+   "points": {
+    "Fifth_metatarsal_bone_r_ZA": [
+     -147.46,
+     173.91,
+     20.66
+    ],
+    "Fifth_metatarsal_bone_l_ZA": [
+     79.46,
+     173.91,
+     20.66
+    ]
+   },
+   "normals": {
+    "Fifth_metatarsal_bone_r_ZA": [
+     -0.731,
+     -0.009,
+     -0.682
+    ],
+    "Fifth_metatarsal_bone_l_ZA": [
+     0.731,
+     -0.009,
+     -0.682
+    ]
+   },
+   "note": "Placed 2026-11-11 from model geometry: posterolateral projection of the base. Sources: StatPearls NBK549872 (metatarsal bones), NBK544369; O'Rahilly ch.12 (base of the fifth presents a tuberosity, projects posterolaterally)."
+  },
+  {
+   "card": "sacrum",
+   "label": "Lumbosacral articulation",
+   "za": null,
+   "bone": "Sacrum",
+   "points": {
+    "Sacrum_ZA": [
+     -34.0,
+     1079.42,
+     9.0
+    ]
+   },
+   "normals": {
+    "Sacrum_ZA": [
+     -0.003,
+     0.81,
+     0.587
+    ]
+   },
+   "note": "Placed 2026-11-11 from model geometry: middle of the S1 superior surface (faces up and forward; 13 mm disc space to L5). Sources: StatPearls NBK551653 (sacral vertebrae); O'Rahilly ch.39."
+  },
+  {
+   "card": "sacrum",
+   "label": "Articulating facets",
+   "za": null,
+   "bone": "Sacrum",
+   "points": {
+    "Sacrum_ZA": [
+     -13.44,
+     1084.43,
+     -10.82
+    ]
+   },
+   "normals": {
+    "Sacrum_ZA": [
+     -0.437,
+     0.378,
+     -0.816
+    ]
+   },
+   "note": "Placed 2026-11-11 from model geometry: superior articular facet (meets the L5 inferior articular process; faces back and in), 40 verts. Sources: StatPearls NBK551653 (sacral vertebrae); O'Rahilly ch.39."
+  },
+  {
+   "card": "ulna",
+   "label": "Supinator fossa",
+   "za": null,
+   "bone": "Ulna",
+   "points": {
+    "Ulna_r_ZA": [
+     -254.11,
+     1186.0,
+     0.0
+    ],
+    "Ulna_l_ZA": [
+     186.11,
+     1186.0,
+     0.0
+    ]
+   },
+   "normals": {
+    "Ulna_r_ZA": [
+     -0.932,
+     -0.022,
+     0.362
+    ],
+    "Ulna_l_ZA": [
+     0.932,
+     -0.022,
+     0.362
+    ]
+   },
+   "note": "Placed 2026-11-11 from model geometry: depression anterior to the supinator crest, below the radial notch. Sources: StatPearls NBK545260 (forearm bones; supinator from the supinator fossa and crest); UW Musculoskeletal Atlas (supinator); PMC11390576 (radial tuberosity moves into the supinator fossa in pronation)."
   }
  ]
 }

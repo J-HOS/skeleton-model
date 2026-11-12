@@ -36,7 +36,7 @@
  * Search and on the cards.
  */
 
-import { classifyBone, findMuscleRecord, prettyName } from './anatomy.js?v=938f4441c6df';
+import { classifyBone, findMuscleRecord, prettyName } from './anatomy.js?v=f244311c378e';
 
 export const STUDY_KINDS = Object.freeze([
   { id: 'muscles', label: 'Muscles' },
@@ -311,11 +311,13 @@ export const LANDMARK_GROUPS = Object.freeze([
   { id: 'ulna', label: 'Ulna' },
   { id: 'hand', label: 'Hand' },
   { id: 'atlasaxis', label: 'Atlas and axis' },
+  { id: 'cervical', label: 'Cervical vertebra' },
   { id: 'thoracic', label: 'Thoracic vertebra' },
   { id: 'lumbar', label: 'Lumbar vertebra' },
   { id: 'hip', label: 'Hip bone' },
   { id: 'sacrum', label: 'Sacrum' },
   { id: 'femur', label: 'Femur' },
+  { id: 'patella', label: 'Patella' },
   { id: 'tibia', label: 'Tibia' },
   { id: 'fibula', label: 'Fibula' },
   { id: 'foot', label: 'Foot' },
