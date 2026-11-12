@@ -6,12 +6,12 @@
  * this boundary is what lets every other module be tested in plain Node.
  */
 
-import * as THREE from '../vendor/three.module.js?v=f244311c378e';
-import { GLTFLoader } from '../vendor/GLTFLoader.js?v=f244311c378e';
-import { OrbitControls } from './controls.js?v=f244311c378e';
-import { BONE_SURFACE_COLORS, COLORS, LAYERS, LIMITS, MODEL_FIT_UNITS, MUSCLE_SECTION_COLORS, PATHS, PEEL, RENDER } from './config.js?v=f244311c378e';
-import { assertLooksLikeGLB, fetchLocal } from './security.js?v=f244311c378e';
-import { attachmentWeight, axialParameter, axialTaper, boneSurfaceKey, classifyLayer, findMuscleRecord, hiddenByIsolation, isPeeled, recordAliases, resolvesToContent, scaleChannels, selectionGroup, varyLightness, viewOffsetFor, fitDistance } from './anatomy.js?v=f244311c378e';
+import * as THREE from '../vendor/three.module.js?v=784958071a72';
+import { GLTFLoader } from '../vendor/GLTFLoader.js?v=784958071a72';
+import { OrbitControls } from './controls.js?v=784958071a72';
+import { BONE_SURFACE_COLORS, COLORS, LAYERS, LIMITS, MODEL_FIT_UNITS, MUSCLE_SECTION_COLORS, PATHS, PEEL, RENDER } from './config.js?v=784958071a72';
+import { assertLooksLikeGLB, fetchLocal } from './security.js?v=784958071a72';
+import { attachmentWeight, axialParameter, axialTaper, boneSurfaceKey, classifyLayer, findMuscleRecord, hiddenByIsolation, isPeeled, recordAliases, resolvesToContent, scaleChannels, selectionGroup, varyLightness, viewOffsetFor, fitDistance } from './anatomy.js?v=784958071a72';
 
 const TAP_MOVE_TOLERANCE_PX = 8; // beyond this, the gesture was a drag, not a tap
 
@@ -165,6 +165,35 @@ export class Viewer {
     this._selectHandler = handler;
   }
 
+  /**
+   * Register a callback for taps on a landmark dot (a marker with a `key`),
+   * or null to stop. Checked before the bone, by distance on screen, so a dot
+   * on the edge of a bone or seen faintly through it can still be tapped
+   * (2026-11-11).
+   */
+  onMarkerTap(handler) {
+    this._markerHandler = handler;
+  }
+
+  /** Key of the dot within `maxPx` of a screen point, nearest first, or null. */
+  _markerAt(clientX, clientY, maxPx = 18) {
+    const group = this._markerGroup;
+    if (!group || !group.parent) return null;
+    const v = new THREE.Vector3();
+    let best = null;
+    for (const dot of group.children) {
+      if (!dot.userData.key) continue;
+      dot.getWorldPosition(v);
+      v.project(this.camera);
+      if (v.z > 1) continue;
+      const x = (v.x + 1) / 2 * window.innerWidth;
+      const y = (1 - v.y) / 2 * window.innerHeight;
+      const d = Math.hypot(x - clientX, y - clientY);
+      if (d <= maxPx && (!best || d < best.d)) best = { d, key: dot.userData.key };
+    }
+    return best ? best.key : null;
+  }
+
   resize = () => {
     const w = window.innerWidth;
     const h = window.innerHeight;
@@ -247,6 +276,10 @@ export class Viewer {
     this._downAt = null;
     if (!down || this.controls.pinching) return;
     if (Math.hypot(event.clientX - down.x, event.clientY - down.y) > TAP_MOVE_TOLERANCE_PX) return;
+    if (this._markerHandler) {
+      const key = this._markerAt(event.clientX, event.clientY);
+      if (key) { this._markerHandler(key); return; }
+    }
 
     this._pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
     this._pointer.y = -(event.clientY / window.innerHeight) * 2 + 1;
@@ -652,6 +685,8 @@ export class Viewer {
         target: new THREE.MeshBasicMaterial({ color: 0x22d3ee, depthTest: false, transparent: true, opacity: 0.95 }),
         tap: new THREE.MeshBasicMaterial({ color: 0xf97316, depthTest: false, transparent: true, opacity: 0.95 }),
         miss: new THREE.MeshBasicMaterial({ color: 0xfacc15, depthTest: false, transparent: true, opacity: 0.95 }),
+        // The card's other landmarks, shown softly on an isolated bone (2026-11-11).
+        soft: new THREE.MeshBasicMaterial({ color: 0x64748b, depthTest: false, transparent: true, opacity: 0.95 }),
       };
       // Each dot is drawn twice: solid where it is in view, faint where bone
       // is in front of it, so a landmark on the back of a bone does not look
@@ -664,7 +699,7 @@ export class Viewer {
         faint.depthTest = false;
         faint.depthWrite = false;
         faint.transparent = true;
-        faint.opacity = 0.28;
+        faint.opacity = key === 'soft' ? 0.12 : 0.28;
         this._markerMaterials[key] = { solid, faint };
       }
     }
@@ -681,7 +716,8 @@ export class Viewer {
       solid.renderOrder = 11;
       dot.add(faint, solid);
       dot.position.set(m.point[0], m.point[1], m.point[2]);
-      dot.userData.px = m.kind === 'tap' ? 7 : 9; // radius in screen pixels, kept by _sizeMarkers()
+      if (m.key) dot.userData.key = m.key;
+      dot.userData.px = m.kind === 'tap' ? 7 : m.kind === 'soft' ? 6 : 9; // radius in screen pixels, kept by _sizeMarkers()
       group.add(dot);
     }
   }
@@ -728,6 +764,44 @@ export class Viewer {
     return Math.max(size.x, size.y, size.z) / this._modelRoot.scale.x;
   }
 
+  /**
+   * Isolate one bone for a landmark round (2026-11-11, Jake): orbit, zoom and
+   * pan are limited to it, and the camera fits it. The caller hides every
+   * other mesh (setStudyScope). Pass null to go back to whole-body limits.
+   */
+  isolate(ids) {
+    if (!ids) { this.controls.clearBounds(); return false; }
+    const wanted = new Set(ids);
+    const box = new THREE.Box3();
+    for (const m of this.selectable) if (wanted.has(m.userData.structureId)) box.expandByObject(m);
+    if (box.isEmpty()) return false;
+    const size = box.getSize(new THREE.Vector3());
+    const ext = Math.max(size.x, size.y, size.z);
+    const centre = box.getCenter(new THREE.Vector3());
+    const fit = fitDistance(size, this.camera.fov, window.innerWidth, window.innerHeight, this._insetTarget || {});
+    const home = Math.max(fit, ext * 1.2);
+    this.controls.setBounds({ home: centre, homeRadius: home, minRadius: Math.max(0.03, ext * 0.25), maxRadius: Math.min(24, Math.max(home * 4, 1)), maxPan: ext * 0.9 });
+    this.controls.target.copy(centre);
+    this.controls.radius = home;
+    this.controls.update();
+    return true;
+  }
+
+  /** Orbit around a model-space point (a landmark) without changing the zoom. */
+  orbitAround(point) {
+    if (!this._modelRoot) return;
+    this.controls.target.copy(this._modelRoot.localToWorld(new THREE.Vector3(point[0], point[1], point[2])));
+    this.controls.update();
+  }
+
+  /** Turn the camera to look at the target from a model-space direction (a landmark's surface normal). */
+  lookFromModel(normal) {
+    if (!this._modelRoot || !Array.isArray(normal)) return;
+    this._modelRoot.updateMatrixWorld();
+    const dir = new THREE.Vector3(normal[0], normal[1], normal[2]).transformDirection(this._modelRoot.matrixWorld);
+    this.controls.lookFrom(dir);
+  }
+
   /** Frame every visible mesh of these ids (a study region). Returns false if none. */
   frameIds(ids) {
     const wanted = new Set(ids);
@@ -739,7 +813,8 @@ export class Viewer {
     const size = box.getSize(new THREE.Vector3());
     this.controls.target.copy(box.getCenter(new THREE.Vector3()));
     const fit = fitDistance(size, this.camera.fov, window.innerWidth, window.innerHeight, this._insetTarget || {});
-    this.controls.radius = Math.min(Math.max(Math.max(size.x, size.y, size.z) * 1.6, fit, 1.6), 12);
+    const floor = this.controls.bounded ? this.controls.minRadius : 1.6;
+    this.controls.radius = Math.min(Math.max(Math.max(size.x, size.y, size.z) * 1.6, fit, floor), this.controls.maxRadius);
     this.controls.update();
     return true;
   }

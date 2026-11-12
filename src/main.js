@@ -9,16 +9,16 @@
  * the loader.
  */
 
-import { LAYERS, PATHS } from './config.js?v=f244311c378e';
-import { loadDataset, buildSearchIndex } from './dataset.js?v=f244311c378e';
-import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap, prettyName } from './anatomy.js?v=f244311c378e';
-import { STUDY_KINDS, STUDY_MODES, answerLandmarkTap, answerName, answerTap, studyMuscleLabel, boneBaseName, buildStudyCatalog, currentItem, formatPoints, giveUp, itemForId, itemsForMode, newRound, nextQuestion, parseLandmarks, prepareNaming, studyGroups } from './study.js?v=f244311c378e';
-import { fetchLocal, sanitizeQuery } from './security.js?v=f244311c378e';
-import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral, getStudyBest, recordStudyScore, studyKey } from './storage.js?v=f244311c378e';
-import { Viewer } from './viewer.js?v=f244311c378e';
-import { mountDevPanel } from './devpanel.js?v=f244311c378e';
-import { byId } from './dom.js?v=f244311c378e';
-import * as ui from './ui.js?v=f244311c378e';
+import { LAYERS, PATHS } from './config.js?v=784958071a72';
+import { loadDataset, buildSearchIndex } from './dataset.js?v=784958071a72';
+import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap, prettyName } from './anatomy.js?v=784958071a72';
+import { STUDY_KINDS, STUDY_MODES, answerLandmarkTap, answerName, answerTap, studyMuscleLabel, boneBaseName, buildStudyCatalog, currentItem, formatPoints, giveUp, itemForId, answerLandmarkPick, itemsForMode, newRound, nextQuestion, parseLandmarks, prepareNaming, studyGroups } from './study.js?v=784958071a72';
+import { fetchLocal, sanitizeQuery } from './security.js?v=784958071a72';
+import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral, getStudyBest, recordStudyScore, studyKey } from './storage.js?v=784958071a72';
+import { Viewer } from './viewer.js?v=784958071a72';
+import { mountDevPanel } from './devpanel.js?v=784958071a72';
+import { byId } from './dom.js?v=784958071a72';
+import * as ui from './ui.js?v=784958071a72';
 
 const state = {
   data: null,
@@ -404,6 +404,16 @@ const modeLabel = (id) => STUDY_MODES.find((m) => m.id === id)?.label || id;
 // One side of a pair, for framing: the right side if there is one.
 const oneSide = (ids) => { const r = ids.filter((id) => /_r_ZA$|_right$/.test(id)); return r.length ? r : ids; };
 const rightPoint = (item) => item.points[oneSide(item.ids)[0]] || Object.values(item.points)[0];
+// Landmark rounds show one bone (one side) alone (2026-11-11, Jake): the id of
+// an item on the shown side, its point there, and the card's other landmarks
+// as soft dots.
+const shownId = (item) => { const ids = state.study?.shownIds; return (ids && item.ids.find((i) => ids.includes(i))) || oneSide(item.ids)[0]; };
+const shownPoint = (item) => item.points[shownId(item)] || rightPoint(item);
+function softMarkers(except = null) {
+  const study = state.study;
+  if (!study || study.kind !== 'landmarks') return [];
+  return study.items.filter((i) => !i.whole && i !== except).map((i) => ({ point: shownPoint(i), kind: 'soft', key: i.key }));
+}
 
 function bestText(kind, group, mode) {
   const b = getStudyBest()[studyKey(kind, group, mode)];
@@ -469,8 +479,11 @@ function startStudy(kind, region, mode = 'find') {
   state.study.allIds = allIds;
   // Landmark rounds show only the card's bones, so the bone stands out and a
   // tap cannot land on a neighbour.
+  // Landmark rounds isolate one bone (one side) in 3D: nothing else is drawn,
+  // and orbit, pinch-zoom and pan are limited to it (2026-11-11, Jake).
+  state.study.shownIds = kind === 'landmarks' ? oneSide(allIds) : null;
   if (kind === 'muscles') viewer.setStudyScope(allIds);
-  else if (kind === 'landmarks') viewer.setStudyScope(allIds, 'skeleton');
+  else if (kind === 'landmarks') viewer.setStudyScope(state.study.shownIds, 'skeleton');
   else viewer.setStudyScope(null);
   viewer.selectIds([]);
   viewer.setMarkers([]);
@@ -479,8 +492,13 @@ function startStudy(kind, region, mode = 'find') {
   document.body.classList.add('studying');
   drawStudy();
   updateViewInset();
-  if (mode === 'find') viewer.frameIds(kind === 'landmarks' ? oneSide(allIds) : allIds);
-  else showNameQuestion();
+  viewer.isolate(kind === 'landmarks' ? state.study.shownIds : null);
+  // Find it with dots: tapping a dot answers with that landmark.
+  viewer.onMarkerTap(kind === 'landmarks' && mode === 'find' ? landmarkPick : null);
+  if (mode === 'find') {
+    if (kind === 'landmarks') viewer.setMarkers(softMarkers());
+    else viewer.frameIds(allIds);
+  } else showNameQuestion();
 }
 
 /** Name it: show the structure being asked. */
@@ -489,12 +507,22 @@ function showNameQuestion() {
   const item = currentItem(study.round);
   if (!item) return;
   const viewer = state.viewer;
-  if (study.kind === 'landmarks' && !item.whole) {
-    viewer.selectIds([]);
-    viewer.setMarkers(Object.values(item.points).map((point) => ({ point, kind: 'target' })));
-    // Pad by the bone's size: a patella or a vertebra is framed close, a femur as before (2026-11-11).
-    const ext = viewer.idsExtent(oneSide(item.ids));
-    viewer.framePoints([rightPoint(item)], ext ? Math.min(90, Math.max(22, ext * 0.55)) : 90);
+  if (study.kind === 'landmarks') {
+    // Back to the isolated bone's own view, then (for a point) orbit around the
+    // asked landmark and turn the camera to face it, so one on the back of the
+    // bone is in view. The card's other landmarks stay as soft dots.
+    viewer.isolate(study.shownIds);
+    if (item.whole) {
+      viewer.selectIds(item.ids);
+      viewer.setMarkers(softMarkers());
+      viewer.frameIds(oneSide(item.ids));
+    } else {
+      viewer.selectIds([]);
+      viewer.setMarkers([...softMarkers(item), { point: shownPoint(item), kind: 'target' }]);
+      viewer.orbitAround(shownPoint(item));
+      const n = item.normals?.[shownId(item)];
+      if (n) viewer.lookFromModel(n);
+    }
   } else {
     viewer.selectIds(item.ids);
     viewer.frameIds(oneSide(item.ids));
@@ -560,6 +588,20 @@ function studyTap(id, info = {}) {
     : { text: `Not quite - that was ${nameForId(id)}. ${result.item.label} is now lit.`, good: false });
 }
 
+/** Find it: the user tapped a landmark's dot (2026-11-11). */
+function landmarkPick(key) {
+  const study = state.study;
+  if (!study || study.round.answered || study.mode !== 'find') return;
+  const result = answerLandmarkPick(study.round, key);
+  if (!result) return;
+  const markers = [...softMarkers(result.item), { point: shownPoint(result.item), kind: 'target' }];
+  if (!result.correct) markers.push({ point: shownPoint(result.nearest), kind: 'tap' });
+  state.viewer.setMarkers(markers);
+  drawStudy(result.correct
+    ? { text: `Correct - ${result.item.label}.`, good: true }
+    : { text: `Not quite - that dot (orange) is the ${result.nearest.label}. The ${result.item.label} is the blue dot.`, good: false });
+}
+
 function landmarkTap(id, point, normal) {
   const study = state.study;
   if (!study.allIds.includes(id)) {
@@ -570,14 +612,14 @@ function landmarkTap(id, point, normal) {
   if (!result) return;
   if (result.item.whole) {
     state.viewer.selectIds(result.item.ids);
-    state.viewer.setMarkers(result.correct ? [] : [{ point, kind: 'tap' }]);
+    state.viewer.setMarkers([...softMarkers(), ...(result.correct ? [] : [{ point, kind: 'tap' }])]);
     drawStudy(result.correct
       ? { text: `Correct - ${result.item.label}.`, good: true }
       : { text: `Not quite - that was ${result.nearest ? `the ${result.nearest.label}` : nameForId(id)}. The ${result.item.label} ${result.item.ids.length > 2 ? 'are' : 'is'} now lit.`, good: false });
     return;
   }
-  const target = result.item.points[id] || rightPoint(result.item);
-  state.viewer.setMarkers([{ point: target, kind: 'target' }, ...(result.correct ? [] : [{ point, kind: 'tap' }])]);
+  const target = result.item.points[id] || shownPoint(result.item);
+  state.viewer.setMarkers([...softMarkers(result.item), { point: target, kind: 'target' }, ...(result.correct ? [] : [{ point, kind: 'tap' }])]);
   // A landmark facing away from the tapped surface is on the other side of the bone.
   const tn = result.item.normals?.[id];
   const behind = !result.correct && tn && normal && tn[0] * normal[0] + tn[1] * normal[1] + tn[2] * normal[2] < 0;
@@ -622,7 +664,7 @@ function studyGiveUp() {
     return;
   }
   if (study.kind === 'landmarks') {
-    state.viewer.setMarkers(Object.values(result.item.points).map((point) => ({ point, kind: 'target' })));
+    state.viewer.setMarkers([...softMarkers(result.item), { point: shownPoint(result.item), kind: 'target' }]);
     drawStudy({ text: `The ${result.item.label} is the blue dot.`, good: false });
     return;
   }
@@ -637,6 +679,7 @@ function studyNext() {
   if (nextQuestion(study.round)) {
     drawStudy();
     if (study.mode === 'name') showNameQuestion();
+    else state.viewer.setMarkers(softMarkers());
     return;
   }
   const { correct, missed, items } = study.round;
@@ -703,6 +746,8 @@ function endStudy() {
   viewer.setPeelDepth(state.peelDepth);
   if (study.saved.xray !== state.xray) setXrayState(study.saved.xray);
   refreshLayers();
+  viewer.onMarkerTap(null);
+  viewer.isolate(null);
   viewer.resetView();
 }
 

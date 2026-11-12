@@ -36,7 +36,7 @@
  * Search and on the cards.
  */
 
-import { classifyBone, findMuscleRecord, prettyName } from './anatomy.js?v=f244311c378e';
+import { classifyBone, findMuscleRecord, prettyName } from './anatomy.js?v=784958071a72';
 
 export const STUDY_KINDS = Object.freeze([
   { id: 'muscles', label: 'Muscles' },
@@ -437,6 +437,18 @@ export function answerLandmarkTap(round, id, point, normal = null) {
   round.answered = true;
   if (correct) round.correct += 1; else round.missed.push(item.label);
   return { correct, item, nearest: nearest ? nearest.item : null };
+}
+
+/** Record a tap on a landmark's dot (2026-11-11): the dot tapped is the answer given. */
+export function answerLandmarkPick(round, key) {
+  const item = currentItem(round);
+  if (!item || round.answered) return null;
+  const picked = round.items.find((i) => i.key === key) || null;
+  if (!picked) return null;
+  const correct = picked === item;
+  round.answered = true;
+  if (correct) round.correct += 1; else round.missed.push(item.label);
+  return { correct, item, nearest: picked };
 }
 
 /* ------------------------------------------------------ Name it grading -- */

@@ -34,6 +34,14 @@ export class OrbitControls {
     this.target = target.clone();
     this.home = target.clone();
     this.radius = 9.5;
+    // Limits. Normally the whole-body values; a landmark round narrows them to
+    // one bone with setBounds() so it can be zoomed right in on (2026-11-11).
+    this.minRadius = MIN_RADIUS;
+    this.maxRadius = MAX_RADIUS;
+    this.maxPan = MAX_PAN_FROM_ORIGIN;
+    this.homeRadius = 9.5;
+    this._defaultHome = target.clone();
+    this.bounded = false;
     // theta=0 faces the model's +Z (anterior) side by default — see the
     // matching note in viewer.js on why anterior is +Z, not -Z (a corrective
     // rotation added 2026-07-31 for an unrelated upside-down bug flips which
@@ -64,7 +72,7 @@ export class OrbitControls {
     const dx = this.camera.position.x - this.target.x;
     const dy = this.camera.position.y - this.target.y;
     const dz = this.camera.position.z - this.target.z;
-    this.radius = Math.max(MIN_RADIUS, Math.hypot(dx, dy, dz));
+    this.radius = Math.max(this.minRadius, Math.hypot(dx, dy, dz));
     this.theta = Math.atan2(dx, dz);
     this.phi = Math.acos(Math.min(1, Math.max(-1, dy / this.radius)));
     this.update();
@@ -133,7 +141,7 @@ export class OrbitControls {
   };
 
   _zoom(factor) {
-    this.radius = Math.min(MAX_RADIUS, Math.max(MIN_RADIUS, this.radius * factor));
+    this.radius = Math.min(this.maxRadius, Math.max(this.minRadius, this.radius * factor));
     this.update();
   }
 
@@ -177,8 +185,8 @@ export class OrbitControls {
     // Keep the target near the model so panning cannot strand the user in
     // empty space with nothing on screen and no way back.
     const distance = Math.hypot(x - this.home.x, y - this.home.y, z - this.home.z);
-    if (distance > MAX_PAN_FROM_ORIGIN) {
-      const scale = MAX_PAN_FROM_ORIGIN / distance;
+    if (distance > this.maxPan) {
+      const scale = this.maxPan / distance;
       x = this.home.x + (x - this.home.x) * scale;
       y = this.home.y + (y - this.home.y) * scale;
       z = this.home.z + (z - this.home.z) * scale;
@@ -191,9 +199,39 @@ export class OrbitControls {
   /** Put the camera back where it started. */
   reset() {
     this.target.copy(this.home);
-    this.radius = 9.5;
+    this.radius = this.homeRadius;
     this.theta = 0;
     this.phi = Math.PI / 2;
+    this.update();
+  }
+
+  /**
+   * Narrow orbit, zoom and pan to one object (a bone in a landmark round):
+   * `home` is its centre in world space, the radii and pan are world units.
+   */
+  setBounds({ home, homeRadius, minRadius, maxRadius, maxPan }) {
+    this.home.copy(home);
+    this.homeRadius = homeRadius;
+    this.minRadius = minRadius;
+    this.maxRadius = maxRadius;
+    this.maxPan = maxPan;
+    this.bounded = true;
+  }
+
+  /** Back to the whole-body limits. */
+  clearBounds() {
+    this.home.copy(this._defaultHome);
+    this.homeRadius = 9.5;
+    this.minRadius = MIN_RADIUS;
+    this.maxRadius = MAX_RADIUS;
+    this.maxPan = MAX_PAN_FROM_ORIGIN;
+    this.bounded = false;
+  }
+
+  /** Look at the target from this world-space direction (unit vector from target to camera). */
+  lookFrom(dir) {
+    this.theta = Math.atan2(dir.x, dir.z);
+    this.phi = Math.min(MAX_PHI, Math.max(MIN_PHI, Math.acos(Math.max(-1, Math.min(1, dir.y)))));
     this.update();
   }
 
