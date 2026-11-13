@@ -6,12 +6,12 @@
  * this boundary is what lets every other module be tested in plain Node.
  */
 
-import * as THREE from '../vendor/three.module.js?v=787920466e9d';
-import { GLTFLoader } from '../vendor/GLTFLoader.js?v=787920466e9d';
-import { OrbitControls } from './controls.js?v=787920466e9d';
-import { BONE_SURFACE_COLORS, COLORS, LAYERS, LIMITS, MODEL_FIT_UNITS, MUSCLE_SECTION_COLORS, PATHS, PEEL, RENDER } from './config.js?v=787920466e9d';
-import { assertLooksLikeGLB, fetchLocal } from './security.js?v=787920466e9d';
-import { attachmentWeight, axialParameter, axialTaper, boneSurfaceKey, classifyLayer, findMuscleRecord, hiddenByIsolation, isPeeled, recordAliases, resolvesToContent, scaleChannels, selectionGroup, varyLightness, viewOffsetFor, fitDistance } from './anatomy.js?v=787920466e9d';
+import * as THREE from '../vendor/three.module.js?v=d3edb24bab6e';
+import { GLTFLoader } from '../vendor/GLTFLoader.js?v=d3edb24bab6e';
+import { OrbitControls } from './controls.js?v=d3edb24bab6e';
+import { BONE_SURFACE_COLORS, COLORS, LAYERS, LIMITS, MODEL_FIT_UNITS, MUSCLE_SECTION_COLORS, PATHS, PEEL, RENDER } from './config.js?v=d3edb24bab6e';
+import { assertLooksLikeGLB, fetchLocal } from './security.js?v=d3edb24bab6e';
+import { attachmentWeight, axialParameter, axialTaper, boneSurfaceKey, classifyLayer, findMuscleRecord, hiddenByIsolation, isPeeled, recordAliases, resolvesToContent, scaleChannels, selectionGroup, varyLightness, viewOffsetFor, fitDistance } from './anatomy.js?v=d3edb24bab6e';
 
 const TAP_MOVE_TOLERANCE_PX = 8; // beyond this, the gesture was a drag, not a tap
 
@@ -684,7 +684,10 @@ export class Viewer {
       // region's muscles are shown, so the user taps among the right set.
       // Landmark rounds (2026-11-04) scope the skeleton instead: only the
       // bone card's bones are shown.
-      const outOfScope = this.studyScope && mesh.userData.layer === (this.studyScopeLayer || 'muscle')
+      // Hand and foot rounds (2026-11-13) scope every layer ('all'): only that
+      // hand's or foot's muscles and bones are drawn.
+      const scopeLayer = this.studyScopeLayer || 'muscle';
+      const outOfScope = this.studyScope && (scopeLayer === 'all' || mesh.userData.layer === scopeLayer)
         && !this.studyScope.has(mesh.userData.structureId);
       mesh.visible = layerOn && !peeled && !isolated && !outOfScope;
     }
@@ -801,7 +804,7 @@ export class Viewer {
    * pan are limited to it, and the camera fits it. The caller hides every
    * other mesh (setStudyScope). Pass null to go back to whole-body limits.
    */
-  isolate(ids) {
+  isolate(ids, { minFraction = 0.25 } = {}) {
     if (!ids) { this.controls.clearBounds(); this._setClip(0.1, 100); return false; }
     const wanted = new Set(ids);
     const box = new THREE.Box3();
@@ -812,7 +815,9 @@ export class Viewer {
     const centre = box.getCenter(new THREE.Vector3());
     const fit = fitDistance(size, this.camera.fov, window.innerWidth, window.innerHeight, this._insetTarget || {});
     const home = Math.max(fit, ext * 1.2);
-    const minRadius = Math.max(0.03, ext * 0.25);
+    // Closest zoom as a share of the object's size: a quarter for one bone; a
+    // whole hand or foot passes less, so a phalanx can fill the screen.
+    const minRadius = Math.max(0.03, ext * minFraction);
     const maxRadius = Math.min(24, Math.max(home * 4, 1));
     this.controls.setBounds({ home: centre, homeRadius: home, minRadius, maxRadius, maxPan: ext * 0.9 });
     // A small bone zoomed right in (patella, a vertebra) came closer than the

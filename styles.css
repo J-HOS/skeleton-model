@@ -206,6 +206,8 @@ canvas { display: block; touch-action: none; }
 }
 .error-card h2 { margin: 0 0 8px; font-size: 17px; }
 .error-card p { margin: 0 0 14px; color: var(--muted); font-size: 14px; }
+/* Leave-round pop-up (2026-11-13). */
+.leave-actions { display: flex; gap: 10px; justify-content: flex-end; flex-wrap: wrap; }
 .credits-card { max-width: 560px; max-height: calc(100vh - 48px); overflow-y: auto; }
 .credit { margin: 0 0 14px; }
 .credit h3 { margin: 0 0 4px; font-size: 14px; }

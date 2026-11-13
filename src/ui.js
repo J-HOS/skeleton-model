@@ -7,9 +7,9 @@
  * correctness of the anatomy or the security posture.
  */
 
-import { byId, clear, el, fieldRow, replace } from './dom.js?v=787920466e9d';
-import { ATTRIBUTION, CREDITS, DISCLAIMER, LAYERS, LIMITS } from './config.js?v=787920466e9d';
-import { parseLandmarkCard, prettyName } from './anatomy.js?v=787920466e9d';
+import { byId, clear, el, fieldRow, replace } from './dom.js?v=d3edb24bab6e';
+import { ATTRIBUTION, CREDITS, DISCLAIMER, LAYERS, LIMITS } from './config.js?v=d3edb24bab6e';
+import { parseLandmarkCard, prettyName } from './anatomy.js?v=d3edb24bab6e';
 
 /* ---------------------------------------------------------------- status -- */
 
@@ -428,6 +428,10 @@ export function renderStudyBar({ title, progress, prompt, feedback, actions, ans
       on: { submit: (e) => { e.preventDefault(); answer.onSubmit(input.value); } },
     }, [input, el('button', { className: 'btn', text: 'Check', attrs: { type: 'submit' } })]);
   }
+  // Phones (2026-11-13, Jake): the keyboard opened before the question and the
+  // structure could be seen. On a touch screen the answer box gets focus only
+  // when it is tapped - or if it already had it (a redraw while typing).
+  const hadFocus = document.activeElement?.id === 'studyAnswer';
   replace(bar, [
     el('div', { className: 'study-bar-head' }, [
       el('span', { className: 'study-bar-title', text: title }),
@@ -448,10 +452,47 @@ export function renderStudyBar({ title, progress, prompt, feedback, actions, ans
     }))),
   ]);
   bar.hidden = false;
-  if (form && answer.focus !== false) form.querySelector('input').focus({ preventScroll: true });
-  else if (focusPrimary) bar.querySelector('.study-bar-actions .btn:not(.subtle)')?.focus({ preventScroll: true });
+  if (form) {
+    const touch = window.matchMedia?.('(pointer: coarse)').matches;
+    if (answer.focus !== false && (hadFocus || !touch)) form.querySelector('input').focus({ preventScroll: true });
+  } else if (focusPrimary) bar.querySelector('.study-bar-actions .btn:not(.subtle)')?.focus({ preventScroll: true });
 }
 
 export function hideStudyBar() {
   byId('studyBar').hidden = true;
+}
+
+/**
+ * Leaving a round part-way (2026-11-13, Jake): a pop-up asks first, with
+ * "Leave anyway" and "Keep going". It replaced the press-twice hint, which
+ * took three taps on a phone and was easy to miss.
+ */
+export function confirmLeaveStudy({ onLeave, onStay } = {}) {
+  const panel = byId('leave');
+  const close = () => { panel.hidden = true; };
+  const stay = el('button', {
+    className: 'btn', text: 'Keep going', attrs: { id: 'leaveStay', type: 'button' },
+    on: { click: () => { close(); onStay?.(); } },
+  });
+  const leave = el('button', {
+    className: 'btn subtle', text: 'Leave anyway', attrs: { id: 'leaveGo', type: 'button' },
+    on: { click: () => { close(); onLeave?.(); } },
+  });
+  replace(panel, [
+    el('div', { className: 'error-card leave-card', attrs: { role: 'alertdialog', 'aria-modal': 'true', 'aria-labelledby': 'leaveTitle', 'aria-describedby': 'leaveText' } }, [
+      el('h2', { text: 'Leave this round?', attrs: { id: 'leaveTitle' } }),
+      el('p', { text: "You'll lose this round's progress and score.", attrs: { id: 'leaveText' } }),
+      el('div', { className: 'leave-actions' }, [stay, leave]),
+    ]),
+  ]);
+  panel.hidden = false;
+  stay.focus({ preventScroll: true });
+}
+
+/** Close the leave pop-up (Escape = keep going). Returns true if it was open. */
+export function closeLeaveDialog() {
+  const panel = byId('leave');
+  if (panel.hidden) return false;
+  panel.hidden = true;
+  return true;
 }

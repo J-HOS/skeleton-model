@@ -10,15 +10,14 @@
 
 const MIN_RADIUS = 2;
 const MAX_RADIUS = 24;
-// Keep the camera just shy of the poles — exactly at phi=0 or phi=PI the
-// view direction is parallel to camera.up and lookAt() has no well-defined
-// roll, which snaps/flips the view. 0.02 rad (~1.1 degrees) is close enough
-// to a full flip to look and feel unrestricted while staying numerically
-// stable; the earlier 0.12 rad (~6.9 degrees) margin was reported as "can't
-// rotate 360 in any direction" — you could never quite look straight down
-// from above the skull or up from below the feet (2026-07-31).
-const MIN_PHI = 0.02;
-const MAX_PHI = Math.PI - 0.02;
+// Free rotation (2026-11-13, Jake: "the rotation is locked at 180 degrees").
+// Until then phi was clamped just short of the poles (0.02 .. PI - 0.02), so
+// a vertical drag stopped at straight-down / straight-up and the model could
+// only ever be tipped through 180 degrees. Now phi runs freely (kept in
+// -PI..PI) and update() sets camera.up from the same spherical frame, which
+// stays well defined through the poles - so the model rolls over the top and
+// keeps turning instead of snapping or flipping.
+const wrapAngle = (a) => Math.atan2(Math.sin(a), Math.cos(a));
 
 // How far the orbit target may be pushed from the origin. The model is fitted
 // so its longest axis is MODEL_FIT_UNITS (7) and centred, so its half-extent is
@@ -119,8 +118,11 @@ export class OrbitControls {
       return;
     }
 
-    this.theta -= dx * 0.006;
-    this.phi = Math.min(MAX_PHI, Math.max(MIN_PHI, this.phi - dy * 0.006));
+    // Past a pole the model is upside down on screen, so a sideways drag is
+    // mirrored to keep turning it the way the finger moves.
+    const flip = Math.sin(this.phi) < 0 ? -1 : 1;
+    this.theta -= dx * 0.006 * flip;
+    this.phi = wrapAngle(this.phi - dy * 0.006);
     this.update();
   };
 
@@ -231,12 +233,17 @@ export class OrbitControls {
   /** Look at the target from this world-space direction (unit vector from target to camera). */
   lookFrom(dir) {
     this.theta = Math.atan2(dir.x, dir.z);
-    this.phi = Math.min(MAX_PHI, Math.max(MIN_PHI, Math.acos(Math.max(-1, Math.min(1, dir.y)))));
+    this.phi = Math.acos(Math.max(-1, Math.min(1, dir.y)));
     this.update();
   }
 
   update() {
     const sinPhi = Math.sin(this.phi);
+    const cosPhi = Math.cos(this.phi);
+    // Screen-up is the direction of decreasing phi on the sphere (the same
+    // vector _pan() uses). It never vanishes, so the view has a defined roll
+    // even looking straight down, and it turns over smoothly past a pole.
+    if (this.camera.up) this.camera.up.set(-cosPhi * Math.sin(this.theta), sinPhi, -cosPhi * Math.cos(this.theta));
     this.camera.position.set(
       this.target.x + this.radius * sinPhi * Math.sin(this.theta),
       this.target.y + this.radius * Math.cos(this.phi),

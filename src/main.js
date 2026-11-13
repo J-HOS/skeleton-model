@@ -9,16 +9,16 @@
  * the loader.
  */
 
-import { LAYERS, PATHS } from './config.js?v=787920466e9d';
-import { loadDataset, buildSearchIndex } from './dataset.js?v=787920466e9d';
-import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap, prettyName } from './anatomy.js?v=787920466e9d';
-import { STUDY_KINDS, STUDY_MODES, answerLandmarkTap, answerName, answerTap, studyMuscleLabel, boneBaseName, buildStudyCatalog, currentItem, formatPoints, giveUp, itemForId, answerLandmarkPick, itemsForMode, newRound, nextQuestion, parseLandmarks, prepareNaming, studyGroups } from './study.js?v=787920466e9d';
-import { fetchLocal, sanitizeQuery } from './security.js?v=787920466e9d';
-import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral, getStudyBest, recordStudyScore, studyKey } from './storage.js?v=787920466e9d';
-import { Viewer } from './viewer.js?v=787920466e9d';
-import { mountDevPanel } from './devpanel.js?v=787920466e9d';
-import { byId } from './dom.js?v=787920466e9d';
-import * as ui from './ui.js?v=787920466e9d';
+import { LAYERS, PATHS } from './config.js?v=d3edb24bab6e';
+import { loadDataset, buildSearchIndex } from './dataset.js?v=d3edb24bab6e';
+import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap, prettyName } from './anatomy.js?v=d3edb24bab6e';
+import { STUDY_KINDS, STUDY_MODES, answerLandmarkTap, answerName, answerTap, studyMuscleLabel, boneBaseName, buildStudyCatalog, currentItem, formatPoints, giveUp, itemForId, answerLandmarkPick, itemsForMode, newRound, nextQuestion, parseLandmarks, prepareNaming, studyGroups } from './study.js?v=d3edb24bab6e';
+import { fetchLocal, sanitizeQuery } from './security.js?v=d3edb24bab6e';
+import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral, getStudyBest, recordStudyScore, studyKey } from './storage.js?v=d3edb24bab6e';
+import { Viewer } from './viewer.js?v=d3edb24bab6e';
+import { mountDevPanel } from './devpanel.js?v=d3edb24bab6e';
+import { byId } from './dom.js?v=d3edb24bab6e';
+import * as ui from './ui.js?v=d3edb24bab6e';
 
 const state = {
   data: null,
@@ -409,6 +409,11 @@ function shownGroupLabel(study) {
 const kindLabel = (id) => STUDY_KINDS.find((k) => k.id === id)?.label || id;
 const modeLabel = (id) => STUDY_MODES.find((m) => m.id === id)?.label || id;
 // One side of a pair, for framing: the right side if there is one.
+// Hand and foot rounds isolate the region (2026-11-13, Jake): only the right
+// hand's (or foot's) muscles and bones are drawn, and zoom and pan are limited
+// to it, so the small parts can be zoomed right in on without dragging.
+const ISOLATED_REGIONS = new Set(['hand', 'foot']);
+const REGION_MIN_ZOOM = 0.08;
 const oneSide = (ids) => { const r = ids.filter((id) => /_r_ZA$|_right$/.test(id)); return r.length ? r : ids; };
 const rightPoint = (item) => item.points[oneSide(item.ids)[0]] || Object.values(item.points)[0];
 // Landmark rounds show one bone (one side) alone (2026-11-11, Jake): the id of
@@ -430,7 +435,10 @@ function bestText(kind, group, mode) {
 }
 
 function openStudy() {
-  if (!okToLeaveStudy()) return;
+  leaveStudyThen(openStudyNow);
+}
+
+function openStudyNow() {
   endStudy();
   ui.closeSearch();
   closeInfoPanel();
@@ -465,7 +473,7 @@ function startStudy(kind, region, mode = 'find') {
     state.study = { saved: { layers: { ...state.layerVisibility }, peel: state.peelDepth, xray: state.xray } };
   }
   const naming = mode === 'name' ? prepareNaming(items, Object.values(catalog[kind]).flat()) : null;
-  Object.assign(state.study, { kind, region, mode, items, naming, round: newRound(items), leaveArmedUntil: 0 });
+  Object.assign(state.study, { kind, region, mode, items, naming, round: newRound(items) });
   state.studyKind = kind;
   state.studyMode = mode;
   closeInfoPanel();
@@ -489,9 +497,17 @@ function startStudy(kind, region, mode = 'find') {
   // tap cannot land on a neighbour.
   // Landmark rounds isolate one bone (one side) in 3D: nothing else is drawn,
   // and orbit, pinch-zoom and pan are limited to it (2026-11-11, Jake).
-  state.study.shownIds = kind === 'landmarks' ? oneSide(allIds) : null;
-  if (kind === 'muscles') viewer.setStudyScope(allIds);
-  else if (kind === 'landmarks') viewer.setStudyScope(state.study.shownIds, 'skeleton');
+  const regionIsolated = kind !== 'landmarks' && ISOLATED_REGIONS.has(region);
+  state.study.regionIsolated = regionIsolated;
+  if (kind === 'landmarks') state.study.shownIds = oneSide(allIds);
+  else if (regionIsolated) {
+    // The region's bones come too: orientation in a muscle round, the answers in a bone round.
+    const boneIds = (catalog.bones?.[region] || []).flatMap((item) => item.ids);
+    state.study.shownIds = oneSide([...new Set([...allIds, ...boneIds])]);
+  } else state.study.shownIds = null;
+  if (kind === 'landmarks') viewer.setStudyScope(state.study.shownIds, 'skeleton');
+  else if (regionIsolated) viewer.setStudyScope(state.study.shownIds, 'all');
+  else if (kind === 'muscles') viewer.setStudyScope(allIds);
   else viewer.setStudyScope(null);
   viewer.selectIds([]);
   viewer.setMarkers([]);
@@ -500,12 +516,12 @@ function startStudy(kind, region, mode = 'find') {
   document.body.classList.add('studying');
   drawStudy();
   updateViewInset();
-  viewer.isolate(kind === 'landmarks' ? state.study.shownIds : null);
+  viewer.isolate(state.study.shownIds, regionIsolated ? { minFraction: REGION_MIN_ZOOM } : undefined);
   // Find it with dots: tapping a dot answers with that landmark.
   viewer.onMarkerTap(kind === 'landmarks' && mode === 'find' ? landmarkPick : null);
   if (mode === 'find') {
     if (kind === 'landmarks') viewer.setMarkers(softMarkers());
-    else viewer.frameIds(allIds);
+    else if (!regionIsolated) viewer.frameIds(allIds);
   } else showNameQuestion();
 }
 
@@ -723,10 +739,11 @@ function studyNext() {
 }
 
 /**
- * Leaving a round part-way loses it, so Escape, "/", Search and Study ask for
- * a second press first (team review 2026-11-03). A round not yet started, or
- * already finished, leaves at once. Not a modal dialog: a hint, and the same
- * key or button again within 4 s.
+ * Leaving a round part-way loses it, so Escape, "/", Search and Study ask
+ * first (team review 2026-11-03). Since 2026-11-13 (Jake) that is a pop-up
+ * with "Leave anyway" / "Keep going"; before, it was a hint and a second
+ * press within 4 s, which took three taps on a phone. A round not yet
+ * started, or already finished, leaves at once.
  */
 function okToLeaveStudy() {
   const study = state.study;
@@ -734,11 +751,13 @@ function okToLeaveStudy() {
   const round = study.round;
   const started = round.index > 0 || round.answered;
   const finished = round.index >= round.items.length || (round.index === round.items.length - 1 && round.answered);
-  if (!started || finished || study.leaveArmedUntil > Date.now()) return true;
-  study.leaveArmedUntil = Date.now() + 4000;
-  // Shown for the whole 4 s the second press is allowed (team review 2026-11-12, B7).
-  ui.flashHint('This ends your round and loses its score. Press again to leave.', 4000);
-  return false;
+  return !started || finished;
+}
+
+/** Run `action` now, or after "Leave anyway" if a round would be lost. */
+function leaveStudyThen(action) {
+  if (okToLeaveStudy()) { action(); return; }
+  ui.confirmLeaveStudy({ onLeave: () => { endStudy(); action(); } });
 }
 
 /** Leave study and put the model back the way the user had it. */
@@ -797,7 +816,7 @@ function wireMenu() {
 function wireInterface() {
   wireMenu();
   byId('studyBtn').addEventListener('click', openStudy);
-  byId('searchBtn').addEventListener('click', () => { if (!okToLeaveStudy()) return; endStudy(); ui.openSearch(); });
+  byId('searchBtn').addEventListener('click', () => leaveStudyThen(() => { endStudy(); ui.openSearch(); }));
   byId('searchClose').addEventListener('click', ui.closeSearch);
   byId('infoClose').addEventListener('click', closeInfoPanel);
 
@@ -855,7 +874,8 @@ function wireInterface() {
       if (isMenuOpen()) { setMenu(false); byId('menuBtn').focus(); return; }
       if (ui.closeCredits()) return;
       if (ui.closeStudyPicker()) return;
-      if (state.study) { if (okToLeaveStudy()) endStudy(); return; }
+      if (ui.closeLeaveDialog()) return; // Escape on the pop-up = keep going
+      if (state.study) { leaveStudyThen(endStudy); return; }
       if (ui.isSearchOpen()) ui.closeSearch();
       else closeInfoPanel();
     }
@@ -863,9 +883,7 @@ function wireInterface() {
     if (event.key === '/' && !['INPUT', 'TEXTAREA'].includes(event.target.tagName)) {
       event.preventDefault();
       setMenu(false);
-      if (!okToLeaveStudy()) return;
-      endStudy();
-      ui.openSearch();
+      leaveStudyThen(() => { endStudy(); ui.openSearch(); });
     }
   });
 
