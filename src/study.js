@@ -36,7 +36,7 @@
  * Search and on the cards.
  */
 
-import { classifyBone, findMuscleRecord, prettyName } from './anatomy.js?v=784958071a72';
+import { classifyBone, findMuscleRecord, prettyName } from './anatomy.js?v=787920466e9d';
 
 export const STUDY_KINDS = Object.freeze([
   { id: 'muscles', label: 'Muscles' },
@@ -402,6 +402,7 @@ export const LANDMARK_FACING_MIN = -0.3;
 export function nearestLandmark(items, id, point, max = LANDMARK_TAP_MAX, normal = null) {
   if (!Array.isArray(point) || point.length !== 3) return null;
   const n = Array.isArray(normal) && normal.length === 3 && normal.every(Number.isFinite) ? normal : null;
+  const midline = isMidlineBone(id);
   let best = null;
   for (const item of items) {
     // Whole bones are matched by bone, spaces are never tapped (2026-11-11).
@@ -409,11 +410,35 @@ export function nearestLandmark(items, id, point, max = LANDMARK_TAP_MAX, normal
     const p = item.points[id];
     if (!p) continue;
     const ln = item.normals && item.normals[id];
-    if (n && ln && n[0] * ln[0] + n[1] * ln[1] + n[2] * ln[2] < LANDMARK_FACING_MIN) continue;
-    const d = dist3(p, point);
-    if (!best || d < best.distance) best = { item, distance: d };
+    // A bone on the midline (a vertebra, the sacrum) has its paired features
+    // stored once, on one side; the twin on the other side is the mirror image
+    // and a tap there counts too (team review 2026-11-12, A4; "Either side counts").
+    const spots = [[p, ln]];
+    if (midline) spots.push([mirrorX(p), ln ? [-ln[0], ln[1], ln[2]] : ln]);
+    for (const [q, qn] of spots) {
+      if (n && qn && n[0] * qn[0] + n[1] * qn[1] + n[2] * qn[2] < LANDMARK_FACING_MIN) continue;
+      const d = dist3(q, point);
+      if (!best || d < best.distance) best = { item, distance: d };
+    }
   }
   return best && best.distance <= max ? best : null;
+}
+
+/**
+ * The model's midline (x, model units). The left-side bones are mirror copies
+ * of the right about this plane (checked 2026-11-12: every left/right landmark
+ * pair mirrors to within 0.05 mm).
+ */
+export const MIDLINE_X = -34.0;
+
+/** Mirror a model-space point across the midline. */
+export function mirrorX(p) {
+  return [2 * MIDLINE_X - p[0], p[1], p[2]];
+}
+
+/** True for a bone with no left/right copy (vertebrae, sacrum, coccyx). */
+export function isMidlineBone(id) {
+  return typeof id === 'string' && !/_[lr]_ZA$|_(left|right)$/.test(id);
 }
 
 /** Record a landmark tap. Same contract as answerTap; also returns `nearest`. */
@@ -480,6 +505,8 @@ function ordinal(n) {
 /** Words of a name, normalised for comparison. */
 export function nameTokens(text) {
   let s = String(text || '').toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '');
+  // "Lister's", "Listers" and "Lister’s" are one word (team review 2026-11-12).
+  s = s.replace(/['’ʼ`]/g, '');
   for (const [re, to] of PHRASES) s = s.replace(re, to);
   return s.replace(/[^a-z0-9]+/g, ' ').trim().split(' ').filter(Boolean)
     .map((w) => ORDINAL_WORDS[w] || (/^\d+$/.test(w) ? ordinal(w) : w))
@@ -490,12 +517,29 @@ export function nameTokens(text) {
 const sortedKey = (tokens) => [...tokens].sort().join(' ');
 
 /** Every written form of a label that counts as that name (before ambiguity checks). */
-export function nameForms(label, extra = []) {
+export function nameForms(label, extra = [], { bracketAlone = false } = {}) {
   const forms = new Set();
-  const add = (t) => { const k = nameTokens(t); if (k.length) forms.add(sortedKey(k)); };
+  // Each form is kept twice: words sorted (word order is free), and the words
+  // run together in written order, so "sterno-cleidomastoid" and "supra
+  // scapular notch" match (team review 2026-11-12, A5).
+  const add = (t) => {
+    const k = nameTokens(t);
+    if (!k.length) return;
+    forms.add(sortedKey(k));
+    if (k.length > 1) forms.add(k.join(''));
+  };
   for (const text of [label, ...extra]) {
     if (!text) continue;
     add(text);
+    // Landmarks: what is in the brackets is a name on its own when it is an
+    // abbreviation or a phrase - "ASIS", "odontoid process", "median sacral
+    // crest" - not a single word saying which bone ("(axis)") (A8).
+    if (bracketAlone) {
+      for (const m of text.matchAll(/\(([^)]*)\)/g)) {
+        const inner = m[1].trim();
+        if (/^[A-Z]{2,5}$/.test(inner) || inner.split(/\s+/).length >= 2) add(inner);
+      }
+    }
     add(text.replace(/\([^)]*\)/g, ' '));            // leave the bracket off
     add(text.replace(/[()]/g, ' '));                 // bracket words inline
     const sub = text.match(/^(.*?)(\S+) \((\S+)\)(\s+\S.*)$/); // "Fibularis (Peroneus) Longus"
@@ -522,6 +566,9 @@ const NAME_ALIASES = Object.freeze({
   'Rectus Capitis Posterior (Major and Minor)': ['Rectus capitis posterior major', 'Rectus capitis posterior minor'],
   'Scalenes (Anterior, Middle, Posterior)': ['Scalene', 'Anterior scalene', 'Middle scalene', 'Posterior scalene', 'Scalenus anterior', 'Scalenus medius', 'Scalenus posterior'],
   'Intrinsic Tongue Muscles': ['Intrinsic muscles of the tongue'],
+  // Sacrum card (team review 2026-11-12, sme): its two short labels by their usual names.
+  'Foramina': ['Sacral foramina'],
+  'Articulating facets': ['Superior articular process', 'Superior articular facets'],
 });
 
 /** Extra accepted forms for a vertebra label, e.g. "T7 Vertebra" -> "7th thoracic". */
@@ -538,7 +585,8 @@ function vertebraAliases(label) {
  * Returns { accepts: Map<item, Set<form>>, others: [{ label, forms }] }.
  */
 export function prepareNaming(items, pool = items) {
-  const formsOf = (item) => nameForms(item.label, [...(NAME_ALIASES[item.label] || []), ...vertebraAliases(item.label), item.alt].filter(Boolean));
+  const formsOf = (item) => nameForms(item.label, [...(NAME_ALIASES[item.label] || []), ...vertebraAliases(item.label), item.alt].filter(Boolean),
+    { bracketAlone: Boolean(item.points) });
   // A shortened form shared by two structures names neither of them. Within
   // the round such a form is "vague" (asked to be more specific, not marked
   // wrong); across the rest of the subject it is simply dropped.
@@ -547,8 +595,10 @@ export function prepareNaming(items, pool = items) {
     for (const forms of map.values()) for (const f of forms) count.set(f, (count.get(f) || 0) + 1);
     const shared = new Set();
     for (const [item, forms] of map) {
-      const full = sortedKey(nameTokens(item.label));
-      for (const f of [...forms]) if (count.get(f) > 1 && f !== full) { forms.delete(f); shared.add(f); }
+      const words = nameTokens(item.label);
+      const full = sortedKey(words);
+      const fullJoined = words.join('');
+      for (const f of [...forms]) if (count.get(f) > 1 && f !== full && f !== fullJoined) { forms.delete(f); shared.add(f); }
     }
     return shared;
   };
@@ -583,14 +633,49 @@ export function closeLimit(label) {
   return String(label).replace(/[^A-Za-z0-9]/g, '').length <= 5 ? 1 : 2;
 }
 
-function bestDistance(answerKey, forms) {
+function bestDistance(answerKey, forms, joined = null) {
   let best = Infinity;
   const a = answerKey.replace(/ /g, '');
   for (const f of forms) {
-    best = Math.min(best, editDistance(answerKey, f), editDistance(a, f.replace(/ /g, '')));
+    const g = f.replace(/ /g, '');
+    best = Math.min(best, editDistance(answerKey, f), editDistance(a, g));
+    // The words run together in the order typed, against the forms kept that
+    // way, so a split or hyphenated word costs nothing (A5).
+    if (joined) best = Math.min(best, editDistance(joined, g));
     if (best === 0) break;
   }
   return best;
+}
+
+/**
+ * The bone's own name, which a student adds to a landmark ("femoral neck",
+ * "greater trochanter of femur") and which the card already says (A8).
+ * Dropped from an answer only when the landmark's own name does not use it
+ * ("radial tuberosity" keeps "radial").
+ */
+const CARD_WORDS = Object.freeze({
+  clavicle: 'clavicle clavicular', scapula: 'scapula scapular', humerus: 'humerus humeral',
+  radius: 'radius radial', ulna: 'ulna ulnar', hand: 'hand', atlasaxis: 'atlas axis c1 c2',
+  cervical: 'cervical c5', thoracic: 'thoracic t8', lumbar: 'lumbar l3', hip: 'hip coxal',
+  sacrum: 'sacrum sacral', femur: 'femur femoral', patella: 'patella patellar',
+  tibia: 'tibia tibial', fibula: 'fibula fibular', foot: 'foot',
+});
+
+function dropCardWords(tokens, item) {
+  if (!item || !item.points || typeof item.key !== 'string') return tokens;
+  const words = CARD_WORDS[item.key.split(':')[0]];
+  if (!words) return tokens;
+  const card = new Set(nameTokens(words));
+  const own = new Set(nameTokens(`${item.label} ${item.alt || ''}`));
+  const kept = tokens.filter((w) => !card.has(w) || own.has(w));
+  return kept.length ? kept : tokens;
+}
+
+/** True when two sets of forms share one: the same structure under another card or a shared name. */
+function sameName(o, item, own) {
+  if (o.label === item.label) return true;
+  for (const f of o.forms) if (own.has(f)) return true;
+  return false;
 }
 
 /**
@@ -601,26 +686,40 @@ function bestDistance(answerKey, forms) {
  * wrong, not a typo.
  */
 export function gradeName(text, item, naming) {
-  const tokens = nameTokens(text);
+  const tokens = dropCardWords(nameTokens(text), item);
   if (!tokens.length) return { points: 0, verdict: 'empty', other: null };
   const key = sortedKey(tokens);
+  const joined = tokens.join('');
   const own = naming.accepts.get(item) || new Set();
-  if (own.has(key)) return { points: 1, verdict: 'exact', other: null };
-  if (naming.vague && naming.vague.has(key)) return { points: 0, verdict: 'vague', other: null };
+  if (own.has(key) || own.has(joined)) return { points: 1, verdict: 'exact', other: null };
+  if (naming.vague && (naming.vague.has(key) || naming.vague.has(joined))) return { points: 0, verdict: 'vague', other: null };
   // Exactly another structure's name?
   for (const o of naming.others) {
     if (o.item === item) continue;
-    if (o.forms.has(key)) return { points: 0, verdict: 'other', other: o.label };
+    if (o.forms.has(key) || o.forms.has(joined)) return { points: 0, verdict: 'other', other: o.label };
   }
-  const mine = bestDistance(key, own);
+  const mine = bestDistance(key, own, joined);
+  const vague = naming.vague || new Set();
   let rival = null;
   let rivalDist = Infinity;
   for (const o of naming.others) {
     if (o.item === item) continue;
-    const d = bestDistance(key, o.forms);
+    // A structure elsewhere named by a form this round finds vague
+    // ("Transverse process", asked on the atlas/axis card) is that same name.
+    if ([...o.forms].some((f) => vague.has(f))) continue;
+    // The same name on another bone card ("Head" of the humerus, asked on the
+    // femur) is not a rival: a typo of it is a typo of this name (team review
+    // 2026-11-12, A2 - it used to tie and score 0 with "is the Head. This is
+    // the Head.").
+    if (sameName(o, item, own)) continue;
+    const d = bestDistance(key, o.forms, joined);
     if (d < rivalDist) { rivalDist = d; rival = o.label; }
   }
   const limit = closeLimit(item.label);
+  // A typo of a name two structures here share asks for the full name, as the
+  // name itself does, rather than scoring 0.
+  const vagueDist = vague.size ? bestDistance(key, vague, joined) : Infinity;
+  if (vagueDist <= limit && vagueDist < mine && vagueDist < rivalDist) return { points: 0, verdict: 'vague', other: null };
   if (mine <= limit && mine < rivalDist) return { points: 0.5, verdict: 'close', other: null };
   if (rivalDist <= mine && rivalDist <= 2) return { points: 0, verdict: 'other', other: rival };
   return { points: 0, verdict: 'wrong', other: null };

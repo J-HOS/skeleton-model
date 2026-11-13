@@ -27,7 +27,8 @@
   ],
   "checked": "every point checked 2026-11-04 by its position within its bone (medial/anterior/superior) and by rendered front/back/side views",
   "added_2026_11_11": "25 whole-bone items (hand, foot, coccyx) and 2 spaces (vertebral and obturator foramen), by \"(C) add_whole_bones_and_foramina.py\"; foramen points computed from the model geometry and checked (clear of bone, outside the mesh, ringed by bone).",
-  "added_2026_11_11b": "39 landmarks placed from model geometry, each rule taken from two approved sources (listed in each note): cervical (C5) and thoracic (T8) parts, atlas/axis extras, patella, sacral base and facets, deltoid tubercle (flagged), supinator fossa, tuberosity of 5th metatarsal; vertebral and transverse foramina as spaces. Script \"(C) place_remaining_landmarks.py\"."
+  "added_2026_11_11b": "39 landmarks placed from model geometry, each rule taken from two approved sources (listed in each note): cervical (C5) and thoracic (T8) parts, atlas/axis extras, patella, sacral base and facets, deltoid tubercle (flagged), supinator fossa, tuberosity of 5th metatarsal; vertebral and transverse foramina as spaces. Script \"(C) place_remaining_landmarks.py\".",
+  "moved_2026_11_13": "Facet for dens of axis: from the facet centre (-33.97, 1646.47, 29.1; hidden by the dens from 0% of directions) to its superolateral margin, checked clear along its normal against C1 and C2. Script: 03 Testing & Review/(C) landmarks_2026-11-04/(C) move_dens_facet_2026-11-13.py"
  },
  "landmarks": [
   {
@@ -1898,20 +1899,20 @@
    "bone": "Atlas (C1)",
    "points": {
     "Atlas_C1_ZA": [
-     -33.97,
-     1646.47,
-     29.1
+     -37.28,
+     1649.86,
+     29.03
     ]
    },
    "normals": {
     "Atlas_C1_ZA": [
-     -0.058,
-     -0.105,
-     -0.993
+     0.135,
+     0.792,
+     -0.595
     ]
    },
-   "note": null,
-   "pointerGapMm": 0.01,
+   "note": "Moved 2026-11-13 (Jake, fix list B6): the centre of the facet sits inside the atlanto-axial joint and is hidden by the dens from every direction, so its dot could never be tapped. Now on the superolateral margin of the facet (the C1 surface within 2 mm of the dens; gap here 1.7 mm), seen from above and behind through the vertebral foramen. Either side counts (midline bone). Sources for the facet: StatPearls NBK539734, NBK525969; O'Rahilly ch.39.",
+   "pointerGapMm": null,
    "mirrorSnapMm": null
   },
   {
@@ -3750,7 +3751,7 @@
   {
    "card": "femur",
    "label": "Medial supracondylar ridge",
-   "za": "Lateral supracondylar line",
+   "za": "Medial supracondylar line",
    "bone": "Femur",
    "points": {
     "Femur_r_ZA": [
@@ -3776,14 +3777,14 @@
      -0.581
     ]
    },
-   "note": "Z-Anatomy labels swapped; point checked against the adductor tubercle",
+   "note": "Z-Anatomy labels swapped; point checked against the adductor tubercle; za name corrected to match 2026-11-12 (team review A1)",
    "pointerGapMm": 0.02,
    "mirrorSnapMm": 0.0
   },
   {
    "card": "femur",
    "label": "Lateral supracondylar ridge",
-   "za": "Medial supracondylar line",
+   "za": "Lateral supracondylar line",
    "bone": "Femur",
    "points": {
     "Femur_r_ZA": [

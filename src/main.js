@@ -9,16 +9,16 @@
  * the loader.
  */
 
-import { LAYERS, PATHS } from './config.js?v=784958071a72';
-import { loadDataset, buildSearchIndex } from './dataset.js?v=784958071a72';
-import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap, prettyName } from './anatomy.js?v=784958071a72';
-import { STUDY_KINDS, STUDY_MODES, answerLandmarkTap, answerName, answerTap, studyMuscleLabel, boneBaseName, buildStudyCatalog, currentItem, formatPoints, giveUp, itemForId, answerLandmarkPick, itemsForMode, newRound, nextQuestion, parseLandmarks, prepareNaming, studyGroups } from './study.js?v=784958071a72';
-import { fetchLocal, sanitizeQuery } from './security.js?v=784958071a72';
-import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral, getStudyBest, recordStudyScore, studyKey } from './storage.js?v=784958071a72';
-import { Viewer } from './viewer.js?v=784958071a72';
-import { mountDevPanel } from './devpanel.js?v=784958071a72';
-import { byId } from './dom.js?v=784958071a72';
-import * as ui from './ui.js?v=784958071a72';
+import { LAYERS, PATHS } from './config.js?v=787920466e9d';
+import { loadDataset, buildSearchIndex } from './dataset.js?v=787920466e9d';
+import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap, prettyName } from './anatomy.js?v=787920466e9d';
+import { STUDY_KINDS, STUDY_MODES, answerLandmarkTap, answerName, answerTap, studyMuscleLabel, boneBaseName, buildStudyCatalog, currentItem, formatPoints, giveUp, itemForId, answerLandmarkPick, itemsForMode, newRound, nextQuestion, parseLandmarks, prepareNaming, studyGroups } from './study.js?v=787920466e9d';
+import { fetchLocal, sanitizeQuery } from './security.js?v=787920466e9d';
+import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral, getStudyBest, recordStudyScore, studyKey } from './storage.js?v=787920466e9d';
+import { Viewer } from './viewer.js?v=787920466e9d';
+import { mountDevPanel } from './devpanel.js?v=787920466e9d';
+import { byId } from './dom.js?v=787920466e9d';
+import * as ui from './ui.js?v=787920466e9d';
 
 const state = {
   data: null,
@@ -399,6 +399,13 @@ async function loadLandmarks() {
 }
 
 const groupLabel = (kind, id) => studyGroups(kind).find((r) => r.id === id)?.label || id;
+// Landmark rounds show the right-side bone when there is one; say so, so
+// medial/lateral can be read off the bone (team review 2026-11-12, A7).
+function shownGroupLabel(study) {
+  const label = groupLabel(study.kind, study.region);
+  const right = study.kind === 'landmarks' && (study.shownIds || []).some((id) => /_r_ZA$|_right$/.test(id));
+  return right ? `Right ${label.toLowerCase()}` : label;
+}
 const kindLabel = (id) => STUDY_KINDS.find((k) => k.id === id)?.label || id;
 const modeLabel = (id) => STUDY_MODES.find((m) => m.id === id)?.label || id;
 // One side of a pair, for framing: the right side if there is one.
@@ -412,7 +419,8 @@ const shownPoint = (item) => item.points[shownId(item)] || rightPoint(item);
 function softMarkers(except = null) {
   const study = state.study;
   if (!study || study.kind !== 'landmarks') return [];
-  return study.items.filter((i) => !i.whole && i !== except).map((i) => ({ point: shownPoint(i), kind: 'soft', key: i.key }));
+  return study.items.filter((i) => !i.whole && i !== except)
+    .map((i) => ({ point: shownPoint(i), kind: 'soft', key: i.key, normal: i.normals?.[shownId(i)] || null }));
 }
 
 function bestText(kind, group, mode) {
@@ -548,14 +556,24 @@ function drawStudy(feedback = null, typed = '') {
     actions.push({ label: round.index + 1 < round.items.length ? 'Next' : 'See score', primary: true, onClick: studyNext });
   }
   actions.push({ label: 'End', onClick: endStudy });
-  const where = study.kind === 'landmarks' ? ` on the ${groupLabel('landmarks', study.region).toLowerCase()}` : '';
+  const where = study.kind === 'landmarks' ? ` on the ${shownGroupLabel(study).toLowerCase()}` : '';
+  // Landmark Find it answers two ways - a dot, or a whole bone - so say which
+  // (team review 2026-11-12, A7): on the first question, and on every whole bone.
+  let how = '';
+  if (!naming && study.kind === 'landmarks') {
+    if (item.whole) how = ' (tap the bone)';
+    else if (round.index === 0) how = ' (tap its dot)';
+  }
   ui.renderStudyBar({
-    title: `${modeLabel(study.mode)} · ${kindLabel(study.kind)} · ${groupLabel(study.kind, study.region)}`,
+    title: `${modeLabel(study.mode)} · ${kindLabel(study.kind)} · ${shownGroupLabel(study)}`,
     progress: `${round.index + 1} / ${round.items.length}`,
-    prompt: naming ? `${namePrompt(study.kind, item)}${where}` : `Find: ${item.label}`,
+    prompt: naming ? `${namePrompt(study.kind, item)}${where}` : `Find: ${item.label}${how}`,
     feedback,
     actions,
     answer: naming && !round.answered ? { onSubmit: studySubmitName, value: typed } : null,
+    // After a typed answer is checked, focus moves to Next, so Enter goes on
+    // and a keyboard user is not dropped on the page (team review 2026-11-12, B7).
+    focusPrimary: naming && round.answered,
   });
 }
 
@@ -718,7 +736,8 @@ function okToLeaveStudy() {
   const finished = round.index >= round.items.length || (round.index === round.items.length - 1 && round.answered);
   if (!started || finished || study.leaveArmedUntil > Date.now()) return true;
   study.leaveArmedUntil = Date.now() + 4000;
-  ui.flashHint('This ends your round and loses its score. Press again to leave.');
+  // Shown for the whole 4 s the second press is allowed (team review 2026-11-12, B7).
+  ui.flashHint('This ends your round and loses its score. Press again to leave.', 4000);
   return false;
 }
 

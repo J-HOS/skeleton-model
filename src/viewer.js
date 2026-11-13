@@ -6,12 +6,12 @@
  * this boundary is what lets every other module be tested in plain Node.
  */
 
-import * as THREE from '../vendor/three.module.js?v=784958071a72';
-import { GLTFLoader } from '../vendor/GLTFLoader.js?v=784958071a72';
-import { OrbitControls } from './controls.js?v=784958071a72';
-import { BONE_SURFACE_COLORS, COLORS, LAYERS, LIMITS, MODEL_FIT_UNITS, MUSCLE_SECTION_COLORS, PATHS, PEEL, RENDER } from './config.js?v=784958071a72';
-import { assertLooksLikeGLB, fetchLocal } from './security.js?v=784958071a72';
-import { attachmentWeight, axialParameter, axialTaper, boneSurfaceKey, classifyLayer, findMuscleRecord, hiddenByIsolation, isPeeled, recordAliases, resolvesToContent, scaleChannels, selectionGroup, varyLightness, viewOffsetFor, fitDistance } from './anatomy.js?v=784958071a72';
+import * as THREE from '../vendor/three.module.js?v=787920466e9d';
+import { GLTFLoader } from '../vendor/GLTFLoader.js?v=787920466e9d';
+import { OrbitControls } from './controls.js?v=787920466e9d';
+import { BONE_SURFACE_COLORS, COLORS, LAYERS, LIMITS, MODEL_FIT_UNITS, MUSCLE_SECTION_COLORS, PATHS, PEEL, RENDER } from './config.js?v=787920466e9d';
+import { assertLooksLikeGLB, fetchLocal } from './security.js?v=787920466e9d';
+import { attachmentWeight, axialParameter, axialTaper, boneSurfaceKey, classifyLayer, findMuscleRecord, hiddenByIsolation, isPeeled, recordAliases, resolvesToContent, scaleChannels, selectionGroup, varyLightness, viewOffsetFor, fitDistance } from './anatomy.js?v=787920466e9d';
 
 const TAP_MOVE_TOLERANCE_PX = 8; // beyond this, the gesture was a drag, not a tap
 
@@ -175,12 +175,18 @@ export class Viewer {
     this._markerHandler = handler;
   }
 
-  /** Key of the dot within `maxPx` of a screen point, nearest first, or null. */
+  /**
+   * Key of the dot within `maxPx` of a screen point, or null. A dot in view
+   * wins over one behind the bone, however close the hidden one is on screen;
+   * a hidden dot answers only when no dot in view is near the tap (team
+   * review 2026-11-12, A3: 28 front/back pairs sat inside the 18 px zone, so
+   * a correct tap could be taken by the faint dot behind it).
+   */
   _markerAt(clientX, clientY, maxPx = 18) {
     const group = this._markerGroup;
     if (!group || !group.parent) return null;
     const v = new THREE.Vector3();
-    let best = null;
+    const near = [];
     for (const dot of group.children) {
       if (!dot.userData.key) continue;
       dot.getWorldPosition(v);
@@ -189,9 +195,34 @@ export class Viewer {
       const x = (v.x + 1) / 2 * window.innerWidth;
       const y = (1 - v.y) / 2 * window.innerHeight;
       const d = Math.hypot(x - clientX, y - clientY);
-      if (d <= maxPx && (!best || d < best.d)) best = { d, key: dot.userData.key };
+      if (d <= maxPx) near.push({ d, dot });
     }
-    return best ? best.key : null;
+    if (!near.length) return null;
+    near.sort((a, b) => a.d - b.d);
+    const seen = near.find((c) => this._dotInView(c.dot));
+    return (seen || near[0]).dot.userData.key;
+  }
+
+  /**
+   * Is this dot on the side of the bone facing the camera, with no bone in
+   * front of it? Two tests: its surface normal must not face away, and a ray
+   * from the camera must not meet bone well before reaching it.
+   */
+  _dotInView(dot) {
+    const p = dot.getWorldPosition(new THREE.Vector3());
+    const cam = this.camera.position;
+    const toCam = cam.clone().sub(p);
+    const dist = toCam.length();
+    if (!dist) return true;
+    const n = dot.userData.normal;
+    if (n && this._modelRoot) {
+      const wn = new THREE.Vector3(n[0], n[1], n[2]).transformDirection(this._modelRoot.matrixWorld);
+      if (wn.dot(toCam) / dist < -0.2) return false;
+    }
+    const scale = this._modelRoot ? this._modelRoot.scale.x : 1;
+    const ray = new THREE.Raycaster(cam.clone(), toCam.clone().negate().normalize(), 0, dist);
+    const hit = ray.intersectObjects(this.selectable, false).find((h) => h.object.visible);
+    return !hit || hit.distance >= dist - 2 * scale; // within 2 mm of the dot = its own surface
   }
 
   resize = () => {
@@ -717,6 +748,7 @@ export class Viewer {
       dot.add(faint, solid);
       dot.position.set(m.point[0], m.point[1], m.point[2]);
       if (m.key) dot.userData.key = m.key;
+      if (Array.isArray(m.normal) && m.normal.length === 3) dot.userData.normal = m.normal;
       dot.userData.px = m.kind === 'tap' ? 7 : m.kind === 'soft' ? 6 : 9; // radius in screen pixels, kept by _sizeMarkers()
       group.add(dot);
     }
@@ -770,7 +802,7 @@ export class Viewer {
    * other mesh (setStudyScope). Pass null to go back to whole-body limits.
    */
   isolate(ids) {
-    if (!ids) { this.controls.clearBounds(); return false; }
+    if (!ids) { this.controls.clearBounds(); this._setClip(0.1, 100); return false; }
     const wanted = new Set(ids);
     const box = new THREE.Box3();
     for (const m of this.selectable) if (wanted.has(m.userData.structureId)) box.expandByObject(m);
@@ -780,11 +812,24 @@ export class Viewer {
     const centre = box.getCenter(new THREE.Vector3());
     const fit = fitDistance(size, this.camera.fov, window.innerWidth, window.innerHeight, this._insetTarget || {});
     const home = Math.max(fit, ext * 1.2);
-    this.controls.setBounds({ home: centre, homeRadius: home, minRadius: Math.max(0.03, ext * 0.25), maxRadius: Math.min(24, Math.max(home * 4, 1)), maxPan: ext * 0.9 });
+    const minRadius = Math.max(0.03, ext * 0.25);
+    const maxRadius = Math.min(24, Math.max(home * 4, 1));
+    this.controls.setBounds({ home: centre, homeRadius: home, minRadius, maxRadius, maxPan: ext * 0.9 });
+    // A small bone zoomed right in (patella, a vertebra) came closer than the
+    // fixed 0.1 near plane and was cut open (team review 2026-11-12, B4).
+    this._setClip(Math.max(0.005, minRadius * 0.2), Math.max(maxRadius * 4, 10));
     this.controls.target.copy(centre);
     this.controls.radius = home;
     this.controls.update();
     return true;
+  }
+
+  /** Set the camera's near and far planes (model fitted to 7 units; defaults 0.1 / 100). */
+  _setClip(near, far) {
+    if (this.camera.near === near && this.camera.far === far) return;
+    this.camera.near = near;
+    this.camera.far = far;
+    this.camera.updateProjectionMatrix();
   }
 
   /** Orbit around a model-space point (a landmark) without changing the zoom. */

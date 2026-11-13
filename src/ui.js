@@ -7,9 +7,9 @@
  * correctness of the anatomy or the security posture.
  */
 
-import { byId, clear, el, fieldRow, replace } from './dom.js?v=784958071a72';
-import { ATTRIBUTION, CREDITS, DISCLAIMER, LAYERS, LIMITS } from './config.js?v=784958071a72';
-import { parseLandmarkCard, prettyName } from './anatomy.js?v=784958071a72';
+import { byId, clear, el, fieldRow, replace } from './dom.js?v=787920466e9d';
+import { ATTRIBUTION, CREDITS, DISCLAIMER, LAYERS, LIMITS } from './config.js?v=787920466e9d';
+import { parseLandmarkCard, prettyName } from './anatomy.js?v=787920466e9d';
 
 /* ---------------------------------------------------------------- status -- */
 
@@ -49,6 +49,7 @@ export function hideError() {
 /** Brief transient message in the corner. */
 let hintTimer = null;
 export function flashHint(message, ms = 2600) {
+  // #hint has role="status" so screen readers announce it (team review 2026-11-12, B7).
   const node = byId('hint');
   node.textContent = message;
   node.hidden = false;
@@ -329,6 +330,9 @@ export function closeCredits() {
 // The picker is a dialog over the model; during a round only a slim bar at
 // the top is shown, so the model stays tappable.
 
+/** Shown in the Study picker for every subject and mode (decision D4). */
+export const STUDY_EARLY_NOTE = 'Early version: small parts can be hard to tap, and a list option is coming.';
+
 /**
  * @param {object} o
  *   kinds, modes - from study.js; groups(kind) -> [{ id, label }]
@@ -345,10 +349,10 @@ export function renderStudyPicker({ kinds, modes, groups, counts, best, kind, mo
   const NOTES = {
     'muscles:find': 'Scapula movers are under Thorax. Eight deep throat and jaw muscles are not asked yet, because they cannot be seen from outside.',
     'bones:find': 'Wrist bones are under Hand; ankle bones are under Foot.',
-    'landmarks:find': 'The landmarks on each bone card, placed on the model. Tap the spot; the nearest landmark to your tap is the one you chose. For a whole bone, tap anywhere on it. Either side counts.',
+    'landmarks:find': 'The landmarks on each bone card, placed on the model. Tap a landmark\'s dot to answer, or tap the bone and the nearest landmark counts. For a whole bone, tap anywhere on it. Either side counts.',
     'muscles:name': 'A muscle lights up; type its name. Exact spelling scores 1, one or two letters off scores ½. Capitals, spaces and word order do not matter.',
     'bones:name': 'A bone lights up; type its name. Exact spelling scores 1, one or two letters off scores ½. "Rib 7" and "7th rib" both count.',
-    'landmarks:name': 'A dot marks a landmark, or a whole bone lights up; type its name. Exact spelling scores 1, one or two letters off scores ½. The two foramina are asked here only.',
+    'landmarks:name': 'A dot marks a landmark, or a whole bone lights up; type its name. Exact spelling scores 1, one or two letters off scores ½. Foramina are asked in Name it only.',
   };
   const tabRow = (label, items, value, pick) => el('div', { className: 'study-tabs', attrs: { role: 'tablist', 'aria-label': label } },
     items.map((k) => el('button', {
@@ -376,6 +380,10 @@ export function renderStudyPicker({ kinds, modes, groups, counts, best, kind, mo
         tabRow('How', modes, how, (id) => { how = id; draw(); }),
         tabRow('Subject', kinds, current, (id) => { current = id; draw(); }),
         el('p', { className: 'study-note', text: NOTES[`${current}:${how}`] || '' }),
+        // Decision D4 (2026-11-04): Find it stays in the beta with this note.
+        // Kept outside NOTES so re-keying the notes cannot drop it again (it
+        // was lost that way on 11-11; team review 2026-11-12, A6).
+        el('p', { className: 'study-note study-early', text: STUDY_EARLY_NOTE }),
         list,
         el('button', { className: 'btn subtle', text: 'Close', attrs: { type: 'button' }, on: { click: close } }),
       ]),
@@ -399,7 +407,7 @@ export function closeStudyPicker() {
  *   prompt - the question line; feedback - { text, good } or null
  *   actions - [{ label, onClick, primary }]
  */
-export function renderStudyBar({ title, progress, prompt, feedback, actions, answer }) {
+export function renderStudyBar({ title, progress, prompt, feedback, actions, answer, focusPrimary = false }) {
   const bar = byId('studyBar');
   // Name it (2026-11-04): a typed answer. A form so Enter submits on every
   // keyboard; spellcheck and autocorrect are off, or the phone would fix the
@@ -441,6 +449,7 @@ export function renderStudyBar({ title, progress, prompt, feedback, actions, ans
   ]);
   bar.hidden = false;
   if (form && answer.focus !== false) form.querySelector('input').focus({ preventScroll: true });
+  else if (focusPrimary) bar.querySelector('.study-bar-actions .btn:not(.subtle)')?.focus({ preventScroll: true });
 }
 
 export function hideStudyBar() {
