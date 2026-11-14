@@ -34,7 +34,7 @@
      auto-requesting /favicon.ico (which this app doesn't have) and logging a
      404 for it on every load. Allowed under the CSP's img-src 'self' data:. -->
 <link rel="icon" href="data:,">
-<link rel="stylesheet" href="styles.css?v=46457be86d2c">
+<link rel="stylesheet" href="styles.css?v=8ee770b70573">
 </head>
 <body>
 
@@ -60,21 +60,32 @@
         <span>Search</span><span class="kbd" aria-hidden="true">/</span>
       </button>
 
-      <div class="menu-section" aria-hidden="true">Layers</div>
-      <!-- Layer toggles are rendered by ui.js from config.js -->
-      <div id="layers" role="group" aria-label="Anatomical layers"></div>
+      <!-- Back to the model from a study round (2026-11-14, Jake). Shown only
+           while a round is on; leaving asks first, like Search and Study. -->
+      <button id="modelBtn" class="menu-item" type="button" hidden
+              aria-label="End the study round and go back to the model">Back to model</button>
 
-      <div class="menu-section" aria-hidden="true">View</div>
-      <button id="sidesBtn" class="menu-item" type="button" aria-pressed="false"
-              aria-label="Select both sides of the body together">
-        <span>Both sides</span><span class="switch" aria-hidden="true"></span>
-      </button>
-      <button id="xrayBtn" class="menu-item" type="button" aria-pressed="false"
-              aria-label="Toggle x-ray view of the skeleton">
-        <span>X-ray</span><span class="switch" aria-hidden="true"></span>
-      </button>
-      <button id="resetViewBtn" class="menu-item" type="button"
-              aria-label="Recenter the model">Recenter view</button>
+      <!-- Layers and View fold away (2026-11-14, Jake: "drop down menus ...
+           cleaner and less cluttered"). Closed each time the menu opens. -->
+      <details class="menu-group">
+        <summary class="menu-item menu-group-head"><span>Layers</span><span class="chev" aria-hidden="true"></span></summary>
+        <!-- Layer toggles are rendered by ui.js from config.js -->
+        <div id="layers" role="group" aria-label="Anatomical layers"></div>
+      </details>
+
+      <details class="menu-group">
+        <summary class="menu-item menu-group-head"><span>View</span><span class="chev" aria-hidden="true"></span></summary>
+        <button id="sidesBtn" class="menu-item" type="button" aria-pressed="false"
+                aria-label="Select both sides of the body together">
+          <span>Both sides</span><span class="switch" aria-hidden="true"></span>
+        </button>
+        <button id="xrayBtn" class="menu-item" type="button" aria-pressed="false"
+                aria-label="Toggle x-ray view of the skeleton">
+          <span>X-ray</span><span class="switch" aria-hidden="true"></span>
+        </button>
+        <button id="resetViewBtn" class="menu-item" type="button"
+                aria-label="Recenter the model">Recenter view</button>
+      </details>
 
       <div class="menu-sep" aria-hidden="true"></div>
       <button id="creditsBtn" class="menu-item" type="button"
@@ -127,6 +138,6 @@
 <div id="studyBar" hidden></div>
 <div id="error" class="overlay" hidden></div>
 
-<script type="module" src="src/main.js?v=46457be86d2c"></script>
+<script type="module" src="src/main.js?v=8ee770b70573"></script>
 </body>
 </html>

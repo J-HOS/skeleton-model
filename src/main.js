@@ -9,16 +9,16 @@
  * the loader.
  */
 
-import { LAYERS, PATHS } from './config.js?v=46457be86d2c';
-import { loadDataset, buildSearchIndex } from './dataset.js?v=46457be86d2c';
-import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap, prettyName } from './anatomy.js?v=46457be86d2c';
-import { STUDY_KINDS, STUDY_MODES, answerLandmarkTap, answerName, answerTap, studyMuscleLabel, boneBaseName, buildStudyCatalog, currentItem, formatPoints, giveUp, itemForId, answerLandmarkPick, itemsForMode, newRound, nextQuestion, parseLandmarks, prepareNaming, studyGroups } from './study.js?v=46457be86d2c';
-import { fetchLocal, sanitizeQuery } from './security.js?v=46457be86d2c';
-import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral, getStudyBest, recordStudyScore, studyKey } from './storage.js?v=46457be86d2c';
-import { Viewer } from './viewer.js?v=46457be86d2c';
-import { mountDevPanel } from './devpanel.js?v=46457be86d2c';
-import { byId } from './dom.js?v=46457be86d2c';
-import * as ui from './ui.js?v=46457be86d2c';
+import { LAYERS, PATHS } from './config.js?v=8ee770b70573';
+import { loadDataset, buildSearchIndex } from './dataset.js?v=8ee770b70573';
+import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap, prettyName } from './anatomy.js?v=8ee770b70573';
+import { STUDY_KINDS, STUDY_MODES, answerLandmarkTap, answerName, answerTap, studyMuscleLabel, boneBaseName, buildStudyCatalog, currentItem, formatPoints, giveUp, itemForId, answerLandmarkPick, itemsForMode, newRound, nextQuestion, parseLandmarks, prepareNaming, studyGroups } from './study.js?v=8ee770b70573';
+import { fetchLocal, sanitizeQuery } from './security.js?v=8ee770b70573';
+import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral, getStudyBest, recordStudyScore, studyKey } from './storage.js?v=8ee770b70573';
+import { Viewer } from './viewer.js?v=8ee770b70573';
+import { mountDevPanel } from './devpanel.js?v=8ee770b70573';
+import { byId } from './dom.js?v=8ee770b70573';
+import * as ui from './ui.js?v=8ee770b70573';
 
 const state = {
   data: null,
@@ -827,7 +827,12 @@ function setMenu(open) {
   if (menu.hidden === !open) return;
   menu.hidden = !open;
   byId('menuBtn').setAttribute('aria-expanded', String(open));
-  if (open) menu.querySelector('button:not([disabled])')?.focus({ preventScroll: true });
+  if (open) {
+    // Groups start folded each time (2026-11-14, Jake: less clutter).
+    for (const d of menu.querySelectorAll('details.menu-group')) d.open = false;
+    byId('modelBtn').hidden = !state.study;
+    menu.querySelector('button:not([disabled]):not([hidden])')?.focus({ preventScroll: true });
+  }
 }
 
 function wireMenu() {
@@ -836,7 +841,8 @@ function wireMenu() {
   document.addEventListener('pointerdown', (event) => {
     if (isMenuOpen() && !event.target.closest('.menu-wrap')) setMenu(false);
   });
-  for (const id of ['studyBtn', 'searchBtn', 'resetViewBtn', 'creditsBtn']) {
+  byId('modelBtn').addEventListener('click', () => { if (state.study) leaveStudyThen(endStudy); });
+  for (const id of ['modelBtn', 'studyBtn', 'searchBtn', 'resetViewBtn', 'creditsBtn']) {
     byId(id).addEventListener('click', () => setMenu(false));
   }
 }

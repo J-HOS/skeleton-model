@@ -7,9 +7,9 @@
  * correctness of the anatomy or the security posture.
  */
 
-import { byId, clear, el, fieldRow, replace } from './dom.js?v=46457be86d2c';
-import { ATTRIBUTION, CREDITS, DISCLAIMER, LAYERS, LIMITS } from './config.js?v=46457be86d2c';
-import { parseLandmarkCard, prettyName } from './anatomy.js?v=46457be86d2c';
+import { byId, clear, el, fieldRow, replace } from './dom.js?v=8ee770b70573';
+import { ATTRIBUTION, CREDITS, DISCLAIMER, LAYERS, LIMITS } from './config.js?v=8ee770b70573';
+import { parseLandmarkCard, prettyName } from './anatomy.js?v=8ee770b70573';
 
 /* ---------------------------------------------------------------- status -- */
 
@@ -376,7 +376,12 @@ export function renderStudyPicker({ kinds, modes, groups, counts, best, kind, mo
     }));
     replace(panel, [
       el('div', { className: 'error-card study-card', attrs: { role: 'dialog', 'aria-label': 'Study' } }, [
-        el('h2', { text: 'Study' }),
+        // A way back at the top (2026-11-14, Jake): the old Close sat below
+        // every region and needed a scroll on a phone.
+        el('div', { className: 'study-head' }, [
+          el('h2', { text: 'Study' }),
+          el('button', { className: 'btn subtle', text: 'Back to model', attrs: { type: 'button' }, on: { click: close } }),
+        ]),
         tabRow('How', modes, how, (id) => { how = id; draw(); }),
         tabRow('Subject', kinds, current, (id) => { current = id; draw(); }),
         el('p', { className: 'study-note', text: NOTES[`${current}:${how}`] || '' }),
@@ -385,9 +390,10 @@ export function renderStudyPicker({ kinds, modes, groups, counts, best, kind, mo
         // was lost that way on 11-11; team review 2026-11-12, A6).
         el('p', { className: 'study-note study-early', text: STUDY_EARLY_NOTE }),
         list,
-        el('button', { className: 'btn subtle', text: 'Close', attrs: { type: 'button' }, on: { click: close } }),
       ]),
     ]);
+    // A press on the dimmed backdrop (outside the card) also goes back.
+    panel.onclick = (e) => { if (e.target === panel) close(); };
   };
   draw();
   panel.hidden = false;

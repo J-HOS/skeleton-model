@@ -36,7 +36,7 @@
  * Search and on the cards.
  */
 
-import { classifyBone, findMuscleRecord, prettyName } from './anatomy.js?v=46457be86d2c';
+import { classifyBone, findMuscleRecord, prettyName } from './anatomy.js?v=8ee770b70573';
 
 export const STUDY_KINDS = Object.freeze([
   { id: 'muscles', label: 'Muscles' },

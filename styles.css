@@ -114,6 +114,17 @@ canvas { display: block; touch-action: none; }
   color: var(--muted);
 }
 .menu-sep { height: 1px; margin: 6px 4px; background: var(--line); }
+/* Folding groups in the menu (2026-11-14). */
+.menu-group-head { list-style: none; justify-content: space-between; }
+.menu-group-head::-webkit-details-marker { display: none; }
+.menu-group-head .chev { width: 8px; height: 8px; margin-right: 4px; border-right: 2px solid var(--muted);
+  border-bottom: 2px solid var(--muted); transform: rotate(45deg); transition: transform .15s ease; }
+.menu-group[open] > .menu-group-head .chev { transform: rotate(-135deg); }
+.menu-group > .menu-item:not(summary) { width: calc(100% - 10px); margin-left: 10px; padding-left: 10px; }
+.menu-group > #layers { padding-left: 10px; }
+/* Study screen header with its way back (2026-11-14). */
+.study-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.study-head h2 { margin: 0; }
 .menu-foot { margin: 0; padding: 6px 10px 4px; font-size: 11px; color: var(--muted); }
 
 /* Rows: the fixed items in index.html and the layer rows ui.js renders. */
