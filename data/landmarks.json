@@ -28,7 +28,8 @@
   "checked": "every point checked 2026-11-04 by its position within its bone (medial/anterior/superior) and by rendered front/back/side views",
   "added_2026_11_11": "25 whole-bone items (hand, foot, coccyx) and 2 spaces (vertebral and obturator foramen), by \"(C) add_whole_bones_and_foramina.py\"; foramen points computed from the model geometry and checked (clear of bone, outside the mesh, ringed by bone).",
   "added_2026_11_11b": "39 landmarks placed from model geometry, each rule taken from two approved sources (listed in each note): cervical (C5) and thoracic (T8) parts, atlas/axis extras, patella, sacral base and facets, deltoid tubercle (flagged), supinator fossa, tuberosity of 5th metatarsal; vertebral and transverse foramina as spaces. Script \"(C) place_remaining_landmarks.py\".",
-  "moved_2026_11_13": "Facet for dens of axis: from the facet centre (-33.97, 1646.47, 29.1; hidden by the dens from 0% of directions) to its superolateral margin, checked clear along its normal against C1 and C2. Script: 03 Testing & Review/(C) landmarks_2026-11-04/(C) move_dens_facet_2026-11-13.py"
+  "moved_2026_11_13": "Facet for dens of axis: from the facet centre (-33.97, 1646.47, 29.1; hidden by the dens from 0% of directions) to its superolateral margin, checked clear along its normal against C1 and C2. Script: 03 Testing & Review/(C) landmarks_2026-11-04/(C) move_dens_facet_2026-11-13.py",
+  "moved_2026_11_14": "Inferior articular process (atlas): from (-18.22, 1640.53, 20.85) to (-9.63, 1637.2, 18.72); Dens (odontoid process): from (-34.25, 1651.64, 27.91) to (-33.97, 1654.77, 23.05); Superior articular process (axis): from (-18.22, 1638.98, 20.85) to (-22.21, 1639.42, 29.24). Each new point is on the same structure, clear along its normal against C1 and C2 (ray test, plus 60 directions within 25 degrees). Sources for each structure unchanged. Script: 03 Testing & Review/(C) landmarks_2026-11-04/(C) move_atlasaxis_dots_2026-11-14.py"
  },
  "landmarks": [
   {
@@ -1945,19 +1946,19 @@
    "bone": "Atlas (C1)",
    "points": {
     "Atlas_C1_ZA": [
-     -18.22,
-     1640.53,
-     20.85
+     -9.63,
+     1637.2,
+     18.72
     ]
    },
    "normals": {
     "Atlas_C1_ZA": [
-     -0.314,
-     -0.934,
-     -0.171
+     0.674,
+     -0.729,
+     0.121
     ]
    },
-   "note": "card \"process\"; the facet on the lateral mass",
+   "note": "Moved 2026-11-14 (Jake, phone test 14 + deploy gate): the centre of the facet sits inside the lateral atlanto-axial joint, hidden from every direction and 1.5 mm from the axis's superior facet dot. Now on the lateral margin of the inferior articular facet (the C1 surface within 2.5 mm of C2; gap 2.3 mm), seen from the side and below. Either side counts (midline bone). card \"process\"; the facet on the lateral mass",
    "pointerGapMm": 0.03,
    "mirrorSnapMm": null
   },
@@ -2014,19 +2015,19 @@
    "bone": "Axis (C2)",
    "points": {
     "Axis_C2_ZA": [
-     -34.25,
-     1651.64,
-     27.91
+     -33.97,
+     1654.77,
+     23.05
     ]
    },
    "normals": {
     "Axis_C2_ZA": [
-     -0.137,
-     0.24,
-     0.961
+     0.0,
+     0.999,
+     -0.039
     ]
    },
-   "note": null,
+   "note": "Moved 2026-11-14 (Jake, phone test 14: hard to tell from the facet dot): from the anterior surface of the dens (3.7 mm from the 'Facet for dens of axis' dot, 5.3 mm from 'Anterior arch') to its apex, seen from above; now 8.4 mm from the nearest other dot.",
    "pointerGapMm": 0.01,
    "mirrorSnapMm": null
   },
@@ -6211,19 +6212,19 @@
    "bone": "Axis_C2",
    "points": {
     "Axis_C2_ZA": [
-     -18.22,
-     1638.98,
-     20.85
+     -22.21,
+     1639.42,
+     29.24
     ]
    },
    "normals": {
     "Axis_C2_ZA": [
-     0.4,
-     0.915,
-     0.06
+     0.114,
+     0.537,
+     0.836
     ]
    },
-   "note": "Placed 2026-11-11 from model geometry: superior articular facet, directly under the atlas inferior facet (joint gap 1.4 mm). Sources: StatPearls NBK539734, NBK525969; O'Rahilly ch.39."
+   "note": "Moved 2026-11-14 (Jake, phone test 14 + deploy gate): the centre of the facet sits inside the lateral atlanto-axial joint, 1.5 mm from the atlas's inferior facet dot and hidden from every direction, so a tap there scored the atlas. Now on the anterior margin of the superior articular facet (the C2 surface within 2.5 mm of C1; gap 2.2 mm), seen from the front. Either side counts (midline bone). Placed 2026-11-11 from model geometry: superior articular facet, directly under the atlas inferior facet (joint gap 1.4 mm). Sources: StatPearls NBK539734, NBK525969; O'Rahilly ch.39."
   },
   {
    "card": "atlasaxis",

@@ -34,7 +34,7 @@
      auto-requesting /favicon.ico (which this app doesn't have) and logging a
      404 for it on every load. Allowed under the CSP's img-src 'self' data:. -->
 <link rel="icon" href="data:,">
-<link rel="stylesheet" href="styles.css?v=8ee770b70573">
+<link rel="stylesheet" href="styles.css?v=283a3f6baa00">
 </head>
 <body>
 
@@ -53,17 +53,19 @@
       <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
     </button>
     <div id="menu" class="menu" hidden>
+      <!-- Home (2026-11-14, Jake): back to the plain model from anywhere -
+           ends a study round (asks first), closes the Study screen, Search
+           and the detail card. -->
+      <button id="homeBtn" class="menu-item" type="button"
+              aria-label="Home: back to the model">
+        <span>Home</span>
+      </button>
       <button id="studyBtn" class="menu-item" type="button" aria-label="Study: find muscles and bones">
         <span>Study</span>
       </button>
       <button id="searchBtn" class="menu-item" type="button" aria-label="Search structures">
         <span>Search</span><span class="kbd" aria-hidden="true">/</span>
       </button>
-
-      <!-- Back to the model from a study round (2026-11-14, Jake). Shown only
-           while a round is on; leaving asks first, like Search and Study. -->
-      <button id="modelBtn" class="menu-item" type="button" hidden
-              aria-label="End the study round and go back to the model">Back to model</button>
 
       <!-- Layers and View fold away (2026-11-14, Jake: "drop down menus ...
            cleaner and less cluttered"). Closed each time the menu opens. -->
@@ -138,6 +140,6 @@
 <div id="studyBar" hidden></div>
 <div id="error" class="overlay" hidden></div>
 
-<script type="module" src="src/main.js?v=8ee770b70573"></script>
+<script type="module" src="src/main.js?v=283a3f6baa00"></script>
 </body>
 </html>

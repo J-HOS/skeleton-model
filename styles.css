@@ -122,9 +122,9 @@ canvas { display: block; touch-action: none; }
 .menu-group[open] > .menu-group-head .chev { transform: rotate(-135deg); }
 .menu-group > .menu-item:not(summary) { width: calc(100% - 10px); margin-left: 10px; padding-left: 10px; }
 .menu-group > #layers { padding-left: 10px; }
-/* Study screen header with its way back (2026-11-14). */
-.study-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-.study-head h2 { margin: 0; }
+/* The Study screen sits under the menu button (2026-11-14, Jake: Home in the
+   menu is the way back), and leaves room for it at the top. */
+#study { z-index: 10; padding-top: 68px; }
 .menu-foot { margin: 0; padding: 6px 10px 4px; font-size: 11px; color: var(--muted); }
 
 /* Rows: the fixed items in index.html and the layer rows ui.js renders. */

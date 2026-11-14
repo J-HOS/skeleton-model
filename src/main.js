@@ -9,16 +9,16 @@
  * the loader.
  */
 
-import { LAYERS, PATHS } from './config.js?v=8ee770b70573';
-import { loadDataset, buildSearchIndex } from './dataset.js?v=8ee770b70573';
-import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap, prettyName } from './anatomy.js?v=8ee770b70573';
-import { STUDY_KINDS, STUDY_MODES, answerLandmarkTap, answerName, answerTap, studyMuscleLabel, boneBaseName, buildStudyCatalog, currentItem, formatPoints, giveUp, itemForId, answerLandmarkPick, itemsForMode, newRound, nextQuestion, parseLandmarks, prepareNaming, studyGroups } from './study.js?v=8ee770b70573';
-import { fetchLocal, sanitizeQuery } from './security.js?v=8ee770b70573';
-import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral, getStudyBest, recordStudyScore, studyKey } from './storage.js?v=8ee770b70573';
-import { Viewer } from './viewer.js?v=8ee770b70573';
-import { mountDevPanel } from './devpanel.js?v=8ee770b70573';
-import { byId } from './dom.js?v=8ee770b70573';
-import * as ui from './ui.js?v=8ee770b70573';
+import { LAYERS, PATHS } from './config.js?v=283a3f6baa00';
+import { loadDataset, buildSearchIndex } from './dataset.js?v=283a3f6baa00';
+import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap, prettyName } from './anatomy.js?v=283a3f6baa00';
+import { STUDY_KINDS, STUDY_MODES, answerLandmarkTap, answerName, answerTap, studyMuscleLabel, boneBaseName, buildStudyCatalog, currentItem, formatPoints, giveUp, itemForId, answerLandmarkPick, itemsForMode, newRound, nextQuestion, parseLandmarks, prepareNaming, studyGroups } from './study.js?v=283a3f6baa00';
+import { fetchLocal, sanitizeQuery } from './security.js?v=283a3f6baa00';
+import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral, getStudyBest, recordStudyScore, studyKey } from './storage.js?v=283a3f6baa00';
+import { Viewer } from './viewer.js?v=283a3f6baa00';
+import { mountDevPanel } from './devpanel.js?v=283a3f6baa00';
+import { byId } from './dom.js?v=283a3f6baa00';
+import * as ui from './ui.js?v=283a3f6baa00';
 
 const state = {
   data: null,
@@ -99,6 +99,13 @@ function revealForFocus(structureId) {
   return true;
 }
 
+/** A tap on the model: open the card without moving the model (2026-11-14). */
+function showTapped(structureId) {
+  state.frameAboveCard = false;
+  show(structureId);
+  updateViewInset();
+}
+
 function showAndFocus(structureId) {
   ui.closeSearch();
   const hasMesh = revealForFocus(structureId);
@@ -109,6 +116,7 @@ function showAndFocus(structureId) {
   }
   // The card has just opened; give the viewer its size now (the observer
   // fires a microtask later) so focus() frames for the visible area.
+  state.frameAboveCard = true;
   updateViewInset();
   state.viewer.focus(structureId);
 }
@@ -282,7 +290,7 @@ async function boot() {
 
   ui.setLoading('Loading the 3D model… (Wi-Fi recommended)');
   state.viewer = new Viewer(byId('canvas-host'), state.data.muscleIndex);
-  state.viewer.onSelect(show);
+  state.viewer.onSelect(showTapped);
   watchCardForViewInset();
   state.viewer.bilateral = state.bilateral;
 
@@ -360,7 +368,9 @@ function updateViewInset() {
     return;
   }
   const card = byId('info');
-  if (!card.classList.contains('open')) { state.viewer.setViewInset({}); return; }
+  // Only a Search pick is framed above the card; a tap leaves the model where
+  // it is and the card opens over it (2026-11-14, Jake).
+  if (!card.classList.contains('open') || !state.frameAboveCard) { state.viewer.setViewInset({}); return; }
   const phone = window.matchMedia(PHONE_LAYOUT).matches;
   state.viewer.setViewInset(phone ? { bottom: card.offsetHeight } : { right: card.offsetWidth });
 }
@@ -396,7 +406,19 @@ function watchKeyboard() {
   place();
 }
 
+/** Home (2026-11-14, Jake): the plain model, from wherever the user is. */
+function goHome() {
+  const home = () => {
+    ui.closeStudyPicker();
+    ui.closeSearch();
+    closeInfoPanel();
+  };
+  if (state.study) { leaveStudyThen(() => { endStudy(); home(); }); return; }
+  home();
+}
+
 function closeInfoPanel() {
+  state.frameAboveCard = false;
   ui.closeInfo();
   state.viewer?.select(null);
 }
@@ -798,7 +820,7 @@ function endStudy() {
   updateViewInset();
   const viewer = state.viewer;
   if (!viewer) return;
-  viewer.onSelect(show);
+  viewer.onSelect(showTapped);
   viewer.setTapLayer(null);
   viewer.setStudyScope(null);
   viewer.setMarkers([]);
@@ -830,7 +852,6 @@ function setMenu(open) {
   if (open) {
     // Groups start folded each time (2026-11-14, Jake: less clutter).
     for (const d of menu.querySelectorAll('details.menu-group')) d.open = false;
-    byId('modelBtn').hidden = !state.study;
     menu.querySelector('button:not([disabled]):not([hidden])')?.focus({ preventScroll: true });
   }
 }
@@ -841,8 +862,8 @@ function wireMenu() {
   document.addEventListener('pointerdown', (event) => {
     if (isMenuOpen() && !event.target.closest('.menu-wrap')) setMenu(false);
   });
-  byId('modelBtn').addEventListener('click', () => { if (state.study) leaveStudyThen(endStudy); });
-  for (const id of ['modelBtn', 'studyBtn', 'searchBtn', 'resetViewBtn', 'creditsBtn']) {
+  byId('homeBtn').addEventListener('click', goHome);
+  for (const id of ['homeBtn', 'studyBtn', 'searchBtn', 'resetViewBtn', 'creditsBtn']) {
     byId(id).addEventListener('click', () => setMenu(false));
   }
 }

@@ -7,9 +7,9 @@
  * correctness of the anatomy or the security posture.
  */
 
-import { byId, clear, el, fieldRow, replace } from './dom.js?v=8ee770b70573';
-import { ATTRIBUTION, CREDITS, DISCLAIMER, LAYERS, LIMITS } from './config.js?v=8ee770b70573';
-import { parseLandmarkCard, prettyName } from './anatomy.js?v=8ee770b70573';
+import { byId, clear, el, fieldRow, replace } from './dom.js?v=283a3f6baa00';
+import { ATTRIBUTION, CREDITS, DISCLAIMER, LAYERS, LIMITS } from './config.js?v=283a3f6baa00';
+import { parseLandmarkCard, prettyName } from './anatomy.js?v=283a3f6baa00';
 
 /* ---------------------------------------------------------------- status -- */
 
@@ -376,12 +376,9 @@ export function renderStudyPicker({ kinds, modes, groups, counts, best, kind, mo
     }));
     replace(panel, [
       el('div', { className: 'error-card study-card', attrs: { role: 'dialog', 'aria-label': 'Study' } }, [
-        // A way back at the top (2026-11-14, Jake): the old Close sat below
-        // every region and needed a scroll on a phone.
-        el('div', { className: 'study-head' }, [
-          el('h2', { text: 'Study' }),
-          el('button', { className: 'btn subtle', text: 'Back to model', attrs: { type: 'button' }, on: { click: close } }),
-        ]),
+        // The way back is Menu > Home (2026-11-14, Jake), or a press on the
+        // dimmed backdrop. The menu button sits above this screen.
+        el('h2', { text: 'Study' }),
         tabRow('How', modes, how, (id) => { how = id; draw(); }),
         tabRow('Subject', kinds, current, (id) => { current = id; draw(); }),
         el('p', { className: 'study-note', text: NOTES[`${current}:${how}`] || '' }),
