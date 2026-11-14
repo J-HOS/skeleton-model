@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Skeleton Model</title>
+<title>My Anatomy</title>
 
 <!--
   Content Security Policy.
@@ -25,6 +25,8 @@
   img-src 'self' data:;
   font-src 'self';
   connect-src 'self';
+  manifest-src 'self';
+  worker-src 'self';
   base-uri 'none';
   form-action 'none'">
 <meta name="referrer" content="no-referrer">
@@ -33,8 +35,11 @@
 <!-- Empty data-URI icon: tells the browser "no favicon", so it stops
      auto-requesting /favicon.ico (which this app doesn't have) and logging a
      404 for it on every load. Allowed under the CSP's img-src 'self' data:. -->
-<link rel="icon" href="data:,">
-<link rel="stylesheet" href="styles.css?v=283a3f6baa00">
+<link rel="icon" href="icons/icon-192.png" type="image/png">
+<!-- Installable app (Microsoft Store beta, 2026-11-14): manifest + icons; sw.js is registered by main.js. -->
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0e1116">
+<link rel="stylesheet" href="styles.css?v=1b883b889bf2">
 </head>
 <body>
 
@@ -79,11 +84,11 @@
         <summary class="menu-item menu-group-head"><span>View</span><span class="chev" aria-hidden="true"></span></summary>
         <button id="sidesBtn" class="menu-item" type="button" aria-pressed="false"
                 aria-label="Select both sides of the body together">
-          <span>Both sides</span><span class="switch" aria-hidden="true"></span>
+          <span class="menu-label">Both sides<small>Selecting one side lights both</small></span><span class="switch" aria-hidden="true"></span>
         </button>
         <button id="xrayBtn" class="menu-item" type="button" aria-pressed="false"
                 aria-label="Toggle x-ray view of the skeleton">
-          <span>X-ray</span><span class="switch" aria-hidden="true"></span>
+          <span class="menu-label">X-ray<small>See through the bones</small></span><span class="switch" aria-hidden="true"></span>
         </button>
         <button id="resetViewBtn" class="menu-item" type="button"
                 aria-label="Recenter the model">Recenter view</button>
@@ -93,7 +98,7 @@
       <button id="creditsBtn" class="menu-item" type="button"
               aria-label="Credits and licenses">Credits &amp; licenses</button>
       <!-- "Clear data" lives on the Credits screen (moved 2026-10-14). -->
-      <p class="menu-foot">Prototype</p>
+      <p class="menu-foot">Beta</p>
     </div>
   </div>
 </header>
@@ -140,6 +145,6 @@
 <div id="studyBar" hidden></div>
 <div id="error" class="overlay" hidden></div>
 
-<script type="module" src="src/main.js?v=283a3f6baa00"></script>
+<script type="module" src="src/main.js?v=1b883b889bf2"></script>
 </body>
 </html>

@@ -13,7 +13,7 @@
  * mitigation you need when you interpolate; not interpolating is stronger.
  */
 
-import { LIMITS } from './config.js?v=283a3f6baa00';
+import { LIMITS } from './config.js?v=1b883b889bf2';
 
 /**
  * SHA-256 of an ArrayBuffer, lowercase hex.

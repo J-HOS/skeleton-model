@@ -1,4 +1,4 @@
-Skeleton Model
+My Anatomy (the Skeleton Model project)
 Copyright (c) 2026 Jacob Hosking. All rights reserved.
 
 This applies to everything in this repository and on the published site
@@ -7,11 +7,12 @@ particular it covers:
 
   * the application code: index.html, styles.css and everything in src/;
   * the anatomical reference text in data/anatomy.json (muscle origins,
-    insertions, actions, innervations and notes) - written in original
+    insertions, actions and innervations) - written in original
     wording for this project. The bony-landmark names in the same file are
     standard anatomical terms and are not claimed as original.
 
-You may use the app through its published website. You may not copy,
+You may use the app through its published website or the Microsoft Store
+app. You may not copy,
 modify, republish, redistribute or create derivative works from the
 material above, in whole or in part, without written permission from the
 copyright holder. Being able to view these files publicly does not grant

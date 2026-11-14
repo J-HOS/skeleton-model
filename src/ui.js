@@ -7,9 +7,9 @@
  * correctness of the anatomy or the security posture.
  */
 
-import { byId, clear, el, fieldRow, replace } from './dom.js?v=283a3f6baa00';
-import { ATTRIBUTION, CREDITS, DISCLAIMER, LAYERS, LIMITS } from './config.js?v=283a3f6baa00';
-import { parseLandmarkCard, prettyName } from './anatomy.js?v=283a3f6baa00';
+import { byId, clear, el, fieldRow, replace } from './dom.js?v=1b883b889bf2';
+import { ATTRIBUTION, CREDITS, DISCLAIMER, LAYERS, LIMITS } from './config.js?v=1b883b889bf2';
+import { parseLandmarkCard, prettyName } from './anatomy.js?v=1b883b889bf2';
 
 /* ---------------------------------------------------------------- status -- */
 
@@ -109,7 +109,7 @@ export function renderLayers(state, onToggle, peel = null) {
       },
       [
         el('span', { className: 'dot dot-depth' }),
-        el('span', { text: 'Deep view' }),
+        el('span', { className: 'menu-label' }, ['Deep view', el('small', { text: "Peel muscles off the body's right side" })]),
         // A cycle, not an on/off: the value shows where it is in the cycle.
         el('span', { className: 'value', text: on ? `layer ${peel.depth} of ${peel.deepest}` : 'off' }),
       ]
@@ -310,6 +310,7 @@ export function renderCredits({ onClose, onClearData } = {}) {
       onClearData ? el('section', { className: 'credit credit-data' }, [
         el('h3', { text: 'Your data' }),
         el('p', { text: 'This app keeps your recent structures, your study scores, the first-run notice and the Both sides setting in this browser only, and runs no analytics. The site host (GitHub) keeps standard server logs, such as IP addresses.' }),
+        el('p', {}, [el('a', { text: 'Privacy policy', attrs: { href: 'privacy.html', target: '_blank', rel: 'noopener noreferrer' } })]),
         clearBtn,
       ]) : null,
       el('button', { className: 'btn', text: 'Close', on: { click: close } }),
@@ -347,7 +348,7 @@ export function renderStudyPicker({ kinds, modes, groups, counts, best, kind, mo
   let how = mode || modes[0].id;
   const close = () => { panel.hidden = true; onClose?.(); };
   const NOTES = {
-    'muscles:find': 'Scapula movers are under Thorax. Eight deep throat and jaw muscles are not asked yet, because they cannot be seen from outside.',
+    'muscles:find': 'Pick a region, then click (or tap) the muscle each question names. Scapula movers are under Thorax. Eight deep throat and jaw muscles are not asked yet, because they cannot be seen from outside.',
     'bones:find': 'Wrist bones are under Hand; ankle bones are under Foot.',
     'landmarks:find': 'The landmarks on each bone card, placed on the model. Tap a landmark\'s dot to answer, or tap the bone and the nearest landmark counts. For a whole bone, tap anywhere on it. Either side counts.',
     'muscles:name': 'A muscle lights up; type its name. Exact spelling scores 1, one or two letters off scores ½. Capitals, spaces and word order do not matter.',
@@ -376,9 +377,12 @@ export function renderStudyPicker({ kinds, modes, groups, counts, best, kind, mo
     }));
     replace(panel, [
       el('div', { className: 'error-card study-card', attrs: { role: 'dialog', 'aria-label': 'Study' } }, [
-        // The way back is Menu > Home (2026-11-14, Jake), or a press on the
-        // dimmed backdrop. The menu button sits above this screen.
-        el('h2', { text: 'Study' }),
+        // Ways back: this x (2026-11-14, Jake, after the team review), Menu > Home,
+        // Escape, or a press on the dimmed backdrop.
+        el('div', { className: 'study-title-row' }, [
+          el('h2', { text: 'Study' }),
+          el('button', { className: 'btn subtle study-close', text: '×', attrs: { type: 'button', 'aria-label': 'Close Study' }, on: { click: close } }),
+        ]),
         tabRow('How', modes, how, (id) => { how = id; draw(); }),
         tabRow('Subject', kinds, current, (id) => { current = id; draw(); }),
         el('p', { className: 'study-note', text: NOTES[`${current}:${how}`] || '' }),

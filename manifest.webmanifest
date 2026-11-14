@@ -1,0 +1,20 @@
+{
+  "id": "/skeleton-model/",
+  "name": "My Anatomy",
+  "short_name": "My Anatomy",
+  "description": "Interactive 3D skeleton and muscle reference with study quizzes for anatomy students. Free beta - for education only, not medical advice.",
+  "lang": "en-US",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0e1116",
+  "theme_color": "#0e1116",
+  "categories": ["education", "medical"],
+  "launch_handler": { "client_mode": "focus-existing" },
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

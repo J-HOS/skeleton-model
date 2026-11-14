@@ -9,16 +9,16 @@
  * the loader.
  */
 
-import { LAYERS, PATHS } from './config.js?v=283a3f6baa00';
-import { loadDataset, buildSearchIndex } from './dataset.js?v=283a3f6baa00';
-import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap, prettyName } from './anatomy.js?v=283a3f6baa00';
-import { STUDY_KINDS, STUDY_MODES, answerLandmarkTap, answerName, answerTap, studyMuscleLabel, boneBaseName, buildStudyCatalog, currentItem, formatPoints, giveUp, itemForId, answerLandmarkPick, itemsForMode, newRound, nextQuestion, parseLandmarks, prepareNaming, studyGroups } from './study.js?v=283a3f6baa00';
-import { fetchLocal, sanitizeQuery } from './security.js?v=283a3f6baa00';
-import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral, getStudyBest, recordStudyScore, studyKey } from './storage.js?v=283a3f6baa00';
-import { Viewer } from './viewer.js?v=283a3f6baa00';
-import { mountDevPanel } from './devpanel.js?v=283a3f6baa00';
-import { byId } from './dom.js?v=283a3f6baa00';
-import * as ui from './ui.js?v=283a3f6baa00';
+import { LAYERS, PATHS } from './config.js?v=1b883b889bf2';
+import { loadDataset, buildSearchIndex } from './dataset.js?v=1b883b889bf2';
+import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap, prettyName } from './anatomy.js?v=1b883b889bf2';
+import { STUDY_KINDS, STUDY_MODES, answerLandmarkTap, answerName, answerTap, studyMuscleLabel, boneBaseName, buildStudyCatalog, currentItem, formatPoints, giveUp, itemForId, answerLandmarkPick, itemsForMode, newRound, nextQuestion, parseLandmarks, prepareNaming, studyGroups } from './study.js?v=1b883b889bf2';
+import { fetchLocal, sanitizeQuery } from './security.js?v=1b883b889bf2';
+import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral, getStudyBest, recordStudyScore, studyKey } from './storage.js?v=1b883b889bf2';
+import { Viewer } from './viewer.js?v=1b883b889bf2';
+import { mountDevPanel } from './devpanel.js?v=1b883b889bf2';
+import { byId } from './dom.js?v=1b883b889bf2';
+import * as ui from './ui.js?v=1b883b889bf2';
 
 const state = {
   data: null,
@@ -272,9 +272,24 @@ function keepPageAtTop() {
   });
 }
 
+/**
+ * Installable app (Microsoft Store beta, 2026-11-14). sw.js is deliberately empty - it caches
+ * nothing - so registering it changes no request. Failure is harmless and silent.
+ */
+function registerServiceWorker() {
+  if (!('serviceWorker' in navigator) || !window.isSecureContext) return;
+  navigator.serviceWorker.register('sw.js', { scope: './' }).catch(() => { /* not needed to run */ });
+}
+
+/** Jake's own machine (serve.py on loopback) - developer wording is only shown there. */
+function isDevHost() {
+  return ['127.0.0.1', 'localhost', '::1', '[::1]'].includes(location.hostname);
+}
+
 async function boot() {
   keepPageAtTop();
   if (!(await ensureStyles())) return;
+  registerServiceWorker();
   ui.setLoading('Verifying anatomical data…');
   try {
     state.data = await loadDataset();
@@ -319,7 +334,7 @@ async function boot() {
     // A 404 here almost always means the server is an older process that
     // predates a change to which model files it serves — serve.py does not
     // hot-reload. Say so, rather than making the reader open the console.
-    const message = error.status === 404
+    const message = error.status === 404 && isDevHost()
       ? `The server could not find ${error.path}. If you changed the model, ` +
         'stop serve.py and start it again — it does not reload by itself.'
       : 'The 3D model could not be loaded. The reference content still works — try searching.';
@@ -949,7 +964,11 @@ function wireInterface() {
 }
 
 function firstRunHint() {
-  ui.flashHint('Tap a muscle or bone, or Menu > Search · drag to rotate · pinch or scroll to zoom', 6500);
+  // Mouse and trackpad wording on computers (Microsoft Store beta, 2026-11-14); touch wording on phones.
+  const touch = window.matchMedia('(pointer: coarse)').matches;
+  ui.flashHint(touch
+    ? 'Tap a muscle or bone, or Menu > Search · drag to rotate · pinch to zoom · two fingers to move'
+    : 'Click a muscle or bone, or Menu > Search · drag to rotate · scroll to zoom · right-drag to move', 7000);
 }
 
 /**

@@ -6,12 +6,12 @@
  * this boundary is what lets every other module be tested in plain Node.
  */
 
-import * as THREE from '../vendor/three.module.js?v=283a3f6baa00';
-import { GLTFLoader } from '../vendor/GLTFLoader.js?v=283a3f6baa00';
-import { OrbitControls } from './controls.js?v=283a3f6baa00';
-import { BONE_SURFACE_COLORS, COLORS, LAYERS, LIMITS, MODEL_FIT_UNITS, MUSCLE_SECTION_COLORS, PATHS, PEEL, RENDER } from './config.js?v=283a3f6baa00';
-import { assertLooksLikeGLB, fetchLocal } from './security.js?v=283a3f6baa00';
-import { attachmentWeight, axialParameter, axialTaper, boneSurfaceKey, classifyLayer, findMuscleRecord, hiddenByIsolation, isPeeled, recordAliases, resolvesToContent, scaleChannels, selectionGroup, varyLightness, viewOffsetFor, fitDistance } from './anatomy.js?v=283a3f6baa00';
+import * as THREE from '../vendor/three.module.js?v=1b883b889bf2';
+import { GLTFLoader } from '../vendor/GLTFLoader.js?v=1b883b889bf2';
+import { OrbitControls } from './controls.js?v=1b883b889bf2';
+import { BONE_SURFACE_COLORS, COLORS, LAYERS, LIMITS, MODEL_FIT_UNITS, MUSCLE_SECTION_COLORS, PATHS, PEEL, RENDER } from './config.js?v=1b883b889bf2';
+import { assertLooksLikeGLB, fetchLocal } from './security.js?v=1b883b889bf2';
+import { attachmentWeight, axialParameter, axialTaper, boneSurfaceKey, classifyLayer, findMuscleRecord, hiddenByIsolation, isPeeled, recordAliases, resolvesToContent, scaleChannels, selectionGroup, varyLightness, viewOffsetFor, fitDistance } from './anatomy.js?v=1b883b889bf2';
 
 const TAP_MOVE_TOLERANCE_PX = 8; // beyond this, the gesture was a drag, not a tap
 
@@ -165,6 +165,7 @@ export class Viewer {
     const settle = () => { for (const ms of [60, 250, 600]) setTimeout(this.resize, ms); };
     window.addEventListener('orientationchange', settle);
     window.visualViewport?.addEventListener('resize', this.resize);
+    this._watchPixelRatio();
 
     this.resize();
     this._animate();
@@ -235,6 +236,13 @@ export class Viewer {
     return !hit || hit.distance >= dist - 2 * scale; // within 2 mm of the dot = its own surface
   }
 
+  /** Re-check the pixel ratio whenever it changes (matchMedia fires once per change, so re-arm). */
+  _watchPixelRatio() {
+    if (typeof window.matchMedia !== 'function') return;
+    const mq = window.matchMedia(`(resolution: ${window.devicePixelRatio || 1}dppx)`);
+    mq.addEventListener?.('change', () => { this.resize(); this._watchPixelRatio(); }, { once: true });
+  }
+
   /** The size the canvas was last given (falls back to the window before the first resize). */
   _viewW() { return this._sizedAt ? this._sizedAt[0] : window.innerWidth; }
   _viewH() { return this._sizedAt ? this._sizedAt[1] : window.innerHeight; }
@@ -244,6 +252,10 @@ export class Viewer {
     const w = Math.round(host?.clientWidth || window.innerWidth);
     const h = Math.round(host?.clientHeight || window.innerHeight);
     if (!(w > 0 && h > 0)) return;
+    // Moving the window between a 100% and a 150% screen, or browser zoom, changes the pixel
+    // ratio without (always) changing the size (Microsoft Store beta, 2026-11-14, team review gfx).
+    const ratio = Math.min(window.devicePixelRatio || 1, 2);
+    if (ratio !== this.renderer.getPixelRatio()) { this.renderer.setPixelRatio(ratio); this._sizedAt = null; }
     if (this._sizedAt && this._sizedAt[0] === w && this._sizedAt[1] === h) return;
     this._sizedAt = [w, h];
     this.camera.aspect = w / h;

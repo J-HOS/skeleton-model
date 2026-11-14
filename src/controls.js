@@ -139,7 +139,13 @@ export class OrbitControls {
 
   _onWheel = (event) => {
     event.preventDefault();
-    this._zoom(event.deltaY > 0 ? 1.1 : 0.9);
+    // Proportional zoom (Microsoft Store beta, 2026-11-14, team review gfx/web): Windows precision
+    // touchpads send many small wheel events, so a fixed 10% per event lurched from far to near.
+    // A mouse notch (~100 px) still gives about 10%; a trackpad pinch arrives as ctrlKey + wheel.
+    const unit = event.deltaMode === 1 ? 33 : event.deltaMode === 2 ? 400 : 1; // lines / pages -> px
+    const dy = Math.max(-200, Math.min(200, event.deltaY * unit));
+    const rate = event.ctrlKey ? 0.01 : 0.001;
+    this._zoom(Math.exp(dy * rate));
   };
 
   _zoom(factor) {
