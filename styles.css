@@ -48,6 +48,10 @@ html, body {
 body { position: fixed; inset: 0; }
 #canvas-host { position: fixed; inset: 0; }
 canvas { display: block; touch-action: none; }
+/* No double-tap zoom on buttons and panels (2026-11-14, Jake's phone test 11:
+   double-tapping Next zoomed the page). The canvas keeps touch-action: none
+   (more specific), so pinch and spin on the model are unchanged. */
+* { touch-action: manipulation; }
 
 /* ------------------------------------------------------------------ chrome */
 
@@ -320,7 +324,7 @@ canvas { display: block; touch-action: none; }
 .study-region-meta { color: var(--muted); font-size: 12px; }
 .study-note { color: var(--muted); font-size: 13px; margin-top: -4px; }
 #studyBar {
-  position: fixed; bottom: 12px; left: 50%; transform: translateX(-50%); z-index: 9;
+  position: fixed; bottom: calc(12px + var(--kb, 0px)); left: 50%; transform: translateX(-50%); z-index: 9;
   width: min(560px, calc(100vw - 24px));
   padding: 10px 14px 12px; border-radius: 16px;
   background: rgba(23,28,36,.96); border: 1px solid var(--line);
@@ -357,9 +361,18 @@ body.studying #hint { bottom: auto; top: 64px; }
   #hint { bottom: auto; top: 64px; max-width: calc(100vw - 24px); text-align: center; }
   .overlay { padding: 12px; }
   .credits-card { max-height: calc(100vh - 24px); }
-  #studyBar { bottom: 10px; width: calc(100vw - 20px); }
+  #studyBar { bottom: calc(10px + var(--kb, 0px)); width: calc(100vw - 20px); }
   .study-regions { grid-template-columns: 1fr 1fr; }
 }
+
+/* Phone on its side (2026-11-14): little height, so a tighter study bar. With
+   the keyboard open only the prompt and the answer row show. */
+@media (max-height: 500px) {
+  #studyBar { padding: 6px 12px 8px; bottom: calc(6px + var(--kb, 0px)); }
+  .study-bar-prompt { font-size: 15px; margin: 2px 0 4px; }
+  .study-bar-actions .btn, .study-answer-row .btn, .study-answer { min-height: 36px; }
+}
+body.keyboard-open .study-bar-head, body.keyboard-open .study-bar-feedback:empty { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: .01ms !important; transition-duration: .01ms !important; }

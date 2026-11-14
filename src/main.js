@@ -9,16 +9,16 @@
  * the loader.
  */
 
-import { LAYERS, PATHS } from './config.js?v=d3edb24bab6e';
-import { loadDataset, buildSearchIndex } from './dataset.js?v=d3edb24bab6e';
-import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap, prettyName } from './anatomy.js?v=d3edb24bab6e';
-import { STUDY_KINDS, STUDY_MODES, answerLandmarkTap, answerName, answerTap, studyMuscleLabel, boneBaseName, buildStudyCatalog, currentItem, formatPoints, giveUp, itemForId, answerLandmarkPick, itemsForMode, newRound, nextQuestion, parseLandmarks, prepareNaming, studyGroups } from './study.js?v=d3edb24bab6e';
-import { fetchLocal, sanitizeQuery } from './security.js?v=d3edb24bab6e';
-import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral, getStudyBest, recordStudyScore, studyKey } from './storage.js?v=d3edb24bab6e';
-import { Viewer } from './viewer.js?v=d3edb24bab6e';
-import { mountDevPanel } from './devpanel.js?v=d3edb24bab6e';
-import { byId } from './dom.js?v=d3edb24bab6e';
-import * as ui from './ui.js?v=d3edb24bab6e';
+import { LAYERS, PATHS } from './config.js?v=46457be86d2c';
+import { loadDataset, buildSearchIndex } from './dataset.js?v=46457be86d2c';
+import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap, prettyName } from './anatomy.js?v=46457be86d2c';
+import { STUDY_KINDS, STUDY_MODES, answerLandmarkTap, answerName, answerTap, studyMuscleLabel, boneBaseName, buildStudyCatalog, currentItem, formatPoints, giveUp, itemForId, answerLandmarkPick, itemsForMode, newRound, nextQuestion, parseLandmarks, prepareNaming, studyGroups } from './study.js?v=46457be86d2c';
+import { fetchLocal, sanitizeQuery } from './security.js?v=46457be86d2c';
+import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral, getStudyBest, recordStudyScore, studyKey } from './storage.js?v=46457be86d2c';
+import { Viewer } from './viewer.js?v=46457be86d2c';
+import { mountDevPanel } from './devpanel.js?v=46457be86d2c';
+import { byId } from './dom.js?v=46457be86d2c';
+import * as ui from './ui.js?v=46457be86d2c';
 
 const state = {
   data: null,
@@ -354,7 +354,9 @@ function updateViewInset() {
   if (!state.viewer) return;
   // During a study round the bar at the bottom covers the screen instead.
   if (state.study && !byId('studyBar').hidden) {
-    state.viewer.setViewInset({ bottom: byId('studyBar').offsetHeight + 16 });
+    // Plus the keyboard when it is open (2026-11-14), so the marked landmark is framed above both.
+    const kb = parseFloat(document.documentElement.style.getPropertyValue('--kb')) || 0;
+    state.viewer.setViewInset({ bottom: byId('studyBar').offsetHeight + 16 + kb });
     return;
   }
   const card = byId('info');
@@ -365,7 +367,33 @@ function updateViewInset() {
 function watchCardForViewInset() {
   new MutationObserver(updateViewInset).observe(byId('info'), { attributes: true, attributeFilter: ['class'] });
   window.addEventListener('resize', updateViewInset);
+  watchKeyboard();
   updateViewInset();
+}
+
+/**
+ * Keep the study bar above the on-screen keyboard (2026-11-14, Jake's phone
+ * test 7: in Name it the keyboard covered the answer box). iOS shrinks only
+ * the visual viewport when the keyboard opens; fixed elements stay put behind
+ * it. The covered height goes into --kb, which #studyBar adds to its bottom.
+ */
+function keyboardInset(innerHeight, vvHeight, vvOffsetTop) {
+  const covered = Math.round(innerHeight - vvHeight - vvOffsetTop);
+  return covered > 40 ? covered : 0; // ignore Safari toolbar wobble
+}
+function watchKeyboard() {
+  const vv = window.visualViewport;
+  if (!vv) return;
+  const place = () => {
+    const kb = keyboardInset(window.innerHeight, vv.height, vv.offsetTop);
+    document.documentElement.style.setProperty('--kb', `${kb}px`);
+    document.body.classList.toggle('keyboard-open', kb > 0);
+    updateViewInset();
+  };
+  vv.addEventListener('resize', place);
+  vv.addEventListener('scroll', place);
+  window.addEventListener('orientationchange', () => setTimeout(place, 300));
+  place();
 }
 
 function closeInfoPanel() {

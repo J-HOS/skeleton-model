@@ -6,12 +6,12 @@
  * this boundary is what lets every other module be tested in plain Node.
  */
 
-import * as THREE from '../vendor/three.module.js?v=d3edb24bab6e';
-import { GLTFLoader } from '../vendor/GLTFLoader.js?v=d3edb24bab6e';
-import { OrbitControls } from './controls.js?v=d3edb24bab6e';
-import { BONE_SURFACE_COLORS, COLORS, LAYERS, LIMITS, MODEL_FIT_UNITS, MUSCLE_SECTION_COLORS, PATHS, PEEL, RENDER } from './config.js?v=d3edb24bab6e';
-import { assertLooksLikeGLB, fetchLocal } from './security.js?v=d3edb24bab6e';
-import { attachmentWeight, axialParameter, axialTaper, boneSurfaceKey, classifyLayer, findMuscleRecord, hiddenByIsolation, isPeeled, recordAliases, resolvesToContent, scaleChannels, selectionGroup, varyLightness, viewOffsetFor, fitDistance } from './anatomy.js?v=d3edb24bab6e';
+import * as THREE from '../vendor/three.module.js?v=46457be86d2c';
+import { GLTFLoader } from '../vendor/GLTFLoader.js?v=46457be86d2c';
+import { OrbitControls } from './controls.js?v=46457be86d2c';
+import { BONE_SURFACE_COLORS, COLORS, LAYERS, LIMITS, MODEL_FIT_UNITS, MUSCLE_SECTION_COLORS, PATHS, PEEL, RENDER } from './config.js?v=46457be86d2c';
+import { assertLooksLikeGLB, fetchLocal } from './security.js?v=46457be86d2c';
+import { attachmentWeight, axialParameter, axialTaper, boneSurfaceKey, classifyLayer, findMuscleRecord, hiddenByIsolation, isPeeled, recordAliases, resolvesToContent, scaleChannels, selectionGroup, varyLightness, viewOffsetFor, fitDistance } from './anatomy.js?v=46457be86d2c';
 
 const TAP_MOVE_TOLERANCE_PX = 8; // beyond this, the gesture was a drag, not a tap
 
@@ -155,6 +155,16 @@ export class Viewer {
     });
     this.renderer.domElement.addEventListener('pointerup', this._onPointerUp);
     window.addEventListener('resize', this.resize);
+    // Rotation on iPhone (2026-11-14, Jake's phone test 8): Safari can fire
+    // 'resize' while still reporting the old window size, which left the 3D
+    // view portrait-sized in a landscape window. Size from the host element
+    // (position: fixed; inset: 0), watch it directly, and re-measure a few
+    // times after an orientation change once the browser has settled.
+    const host = this.renderer.domElement.parentElement;
+    if (host && typeof ResizeObserver === 'function') new ResizeObserver(() => this.resize()).observe(host);
+    const settle = () => { for (const ms of [60, 250, 600]) setTimeout(this.resize, ms); };
+    window.addEventListener('orientationchange', settle);
+    window.visualViewport?.addEventListener('resize', this.resize);
 
     this.resize();
     this._animate();
@@ -192,8 +202,8 @@ export class Viewer {
       dot.getWorldPosition(v);
       v.project(this.camera);
       if (v.z > 1) continue;
-      const x = (v.x + 1) / 2 * window.innerWidth;
-      const y = (1 - v.y) / 2 * window.innerHeight;
+      const x = (v.x + 1) / 2 * this._viewW();
+      const y = (1 - v.y) / 2 * this._viewH();
       const d = Math.hypot(x - clientX, y - clientY);
       if (d <= maxPx) near.push({ d, dot });
     }
@@ -225,9 +235,17 @@ export class Viewer {
     return !hit || hit.distance >= dist - 2 * scale; // within 2 mm of the dot = its own surface
   }
 
+  /** The size the canvas was last given (falls back to the window before the first resize). */
+  _viewW() { return this._sizedAt ? this._sizedAt[0] : window.innerWidth; }
+  _viewH() { return this._sizedAt ? this._sizedAt[1] : window.innerHeight; }
+
   resize = () => {
-    const w = window.innerWidth;
-    const h = window.innerHeight;
+    const host = this.renderer.domElement.parentElement;
+    const w = Math.round(host?.clientWidth || window.innerWidth);
+    const h = Math.round(host?.clientHeight || window.innerHeight);
+    if (!(w > 0 && h > 0)) return;
+    if (this._sizedAt && this._sizedAt[0] === w && this._sizedAt[1] === h) return;
+    this._sizedAt = [w, h];
     this.camera.aspect = w / h;
     this.renderer.setSize(w, h);
     this._applyViewOffset();
@@ -269,8 +287,8 @@ export class Viewer {
   }
 
   _applyViewOffset() {
-    const w = window.innerWidth;
-    const h = window.innerHeight;
+    const w = this._viewW();
+    const h = this._viewH();
     const off = viewOffsetFor(w, h, this._inset || {});
     if (off) this.camera.setViewOffset(w, h, off.x, off.y, w, h);
     else this.camera.clearViewOffset();
@@ -293,7 +311,7 @@ export class Viewer {
     const group = this._markerGroup;
     if (!group || !group.children.length || !group.parent) return;
     const rootScale = this._modelRoot ? this._modelRoot.scale.x : 1;
-    const perPx = 2 * Math.tan((this.camera.fov * Math.PI) / 360) / window.innerHeight;
+    const perPx = 2 * Math.tan((this.camera.fov * Math.PI) / 360) / this._viewH();
     const world = this._markerWorld || (this._markerWorld = new THREE.Vector3());
     for (const dot of group.children) {
       dot.getWorldPosition(world);
@@ -312,8 +330,8 @@ export class Viewer {
       if (key) { this._markerHandler(key); return; }
     }
 
-    this._pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
-    this._pointer.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    this._pointer.x = (event.clientX / this._viewW()) * 2 - 1;
+    this._pointer.y = -(event.clientY / this._viewH()) * 2 + 1;
     this.raycaster.setFromCamera(this._pointer, this.camera);
 
     // In a muscle Find-it round only muscles answer a tap, so a bone in front
@@ -765,7 +783,7 @@ export class Viewer {
     box.expandByScalar(pad * this._modelRoot.scale.x);
     const size = box.getSize(new THREE.Vector3());
     this.controls.target.copy(box.getCenter(new THREE.Vector3()));
-    const fit = fitDistance(size, this.camera.fov, window.innerWidth, window.innerHeight, this._insetTarget || {});
+    const fit = fitDistance(size, this.camera.fov, this._viewW(), this._viewH(), this._insetTarget || {});
     this.controls.radius = Math.min(Math.max(fit, 0.5), 12);
     this.controls.update();
     return true;
@@ -813,7 +831,7 @@ export class Viewer {
     const size = box.getSize(new THREE.Vector3());
     const ext = Math.max(size.x, size.y, size.z);
     const centre = box.getCenter(new THREE.Vector3());
-    const fit = fitDistance(size, this.camera.fov, window.innerWidth, window.innerHeight, this._insetTarget || {});
+    const fit = fitDistance(size, this.camera.fov, this._viewW(), this._viewH(), this._insetTarget || {});
     const home = Math.max(fit, ext * 1.2);
     // Closest zoom as a share of the object's size: a quarter for one bone; a
     // whole hand or foot passes less, so a phalanx can fill the screen.
@@ -862,7 +880,7 @@ export class Viewer {
     if (box.isEmpty()) return false;
     const size = box.getSize(new THREE.Vector3());
     this.controls.target.copy(box.getCenter(new THREE.Vector3()));
-    const fit = fitDistance(size, this.camera.fov, window.innerWidth, window.innerHeight, this._insetTarget || {});
+    const fit = fitDistance(size, this.camera.fov, this._viewW(), this._viewH(), this._insetTarget || {});
     const floor = this.controls.bounded ? this.controls.minRadius : 1.6;
     this.controls.radius = Math.min(Math.max(Math.max(size.x, size.y, size.z) * 1.6, fit, floor), this.controls.maxRadius);
     this.controls.update();
@@ -1028,7 +1046,7 @@ export class Viewer {
     this.controls.target.copy(box.getCenter(new THREE.Vector3()));
     // Usual framing, or further out if the open card leaves too little room
     // (2026-10-16): fit to the area the card's TARGET inset leaves visible.
-    const fit = fitDistance(size, this.camera.fov, window.innerWidth, window.innerHeight, this._insetTarget || {});
+    const fit = fitDistance(size, this.camera.fov, this._viewW(), this._viewH(), this._insetTarget || {});
     this.controls.radius = Math.min(
       Math.max(Math.max(size.x, size.y, size.z) * 3.2, fit, 1.6),
       12
