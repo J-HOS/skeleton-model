@@ -24,9 +24,9 @@
  * position in styles.css.
  */
 
-import { el, replace } from './dom.js?v=1b883b889bf2';
-import { BONE_SURFACE_COLORS, RENDER } from './config.js?v=1b883b889bf2';
-import { scaleChannels } from './anatomy.js?v=1b883b889bf2';
+import { el, replace } from './dom.js?v=bcc805fbca5f';
+import { BONE_SURFACE_COLORS, RENDER } from './config.js?v=bcc805fbca5f';
+import { scaleChannels } from './anatomy.js?v=bcc805fbca5f';
 
 /**
  * A visible, dated build stamp. The one technique that reliably settled "is the

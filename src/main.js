@@ -9,16 +9,16 @@
  * the loader.
  */
 
-import { LAYERS, PATHS } from './config.js?v=1b883b889bf2';
-import { loadDataset, buildSearchIndex } from './dataset.js?v=1b883b889bf2';
-import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap, prettyName } from './anatomy.js?v=1b883b889bf2';
-import { STUDY_KINDS, STUDY_MODES, answerLandmarkTap, answerName, answerTap, studyMuscleLabel, boneBaseName, buildStudyCatalog, currentItem, formatPoints, giveUp, itemForId, answerLandmarkPick, itemsForMode, newRound, nextQuestion, parseLandmarks, prepareNaming, studyGroups } from './study.js?v=1b883b889bf2';
-import { fetchLocal, sanitizeQuery } from './security.js?v=1b883b889bf2';
-import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral, getStudyBest, recordStudyScore, studyKey } from './storage.js?v=1b883b889bf2';
-import { Viewer } from './viewer.js?v=1b883b889bf2';
-import { mountDevPanel } from './devpanel.js?v=1b883b889bf2';
-import { byId } from './dom.js?v=1b883b889bf2';
-import * as ui from './ui.js?v=1b883b889bf2';
+import { LAYERS, PATHS } from './config.js?v=bcc805fbca5f';
+import { loadDataset, buildSearchIndex } from './dataset.js?v=bcc805fbca5f';
+import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap, prettyName } from './anatomy.js?v=bcc805fbca5f';
+import { STUDY_KINDS, STUDY_MODES, answerLandmarkTap, answerName, answerTap, studyMuscleLabel, boneBaseName, buildStudyCatalog, currentItem, formatPoints, giveUp, itemForId, answerLandmarkPick, itemsForMode, newRound, nextQuestion, parseLandmarks, prepareNaming, studyGroups } from './study.js?v=bcc805fbca5f';
+import { fetchLocal, sanitizeQuery } from './security.js?v=bcc805fbca5f';
+import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral, getStudyBest, recordStudyScore, studyKey } from './storage.js?v=bcc805fbca5f';
+import { Viewer } from './viewer.js?v=bcc805fbca5f';
+import { mountDevPanel } from './devpanel.js?v=bcc805fbca5f';
+import { byId } from './dom.js?v=bcc805fbca5f';
+import * as ui from './ui.js?v=bcc805fbca5f';
 
 const state = {
   data: null,
@@ -524,9 +524,7 @@ function openStudyNow() {
 function setXrayState(on) {
   state.xray = on;
   state.viewer?.setXray(on);
-  const btn = byId('xrayBtn');
-  btn.classList.toggle('active', on);
-  btn.setAttribute('aria-pressed', String(on));
+  // No menu switch since 2026-11-16 (Jake); only muscle Study rounds turn it on.
 }
 
 function startStudy(kind, region, mode = 'find') {
@@ -890,7 +888,6 @@ function wireInterface() {
   byId('searchClose').addEventListener('click', ui.closeSearch);
   byId('infoClose').addEventListener('click', closeInfoPanel);
 
-  byId('xrayBtn').addEventListener('click', () => setXrayState(!state.xray));
 
   // Bilateral / unilateral selection (2026-10-09). Remembered between visits.
   const sidesBtn = byId('sidesBtn');

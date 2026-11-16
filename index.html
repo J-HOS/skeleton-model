@@ -39,7 +39,7 @@
 <!-- Installable app (Microsoft Store beta, 2026-11-14): manifest + icons; sw.js is registered by main.js. -->
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#0e1116">
-<link rel="stylesheet" href="styles.css?v=1b883b889bf2">
+<link rel="stylesheet" href="styles.css?v=bcc805fbca5f">
 </head>
 <body>
 
@@ -86,10 +86,8 @@
                 aria-label="Select both sides of the body together">
           <span class="menu-label">Both sides<small>Selecting one side lights both</small></span><span class="switch" aria-hidden="true"></span>
         </button>
-        <button id="xrayBtn" class="menu-item" type="button" aria-pressed="false"
-                aria-label="Toggle x-ray view of the skeleton">
-          <span class="menu-label">X-ray<small>See through the bones</small></span><span class="switch" aria-hidden="true"></span>
-        </button>
+        <!-- X-ray switch removed 2026-11-16 (Jake). The see-through skeleton stays inside muscle
+             Study rounds (main.js startStudy -> setXrayState), where taps must reach the muscles. -->
         <button id="resetViewBtn" class="menu-item" type="button"
                 aria-label="Recenter the model">Recenter view</button>
       </details>
@@ -145,6 +143,6 @@
 <div id="studyBar" hidden></div>
 <div id="error" class="overlay" hidden></div>
 
-<script type="module" src="src/main.js?v=1b883b889bf2"></script>
+<script type="module" src="src/main.js?v=bcc805fbca5f"></script>
 </body>
 </html>
