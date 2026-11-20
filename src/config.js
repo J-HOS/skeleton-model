@@ -313,6 +313,13 @@ export const LAYERS = Object.freeze([
 export const MODEL_FIT_UNITS = 7;
 
 /**
+ * Support address (Jake, 2026-11-20). Replaces the GitHub-issues contact on
+ * privacy.html and in Partner Center, and is where every card's "Report an
+ * error" link goes (team review 2026-11-03, decision D3: a mailto: link).
+ */
+export const SUPPORT_EMAIL = 'lyceumlabs00@gmail.com';
+
+/**
  * Short attribution shown on every content card. The full, licence-compliant
  * notice is CREDITS below, shown on the Credits screen.
  *

@@ -15,9 +15,9 @@
  * in, exactly like a network response.
  */
 
-import { LIMITS } from './config.js?v=b2d9989f6382';
-import { isValidStructureId } from './security.js?v=b2d9989f6382';
-import { LANDMARK_GROUPS, STUDY_KINDS, STUDY_REGIONS } from './study.js?v=b2d9989f6382';
+import { LIMITS } from './config.js?v=41905aed2403';
+import { isValidStructureId } from './security.js?v=41905aed2403';
+import { LANDMARK_GROUPS, STUDY_KINDS, STUDY_REGIONS } from './study.js?v=41905aed2403';
 
 const RECENTS_KEY = 'skeletonModel.recentlyViewed.v1';
 const DISCLAIMER_KEY = 'skeletonModel.disclaimerAcknowledged.v1';

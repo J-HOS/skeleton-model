@@ -7,9 +7,9 @@
  * correctness of the anatomy or the security posture.
  */
 
-import { byId, clear, el, fieldRow, replace } from './dom.js?v=b2d9989f6382';
-import { ATTRIBUTION, CREDITS, DISCLAIMER, LAYERS, LIMITS } from './config.js?v=b2d9989f6382';
-import { parseLandmarkCard, prettyName } from './anatomy.js?v=b2d9989f6382';
+import { byId, clear, el, fieldRow, replace } from './dom.js?v=41905aed2403';
+import { ATTRIBUTION, CREDITS, DISCLAIMER, LAYERS, LIMITS, SUPPORT_EMAIL } from './config.js?v=41905aed2403';
+import { parseLandmarkCard, prettyName } from './anatomy.js?v=41905aed2403';
 
 /* ---------------------------------------------------------------- status -- */
 
@@ -124,6 +124,25 @@ function attributionNote() {
   return el('p', { className: 'attribution', text: ATTRIBUTION });
 }
 
+/**
+ * mailto: link for reporting a content error on one card (decision D3,
+ * 2026-11-20). The subject names the card so reports can be sorted; the body
+ * asks for a source, because every correction is checked against two approved
+ * sources before anything changes. The app itself transmits nothing: the
+ * user's own mail app opens with the message filled in.
+ */
+export function reportErrorHref(title) {
+  const subject = `Error report: ${title}`;
+  const body = `Card: ${title}\n\nWhat looks wrong:\n\n\nYour source (book and page, or a link):\n`;
+  return `mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
+function reportLink(title) {
+  return el('p', { className: 'report-error' }, [
+    el('a', { text: 'Report an error', attrs: { href: reportErrorHref(title), 'aria-label': `Report an error on ${title}` } }),
+  ]);
+}
+
 function reviewFlag(muscle) {
   const flag = muscle.review_flag;
   if (!flag || String(flag).trim() === '') return null;
@@ -147,6 +166,7 @@ export function renderMuscle(muscle, side) {
     fieldRow('Notes', muscle.notes),
     reviewFlag(muscle),
     attributionNote(),
+    reportLink(byId('infoTitle').textContent),
   ]);
   openInfo();
 }
@@ -178,7 +198,7 @@ export function renderBone(bone, landmarkContent) {
       ])
     );
   }
-  children.push(attributionNote());
+  children.push(attributionNote(), reportLink(bone.display));
   replace(byId('infoBody'), children);
   openInfo();
 }
@@ -313,6 +333,14 @@ export function renderCredits({ onClose, onClearData } = {}) {
         el('p', {}, [el('a', { text: 'Privacy policy', attrs: { href: 'privacy.html', target: '_blank', rel: 'noopener noreferrer' } })]),
         clearBtn,
       ]) : null,
+      el('section', { className: 'credit credit-contact' }, [
+        el('h3', { text: 'Contact' }),
+        el('p', {}, [
+          'Questions, or an error in the content: ',
+          el('a', { text: SUPPORT_EMAIL, attrs: { href: `mailto:${SUPPORT_EMAIL}` } }),
+          '. Please name the structure and your source.',
+        ]),
+      ]),
       el('button', { className: 'btn', text: 'Close', on: { click: close } }),
     ]),
   ]);
