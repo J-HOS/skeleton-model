@@ -9,16 +9,16 @@
  * the loader.
  */
 
-import { LAYERS, PATHS } from './config.js?v=bcc805fbca5f';
-import { loadDataset, buildSearchIndex } from './dataset.js?v=bcc805fbca5f';
-import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap, prettyName } from './anatomy.js?v=bcc805fbca5f';
-import { STUDY_KINDS, STUDY_MODES, answerLandmarkTap, answerName, answerTap, studyMuscleLabel, boneBaseName, buildStudyCatalog, currentItem, formatPoints, giveUp, itemForId, answerLandmarkPick, itemsForMode, newRound, nextQuestion, parseLandmarks, prepareNaming, studyGroups } from './study.js?v=bcc805fbca5f';
-import { fetchLocal, sanitizeQuery } from './security.js?v=bcc805fbca5f';
-import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral, getStudyBest, recordStudyScore, studyKey } from './storage.js?v=bcc805fbca5f';
-import { Viewer } from './viewer.js?v=bcc805fbca5f';
-import { mountDevPanel } from './devpanel.js?v=bcc805fbca5f';
-import { byId } from './dom.js?v=bcc805fbca5f';
-import * as ui from './ui.js?v=bcc805fbca5f';
+import { COLORS, DETAIL_CARDS, LAYERS, PATHS } from './config.js?v=b2d9989f6382';
+import { loadDataset, buildSearchIndex } from './dataset.js?v=b2d9989f6382';
+import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap, prettyName } from './anatomy.js?v=b2d9989f6382';
+import { STUDY_KINDS, STUDY_MODES, answerLandmarkTap, answerName, answerTap, studyMuscleLabel, boneBaseName, buildStudyCatalog, currentItem, formatPoints, giveUp, itemForId, answerLandmarkPick, answerLandmarkRegion, itemsForMode, newRound, nextQuestion, parseLandmarkRegions, parseLandmarks, prepareNaming, regionsAtFace, regionsCover, studyGroups } from './study.js?v=b2d9989f6382';
+import { fetchLocal, sanitizeQuery } from './security.js?v=b2d9989f6382';
+import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral, getStudyBest, recordStudyScore, studyKey } from './storage.js?v=b2d9989f6382';
+import { Viewer } from './viewer.js?v=b2d9989f6382';
+import { mountDevPanel } from './devpanel.js?v=b2d9989f6382';
+import { byId } from './dom.js?v=b2d9989f6382';
+import * as ui from './ui.js?v=b2d9989f6382';
 
 const state = {
   data: null,
@@ -463,6 +463,41 @@ async function loadLandmarks() {
   }
 }
 
+/**
+ * Detailed bones and their landmark areas (2026-11-19, first app update).
+ * Fetched once, the first time a landmark round on a card that has them
+ * starts (about 0.6 MB), so nobody else pays for the download. Any failure
+ * leaves state.regions null and the round falls back to the main model's
+ * bone with dots.
+ */
+function ensureDetail() {
+  if (!state.detailPromise) {
+    state.detailPromise = (async () => {
+      const raw = await fetchLocal(PATHS.landmarkRegions);
+      if (raw?.metadata?.model !== PATHS.detailModel) throw new Error('landmark_regions.json names another model');
+      const counts = await state.viewer.loadDetail(PATHS.detailModel);
+      const regions = parseLandmarkRegions(raw, state.landmarkCatalog || {}, counts);
+      if (!regions) throw new Error('landmark_regions.json failed validation');
+      state.regions = regions;
+    })().catch((error) => {
+      state.regions = null;
+      console.info('Detailed bones unavailable:', error.message);
+    });
+  }
+  return state.detailPromise;
+}
+
+const AREA_COLORS = Object.freeze({ target: COLORS.selected, tap: 0xf97316 });
+/** Light landmark areas on the detailed bone: [[item, 'target' | 'tap'], ...]. */
+function paintAreas(list = []) {
+  const areas = [];
+  for (const [item, kind] of list) {
+    const r = item && state.regions?.get(item.key);
+    if (r) areas.push({ id: r.mesh, vertices: r.vertices, hex: AREA_COLORS[kind] });
+  }
+  state.viewer.paintRegions(areas);
+}
+
 const groupLabel = (kind, id) => studyGroups(kind).find((r) => r.id === id)?.label || id;
 // Landmark rounds show the right-side bone when there is one; say so, so
 // medial/lateral can be read off the bone (team review 2026-11-12, A7).
@@ -488,7 +523,8 @@ const shownId = (item) => { const ids = state.study?.shownIds; return (ids && it
 const shownPoint = (item) => item.points[shownId(item)] || rightPoint(item);
 function softMarkers(except = null) {
   const study = state.study;
-  if (!study || study.kind !== 'landmarks') return [];
+  // On a detailed bone there are no hints before a tap (2026-11-19, Jake).
+  if (!study || study.kind !== 'landmarks' || study.detail) return [];
   return study.items.filter((i) => !i.whole && i !== except)
     .map((i) => ({ point: shownPoint(i), kind: 'soft', key: i.key, normal: i.normals?.[shownId(i)] || null }));
 }
@@ -528,6 +564,20 @@ function setXrayState(on) {
 }
 
 function startStudy(kind, region, mode = 'find') {
+  // A card with detailed bones waits for them the first time (a second or so).
+  if (kind === 'landmarks' && DETAIL_CARDS.has(region) && !state.detailDone) {
+    const token = (state.studyStartToken = (state.studyStartToken || 0) + 1);
+    ui.flashHint('Loading the detailed bone…');
+    ensureDetail().finally(() => {
+      state.detailDone = true;
+      if (state.studyStartToken === token) startStudyNow(kind, region, mode);
+    });
+    return;
+  }
+  startStudyNow(kind, region, mode);
+}
+
+function startStudyNow(kind, region, mode = 'find') {
   const catalog = studyCatalog();
   const items = itemsForMode(catalog?.[kind]?.[region] || [], mode);
   if (!items.length) return;
@@ -568,6 +618,10 @@ function startStudy(kind, region, mode = 'find') {
     const boneIds = (catalog.bones?.[region] || []).flatMap((item) => item.ids);
     state.study.shownIds = oneSide([...new Set([...allIds, ...boneIds])]);
   } else state.study.shownIds = null;
+  // Detailed bone with landmark areas, when the card has them (2026-11-19).
+  state.study.detail = kind === 'landmarks' && regionsCover(items, state.regions)
+    && viewer.hasDetail(state.study.shownIds);
+  viewer.setDetail(state.study.detail ? state.study.shownIds : null);
   if (kind === 'landmarks') viewer.setStudyScope(state.study.shownIds, 'skeleton');
   else if (regionIsolated) viewer.setStudyScope(state.study.shownIds, 'all');
   else if (kind === 'muscles') viewer.setStudyScope(allIds);
@@ -581,7 +635,7 @@ function startStudy(kind, region, mode = 'find') {
   updateViewInset();
   viewer.isolate(state.study.shownIds, regionIsolated ? { minFraction: REGION_MIN_ZOOM } : undefined);
   // Find it with dots: tapping a dot answers with that landmark.
-  viewer.onMarkerTap(kind === 'landmarks' && mode === 'find' ? landmarkPick : null);
+  viewer.onMarkerTap(kind === 'landmarks' && mode === 'find' && !state.study.detail ? landmarkPick : null);
   if (mode === 'find') {
     if (kind === 'landmarks') viewer.setMarkers(softMarkers());
     else if (!regionIsolated) viewer.frameIds(allIds);
@@ -599,7 +653,15 @@ function showNameQuestion() {
     // asked landmark and turn the camera to face it, so one on the back of the
     // bone is in view. The card's other landmarks stay as soft dots.
     viewer.isolate(study.shownIds);
-    if (item.whole) {
+    const area = study.detail && state.regions.get(item.key);
+    if (area) {
+      // The asked landmark's area lit on the detailed bone, the camera turned to face it.
+      viewer.selectIds([]);
+      viewer.setMarkers([]);
+      paintAreas([[item, 'target']]);
+      viewer.orbitAround(area.centre);
+      viewer.lookFromModel(area.view);
+    } else if (item.whole) {
       viewer.selectIds(item.ids);
       viewer.setMarkers(softMarkers());
       viewer.frameIds(oneSide(item.ids));
@@ -618,7 +680,8 @@ function showNameQuestion() {
 
 const NAME_PROMPT = { muscles: 'Name the lit muscle', bones: 'Name the lit bone', landmarks: 'Name the marked landmark' };
 // Whole-bone landmark items light the bone(s) instead of showing a dot (2026-11-11).
-const namePrompt = (kind, item) => (kind === 'landmarks' && item?.whole ? 'Name the lit bone(s)' : NAME_PROMPT[kind]);
+const namePrompt = (kind, item) => (kind === 'landmarks' && item?.whole ? 'Name the lit bone(s)'
+  : kind === 'landmarks' && state.study?.detail ? 'Name the highlighted landmark' : NAME_PROMPT[kind]);
 
 function drawStudy(feedback = null, typed = '') {
   const study = state.study;
@@ -641,7 +704,7 @@ function drawStudy(feedback = null, typed = '') {
   let how = '';
   if (!naming && study.kind === 'landmarks') {
     if (item.whole) how = ' (tap the bone)';
-    else if (round.index === 0) how = ' (tap its dot)';
+    else if (round.index === 0) how = study.detail ? ' (tap it on the bone)' : ' (tap its dot)';
   }
   ui.renderStudyBar({
     title: `${modeLabel(study.mode)} · ${kindLabel(study.kind)} · ${shownGroupLabel(study)}`,
@@ -670,7 +733,7 @@ function studyTap(id, info = {}) {
   const study = state.study;
   if (!study || study.round.answered) return;
   if (study.mode === 'name') { ui.flashHint('Type the name in the box below.'); return; }
-  if (study.kind === 'landmarks') { landmarkTap(id, info.point, info.normal); return; }
+  if (study.kind === 'landmarks') { landmarkTap(id, info.point, info.normal, info.face); return; }
   // In a muscle round the bones are there for orientation; a bone tap is not
   // an answer.
   if (study.kind === 'muscles' && classifyBone(id)) {
@@ -699,12 +762,13 @@ function landmarkPick(key) {
     : { text: `Not quite - that dot (orange) is the ${result.nearest.label}. The ${result.item.label} is the blue dot.`, good: false });
 }
 
-function landmarkTap(id, point, normal) {
+function landmarkTap(id, point, normal, face = null) {
   const study = state.study;
   if (!study.allIds.includes(id)) {
     ui.flashHint(`Tap on the ${groupLabel('landmarks', study.region).toLowerCase()}.`);
     return;
   }
+  if (study.detail && face) { landmarkAreaTap(id, point, face); return; }
   const result = answerLandmarkTap(study.round, id, point, normal);
   if (!result) return;
   if (result.item.whole) {
@@ -726,6 +790,24 @@ function landmarkTap(id, point, normal) {
     : { text: (result.nearest
         ? `Not quite - your tap (orange) is nearest the ${result.nearest.label}. The ${result.item.label} is the blue dot.`
         : `Not quite - your tap (orange) is not near a landmark on this card. The ${result.item.label} is the blue dot.`) + turn,
+      good: false });
+}
+
+/** Find it on a detailed bone: the tap counts for the landmark area under it (2026-11-19). */
+function landmarkAreaTap(id, point, face) {
+  const study = state.study;
+  const keys = regionsAtFace(state.regions, study.items.map((i) => i.key), id, face);
+  const result = answerLandmarkRegion(study.round, keys);
+  if (!result) return;
+  const wrongArea = !result.correct && result.nearest;
+  paintAreas([...(wrongArea ? [[result.nearest, 'tap']] : []), [result.item, 'target']]);
+  state.viewer.setMarkers(!result.correct && !result.nearest ? [{ point, kind: 'tap' }] : []);
+  drawStudy(result.correct
+    ? { text: `Correct - ${result.item.label}.`, good: true }
+    : { text: (wrongArea
+        ? `Not quite - you tapped the ${result.nearest.label} (orange). The ${result.item.label} is lit blue.`
+        : `Not quite - that spot (orange) is not one of this card's landmarks. The ${result.item.label} is lit blue.`)
+        + ' Drag to turn the bone if you cannot see it.',
       good: false });
 }
 
@@ -760,6 +842,11 @@ function studyGiveUp() {
     drawStudy({ text: `The ${result.item.label} ${result.item.ids.length > 2 ? 'are' : 'is'} now lit.`, good: false });
     return;
   }
+  if (study.kind === 'landmarks' && study.detail && state.regions.get(result.item.key)) {
+    paintAreas([[result.item, 'target']]);
+    drawStudy({ text: `The ${result.item.label} is lit blue. Drag to turn the bone if you cannot see it.`, good: false });
+    return;
+  }
   if (study.kind === 'landmarks') {
     state.viewer.setMarkers([...softMarkers(result.item), { point: shownPoint(result.item), kind: 'target' }]);
     drawStudy({ text: `The ${result.item.label} is the blue dot.`, good: false });
@@ -773,6 +860,7 @@ function studyNext() {
   const study = state.study;
   state.viewer.selectIds([]);
   state.viewer.setMarkers([]);
+  if (study.detail) state.viewer.paintRegions([]);
   if (nextQuestion(study.round)) {
     drawStudy();
     if (study.mode === 'name') showNameQuestion();
@@ -835,6 +923,7 @@ function endStudy() {
   if (!viewer) return;
   viewer.onSelect(showTapped);
   viewer.setTapLayer(null);
+  viewer.setDetail(null);
   viewer.setStudyScope(null);
   viewer.setMarkers([]);
   viewer.selectIds([]);

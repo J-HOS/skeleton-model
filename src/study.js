@@ -36,7 +36,7 @@
  * Search and on the cards.
  */
 
-import { classifyBone, findMuscleRecord, prettyName } from './anatomy.js?v=bcc805fbca5f';
+import { classifyBone, findMuscleRecord, prettyName } from './anatomy.js?v=b2d9989f6382';
 
 export const STUDY_KINDS = Object.freeze([
   { id: 'muscles', label: 'Muscles' },
@@ -474,6 +474,99 @@ export function answerLandmarkPick(round, key) {
   round.answered = true;
   if (correct) round.correct += 1; else round.missed.push(item.label);
   return { correct, item, nearest: picked };
+}
+
+/* ---------------------------------------------- landmark areas (detail) -- */
+// The first app update (2026-11-19, Jake): on a detailed bone each landmark is
+// an AREA of the surface (data/landmark_regions.json), shown as a highlight
+// instead of a dot, and a tap counts for the area under the finger.
+
+/**
+ * Validate landmark_regions.json against the landmark catalog. Returns
+ * Map key -> { key, mesh, vertices: Uint32Array, centre, view, space } or null
+ * if anything is malformed. `vertexCounts` ({ meshId: count }), when given,
+ * must match the file's own record of the detailed meshes, so a region file
+ * written for another build of the .glb is refused rather than painting the
+ * wrong triangles.
+ */
+export function parseLandmarkRegions(raw, catalog, vertexCounts = null) {
+  if (!raw || typeof raw !== 'object' || !Array.isArray(raw.regions)) return null;
+  const meshes = raw.metadata && raw.metadata.meshes;
+  if (!meshes || typeof meshes !== 'object') return null;
+  if (vertexCounts) {
+    for (const [id, info] of Object.entries(meshes)) {
+      if (!info || vertexCounts[id] !== info.vertices) return null;
+    }
+  }
+  const known = new Map();
+  for (const items of Object.values(catalog || {})) for (const item of items) known.set(item.key, item);
+  const out = new Map();
+  const vec = (v, lim) => Array.isArray(v) && v.length === 3 && v.every((x) => Number.isFinite(x) && Math.abs(x) <= lim);
+  for (const r of raw.regions) {
+    if (!r || typeof r !== 'object') return null;
+    const key = `${r.card}:${r.label}`;
+    const item = known.get(key);
+    if (!item || out.has(key)) return null;
+    const count = meshes[r.mesh] && meshes[r.mesh].vertices;
+    if (!Number.isInteger(count) || !item.ids.includes(r.mesh)) return null;
+    if (!Array.isArray(r.vertices) || !r.vertices.length) return null;
+    if (!r.vertices.every((v) => Number.isInteger(v) && v >= 0 && v < count)) return null;
+    if (!vec(r.centre, 5000) || !vec(r.view, 1.01)) return null;
+    out.set(key, { key, mesh: r.mesh, vertices: Uint32Array.from(r.vertices).sort(), centre: r.centre, view: r.view, space: Boolean(r.space) });
+  }
+  return out;
+}
+
+/** Do the landmark areas cover every point landmark of these items (so a round can use them)? */
+export function regionsCover(items, regions) {
+  return Boolean(regions) && items.length > 0 && items.every((i) => i.whole || regions.has(i.key));
+}
+
+/**
+ * Which landmark areas a tapped triangle (three vertex indices of `mesh`)
+ * lies in: an area counts when two of the three corners are in it. Smallest
+ * area first, so a tubercle on an arch is named before the arch.
+ */
+export function regionsAtFace(regions, keys, mesh, face) {
+  if (!Array.isArray(face) || face.length !== 3) return [];
+  const hits = [];
+  for (const key of keys) {
+    const r = regions.get(key);
+    if (!r || r.mesh !== mesh || r.space) continue;
+    let n = 0;
+    for (const v of face) if (binaryHas(r.vertices, v)) n += 1;
+    if (n >= 2) hits.push(r);
+  }
+  hits.sort((a, b) => a.vertices.length - b.vertices.length);
+  return hits.map((r) => r.key);
+}
+
+function binaryHas(sorted, v) {
+  let lo = 0;
+  let hi = sorted.length - 1;
+  while (lo <= hi) {
+    const mid = (lo + hi) >> 1;
+    if (sorted[mid] === v) return true;
+    if (sorted[mid] < v) lo = mid + 1; else hi = mid - 1;
+  }
+  return false;
+}
+
+/**
+ * Find it on a detailed bone: the tap lies in the areas `hitKeys` (smallest
+ * first). Correct when the asked landmark's area is among them - an arch
+ * includes its tubercle - otherwise the answer names the smallest area tapped,
+ * or none. Returns { correct, item, nearest } like answerLandmarkPick().
+ */
+export function answerLandmarkRegion(round, hitKeys) {
+  const item = currentItem(round);
+  if (!item || round.answered) return null;
+  const keys = Array.isArray(hitKeys) ? hitKeys : [];
+  const correct = keys.includes(item.key);
+  const nearest = correct ? item : round.items.find((i) => i.key === keys[0]) || null;
+  round.answered = true;
+  if (correct) round.correct += 1; else round.missed.push(item.label);
+  return { correct, item, nearest };
 }
 
 /* ------------------------------------------------------ Name it grading -- */

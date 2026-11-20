@@ -6,12 +6,12 @@
  * this boundary is what lets every other module be tested in plain Node.
  */
 
-import * as THREE from '../vendor/three.module.js?v=bcc805fbca5f';
-import { GLTFLoader } from '../vendor/GLTFLoader.js?v=bcc805fbca5f';
-import { OrbitControls } from './controls.js?v=bcc805fbca5f';
-import { BONE_SURFACE_COLORS, COLORS, LAYERS, LIMITS, MODEL_FIT_UNITS, MUSCLE_SECTION_COLORS, PATHS, PEEL, RENDER } from './config.js?v=bcc805fbca5f';
-import { assertLooksLikeGLB, fetchLocal } from './security.js?v=bcc805fbca5f';
-import { attachmentWeight, axialParameter, axialTaper, boneSurfaceKey, classifyLayer, findMuscleRecord, hiddenByIsolation, isPeeled, recordAliases, resolvesToContent, scaleChannels, selectionGroup, varyLightness, viewOffsetFor, fitDistance } from './anatomy.js?v=bcc805fbca5f';
+import * as THREE from '../vendor/three.module.js?v=b2d9989f6382';
+import { GLTFLoader } from '../vendor/GLTFLoader.js?v=b2d9989f6382';
+import { OrbitControls } from './controls.js?v=b2d9989f6382';
+import { BONE_SURFACE_COLORS, COLORS, LAYERS, LIMITS, MODEL_FIT_UNITS, MUSCLE_SECTION_COLORS, PATHS, PEEL, RENDER } from './config.js?v=b2d9989f6382';
+import { assertLooksLikeGLB, fetchLocal } from './security.js?v=b2d9989f6382';
+import { attachmentWeight, axialParameter, axialTaper, boneSurfaceKey, classifyLayer, findMuscleRecord, hiddenByIsolation, isPeeled, recordAliases, resolvesToContent, scaleChannels, selectionGroup, varyLightness, viewOffsetFor, fitDistance } from './anatomy.js?v=b2d9989f6382';
 
 const TAP_MOVE_TOLERANCE_PX = 8; // beyond this, the gesture was a drag, not a tap
 
@@ -366,7 +366,11 @@ export class Viewer {
       if (n.dot(this.raycaster.ray.direction) > 0) n.negate();
       normal = [n.x, n.y, n.z];
     }
-    this._selectHandler(hit.object.userData.structureId, { point: [local.x, local.y, local.z], normal });
+    // A detailed bone (2026-11-19) also reports which triangle was hit, so the
+    // landmark AREA under the finger can be looked up (landmark_regions.json
+    // indexes that file's vertices).
+    const face = hit.object.userData.detail && hit.face ? [hit.face.a, hit.face.b, hit.face.c] : null;
+    this._selectHandler(hit.object.userData.structureId, { point: [local.x, local.y, local.z], normal, face });
   };
 
   /**
@@ -394,7 +398,7 @@ export class Viewer {
     return this._integrate(gltf.scene, options);
   }
 
-  _integrate(root, { replace = false, reuseMain = false, forceLayer = null } = {}) {
+  _integrate(root, { replace = false, reuseMain = false, forceLayer = null, detail = false } = {}) {
     if (replace) {
       for (const mesh of this.selectable) mesh.parent?.remove(mesh);
       this.selectable = [];
@@ -452,6 +456,9 @@ export class Viewer {
 
       const id = this._structureIdFor(object);
       object.userData.structureId = id;
+      // A detailed copy of a bone already in the scene (2026-11-19): hidden
+      // until a landmark round turns it on in place of the main model's mesh.
+      if (detail) object.userData.detail = true;
       const layer = forceLayer || classifyLayer(id, this.muscleIndex);
       object.userData.layer = layer;
       // Kept because retune() has to recompute this mesh's colour later, and
@@ -612,7 +619,7 @@ export class Viewer {
       // is darkened back to its own section colour by vertex colours — vertex
       // colours multiply, so they can only darken, which is why the pale end
       // has to be the base rather than the target.
-      mesh.userData.baseColor = tinted
+      mesh.userData.baseColor = tinted && !mesh.userData.detail
         ? COLORS.attachment
         : this._baseColorFor(
             mesh.userData.layer,
@@ -638,6 +645,9 @@ export class Viewer {
     const strength = this.tuning.attachmentTint;
     const wanted = mesh.userData.layer === 'muscle' && strength > 0;
     const geometry = mesh.geometry;
+    // Detailed bones carry landmark-area colours instead (paintRegions); keep
+    // them through a retune.
+    if (mesh.userData.detail) return Boolean(geometry?.getAttribute?.('color'));
     const position = geometry?.getAttribute?.('position');
 
     if (!wanted || !position || position.itemSize !== 3) {
@@ -719,8 +729,97 @@ export class Viewer {
       const scopeLayer = this.studyScopeLayer || 'muscle';
       const outOfScope = this.studyScope && (scopeLayer === 'all' || mesh.userData.layer === scopeLayer)
         && !this.studyScope.has(mesh.userData.structureId);
-      mesh.visible = layerOn && !peeled && !isolated && !outOfScope;
+      // Detailed bones (2026-11-19): shown only while a landmark round uses
+      // them, and then the main model's copy of that bone is hidden.
+      const detailOn = this._detailIds ? this._detailIds.has(mesh.userData.structureId) : false;
+      const swapped = mesh.userData.detail ? !detailOn : detailOn;
+      mesh.visible = layerOn && !peeled && !isolated && !outOfScope && !swapped;
     }
+  }
+
+  /**
+   * Fetch a .glb of detailed bones (2026-11-19) - copies of bones already in
+   * the scene, in the main model's frame - and keep them hidden until
+   * setDetail() asks for them. Returns { id: vertexCount } per mesh.
+   */
+  async loadDetail(path) {
+    const before = new Set(this.selectable);
+    await this.load(path, { reuseMain: true, forceLayer: 'skeleton', detail: true });
+    // Box3.expandByObject() reads each mesh's matrixWorld without updating its
+    // parents, so a file added since the last frame would be framed in raw
+    // model units (found 2026-11-19: the first atlas/axis round opened zoomed
+    // far out). Bring the new root's matrices up to date now.
+    this.scene.updateMatrixWorld(true);
+    const counts = {};
+    for (const mesh of this.selectable) {
+      if (before.has(mesh) || !mesh.userData.detail) continue;
+      counts[mesh.userData.structureId] = mesh.geometry.getAttribute('position').count;
+    }
+    return counts;
+  }
+
+  /** Is there a detailed copy of every one of these ids? */
+  hasDetail(ids) {
+    const have = new Set(this.selectable.filter((m) => m.userData.detail).map((m) => m.userData.structureId));
+    return ids.length > 0 && ids.every((id) => have.has(id));
+  }
+
+  /** Show the detailed copies of these ids in place of the main model's (null = none). */
+  setDetail(ids) {
+    this._detailIds = ids && ids.length ? new Set(ids) : null;
+    if (!this._detailIds) this.paintRegions([]);
+    this._applyVisibility();
+  }
+
+  /**
+   * Colour landmark areas on the detailed bones (2026-11-19, Jake: highlights
+   * on the bone instead of dots). `areas` is [{ id, vertices, hex }]; an empty
+   * list clears every area. Vertex colours multiply the material colour, so
+   * each painted vertex gets (wanted / bone colour) per channel, in linear
+   * space - values above 1 are fine in a float attribute - and every other
+   * vertex gets 1, which leaves the bone exactly its usual colour.
+   */
+  paintRegions(areas) {
+    const byId = new Map();
+    for (const a of areas || []) {
+      if (!byId.has(a.id)) byId.set(a.id, []);
+      byId.get(a.id).push(a);
+    }
+    const want = new THREE.Color();
+    const base = new THREE.Color();
+    for (const mesh of this.selectable) {
+      if (!mesh.userData.detail) continue;
+      const list = byId.get(mesh.userData.structureId) || [];
+      const geometry = mesh.geometry;
+      const n = geometry.getAttribute('position').count;
+      if (!list.length) {
+        if (geometry.getAttribute('color')) geometry.deleteAttribute('color');
+        mesh.userData.tinted = false;
+        continue;
+      }
+      let attribute = geometry.getAttribute('color');
+      if (!attribute || attribute.count !== n) {
+        attribute = new THREE.BufferAttribute(new Float32Array(n * 3), 3);
+        geometry.setAttribute('color', attribute);
+      }
+      const array = attribute.array;
+      array.fill(1);
+      base.setHex(mesh.userData.baseColor);
+      for (const a of list) {
+        want.setHex(a.hex);
+        const r = base.r > 0 ? want.r / base.r : 1;
+        const g = base.g > 0 ? want.g / base.g : 1;
+        const b = base.b > 0 ? want.b / base.b : 1;
+        for (const v of a.vertices) {
+          if (v < 0 || v >= n) continue;
+          array[v * 3] = r; array[v * 3 + 1] = g; array[v * 3 + 2] = b;
+        }
+      }
+      attribute.needsUpdate = true;
+      // _applyMaterialState() turns vertex colours on for "tinted" meshes.
+      mesh.userData.tinted = true;
+    }
+    this._applyMaterialState();
   }
 
   /** Study rounds: only meshes of this layer answer a tap ('muscle'), or null for any. */
@@ -836,6 +935,7 @@ export class Viewer {
    */
   isolate(ids, { minFraction = 0.25 } = {}) {
     if (!ids) { this.controls.clearBounds(); this._setClip(0.1, 100); return false; }
+    this.scene.updateMatrixWorld(true);
     const wanted = new Set(ids);
     const box = new THREE.Box3();
     for (const m of this.selectable) if (wanted.has(m.userData.structureId)) box.expandByObject(m);

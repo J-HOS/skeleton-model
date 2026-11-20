@@ -90,6 +90,26 @@ the site LICENSE. Changes: positions transformed and mirrored to the left
 side; the two femoral supracondylar labels, which Z-Anatomy has swapped, were
 corrected. Landmark names are standard anatomical terms.
 
+### 1.6 Detailed atlas and axis — `(C) detail_atlas_axis.glb` (added 2026-11-19)
+
+Used only in landmark Study rounds on the atlas-and-axis card, in place of the
+main model's two bones.
+
+> "Atlas and Axis" by Dr. Petar Valchanov, segmented from a CT scan, published on
+> Sketchfab (sketchfab.com/3d-models/101d81bcb3d549a99eee6ef922088b01), licensed
+> **CC BY 4.0** (creativecommons.org/licenses/by/4.0/). anatomytool.org credits
+> Leiden University Medical Center for Dr. Valchanov's models.
+
+Licence checked on the model page on 2026-11-19 (it reads "CC Attribution");
+Sketchfab's terms leave free downloads to the Creative Commons licence. CC BY
+allows commercial use with credit and has no share-alike, so this file does not
+change the paid-app position. Changes: scaled to 92% and placed to fit this
+model's skeleton (one transform for both bones, no mirroring), reduced to
+12,000 triangles per bone, renamed (`Atlas_C1_ZA`, `Axis_C2_ZA`). The credit is
+also written into the file (`asset.copyright`). The landmark areas drawn on it
+(`data/landmark_regions.json`, which lists its vertices) are part of the same
+adaptation. Built by `01 3D Model/(C) build_detail_atlas_axis.py`.
+
 ---
 
 ## 2. Muscle content — `(C) muscle_database.json`

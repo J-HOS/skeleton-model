@@ -24,7 +24,17 @@ export const PATHS = Object.freeze({
   // "03 Testing & Review/(C) landmarks_2026-11-04/(C) extract_landmarks.py".
   // Optional: without it the Landmarks study tab is empty.
   landmarks: 'data/landmarks.json',
+  // Detailed bones for landmark rounds (2026-11-19, first app update): a
+  // CT-scan atlas and axis (Valchanov, CC BY 4.0), fetched only when a
+  // landmark round on that card starts, and the landmark areas on them,
+  // written by "03 Testing & Review/(C) detail_bones_2026-11-19/regions.py".
+  // Optional: without them the round uses the main model's bone and dots.
+  landmarkRegions: 'data/landmark_regions.json',
+  detailModel: 'models/detail_atlas_axis.glb',
 });
+
+/** Landmark cards with detailed bones and landmark areas (2026-11-19): atlas and axis first. */
+export const DETAIL_CARDS = Object.freeze(new Set(['atlasaxis']));
 
 /**
  * Depth view (2026-10-14, Jake's request): one side of the body keeps every
@@ -318,8 +328,8 @@ export const ATTRIBUTION =
   'Muscle text: original wording, checked against NIH/NCBI StatPearls and ' +
   'university anatomy tables; sources sometimes differ, especially on nerve root levels. ' +
   '3D model: BodyParts3D © DBCLS (CC BY-SA 2.1 JP), mixed and modified by ' +
-  'Z-anatomy.com (CC BY-SA 4.0); ear ossicles original to this project. ' +
-  'See Credits.';
+  'Z-anatomy.com (CC BY-SA 4.0); ear ossicles original to this project; ' +
+  'detailed atlas and axis by Dr. Petar Valchanov (CC BY 4.0). See Credits.';
 
 /**
  * Full credits and licences — the notice CC BY-SA requires. Decided
@@ -368,6 +378,16 @@ export const CREDITS = Object.freeze([
     text: 'Original to the Skeleton Model project: built from published ' +
       'measurements and textbook descriptions, not from any third-party ' +
       'model. Part of the combined model under CC BY-SA 4.0.',
+  },
+  {
+    title: 'Detailed atlas and axis (landmark Study)',
+    text: '"Atlas and Axis" by Dr. Petar Valchanov, a CT scan published on Sketchfab, ' +
+      'licensed CC BY 4.0. Scaled, placed to fit this model and simplified; the ' +
+      'landmark areas shown on it were added for this app.',
+    links: [
+      ['License', 'https://creativecommons.org/licenses/by/4.0/'],
+      ['Model', 'https://sketchfab.com/3d-models/atlas-and-axis-101d81bcb3d549a99eee6ef922088b01'],
+    ],
   },
   {
     title: 'Changes made for this app',

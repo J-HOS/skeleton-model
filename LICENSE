@@ -28,5 +28,10 @@ Third-party components (NOT covered by the notice above):
   * data/landmarks.json - the 3D positions of the bony landmarks used in
     Study, taken from Z-Anatomy's landmark labels; CC BY-SA 4.0 (see
     LICENSES.md section 1.5).
+  * models/detail_atlas_axis.glb and data/landmark_regions.json - the
+    detailed atlas and axis used in landmark Study rounds: "Atlas and Axis"
+    by Dr. Petar Valchanov (Sketchfab), a CT scan, licensed CC BY 4.0;
+    scaled, placed and reduced for this app. The landmark areas drawn on it
+    are part of the same adaptation. See LICENSES.md section 1.6.
   * vendor/ - three.js 0.160.1, Copyright 2010-2023 Three.js Authors, MIT
     License.
