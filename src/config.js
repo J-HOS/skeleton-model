@@ -38,11 +38,12 @@ export const PATHS = Object.freeze({
 /**
  * Landmark cards with detailed bones and landmark areas, and the file each
  * card's bone comes from (fetched the first time a round on that card starts).
- * 2026-11-19: atlas and axis. 2026-11-25 (Jake: top to bottom): clavicle.
+ * 2026-11-19: atlas and axis. 2026-11-25 (Jake: top to bottom): clavicle, scapula.
  */
 export const DETAIL_CARDS = Object.freeze(new Map([
   ['atlasaxis', 'models/detail_atlas_axis.glb'],
   ['clavicle', 'models/detail_clavicle.glb'],
+  ['scapula', 'models/detail_scapula.glb'],
 ]));
 
 /**
@@ -345,7 +346,7 @@ export const ATTRIBUTION =
   'university anatomy tables; sources sometimes differ, especially on nerve root levels. ' +
   '3D model: BodyParts3D © DBCLS (CC BY-SA 2.1 JP), mixed and modified by ' +
   'Z-anatomy.com (CC BY-SA 4.0); ear ossicles original to this project; ' +
-  'detailed atlas, axis and clavicle by Dr. Petar Valchanov (CC BY 4.0). See Credits.';
+  'detailed atlas, axis, clavicle and scapula by Dr. Petar Valchanov (CC BY 4.0). See Credits.';
 
 /**
  * Full credits and licences — the notice CC BY-SA requires. Decided
@@ -406,9 +407,9 @@ export const CREDITS = Object.freeze([
     ],
   },
   {
-    title: 'Detailed clavicle (landmark Study)',
+    title: 'Detailed clavicle and scapula (landmark Study)',
     text: '"Shoulders" by Dr. Petar Valchanov, a CT scan published on Sketchfab, ' +
-      'licensed CC BY 4.0. Right clavicle only, placed to fit this model and simplified; ' +
+      'licensed CC BY 4.0. Right clavicle and scapula only, placed to fit this model and simplified; ' +
       'the landmark areas shown on it were added for this app.',
     links: [
       ['License', 'https://creativecommons.org/licenses/by/4.0/'],

@@ -110,7 +110,7 @@ also written into the file (`asset.copyright`). The landmark areas drawn on it
 (`data/landmark_regions.json`, which lists its vertices) are part of the same
 adaptation. Built by `01 3D Model/(C) build_detail_atlas_axis.py`.
 
-### 1.7 Detailed clavicle — `(C) detail_clavicle.glb` (added 2026-11-25)
+### 1.7 Detailed clavicle and scapula — `(C) detail_clavicle.glb`, `(C) detail_scapula.glb` (added 2026-11-25)
 
 Used only in landmark Study rounds on the clavicle card, in place of the main
 model's right clavicle.
@@ -126,8 +126,13 @@ scan (one of its 23 bones), placed to fit this model's skeleton (scale 99.6%,
 no mirroring), reduced to 12,000 triangles, renamed `Clavicle_r_ZA`; the credit
 is written into the file. The landmark areas on it (in
 `data/landmark_regions.json`) are part of the same adaptation. Built by
-`01 3D Model/(C) build_detail_card.py`. The same scan will also supply the
-scapula; Valchanov's "Thorax" and "Foot" models (same licence, checked the same
+`01 3D Model/(C) build_detail_card.py`.
+
+**Scapula** (`(C) detail_scapula.glb`, added 2026-11-25, same scan and licence):
+the right scapula, placed with the clavicle's transform and refined (scale
+99.6%, no mirroring), reduced to 12,000 triangles, renamed `Scapula_r_ZA`.
+(The scan's other scapula is a copy of the right, not a true left; only the
+right is used.) Valchanov's "Thorax" and "Foot" models (same licence, checked the same
 day) are downloaded for later cards.
 
 ---
