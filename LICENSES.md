@@ -135,6 +135,23 @@ the right scapula, placed with the clavicle's transform and refined (scale
 right is used.) Valchanov's "Thorax" and "Foot" models (same licence, checked the same
 day) are downloaded for later cards.
 
+### 1.8 Detailed femur — `(C) detail_femur.glb` (added 2026-11-25)
+
+Used only in landmark Study rounds on the femur card, in place of the main
+model's right femur.
+
+> "SquareL femur", NIH 3D Print Exchange entry 3DPX-000168 (3d.nih.gov), a CT
+> scan, dedicated to the **public domain (CC0 1.0)**.
+
+Licence read on the entry page on 2026-11-19 ("Public Domain, CC0 1.0"). CC0
+asks nothing - no credit, no share-alike - so it does not change the paid-app
+position; it is credited anyway. Changes: the scan is a LEFT femur, mirrored
+to serve as the right (unmirrored it fits our right femur badly - landmarks 9
+mm off, the head 38 mm; mirrored 4 mm), placed to fit this model's skeleton
+(scale 97.5%), reduced to 12,000 triangles, renamed `Femur_r_ZA`; the
+public-domain notice is written into the file. Built by
+`01 3D Model/(C) build_detail_card.py`.
+
 ---
 
 ## 2. Muscle content — `(C) muscle_database.json`

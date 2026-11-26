@@ -9,16 +9,16 @@
  * the loader.
  */
 
-import { COLORS, DETAIL_CARDS, LAYERS, PATHS } from './config.js?v=ec1c3bc27e85';
-import { loadDataset, buildSearchIndex } from './dataset.js?v=ec1c3bc27e85';
-import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap, prettyName } from './anatomy.js?v=ec1c3bc27e85';
-import { STUDY_KINDS, STUDY_MODES, answerLandmarkTap, answerName, answerTap, studyMuscleLabel, boneBaseName, buildStudyCatalog, currentItem, formatPoints, giveUp, itemForId, answerLandmarkPick, answerLandmarkRegion, itemsForMode, newRound, nextQuestion, parseLandmarkRegions, parseLandmarks, prepareNaming, regionsAtFace, regionsCover, studyGroups } from './study.js?v=ec1c3bc27e85';
-import { fetchLocal, sanitizeQuery } from './security.js?v=ec1c3bc27e85';
-import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral, getStudyBest, recordStudyScore, studyKey } from './storage.js?v=ec1c3bc27e85';
-import { Viewer } from './viewer.js?v=ec1c3bc27e85';
-import { mountDevPanel } from './devpanel.js?v=ec1c3bc27e85';
-import { byId } from './dom.js?v=ec1c3bc27e85';
-import * as ui from './ui.js?v=ec1c3bc27e85';
+import { COLORS, DETAIL_CARDS, LAYERS, PATHS } from './config.js?v=fad8b01d220c';
+import { loadDataset, buildSearchIndex } from './dataset.js?v=fad8b01d220c';
+import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap, prettyName } from './anatomy.js?v=fad8b01d220c';
+import { STUDY_KINDS, STUDY_MODES, answerLandmarkTap, answerName, answerTap, studyMuscleLabel, boneBaseName, buildStudyCatalog, currentItem, formatPoints, giveUp, itemForId, answerLandmarkPick, answerLandmarkRegion, itemsForMode, newRound, nextQuestion, parseLandmarkRegions, parseLandmarks, prepareNaming, regionsAtFace, regionsCover, studyGroups } from './study.js?v=fad8b01d220c';
+import { fetchLocal, sanitizeQuery } from './security.js?v=fad8b01d220c';
+import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral, getStudyBest, recordStudyScore, studyKey } from './storage.js?v=fad8b01d220c';
+import { Viewer } from './viewer.js?v=fad8b01d220c';
+import { mountDevPanel } from './devpanel.js?v=fad8b01d220c';
+import { byId } from './dom.js?v=fad8b01d220c';
+import * as ui from './ui.js?v=fad8b01d220c';
 
 const state = {
   data: null,
@@ -665,6 +665,7 @@ function showNameQuestion() {
       paintAreas([[item, 'target']]);
       viewer.orbitAround(area.centre);
       viewer.lookFromModel(area.view);
+      viewer.zoomToArea(area.mesh, area.vertices);
     } else if (item.whole) {
       viewer.selectIds(item.ids);
       viewer.setMarkers(softMarkers());

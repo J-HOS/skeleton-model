@@ -38,12 +38,13 @@ export const PATHS = Object.freeze({
 /**
  * Landmark cards with detailed bones and landmark areas, and the file each
  * card's bone comes from (fetched the first time a round on that card starts).
- * 2026-11-19: atlas and axis. 2026-11-25 (Jake: top to bottom): clavicle, scapula.
+ * 2026-11-19: atlas and axis. 2026-11-25 (Jake: top to bottom): clavicle, scapula, femur.
  */
 export const DETAIL_CARDS = Object.freeze(new Map([
   ['atlasaxis', 'models/detail_atlas_axis.glb'],
   ['clavicle', 'models/detail_clavicle.glb'],
   ['scapula', 'models/detail_scapula.glb'],
+  ['femur', 'models/detail_femur.glb'],
 ]));
 
 /**
@@ -346,7 +347,8 @@ export const ATTRIBUTION =
   'university anatomy tables; sources sometimes differ, especially on nerve root levels. ' +
   '3D model: BodyParts3D © DBCLS (CC BY-SA 2.1 JP), mixed and modified by ' +
   'Z-anatomy.com (CC BY-SA 4.0); ear ossicles original to this project; ' +
-  'detailed atlas, axis, clavicle and scapula by Dr. Petar Valchanov (CC BY 4.0). See Credits.';
+  'detailed atlas, axis, clavicle and scapula by Dr. Petar Valchanov (CC BY 4.0); ' +
+  'detailed femur from the NIH 3D Print Exchange (public domain). See Credits.';
 
 /**
  * Full credits and licences — the notice CC BY-SA requires. Decided
@@ -414,6 +416,16 @@ export const CREDITS = Object.freeze([
     links: [
       ['License', 'https://creativecommons.org/licenses/by/4.0/'],
       ['Model', 'https://sketchfab.com/3d-models/538eb8046ae243bb871713f1a0dd0d2c'],
+    ],
+  },
+  {
+    title: 'Detailed femur (landmark Study)',
+    text: '"SquareL femur", a CT scan from the NIH 3D Print Exchange (entry 3DPX-000168), ' +
+      'dedicated to the public domain (CC0 1.0). A left femur mirrored to serve as the right, ' +
+      'placed to fit this model and simplified; the landmark areas shown on it were added for this app.',
+    links: [
+      ['Public domain', 'https://creativecommons.org/publicdomain/zero/1.0/'],
+      ['Model', 'https://3d.nih.gov/entries/3DPX-000168'],
     ],
   },
   {

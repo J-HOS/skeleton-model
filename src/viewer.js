@@ -6,12 +6,12 @@
  * this boundary is what lets every other module be tested in plain Node.
  */
 
-import * as THREE from '../vendor/three.module.js?v=ec1c3bc27e85';
-import { GLTFLoader } from '../vendor/GLTFLoader.js?v=ec1c3bc27e85';
-import { OrbitControls } from './controls.js?v=ec1c3bc27e85';
-import { BONE_SURFACE_COLORS, COLORS, LAYERS, LIMITS, MODEL_FIT_UNITS, MUSCLE_SECTION_COLORS, PATHS, PEEL, RENDER } from './config.js?v=ec1c3bc27e85';
-import { assertLooksLikeGLB, fetchLocal } from './security.js?v=ec1c3bc27e85';
-import { attachmentWeight, axialParameter, axialTaper, boneSurfaceKey, classifyLayer, findMuscleRecord, hiddenByIsolation, isPeeled, recordAliases, resolvesToContent, scaleChannels, selectionGroup, varyLightness, viewOffsetFor, fitDistance } from './anatomy.js?v=ec1c3bc27e85';
+import * as THREE from '../vendor/three.module.js?v=fad8b01d220c';
+import { GLTFLoader } from '../vendor/GLTFLoader.js?v=fad8b01d220c';
+import { OrbitControls } from './controls.js?v=fad8b01d220c';
+import { BONE_SURFACE_COLORS, COLORS, LAYERS, LIMITS, MODEL_FIT_UNITS, MUSCLE_SECTION_COLORS, PATHS, PEEL, RENDER } from './config.js?v=fad8b01d220c';
+import { assertLooksLikeGLB, fetchLocal } from './security.js?v=fad8b01d220c';
+import { attachmentWeight, axialParameter, axialTaper, boneSurfaceKey, classifyLayer, findMuscleRecord, hiddenByIsolation, isPeeled, recordAliases, resolvesToContent, scaleChannels, selectionGroup, varyLightness, viewOffsetFor, fitDistance } from './anatomy.js?v=fad8b01d220c';
 
 const TAP_MOVE_TOLERANCE_PX = 8; // beyond this, the gesture was a drag, not a tap
 
@@ -965,6 +965,36 @@ export class Viewer {
     this.camera.near = near;
     this.camera.far = far;
     this.camera.updateProjectionMatrix();
+  }
+
+  /**
+   * Zoom to a landmark area on a detailed bone (2026-11-25, femur: on a long
+   * bone the whole-bone view left small areas as specks on a phone). Distance
+   * from the area's own size - about 3.5 times it, never closer than about
+   * 70 mm or a quarter of the bone in view (so a long bone keeps enough
+   * around the area to tell where it is), never further out than the
+   * whole-bone view. Long bones only.
+   */
+  zoomToArea(id, vertices) {
+    const mesh = this.selectable.find((m) => m.userData.detail && m.userData.structureId === id);
+    if (!mesh || !this._modelRoot || !vertices?.length) return false;
+    mesh.updateMatrixWorld(true);
+    const pos = mesh.geometry.getAttribute('position');
+    const box = new THREE.Box3();
+    const p = new THREE.Vector3();
+    for (const i of vertices) box.expandByPoint(p.fromBufferAttribute(pos, i).applyMatrix4(mesh.matrixWorld));
+    const size = box.getSize(new THREE.Vector3());
+    const ext = Math.max(size.x, size.y, size.z);
+    const mm = this._modelRoot.scale.x;
+    const bone = new THREE.Box3().setFromObject(mesh).getSize(new THREE.Vector3());
+    const boneExt = Math.max(bone.x, bone.y, bone.z);
+    // Only long bones (over 200 mm): the short ones (atlas/axis, clavicle, scapula) already read well
+    // in the whole-bone view, which Jake approved on his phone, and zooming the atlas in hid facets.
+    if (boneExt < 200 * mm) return false;
+    const want = Math.max(ext * 3.5, 70 * mm, boneExt * 0.28, this.controls.minRadius);
+    this.controls.radius = Math.min(want, this.controls.homeRadius);
+    this.controls.update();
+    return true;
   }
 
   /** Orbit around a model-space point (a landmark) without changing the zoom. */
