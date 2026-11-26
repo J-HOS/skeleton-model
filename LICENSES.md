@@ -110,6 +110,26 @@ also written into the file (`asset.copyright`). The landmark areas drawn on it
 (`data/landmark_regions.json`, which lists its vertices) are part of the same
 adaptation. Built by `01 3D Model/(C) build_detail_atlas_axis.py`.
 
+### 1.7 Detailed clavicle — `(C) detail_clavicle.glb` (added 2026-11-25)
+
+Used only in landmark Study rounds on the clavicle card, in place of the main
+model's right clavicle.
+
+> "Shoulders" by Dr. Petar Valchanov, segmented from a CT scan, published on
+> Sketchfab (sketchfab.com/3d-models/538eb8046ae243bb871713f1a0dd0d2c), licensed
+> **CC BY 4.0** (creativecommons.org/licenses/by/4.0/).
+
+Licence read from Sketchfab's public model record on 2026-11-25 ("CC
+Attribution", downloadable, no restricting tags). CC BY allows commercial use
+with credit and has no share-alike. Changes: the right clavicle taken out of the
+scan (one of its 23 bones), placed to fit this model's skeleton (scale 99.6%,
+no mirroring), reduced to 12,000 triangles, renamed `Clavicle_r_ZA`; the credit
+is written into the file. The landmark areas on it (in
+`data/landmark_regions.json`) are part of the same adaptation. Built by
+`01 3D Model/(C) build_detail_card.py`. The same scan will also supply the
+scapula; Valchanov's "Thorax" and "Foot" models (same licence, checked the same
+day) are downloaded for later cards.
+
 ---
 
 ## 2. Muscle content — `(C) muscle_database.json`

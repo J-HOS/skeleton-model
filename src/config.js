@@ -29,12 +29,21 @@ export const PATHS = Object.freeze({
   // landmark round on that card starts, and the landmark areas on them,
   // written by "03 Testing & Review/(C) detail_bones_2026-11-19/regions.py".
   // Optional: without them the round uses the main model's bone and dots.
+  // 2026-11-25: one detailed .glb per card (DETAIL_CARDS), one areas file for
+  // all of them, merged by "03 Testing & Review/(C) detail_bones_2026-11-25/
+  // (C) merge_landmark_regions.py".
   landmarkRegions: 'data/landmark_regions.json',
-  detailModel: 'models/detail_atlas_axis.glb',
 });
 
-/** Landmark cards with detailed bones and landmark areas (2026-11-19): atlas and axis first. */
-export const DETAIL_CARDS = Object.freeze(new Set(['atlasaxis']));
+/**
+ * Landmark cards with detailed bones and landmark areas, and the file each
+ * card's bone comes from (fetched the first time a round on that card starts).
+ * 2026-11-19: atlas and axis. 2026-11-25 (Jake: top to bottom): clavicle.
+ */
+export const DETAIL_CARDS = Object.freeze(new Map([
+  ['atlasaxis', 'models/detail_atlas_axis.glb'],
+  ['clavicle', 'models/detail_clavicle.glb'],
+]));
 
 /**
  * Depth view (2026-10-14, Jake's request): one side of the body keeps every
@@ -336,7 +345,7 @@ export const ATTRIBUTION =
   'university anatomy tables; sources sometimes differ, especially on nerve root levels. ' +
   '3D model: BodyParts3D © DBCLS (CC BY-SA 2.1 JP), mixed and modified by ' +
   'Z-anatomy.com (CC BY-SA 4.0); ear ossicles original to this project; ' +
-  'detailed atlas and axis by Dr. Petar Valchanov (CC BY 4.0). See Credits.';
+  'detailed atlas, axis and clavicle by Dr. Petar Valchanov (CC BY 4.0). See Credits.';
 
 /**
  * Full credits and licences — the notice CC BY-SA requires. Decided
@@ -394,6 +403,16 @@ export const CREDITS = Object.freeze([
     links: [
       ['License', 'https://creativecommons.org/licenses/by/4.0/'],
       ['Model', 'https://sketchfab.com/3d-models/atlas-and-axis-101d81bcb3d549a99eee6ef922088b01'],
+    ],
+  },
+  {
+    title: 'Detailed clavicle (landmark Study)',
+    text: '"Shoulders" by Dr. Petar Valchanov, a CT scan published on Sketchfab, ' +
+      'licensed CC BY 4.0. Right clavicle only, placed to fit this model and simplified; ' +
+      'the landmark areas shown on it were added for this app.',
+    links: [
+      ['License', 'https://creativecommons.org/licenses/by/4.0/'],
+      ['Model', 'https://sketchfab.com/3d-models/538eb8046ae243bb871713f1a0dd0d2c'],
     ],
   },
   {

@@ -36,7 +36,7 @@
  * Search and on the cards.
  */
 
-import { classifyBone, findMuscleRecord, prettyName } from './anatomy.js?v=41905aed2403';
+import { classifyBone, findMuscleRecord, prettyName } from './anatomy.js?v=2c20b687d74e';
 
 export const STUDY_KINDS = Object.freeze([
   { id: 'muscles', label: 'Muscles' },
@@ -487,14 +487,21 @@ export function answerLandmarkPick(round, key) {
  * if anything is malformed. `vertexCounts` ({ meshId: count }), when given,
  * must match the file's own record of the detailed meshes, so a region file
  * written for another build of the .glb is refused rather than painting the
- * wrong triangles.
+ * wrong triangles. `cards` (2026-11-25, one detailed file per card), when
+ * given, limits the result - and the vertex-count check - to those cards'
+ * areas, so a card can be used as soon as its own bone has loaded.
  */
-export function parseLandmarkRegions(raw, catalog, vertexCounts = null) {
+export function parseLandmarkRegions(raw, catalog, vertexCounts = null, cards = null) {
   if (!raw || typeof raw !== 'object' || !Array.isArray(raw.regions)) return null;
   const meshes = raw.metadata && raw.metadata.meshes;
   if (!meshes || typeof meshes !== 'object') return null;
+  const wanted = cards ? new Set(cards) : null;
+  const list = wanted ? raw.regions.filter((r) => r && wanted.has(r.card)) : raw.regions;
+  if (wanted && !list.length) return null;
   if (vertexCounts) {
-    for (const [id, info] of Object.entries(meshes)) {
+    const used = wanted ? new Set(list.map((r) => r.mesh)) : new Set(Object.keys(meshes));
+    for (const id of used) {
+      const info = meshes[id];
       if (!info || vertexCounts[id] !== info.vertices) return null;
     }
   }
@@ -502,7 +509,7 @@ export function parseLandmarkRegions(raw, catalog, vertexCounts = null) {
   for (const items of Object.values(catalog || {})) for (const item of items) known.set(item.key, item);
   const out = new Map();
   const vec = (v, lim) => Array.isArray(v) && v.length === 3 && v.every((x) => Number.isFinite(x) && Math.abs(x) <= lim);
-  for (const r of raw.regions) {
+  for (const r of list) {
     if (!r || typeof r !== 'object') return null;
     const key = `${r.card}:${r.label}`;
     const item = known.get(key);

@@ -9,16 +9,16 @@
  * the loader.
  */
 
-import { COLORS, DETAIL_CARDS, LAYERS, PATHS } from './config.js?v=41905aed2403';
-import { loadDataset, buildSearchIndex } from './dataset.js?v=41905aed2403';
-import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap, prettyName } from './anatomy.js?v=41905aed2403';
-import { STUDY_KINDS, STUDY_MODES, answerLandmarkTap, answerName, answerTap, studyMuscleLabel, boneBaseName, buildStudyCatalog, currentItem, formatPoints, giveUp, itemForId, answerLandmarkPick, answerLandmarkRegion, itemsForMode, newRound, nextQuestion, parseLandmarkRegions, parseLandmarks, prepareNaming, regionsAtFace, regionsCover, studyGroups } from './study.js?v=41905aed2403';
-import { fetchLocal, sanitizeQuery } from './security.js?v=41905aed2403';
-import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral, getStudyBest, recordStudyScore, studyKey } from './storage.js?v=41905aed2403';
-import { Viewer } from './viewer.js?v=41905aed2403';
-import { mountDevPanel } from './devpanel.js?v=41905aed2403';
-import { byId } from './dom.js?v=41905aed2403';
-import * as ui from './ui.js?v=41905aed2403';
+import { COLORS, DETAIL_CARDS, LAYERS, PATHS } from './config.js?v=2c20b687d74e';
+import { loadDataset, buildSearchIndex } from './dataset.js?v=2c20b687d74e';
+import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap, prettyName } from './anatomy.js?v=2c20b687d74e';
+import { STUDY_KINDS, STUDY_MODES, answerLandmarkTap, answerName, answerTap, studyMuscleLabel, boneBaseName, buildStudyCatalog, currentItem, formatPoints, giveUp, itemForId, answerLandmarkPick, answerLandmarkRegion, itemsForMode, newRound, nextQuestion, parseLandmarkRegions, parseLandmarks, prepareNaming, regionsAtFace, regionsCover, studyGroups } from './study.js?v=2c20b687d74e';
+import { fetchLocal, sanitizeQuery } from './security.js?v=2c20b687d74e';
+import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral, getStudyBest, recordStudyScore, studyKey } from './storage.js?v=2c20b687d74e';
+import { Viewer } from './viewer.js?v=2c20b687d74e';
+import { mountDevPanel } from './devpanel.js?v=2c20b687d74e';
+import { byId } from './dom.js?v=2c20b687d74e';
+import * as ui from './ui.js?v=2c20b687d74e';
 
 const state = {
   data: null,
@@ -465,26 +465,29 @@ async function loadLandmarks() {
 
 /**
  * Detailed bones and their landmark areas (2026-11-19, first app update).
- * Fetched once, the first time a landmark round on a card that has them
- * starts (about 0.6 MB), so nobody else pays for the download. Any failure
- * leaves state.regions null and the round falls back to the main model's
+ * Each card's bone is fetched once, the first time a landmark round on that
+ * card starts (0.3-0.6 MB), so nobody else pays for the download; the areas
+ * file is shared by all cards (2026-11-25). Any failure leaves that card's
+ * areas out of state.regions and its round falls back to the main model's
  * bone with dots.
  */
-function ensureDetail() {
-  if (!state.detailPromise) {
-    state.detailPromise = (async () => {
-      const raw = await fetchLocal(PATHS.landmarkRegions);
-      if (raw?.metadata?.model !== PATHS.detailModel) throw new Error('landmark_regions.json names another model');
-      const counts = await state.viewer.loadDetail(PATHS.detailModel);
-      const regions = parseLandmarkRegions(raw, state.landmarkCatalog || {}, counts);
-      if (!regions) throw new Error('landmark_regions.json failed validation');
-      state.regions = regions;
+function ensureDetail(card) {
+  if (!state.detailLoads) state.detailLoads = new Map();
+  if (!state.detailLoads.has(card)) {
+    state.detailLoads.set(card, (async () => {
+      if (!state.regionsRaw) state.regionsRaw = fetchLocal(PATHS.landmarkRegions);
+      const raw = await state.regionsRaw;
+      const path = DETAIL_CARDS.get(card);
+      if (!raw?.metadata?.models?.[path]?.cards?.includes(card)) throw new Error(`landmark_regions.json has no areas for ${card}`);
+      const counts = await state.viewer.loadDetail(path);
+      const regions = parseLandmarkRegions(raw, state.landmarkCatalog || {}, counts, [card]);
+      if (!regions) throw new Error(`landmark_regions.json failed validation for ${card}`);
+      state.regions = new Map([...(state.regions || []), ...regions]);
     })().catch((error) => {
-      state.regions = null;
       console.info('Detailed bones unavailable:', error.message);
-    });
+    }));
   }
-  return state.detailPromise;
+  return state.detailLoads.get(card);
 }
 
 const AREA_COLORS = Object.freeze({ target: COLORS.selected, tap: 0xf97316 });
@@ -565,11 +568,12 @@ function setXrayState(on) {
 
 function startStudy(kind, region, mode = 'find') {
   // A card with detailed bones waits for them the first time (a second or so).
-  if (kind === 'landmarks' && DETAIL_CARDS.has(region) && !state.detailDone) {
+  if (kind === 'landmarks' && DETAIL_CARDS.has(region) && !state.detailDone?.has(region)) {
     const token = (state.studyStartToken = (state.studyStartToken || 0) + 1);
     ui.flashHint('Loading the detailed bone…');
-    ensureDetail().finally(() => {
-      state.detailDone = true;
+    ensureDetail(region).finally(() => {
+      if (!state.detailDone) state.detailDone = new Set();
+      state.detailDone.add(region);
       if (state.studyStartToken === token) startStudyNow(kind, region, mode);
     });
     return;
