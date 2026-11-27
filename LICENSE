@@ -33,8 +33,11 @@ Third-party components (NOT covered by the notice above):
     Valchanov (Sketchfab), each licensed CC BY 4.0 and placed and reduced
     for this app: atlas and axis from "Atlas and Axis" (LICENSES.md 1.6),
     right clavicle and scapula from "Shoulders" (LICENSES.md 1.7). Right femur:
-    "SquareL femur", NIH 3D Print Exchange 3DPX-000168, a CT scan in the public
-    domain (CC0 1.0), mirrored and reduced (LICENSES.md 1.8). The landmark areas
-    drawn on them are part of the same adaptations.
+    "Human femur" by SquareL, NIH 3D Print Exchange 3DPX-000168, a CT scan in
+    the public domain (CC0 1.0), mirrored and reduced (LICENSES.md 1.8). Right
+    patella: "Human patella" by SquareL, NIH 3D Print Exchange 3DPX-000170, a
+    CT scan in the public domain (CC0 1.0), mirrored and lightly smoothed
+    (LICENSES.md 1.9). The landmark areas drawn on them are part of the same
+    adaptations.
   * vendor/ - three.js 0.160.1, Copyright 2010-2023 Three.js Authors, MIT
     License.

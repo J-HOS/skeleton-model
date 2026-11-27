@@ -140,7 +140,7 @@ day) are downloaded for later cards.
 Used only in landmark Study rounds on the femur card, in place of the main
 model's right femur.
 
-> "SquareL femur", NIH 3D Print Exchange entry 3DPX-000168 (3d.nih.gov), a CT
+> "Human femur" by SquareL, NIH 3D Print Exchange entry 3DPX-000168 (3d.nih.gov), a CT
 > scan, dedicated to the **public domain (CC0 1.0)**.
 
 Licence read on the entry page on 2026-11-19 ("Public Domain, CC0 1.0"). CC0
@@ -150,7 +150,28 @@ to serve as the right (unmirrored it fits our right femur badly - landmarks 9
 mm off, the head 38 mm; mirrored 4 mm), placed to fit this model's skeleton
 (scale 97.5%), reduced to 12,000 triangles, renamed `Femur_r_ZA`; the
 public-domain notice is written into the file. Built by
-`01 3D Model/(C) build_detail_card.py`.
+`01 3D Model/(C) build_detail_card.py`. (Title corrected 2026-11-27 from
+"SquareL femur" to the entry's own title, "Human femur", created by SquareL;
+read on the entry page that day. Geometry unchanged.)
+
+### 1.9 Detailed patella — `(C) detail_patella.glb` (added 2026-11-27)
+
+Used only in landmark Study rounds on the patella card, in place of the main
+model's right patella.
+
+> "Human patella" by SquareL, NIH 3D Print Exchange entry 3DPX-000170
+> (3d.nih.gov), "segmentation of a human patella based on a CT scan of a full
+> leg" (the same leg as the femur), dedicated to the **public domain (CC0 1.0)**.
+
+Licence read on the entry page on 2026-11-27 ("Public Domain", CC0 1.0). Like
+the femur it asks nothing and is credited as a courtesy. Changes: the scan is a
+LEFT patella, mirrored to serve as the right (mirrored it fits our right
+patella better - surface 0.8/1.0 mm vs 1.1/1.6 mm - and only mirrored is the
+lateral facet the larger, as it must be), placed to fit this model's skeleton
+(scale 92.3%), smoothed with 10 Taubin passes to remove CT slice steps (Jake's
+choice on renders; volume restored; surface moves 0.6 mm on average), not
+reduced (3,436 triangles), renamed `Patella_r_ZA`; the public-domain notice is
+written into the file. Built by `01 3D Model/(C) build_detail_card.py`.
 
 ---
 

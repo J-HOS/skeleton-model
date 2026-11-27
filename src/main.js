@@ -9,16 +9,16 @@
  * the loader.
  */
 
-import { COLORS, DETAIL_CARDS, LAYERS, PATHS } from './config.js?v=fad8b01d220c';
-import { loadDataset, buildSearchIndex } from './dataset.js?v=fad8b01d220c';
-import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap, prettyName } from './anatomy.js?v=fad8b01d220c';
-import { STUDY_KINDS, STUDY_MODES, answerLandmarkTap, answerName, answerTap, studyMuscleLabel, boneBaseName, buildStudyCatalog, currentItem, formatPoints, giveUp, itemForId, answerLandmarkPick, answerLandmarkRegion, itemsForMode, newRound, nextQuestion, parseLandmarkRegions, parseLandmarks, prepareNaming, regionsAtFace, regionsCover, studyGroups } from './study.js?v=fad8b01d220c';
-import { fetchLocal, sanitizeQuery } from './security.js?v=fad8b01d220c';
-import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral, getStudyBest, recordStudyScore, studyKey } from './storage.js?v=fad8b01d220c';
-import { Viewer } from './viewer.js?v=fad8b01d220c';
-import { mountDevPanel } from './devpanel.js?v=fad8b01d220c';
-import { byId } from './dom.js?v=fad8b01d220c';
-import * as ui from './ui.js?v=fad8b01d220c';
+import { COLORS, DETAIL_CARDS, LAYERS, PATHS } from './config.js?v=57fd698f86ed';
+import { loadDataset, buildSearchIndex } from './dataset.js?v=57fd698f86ed';
+import { classifyBone, deepestLayer, findMuscleRecord, nextPeelDepth, parseLayerMap, prettyName } from './anatomy.js?v=57fd698f86ed';
+import { STUDY_KINDS, STUDY_MODES, answerLandmarkTap, answerName, answerTap, studyMuscleLabel, boneBaseName, buildStudyCatalog, currentItem, formatPoints, giveUp, itemForId, answerLandmarkPick, answerLandmarkRegion, itemsForMode, newRound, nextQuestion, parseLandmarkRegions, parseLandmarks, prepareNaming, regionsAtFace, regionsCover, studyGroups } from './study.js?v=57fd698f86ed';
+import { fetchLocal, sanitizeQuery } from './security.js?v=57fd698f86ed';
+import { getRecents, pushRecent, hasAcknowledgedDisclaimer, acknowledgeDisclaimer, clearAll, getBilateral, setBilateral, getStudyBest, recordStudyScore, studyKey } from './storage.js?v=57fd698f86ed';
+import { Viewer } from './viewer.js?v=57fd698f86ed';
+import { mountDevPanel } from './devpanel.js?v=57fd698f86ed';
+import { byId } from './dom.js?v=57fd698f86ed';
+import * as ui from './ui.js?v=57fd698f86ed';
 
 const state = {
   data: null,

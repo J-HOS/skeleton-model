@@ -6,12 +6,12 @@
  * this boundary is what lets every other module be tested in plain Node.
  */
 
-import * as THREE from '../vendor/three.module.js?v=fad8b01d220c';
-import { GLTFLoader } from '../vendor/GLTFLoader.js?v=fad8b01d220c';
-import { OrbitControls } from './controls.js?v=fad8b01d220c';
-import { BONE_SURFACE_COLORS, COLORS, LAYERS, LIMITS, MODEL_FIT_UNITS, MUSCLE_SECTION_COLORS, PATHS, PEEL, RENDER } from './config.js?v=fad8b01d220c';
-import { assertLooksLikeGLB, fetchLocal } from './security.js?v=fad8b01d220c';
-import { attachmentWeight, axialParameter, axialTaper, boneSurfaceKey, classifyLayer, findMuscleRecord, hiddenByIsolation, isPeeled, recordAliases, resolvesToContent, scaleChannels, selectionGroup, varyLightness, viewOffsetFor, fitDistance } from './anatomy.js?v=fad8b01d220c';
+import * as THREE from '../vendor/three.module.js?v=57fd698f86ed';
+import { GLTFLoader } from '../vendor/GLTFLoader.js?v=57fd698f86ed';
+import { OrbitControls } from './controls.js?v=57fd698f86ed';
+import { BONE_SURFACE_COLORS, COLORS, LAYERS, LIMITS, MODEL_FIT_UNITS, MUSCLE_SECTION_COLORS, PATHS, PEEL, RENDER } from './config.js?v=57fd698f86ed';
+import { assertLooksLikeGLB, fetchLocal } from './security.js?v=57fd698f86ed';
+import { attachmentWeight, axialParameter, axialTaper, boneSurfaceKey, classifyLayer, findMuscleRecord, hiddenByIsolation, isPeeled, recordAliases, resolvesToContent, scaleChannels, selectionGroup, varyLightness, viewOffsetFor, fitDistance } from './anatomy.js?v=57fd698f86ed';
 
 const TAP_MOVE_TOLERANCE_PX = 8; // beyond this, the gesture was a drag, not a tap
 

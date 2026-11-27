@@ -39,12 +39,14 @@ export const PATHS = Object.freeze({
  * Landmark cards with detailed bones and landmark areas, and the file each
  * card's bone comes from (fetched the first time a round on that card starts).
  * 2026-11-19: atlas and axis. 2026-11-25 (Jake: top to bottom): clavicle, scapula, femur.
+ * 2026-11-27: patella.
  */
 export const DETAIL_CARDS = Object.freeze(new Map([
   ['atlasaxis', 'models/detail_atlas_axis.glb'],
   ['clavicle', 'models/detail_clavicle.glb'],
   ['scapula', 'models/detail_scapula.glb'],
   ['femur', 'models/detail_femur.glb'],
+  ['patella', 'models/detail_patella.glb'],
 ]));
 
 /**
@@ -420,12 +422,22 @@ export const CREDITS = Object.freeze([
   },
   {
     title: 'Detailed femur (landmark Study)',
-    text: '"SquareL femur", a CT scan from the NIH 3D Print Exchange (entry 3DPX-000168), ' +
+    text: '"Human femur" by SquareL, a CT scan from the NIH 3D Print Exchange (entry 3DPX-000168), ' +
       'dedicated to the public domain (CC0 1.0). A left femur mirrored to serve as the right, ' +
       'placed to fit this model and simplified; the landmark areas shown on it were added for this app.',
     links: [
       ['Public domain', 'https://creativecommons.org/publicdomain/zero/1.0/'],
       ['Model', 'https://3d.nih.gov/entries/3DPX-000168'],
+    ],
+  },
+  {
+    title: 'Detailed patella (landmark Study)',
+    text: '"Human patella" by SquareL, a CT scan from the NIH 3D Print Exchange (entry 3DPX-000170), ' +
+      'dedicated to the public domain (CC0 1.0). A left patella mirrored to serve as the right, ' +
+      'placed to fit this model and lightly smoothed; the landmark areas shown on it were added for this app.',
+    links: [
+      ['Public domain', 'https://creativecommons.org/publicdomain/zero/1.0/'],
+      ['Model', 'https://3d.nih.gov/entries/3DPX-000170'],
     ],
   },
   {
