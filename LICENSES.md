@@ -173,6 +173,28 @@ choice on renders; volume restored; surface moves 0.6 mm on average), not
 reduced (3,436 triangles), renamed `Patella_r_ZA`; the public-domain notice is
 written into the file. Built by `01 3D Model/(C) build_detail_card.py`.
 
+### 1.10 Detailed tibia and fibula — `(C) detail_tibia.glb`, `(C) detail_fibula.glb` (added 2026-11-27)
+
+Used only in landmark Study rounds on the tibia and fibula cards, in place of
+the main model's right tibia and fibula.
+
+> "Human tibia and fibula" by SquareL, NIH 3D Print Exchange entry 3DPX-000169
+> (3d.nih.gov), from the same CT scan of a full leg as the femur and patella,
+> dedicated to the **public domain (CC0 1.0)**.
+
+Licence read on the entry page on 2026-11-27 ("Public Domain", CC0 1.0 Universal;
+"segmentation of a full human tibia and fibula based on a CT scan of a full leg",
+matching the femur and patella). CC0 asks nothing; credited as a courtesy.
+Changes: the scan is one surface with the two bones joined at both
+tibiofibular joints; separated by `01 3D Model/(C) split_tibia_fibula_2026-11-27.py`
+(voxel watershed at the narrowest neck of each joint), a LEFT leg mirrored to
+serve as the right (mirrored it fits better and the medial malleolus and the
+fibula fall on the correct sides), each bone placed to fit this model's skeleton
+(scale 92.7% / 94.0%), lightly smoothed (0.75 mm blur of the solid, Jake's choice
+on renders), reduced to about 12,000 triangles with MeshLab's topology-preserving
+reduction, renamed `Tibia_r_ZA` / `Fibula_r_ZA`; the public-domain notice is
+written into each file. Built by `01 3D Model/(C) build_detail_card.py`.
+
 ---
 
 ## 2. Muscle content — `(C) muscle_database.json`

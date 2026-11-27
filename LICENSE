@@ -37,7 +37,10 @@ Third-party components (NOT covered by the notice above):
     the public domain (CC0 1.0), mirrored and reduced (LICENSES.md 1.8). Right
     patella: "Human patella" by SquareL, NIH 3D Print Exchange 3DPX-000170, a
     CT scan in the public domain (CC0 1.0), mirrored and lightly smoothed
-    (LICENSES.md 1.9). The landmark areas drawn on them are part of the same
+    (LICENSES.md 1.9). Right tibia and fibula: "Human tibia and fibula" by
+    SquareL, NIH 3D Print Exchange 3DPX-000169, a CT scan in the public domain
+    (CC0 1.0), separated into two bones, mirrored, lightly smoothed and reduced
+    (LICENSES.md 1.10). The landmark areas drawn on them are part of the same
     adaptations.
   * vendor/ - three.js 0.160.1, Copyright 2010-2023 Three.js Authors, MIT
     License.

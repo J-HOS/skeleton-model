@@ -39,7 +39,7 @@ export const PATHS = Object.freeze({
  * Landmark cards with detailed bones and landmark areas, and the file each
  * card's bone comes from (fetched the first time a round on that card starts).
  * 2026-11-19: atlas and axis. 2026-11-25 (Jake: top to bottom): clavicle, scapula, femur.
- * 2026-11-27: patella.
+ * 2026-11-27: patella, tibia, fibula.
  */
 export const DETAIL_CARDS = Object.freeze(new Map([
   ['atlasaxis', 'models/detail_atlas_axis.glb'],
@@ -47,6 +47,8 @@ export const DETAIL_CARDS = Object.freeze(new Map([
   ['scapula', 'models/detail_scapula.glb'],
   ['femur', 'models/detail_femur.glb'],
   ['patella', 'models/detail_patella.glb'],
+  ['tibia', 'models/detail_tibia.glb'],
+  ['fibula', 'models/detail_fibula.glb'],
 ]));
 
 /**
@@ -438,6 +440,17 @@ export const CREDITS = Object.freeze([
     links: [
       ['Public domain', 'https://creativecommons.org/publicdomain/zero/1.0/'],
       ['Model', 'https://3d.nih.gov/entries/3DPX-000170'],
+    ],
+  },
+  {
+    title: 'Detailed tibia and fibula (landmark Study)',
+    text: '"Human tibia and fibula" by SquareL, a CT scan from the NIH 3D Print Exchange (entry 3DPX-000169), ' +
+      'dedicated to the public domain (CC0 1.0). The two bones are joined in the scan and were separated for this app; ' +
+      'a left leg mirrored to serve as the right, placed to fit this model, lightly smoothed and simplified; ' +
+      'the landmark areas shown on them were added for this app.',
+    links: [
+      ['Public domain', 'https://creativecommons.org/publicdomain/zero/1.0/'],
+      ['Model', 'https://3d.nih.gov/entries/3DPX-000169'],
     ],
   },
   {
